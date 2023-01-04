@@ -1,0 +1,55 @@
+{
+    "name": "yii-tools/forms",
+    "type": "library",
+    "description": "Filament forms for Yii 3",
+    "keywords": [
+        "yii",
+        "filament",
+        "forms"
+    ],
+    "license": "mit",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1",
+        "foxy/foxy": "^1.2",
+        "yii-tools/html": "dev-main",
+        "yii-tools/model": "dev-main",
+        "yiisoft/assets": "^2.1",
+        "yiisoft/strings": "^2.1",
+        "yiisoft/view": "^7.0",
+        "yiisoft/yii-event": "^1.0",
+        "yiisoft/widget": "dev-master"
+    },
+    "require-dev": {
+        "maglnet/composer-require-checker": "^4.3",
+        "phpunit/phpunit": "^9.5",
+        "roave/infection-static-analysis-plugin": "^1.28",
+        "vimeo/psalm": "^5.4",
+        "yii-tools/support": "^1.0@dev",
+        "yiisoft/test-support": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yii\\Forms\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yii\\Forms\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        },
+        "foxy": true
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "foxy/foxy": true
+        }
+    }
+}
