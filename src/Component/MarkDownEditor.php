@@ -54,10 +54,10 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying autofocuses the editor.
      * Defaults to `false`.
      */
-    public function autoFocusEditor(): static
+    public function autoFocusEditor(bool $value): static
     {
         $new = clone $this;
-        $new->editorOptions['autofocus'] = true;
+        $new->editorOptions['autofocus'] = $value;
 
         return $new;
     }
@@ -69,13 +69,13 @@ final class MarkDownEditor extends AbstractFormWidget
      * @param int $delay The delay in milliseconds between each save.
      * Defaults to `1000`.
      */
-    public function autoSave(int $delay = 1000): self
+    public function autoSave(int $delay): self
     {
         $new = clone $this;
         $new->editorOptions['autosave'] = [
+            'delay' => $delay,
             'enabled' => true,
             'uniqueId' => $this->getId(),
-            'delay' => $delay,
         ];
 
         return $new;
@@ -86,10 +86,10 @@ final class MarkDownEditor extends AbstractFormWidget
      * textarea.
      * Defaults to `false`.
      */
-    public function forceSync(): self
+    public function forceSync(bool $value): self
     {
         $new = clone $this;
-        $new->editorOptions['forceSync'] = true;
+        $new->editorOptions['forceSync'] = $value;
 
         return $new;
     }
@@ -114,7 +114,7 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying indent using spaces instead of tabs.
      * Defaults to `true`.
      */
-    public function indentWithTabs(bool $value = false): self
+    public function indentWithTabs(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['indentWithTabs'] = $value;
@@ -139,7 +139,7 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying disable line wrapping.
      * Defaults to `false`.
      */
-    public function lineWrapping(bool $value = true): self
+    public function lineWrapping(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['lineWrapping'] = $value;
@@ -177,7 +177,7 @@ final class MarkDownEditor extends AbstractFormWidget
     /**
      * Returns a new instance that specifies whether a JS alert window requests the image URL or link.
      */
-    public function promptURLs(bool $value = true): self
+    public function promptURLs(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['promptURLs'] = $value;
@@ -211,7 +211,7 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying whether spell checking is enabled.
      * Defaults to `false`.
      */
-    public function spellChecker(bool $value = true): self
+    public function spellChecker(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['spellChecker'] = $value;
@@ -223,7 +223,7 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying whether to style the selected text.
      * Defaults to `false`.
      */
-    public function styleSelectedText(bool $value = true): self
+    public function styleSelectedText(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['styleSelectedText'] = $value;
@@ -235,7 +235,7 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying the tab size.
      * Defaults to `2`.
      */
-    public function tabSize(int $value = 4): self
+    public function tabSize(int $value): self
     {
         $new = clone $this;
         $new->editorOptions['tabSize'] = $value;
@@ -255,7 +255,7 @@ final class MarkDownEditor extends AbstractFormWidget
         $this->validateIconsToolbar($toolbar);
 
         $new = clone $this;
-        $new->toolbar = $toolbar;
+        $new->editorOptions['toolbar'] = $toolbar;
 
         return $new;
     }
@@ -266,7 +266,7 @@ final class MarkDownEditor extends AbstractFormWidget
      *
      * @param bool $value Whether to show tooltips for toolbar buttons.
      */
-    public function toolbarTips(bool $value = true): self
+    public function toolbarTips(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['toolbarTips'] = $value;
@@ -274,27 +274,27 @@ final class MarkDownEditor extends AbstractFormWidget
         return $new;
     }
 
-    private function getElement(): string
-    {
-        return 'element: document.getElementById("' . $this->getId() . '")';
-    }
-
     private function getScript(): string
     {
-        $varName = (new Inflector())->toPascalCase('editor_' . $this->getId());
-        $options = $this->getElement() . ',' . $this->getToolbar();
+        $config = '';
+        $editorOptions = $this->editorOptions;
+        $editorOptions['element'] = 'element: document.getElementById("' . $this->getId() . '"), ';
 
-        /** @psalm-var mixed $value */
-        foreach ($this->editorOptions as $attribute => $value) {
-            $options .= ',' . $attribute . ': ' . json_encode($value);
+        if (!isset($editorOptions['toolbar'])) {
+            $editorOptions['toolbar'] = $this->toolbar;
         }
 
-        return 'var' . $varName . ' = new SimpleMDE({' . $options . '});';
-    }
+        $varName = (new Inflector())->toPascalCase($this->getId());
 
-    private function getToolbar(): string
-    {
-        return 'toolbar: ' . json_encode($this->toolbar);
+        /** @psalm-var mixed $value */
+        foreach ($editorOptions as $attribute => $value) {
+            $config .= match ($attribute) {
+                'element' => (string) $value,
+                default => $attribute . ': ' . json_encode($value) . ', ',
+            };
+        }
+
+        return "var {$varName} = new SimpleMDE({ $config });";
     }
 
     private function registerAssets(): void

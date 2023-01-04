@@ -21,9 +21,9 @@ final class ImmutabilityTest extends TestCase
     {
         $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string']);
 
-        $this->assertNotSame($markDownEditor, $markDownEditor->autoFocusEditor());
-        $this->assertNotSame($markDownEditor, $markDownEditor->autoSave(5000));
-        $this->assertNotSame($markDownEditor, $markDownEditor->forceSync());
+        $this->assertNotSame($markDownEditor, $markDownEditor->autoFocusEditor(true));
+        $this->assertNotSame($markDownEditor, $markDownEditor->autoSave(1000));
+        $this->assertNotSame($markDownEditor, $markDownEditor->forceSync(true));
         $this->assertNotSame($markDownEditor, $markDownEditor->hiddenIcons(['heading-1', 'heading-2', 'heading-3']));
         $this->assertNotSame($markDownEditor, $markDownEditor->indentWithTabs(true));
         $this->assertNotSame($markDownEditor, $markDownEditor->initialValue('initial value'));
@@ -34,7 +34,7 @@ final class ImmutabilityTest extends TestCase
         $this->assertNotSame($markDownEditor, $markDownEditor->showIcons(['heading-1', 'heading-2', 'heading-3']));
         $this->assertNotSame($markDownEditor, $markDownEditor->spellChecker(false));
         $this->assertNotSame($markDownEditor, $markDownEditor->styleSelectedText(false));
-        $this->assertNotSame($markDownEditor, $markDownEditor->tabSize());
+        $this->assertNotSame($markDownEditor, $markDownEditor->tabSize(4));
         $this->assertNotSame($markDownEditor, $markDownEditor->toolbar(['heading-1', 'heading-2', 'heading-3']));
         $this->assertNotSame($markDownEditor, $markDownEditor->toolbarTips(false));
     }

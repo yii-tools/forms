@@ -17,7 +17,7 @@ final class WidgetTest extends TestCase
 
     public function testAutoFocusEditor(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->autoFocusEditor();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->autoFocusEditor(false);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
@@ -25,18 +25,34 @@ final class WidgetTest extends TestCase
 
     public function testAutoSave(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->autoSave();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->autoSave(500);
+        $markDownEditor->render();
+
+        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertSame(
+            ['delay' => 500, 'enabled' => true, 'uniqueId' => Assert::invokeMethod($markDownEditor, 'getId')],
+            Assert::inaccessibleProperty($markDownEditor, 'editorOptions')['autosave'],
+        );
+    }
+
+    public function testForceSync(): void
+    {
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->forceSync(false);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
-    public function testForceSync(): void
+    public function testGetElementId(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->forceSync();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string']);
         $markDownEditor->render();
+        $expected = 'var PropertytypeformString = new SimpleMDE({ element: document.getElementById("propertytypeform-string"), ' .
+        'toolbar: ["bold","italic","strikethrough","heading","heading-smaller","heading-bigger","heading-1","heading-2",' .
+        '"heading-3","code","quote","unordered-list","ordered-list","link","image","table","horizontal-rule","preview",' .
+        '"side-by-side","fullscreen","guide"],  });';
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertSame($expected, $this->getScript());
     }
 
     public function testHiddenIcons(): void
@@ -50,7 +66,7 @@ final class WidgetTest extends TestCase
 
     public function testIndentWithTabs(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->indentWithTabs();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->indentWithTabs(false);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
@@ -66,7 +82,7 @@ final class WidgetTest extends TestCase
 
     public function testLineWrapping(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->lineWrapping();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->lineWrapping(true);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
@@ -83,7 +99,7 @@ final class WidgetTest extends TestCase
 
     public function testPromptURLs(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->promptURLs();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->promptURLs(true);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
@@ -103,7 +119,6 @@ final class WidgetTest extends TestCase
         $markDownEditor->render();
 
         $this->assertInstanceof(MarkDownEditorAsset::class, $this->assetManager->getBundle(MarkDownEditorAsset::class));
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
     public function testRun(): void
@@ -127,7 +142,7 @@ final class WidgetTest extends TestCase
 
     public function testSpellChecker(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->spellChecker();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->spellChecker(true);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
@@ -135,7 +150,7 @@ final class WidgetTest extends TestCase
 
     public function testStyleSelectedText(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->styleSelectedText();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->styleSelectedText(true);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
@@ -159,7 +174,7 @@ final class WidgetTest extends TestCase
 
     public function testToolbarTips(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->toolbarTips();
+        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->toolbarTips(true);
         $markDownEditor->render();
 
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
