@@ -13,8 +13,8 @@
     "require": {
         "php": "^8.1",
         "foxy/foxy": "^1.2",
-        "yii-tools/html": "dev-main",
-        "yii-tools/model": "dev-main",
+        "yii-tools/html": "^1.0@dev",
+        "yii-tools/model": "^1.0@dev",
         "yiisoft/assets": "^2.1",
         "yiisoft/strings": "^2.1",
         "yiisoft/view": "^7.0",

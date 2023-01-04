@@ -49,7 +49,7 @@ Static analysis is checked with [Psalm](https://psalm.dev/). To run it:
 ## CI status
 
 [![build](https://github.com/yii-tools/forms/actions/workflows/build.yml/badge.svg)](https://github.com/yii-tools/forms/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/yii-tools/forms/branch/main/graph/badge.svg?token=CEBVCYZNQK)](https://codecov.io/gh/yii-tools/forms)
+[![codecov](https://codecov.io/gh/yii-tools/forms/branch/main/graph/badge.svg?token=MF0XUGVLYC)](https://codecov.io/gh/yii-tools/forms)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fyii-tools%2Fforms%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/yii-tools/forms/main)
 [![static analysis](https://github.com/yii-tools/forms/actions/workflows/static.yml/badge.svg)](https://github.com/yii-tools/forms/actions/workflows/static.yml)
 [![type-coverage](https://shepherd.dev/github/yii-tools/forms/coverage.svg)](https://shepherd.dev/github/yiii-tools/forms)
