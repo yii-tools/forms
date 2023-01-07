@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component\TextArea;
+namespace Yii\Forms\Tests\Component\Input\Text;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
-use Yii\Forms\Component\TextArea;
+use Yii\Forms\Component\Input\Text;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 
@@ -18,22 +18,22 @@ final class ExceptionTest extends TestCase
     /**
      * @throws ReflectionException
      */
-    public function testContent(): void
+    public function testDirname(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('TextArea widget must be a string or null value.');
+        $this->expectExceptionMessage('The value cannot be empty.');
 
-        TextArea::widget([new TestForm(), 'string'])->attributes(['value' => 1])->render();
+        Text::widget([new TestForm(), 'string'])->dirname('')->render();
     }
 
     /**
      * @throws ReflectionException
      */
-    public function testWrap(): void
+    public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid wrap value. Valid values are: hard, soft.');
+        $this->expectExceptionMessage('Yii\Forms\Component\Input\Text widget must be a string or null value.');
 
-        TextArea::widget([new TestForm(), 'string'])->wrap('')->render();
+        Text::widget([new TestForm(), 'array'])->render();
     }
 }

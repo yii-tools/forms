@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Stringable;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Forms\Tests\Support\PropertyTypeForm;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Model\AbstractFormModel;
 
 final class InmutabilityGlobalsTest extends TestCase
@@ -18,7 +18,7 @@ final class InmutabilityGlobalsTest extends TestCase
      */
     public function testImmutability(): void
     {
-        $globals = $this->createWidget(new PropertyTypeForm(), 'string');
+        $globals = $this->createWidget(new TestForm(), 'string');
         $this->assertNotSame($globals, $globals->attributes([]));
         $this->assertNotSame($globals, $globals->autoFocus());
         $this->assertNotSame($globals, $globals->class(''));

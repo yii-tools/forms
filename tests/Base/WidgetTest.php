@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Stringable;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Forms\Tests\Support\PropertyTypeForm;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Html\Helper\Attributes;
 use Yii\Model\AbstractFormModel;
 use Yii\Support\Assert;
@@ -20,7 +20,7 @@ final class WidgetTest extends TestCase
      */
     public function testAttributes(): void
     {
-        $widget = $this->createWidget(new PropertyTypeForm(), 'string')->attributes(['class' => 'test']);
+        $widget = $this->createWidget(new TestForm(), 'string')->attributes(['class' => 'test']);
 
         $this->assertSame('<class="test" id="test">', $widget->render());
     }
@@ -30,7 +30,7 @@ final class WidgetTest extends TestCase
      */
     public function testGetId(): void
     {
-        $widget = $this->createWidget(new PropertyTypeForm(), 'string');
+        $widget = $this->createWidget(new TestForm(), 'string');
 
         $this->assertSame('test', Assert::invokeMethod($widget, 'getId'));
     }

@@ -7,7 +7,7 @@ namespace Yii\Forms\Tests\Component\TextArea;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Yii\Forms\Component\TextArea;
-use Yii\Forms\Tests\Support\PropertyTypeForm;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 
 final class InputAttributesTest extends TestCase
@@ -21,9 +21,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" aria-label="test.areaLabel"></textarea>
+            <textarea id="testform-string" name="TestForm[string]" aria-label="test.areaLabel"></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->ariaLabel('test.areaLabel')->render(),
+            TextArea::widget([new TestForm(), 'string'])->ariaLabel('test.areaLabel')->render(),
         );
     }
 
@@ -34,9 +34,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" dirname="test.dir"></textarea>
+            <textarea id="testform-string" name="TestForm[string]" dirname="test.dir"></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->dirname('test.dir')->render(),
+            TextArea::widget([new TestForm(), 'string'])->dirname('test.dir')->render(),
         );
     }
 
@@ -47,9 +47,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" disabled></textarea>
+            <textarea id="testform-string" name="TestForm[string]" disabled></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->disabled()->render(),
+            TextArea::widget([new TestForm(), 'string'])->disabled()->render(),
         );
     }
 
@@ -60,9 +60,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" form="test.form"></textarea>
+            <textarea id="testform-string" name="TestForm[string]" form="test.form"></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->form('test.form')->render(),
+            TextArea::widget([new TestForm(), 'string'])->form('test.form')->render(),
         );
     }
 
@@ -73,9 +73,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" maxlength="10"></textarea>
+            <textarea id="testform-string" name="TestForm[string]" maxlength="10"></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->maxlength(10)->render(),
+            TextArea::widget([new TestForm(), 'string'])->maxlength(10)->render(),
         );
     }
 
@@ -86,9 +86,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" minlength="4"></textarea>
+            <textarea id="testform-string" name="TestForm[string]" minlength="4"></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->minlength(4)->render(),
+            TextArea::widget([new TestForm(), 'string'])->minlength(4)->render(),
         );
     }
 
@@ -99,9 +99,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" placeholder="test.placeholder"></textarea>
+            <textarea id="testform-string" name="TestForm[string]" placeholder="test.placeholder"></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->placeholder('test.placeholder')->render(),
+            TextArea::widget([new TestForm(), 'string'])->placeholder('test.placeholder')->render(),
         );
     }
 
@@ -112,9 +112,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" readonly></textarea>
+            <textarea id="testform-string" name="TestForm[string]" readonly></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->readonly()->render(),
+            TextArea::widget([new TestForm(), 'string'])->readonly()->render(),
         );
     }
 
@@ -125,9 +125,9 @@ final class InputAttributesTest extends TestCase
     {
         $this->assertSame(
             <<<HTML
-            <textarea id="propertytypeform-string" name="PropertyTypeForm[string]" required></textarea>
+            <textarea id="testform-string" name="TestForm[string]" required></textarea>
             HTML,
-            TextArea::widget([new PropertyTypeForm(), 'string'])->required()->render(),
+            TextArea::widget([new TestForm(), 'string'])->required()->render(),
         );
     }
 }

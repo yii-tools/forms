@@ -7,7 +7,7 @@ namespace Yii\Forms\Tests\Component\MarkDownEditor;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Component\MarkDownEditor;
-use Yii\Forms\Tests\Support\PropertyTypeForm;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 
 final class ExceptionTest extends TestCase
@@ -19,7 +19,7 @@ final class ExceptionTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid toolbar item: test');
 
-        MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->hiddenIcons(['test']);
+        MarkDownEditor::widget([new TestForm(), 'string'])->hiddenIcons(['test']);
     }
 
     public function testShowIcons(): void
@@ -27,7 +27,7 @@ final class ExceptionTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid toolbar item: test');
 
-        MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->showIcons(['test']);
+        MarkDownEditor::widget([new TestForm(), 'string'])->showIcons(['test']);
     }
 
     public function testToolbar(): void
@@ -35,6 +35,6 @@ final class ExceptionTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid toolbar item: test1');
 
-        MarkDownEditor::widget([new PropertyTypeForm(), 'string'])->toolbar(['test1']);
+        MarkDownEditor::widget([new TestForm(), 'string'])->toolbar(['test1']);
     }
 }

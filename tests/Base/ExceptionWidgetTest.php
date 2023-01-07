@@ -9,7 +9,7 @@ use ReflectionException;
 use Stringable;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\Tests\Support\PropertyTypeForm;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Model\AbstractFormModel;
 
 final class ExceptionWidgetTest extends TestCase
@@ -22,7 +22,7 @@ final class ExceptionWidgetTest extends TestCase
         $this->expectException(AttributeNotSet::class);
         $this->expectExceptionMessage('Failed to create widget because "attribute" is not set or not exists.');
 
-        $widget = $this->widget(new PropertyTypeForm(), '');
+        $widget = $this->widget(new TestForm(), '');
     }
 
     /**
@@ -32,7 +32,7 @@ final class ExceptionWidgetTest extends TestCase
     {
         $this->expectException(AttributeNotSet::class);
         $this->expectExceptionMessage('Failed to create widget because "attribute" is not set or not exists.');
-        $widget = $this->widget(new PropertyTypeForm(), 'noExist');
+        $widget = $this->widget(new TestForm(), 'noExist');
     }
 
     private function widget(AbstractFormModel $formModel, string $fieldAttributes): AbstractFormWidget

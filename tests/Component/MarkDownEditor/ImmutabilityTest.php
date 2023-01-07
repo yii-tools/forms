@@ -7,7 +7,7 @@ namespace Yii\Forms\Tests\Component\MarkDownEditor;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Yii\Forms\Component\MarkDownEditor;
-use Yii\Forms\Tests\Support\PropertyTypeForm;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 
 final class ImmutabilityTest extends TestCase
@@ -19,7 +19,7 @@ final class ImmutabilityTest extends TestCase
      */
     public function testImmutability(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new PropertyTypeForm(), 'string']);
+        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string']);
 
         $this->assertNotSame($markDownEditor, $markDownEditor->autoFocusEditor(true));
         $this->assertNotSame($markDownEditor, $markDownEditor->autoSave(1000));
