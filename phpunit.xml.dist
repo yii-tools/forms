@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <phpunit
-    bootstrap="vendor/autoload.php"
-    colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    stopOnFailure="false"
-    verbose="true"
+  bootstrap="vendor/autoload.php"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  stopOnFailure="false"
+  verbose="true"
 >
 
-    <php>
-        <ini name="error_reporting" value="-1" />
-    </php>
+  <php>
+    <ini name="error_reporting" value="-1" />
+  </php>
 
-    <coverage>
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
-    </coverage>
+  <coverage>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+  </coverage>
 
-    <testsuites>
-        <testsuite name="Forms">
-            <directory>./tests</directory>
-        </testsuite>
-    </testsuites>
+  <testsuites>
+    <testsuite name="Forms">
+      <directory>./tests</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
