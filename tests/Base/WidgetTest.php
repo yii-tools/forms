@@ -6,7 +6,6 @@ namespace Yii\Forms\Tests\Base;
 
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
-use Stringable;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Html\Helper\Attributes;
@@ -40,7 +39,7 @@ final class WidgetTest extends TestCase
         return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
             protected array $attributes = ['id' => 'test'];
 
-            public function render(): string|Stringable
+            public function render(): string
             {
                 return '<' . trim((new Attributes())->render($this->attributes)) . '>';
             }

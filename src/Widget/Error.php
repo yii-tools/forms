@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Widget;
 
 use InvalidArgumentException;
-use Stringable;
 use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Html\Tag;
 use Yii\Model\AbstractFormModel;
@@ -32,7 +31,7 @@ final class Error extends Widget
      *
      * @param array $values Attribute values indexed by attribute names.
      */
-    public function attributes(array $values): static
+    public function attributes(array $values): self
     {
         $new = clone $this;
         $new->attributes = $values;
@@ -85,7 +84,7 @@ final class Error extends Widget
         return $new;
     }
 
-    public function render(): string|Stringable
+    public function render(): string
     {
         $message = $this->message;
 

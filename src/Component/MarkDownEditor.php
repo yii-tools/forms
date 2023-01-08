@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
-use Stringable;
 use Yii\Forms\Asset\MarkDownEditorAsset;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Model\AbstractFormModel;
@@ -185,7 +184,7 @@ final class MarkDownEditor extends AbstractFormWidget
         return $new;
     }
 
-    public function render(): Stringable|string
+    public function render(): string
     {
         $this->registerAssets();
 

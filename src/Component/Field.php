@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use ReflectionException;
-use Stringable;
 use Yii\Forms\Base;
 use Yii\Forms\FieldAttribute;
 use Yii\Forms\Widget;
@@ -41,7 +40,7 @@ final class Field extends \Yiisoft\Widget\Widget
     {
     }
 
-    public function render(): string|Stringable
+    public function render(): string
     {
         return match ($this->container) {
             true => Tag::create('div', $this->renderWidget(), $this->getContainerAttributes()),
@@ -52,7 +51,7 @@ final class Field extends \Yiisoft\Widget\Widget
     /**
      * @throws ReflectionException
      */
-    private function renderError(string $errorMessage = ''): string|Stringable
+    private function renderError(string $errorMessage = ''): string
     {
         if ($this->errorMessage !== '') {
             $errorMessage = $this->errorMessage;
@@ -73,7 +72,7 @@ final class Field extends \Yiisoft\Widget\Widget
     /**
      * @throws ReflectionException
      */
-    private function renderHint(): string|Stringable
+    private function renderHint(): string
     {
         $hintAttributes = $this->hintAttributes;
 
@@ -95,7 +94,7 @@ final class Field extends \Yiisoft\Widget\Widget
     /**
      * @throws ReflectionException
      */
-    protected function renderLabel(): string|Stringable
+    protected function renderLabel(): string
     {
         $labelAttributes = $this->labelAttributes;
 
@@ -154,7 +153,7 @@ final class Field extends \Yiisoft\Widget\Widget
     private function renderField(Base\AbstractFormWidget $widget): string
     {
         $inputTag = '';
-        $labelContent = (string) $this->renderLabel();
+        $labelContent = $this->renderLabel();
         $labelTag = match ($this->labelContainer) {
             true => Tag::create('div', $labelContent, $this->labelContainerAttributes),
             false => $labelContent,

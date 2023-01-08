@@ -6,7 +6,6 @@ namespace Yii\Forms\Tests\Base;
 
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
-use Stringable;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Forms\Tests\Support\TestForm;
@@ -38,7 +37,7 @@ final class ExceptionWidgetTest extends TestCase
     private function widget(AbstractFormModel $formModel, string $fieldAttributes): AbstractFormWidget
     {
         return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
-            public function render(): string|Stringable
+            public function render(): string
             {
                 return '';
             }

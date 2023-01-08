@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
-use Stringable;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\Base\Globals;
 use Yii\Html\Attribute;
@@ -62,7 +61,7 @@ final class TextArea extends AbstractFormWidget
         return $new;
     }
 
-    public function render(): string|Stringable
+    public function render(): string
     {
         $attributes = $this->attributes;
         $content = match (array_key_exists('value', $attributes)) {

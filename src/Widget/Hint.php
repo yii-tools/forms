@@ -9,7 +9,6 @@ use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Html\Tag;
 use Yii\Model\AbstractFormModel;
 use Yiisoft\Widget\Widget;
-use Stringable;
 
 /**
  * The Hint widget generates a hint message for the specified model attribute.
@@ -70,7 +69,7 @@ final class Hint extends Widget
         return $new;
     }
 
-    public function render(): string|Stringable
+    public function render(): string
     {
         $message = $this->message;
 

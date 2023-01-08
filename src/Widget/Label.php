@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Widget;
 
-use Stringable;
 use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Html\Attribute\Form;
 use Yii\Html\Helper\Encode;
@@ -36,7 +35,7 @@ final class Label extends Widget
      *
      * @param array $values Attribute values indexed by attribute names.
      */
-    public function attributes(array $values): static
+    public function attributes(array $values): self
     {
         $new = clone $this;
         $new->attributes = $values;
@@ -78,7 +77,7 @@ final class Label extends Widget
         return $new;
     }
 
-    public function render(): string|Stringable
+    public function render(): string
     {
         $attributes = $this->attributes;
         $content = $this->content;

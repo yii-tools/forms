@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
-use Stringable;
 use Yii\Html\Attribute;
 
 use function array_key_exists;
@@ -26,7 +25,7 @@ final class Text extends AbstractInput
     use Attribute\Placeholder;
     use Attribute\Size;
 
-    public function render(): string|Stringable
+    public function render(): string
     {
         $attributes = $this->attributes;
         $value = match (array_key_exists('value', $attributes)) {
