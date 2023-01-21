@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use Exception;
-use Yii\Html\Helper\CssClass;
 use Yii\Html\Tag;
 use Yiisoft\Widget\Widget;
 
@@ -41,9 +40,9 @@ use function is_array;
  */
 final class ButtonGroup extends Widget
 {
+    use Field\HasContainer;
+
     private array $buttons = [];
-    private bool $container = true;
-    private array $containerAttributes = [];
     /** @psalm-var array[] */
     private array $individualButtonAttributes = [];
 
@@ -64,57 +63,6 @@ final class ButtonGroup extends Widget
     {
         $new = clone $this;
         $new->buttons = $values;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance specifying enable or disabled container for field.
-     *
-     * @param bool $value Whether to enable or disable container for widget.
-     *
-     * @return self
-     */
-    public function container(bool $value): self
-    {
-        $new = clone $this;
-        $new->container = $value;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance specifying HTML attributes for container.
-     *
-     * @param array $values Attribute values indexed by attribute names.
-     *
-     * ```php
-     * ['class' => 'test-class']
-     * ```
-     *
-     * @return self
-     *
-     * @psalm-param array<string, string> $values
-     */
-    public function containerAttributes(array $values): self
-    {
-        $new = clone $this;
-        $new->containerAttributes = $values;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance specifying CSS class for container.
-     *
-     * @param string $value CSS class for container.
-     *
-     * @return self
-     */
-    public function containerClass(string $value): self
-    {
-        $new = clone $this;
-        CssClass::add($new->containerAttributes, $value);
 
         return $new;
     }
