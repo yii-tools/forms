@@ -8,7 +8,7 @@ use Closure;
 use InvalidArgumentException;
 use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Forms\FormModelInterface;
-use Yii\Html\Attribute\Attributes;
+use Yii\Html\Attribute\HasAttributes;
 use Yiisoft\Widget\Widget;
 
 /**
@@ -16,7 +16,7 @@ use Yiisoft\Widget\Widget;
  */
 abstract class AbstractFieldPartWidget extends Widget
 {
-    use Attributes;
+    use HasAttributes;
 
     protected array $attributes = [];
     protected Closure|null $closure = null;

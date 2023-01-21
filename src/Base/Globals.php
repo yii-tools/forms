@@ -11,11 +11,11 @@ use Yii\Html\Attribute;
  */
 trait Globals
 {
-    use Attribute\Attributes;
-    use Attribute\Autofocus;
-    use Attribute\Classes;
-    use Attribute\Id;
-    use Attribute\Name;
-    use Attribute\Tabindex;
-    use Attribute\Title;
+    use Attribute\CanBeAutofocus;
+    use Attribute\HasAttributes;
+    use Attribute\HasClass;
+    use Attribute\HasId;
+    use Attribute\HasName;
+    use Attribute\HasTabindex;
+    use Attribute\HasTitle;
 }

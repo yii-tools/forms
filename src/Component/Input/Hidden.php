@@ -21,9 +21,9 @@ use function is_string;
  */
 final class Hidden extends AbstractFormWidget
 {
-    use Attribute\Disabled;
-    use Attribute\Form;
-    use Attribute\Value;
+    use Attribute\CanBeDisabled;
+    use Attribute\HasForm;
+    use Attribute\HasValue;
 
     /**
      * @return string the generated input tag.

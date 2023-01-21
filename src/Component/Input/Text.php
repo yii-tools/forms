@@ -18,12 +18,12 @@ use function is_string;
  */
 final class Text extends AbstractInput
 {
-    use Attribute\Dirname;
-    use Attribute\MaxLength;
-    use Attribute\MinLength;
-    use Attribute\Pattern;
-    use Attribute\Placeholder;
-    use Attribute\Size;
+    use Attribute\HasDirname;
+    use Attribute\HasMaxLength;
+    use Attribute\HasMinLength;
+    use Attribute\HasPattern;
+    use Attribute\HasPlaceholder;
+    use Attribute\HasSize;
 
     public function render(): string
     {

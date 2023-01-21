@@ -21,16 +21,16 @@ use function is_string;
  */
 final class TextArea extends AbstractFormWidget
 {
-    use Attribute\AriaLabel;
-    use Attribute\Autocomplete;
-    use Attribute\Dirname;
-    use Attribute\Disabled;
-    use Attribute\Form;
-    use Attribute\MaxLength;
-    use Attribute\MinLength;
-    use Attribute\Placeholder;
-    use Attribute\Readonlys;
-    use Attribute\Required;
+    use Attribute\CanBeDisabled;
+    use Attribute\CanBeReadonly;
+    use Attribute\CanBeRequired;
+    use Attribute\HasAriaLabel;
+    use Attribute\HasAutocomplete;
+    use Attribute\HasDirname;
+    use Attribute\HasForm;
+    use Attribute\HasMaxLength;
+    use Attribute\HasMinLength;
+    use Attribute\HasPlaceholder;
 
     /**
      * Returns a new instance specifying maximum number of characters per line of text for the UA to show.

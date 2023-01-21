@@ -18,15 +18,15 @@ use function array_key_exists;
  */
 abstract class AbstractInput extends AbstractFormWidget
 {
-    use Attribute\AriaDescribedBy;
-    use Attribute\AriaLabel;
-    use Attribute\Autocomplete;
-    use Attribute\Disabled;
-    use Attribute\Form;
-    use Attribute\Lists;
-    use Attribute\Readonlys;
-    use Attribute\Required;
-    use Attribute\Value;
+    use Attribute\CanBeDisabled;
+    use Attribute\CanBeReadonly;
+    use Attribute\CanBeRequired;
+    use Attribute\HasAriaDescribedBy;
+    use Attribute\HasAriaLabel;
+    use Attribute\HasAutocomplete;
+    use Attribute\HasForm;
+    use Attribute\HasLists;
+    use Attribute\HasValue;
 
     protected function input(string $type, array $attributes): string
     {

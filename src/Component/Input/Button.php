@@ -21,11 +21,11 @@ use function is_string;
  */
 final class Button extends Widget
 {
-    use Attribute\Attributes;
-    use Attribute\Disabled;
-    use Attribute\Form;
-    use Attribute\Type;
-    use Attribute\Value;
+    use Attribute\CanBeDisabled;
+    use Attribute\HasAttributes;
+    use Attribute\HasForm;
+    use Attribute\HasType;
+    use Attribute\HasValue;
     use Globals;
 
     protected array $attributes = [];

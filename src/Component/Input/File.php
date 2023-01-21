@@ -22,8 +22,8 @@ use function is_string;
  */
 final class File extends AbstractInput
 {
-    use Attribute\Accept;
-    use Attribute\Multiple;
+    use Attribute\CanBeMultiple;
+    use Attribute\HasAccept;
 
     private Hidden|null $hidden = null;
 
