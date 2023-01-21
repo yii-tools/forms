@@ -6,6 +6,9 @@ namespace Yii\Forms\Component\Field;
 
 use Yii\Html\Helper\CssClass;
 
+/**
+ * HasInputContainer trait provides methods to set input container for the field.
+ */
 trait HasInputContainer
 {
     private bool $inputContainer = false;

@@ -37,7 +37,7 @@ final class Form extends Widget
     use Attribute\Id;
     use Attribute\Name;
 
-    protected array $attributes = [];
+    private array $attributes = [];
     private string $action = '';
     private string $csrfName = '';
     private string $csrfToken = '';

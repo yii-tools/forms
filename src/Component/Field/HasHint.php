@@ -7,6 +7,9 @@ namespace Yii\Forms\Component\Field;
 use Closure;
 use Yii\Html\Helper\CssClass;
 
+/**
+ * Trait HasHint provides methods for setting hint for the field.
+ */
 trait HasHint
 {
     private array $hintAttributes = [];

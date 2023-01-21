@@ -6,6 +6,9 @@ namespace Yii\Forms\Component\Field;
 
 use Yii\Html\Helper\CssClass;
 
+/**
+ * Trait HasContainer provides methods to configure the HTML container of the field.
+ */
 trait HasContainer
 {
     private bool $container = true;

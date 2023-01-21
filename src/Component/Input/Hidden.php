@@ -49,7 +49,9 @@ final class Hidden extends AbstractFormWidget
          * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.hidden.html#input.hidden.attrs.value
          */
         if (null !== $value && !is_string($value)) {
-            throw new InvalidArgumentException(Utils::shortNameClass(self::class) . ' widget must be a string or null value.');
+            throw new InvalidArgumentException(
+                Utils::shortNameClass(self::class) . ' widget must be a string or null value.',
+            );
         }
 
         $attributes['type'] = 'hidden';

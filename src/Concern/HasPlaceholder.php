@@ -9,8 +9,16 @@ use InvalidArgumentException;
 use function array_key_exists;
 use function method_exists;
 
+/**
+ * The HasPlaceholder trait provides methods for working with placeholders for attributes of a form model.
+ */
 trait HasPlaceholder
 {
+    /**
+     * @param string $attribute The attribute name.
+     *
+     * @return string The text placeholder for the specified attribute.
+     */
     public function getPlaceholder(string $attribute): string
     {
         $nestedPlaceholder = $this->getNestedValue('getPlaceholder', $attribute);
@@ -23,6 +31,8 @@ trait HasPlaceholder
 
     /**
      * Returns the placeholder for the specified attribute.
+     *
+     * @param string $attribute The attribute name.
      */
     private function getInternalPlaceholder(string $attribute): string
     {

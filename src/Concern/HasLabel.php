@@ -11,6 +11,10 @@ use Yiisoft\Strings\StringHelper;
 use function array_key_exists;
 use function method_exists;
 
+/**
+ * HasLabel provides methods for getting attribute labels of the form model, which are used in error messages and other
+ * messages displayed to end users in the view.
+ */
 trait HasLabel
 {
     /**

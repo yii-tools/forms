@@ -6,6 +6,9 @@ namespace Yii\Forms\Component\Field;
 
 use Stringable;
 
+/**
+ * HasAfterAndBeforeInput trait provides methods to add html content before and after the input in a field.
+ */
 trait HasAfterAndBeforeInput
 {
     private string $afterInput = '';

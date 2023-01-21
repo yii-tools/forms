@@ -6,6 +6,9 @@ namespace Yii\Forms\Base;
 
 use Yii\Html\Attribute;
 
+/**
+ * Globals trait implements the common attributes for all form elements.
+ */
 trait Globals
 {
     use Attribute\Autofocus;

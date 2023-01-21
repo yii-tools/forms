@@ -7,6 +7,9 @@ namespace Yii\Forms\Component\Field;
 use Closure;
 use Yii\Html\Helper\CssClass;
 
+/**
+ * HasError trait provides methods to set error attributes for the field.
+ */
 trait HasError
 {
     private array $errorAttributes = [];

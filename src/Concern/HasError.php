@@ -9,6 +9,9 @@ use function array_intersect_key;
 use function array_merge;
 use function reset;
 
+/**
+ * HasError trait provides methods for managing errors in the model.
+ */
 trait HasError
 {
     /**
@@ -20,7 +23,7 @@ trait HasError
      * Add an error for the specified attribute.
      *
      * @param string $attribute The attribute name.
-     * @param string $error The attribute error message.
+     * @param string $error The error message to be added to the attribute.
      */
     public function addError(string $attribute, string $error): void
     {
@@ -30,6 +33,8 @@ trait HasError
     /**
      * Add errors for the model instance.
      *
+     * @param array $values The errors to be added to the model.
+     *
      * @psalm-param string[][] $values
      */
     public function addErrors(array $values): void
@@ -38,9 +43,10 @@ trait HasError
     }
 
     /**
-     * Removes error for attributes.
+     * Removes errors for all attributes or a single attribute.
      *
-     * @param string|null $attribute The attribute name.
+     * @param string|null $attribute The attribute name or null to remove errors for all attributes.
+     * For default is `null`.
      */
     public function clearError(string $attribute = null): void
     {

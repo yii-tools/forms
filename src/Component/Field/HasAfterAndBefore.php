@@ -6,6 +6,9 @@ namespace Yii\Forms\Component\Field;
 
 use Stringable;
 
+/**
+ * HasAfterAndBefore trait provides methods to set after and before field html content in a field.
+ */
 trait HasAfterAndBefore
 {
     private string $after = '';

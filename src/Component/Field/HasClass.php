@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Component\Field;
 
+/**
+ * HasClass trait provides a method to set the widget class for the field.
+ */
 trait HasClass
 {
     /**

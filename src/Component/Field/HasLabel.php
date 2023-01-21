@@ -7,6 +7,9 @@ namespace Yii\Forms\Component\Field;
 use Closure;
 use Yii\Html\Helper\CssClass;
 
+/**
+ * HasError trait implements the common methods and properties for field widgets that support label.
+ */
 trait HasLabel
 {
     private array $labelAttributes = [];

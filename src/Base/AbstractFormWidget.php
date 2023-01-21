@@ -12,6 +12,9 @@ use Yiisoft\Widget\Widget;
 use function array_merge;
 use function is_string;
 
+/**
+ * AbstractFormWidget is the base class for widgets that are used to collect user input.
+ */
 abstract class AbstractFormWidget extends Widget
 {
     use Globals;

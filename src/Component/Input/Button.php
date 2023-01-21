@@ -27,7 +27,7 @@ final class Button extends Widget
     use Attribute\Value;
     use Globals;
 
-    protected array $attributes = [];
+    private array $attributes = [];
 
     /**
      * The HTML attributes. The following special options are recognized.
@@ -53,7 +53,9 @@ final class Button extends Widget
          * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button.attrs.value
          */
         if (null !== $value && !is_string($value)) {
-            throw new InvalidArgumentException(Utils::shortNameClass(self::class) . ' widget must be a string or null value.');
+            throw new InvalidArgumentException(
+                Utils::shortNameClass(self::class) . ' widget must be a string or null value.',
+            );
         }
 
         if (!array_key_exists('type', $attributes)) {

@@ -9,8 +9,16 @@ use InvalidArgumentException;
 use function array_key_exists;
 use function method_exists;
 
+/**
+ * HasHint trait provides methods for getting the hint for the specified attribute of the model.
+ */
 trait HasHint
 {
+    /**
+     * @param string $attribute The attribute name.
+     *
+     * @return string The text hint for the specified attribute.
+     */
     public function getHint(string $attribute): string
     {
         $nestedHint = $this->getNestedValue('getHint', $attribute);
@@ -23,6 +31,8 @@ trait HasHint
 
     /**
      * Returns the hint for the specified attribute.
+     *
+     * @param string $attribute The attribute name.
      */
     private function getInternalHint(string $attribute): string
     {

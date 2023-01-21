@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Component\Field;
 
+/**
+ * HasValidateClass trait adds the ability to set the css class to add to the field when it is valid or invalid.
+ */
 trait HasValidateClass
 {
     private string $invalidClass = '';

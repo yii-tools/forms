@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Component\Field;
 
+/**
+ * HasTemplate trait provides the ability to set the template field layout.
+ */
 trait HasTemplate
 {
     private string $template = '{field}' . PHP_EOL . '{hint}' . PHP_EOL . '{error}';
