@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use Closure;
-use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\FormModelInterface;
 use Yii\Html\Attribute\Form;
 use Yii\Html\Helper\Encode;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
-use Yiisoft\Widget\Widget;
 
 use function array_key_exists;
 
@@ -20,57 +17,21 @@ use function array_key_exists;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/label.html
  */
-final class Label extends Widget
+final class Label extends Field\AbstractFieldPartWidget
 {
     use Form;
 
-    private array $attributes = [];
-    private Closure|null $closure = null;
-    private string $content = '';
-
-    public function __construct(private readonly FormModelInterface $formModel, private readonly string $attribute = '')
-    {
-        if ($this->formModel->has($this->attribute) === false) {
-            throw new AttributeNotSet();
-        }
-    }
+    private bool $encode = true;
 
     /**
-     * The HTML attributes. The following special options are recognized.
+     * Returns a new instance with the value indicating whether the label should be HTML-encoded.
      *
-     * @param array $values Attribute values indexed by attribute names.
+     * @param bool $value The value indicating whether the label should be HTML-encoded.
      */
-    public function attributes(array $values): self
+    public function encode(bool $value): self
     {
         $new = clone $this;
-        $new->attributes = $values;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance with closure that will be called to obtain a label content.
-     *
-     * @param Closure $value The closure that will be called to obtain a label content.
-     */
-    public function closure(Closure $value): self
-    {
-        $new = clone $this;
-        $new->closure = $value;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance specifying the label to be displayed.
-     *
-     * @param string $content The label to be displayed.
-     * @param bool $encode Whether to encode the label.
-     */
-    public function content(string $content, bool $encode = true): self
-    {
-        $new = clone $this;
-        $new->content = $encode ? Encode::content($content) : $content;
+        $new->encode = $value;
 
         return $new;
     }
@@ -107,6 +68,10 @@ final class Label extends Widget
 
         if (!array_key_exists('for', $attributes)) {
             $attributes['for'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
+        }
+
+        if ($this->encode) {
+            $content = Encode::content($content);
         }
 
         $contentTag = Tag::create('label', $content, $attributes);

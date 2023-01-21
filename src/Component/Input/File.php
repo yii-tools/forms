@@ -43,7 +43,7 @@ final class File extends AbstractInput
         $values['value'] = $value;
 
         $new = clone $this;
-        $new->hidden = Hidden::widget([$this->getFormModel(), $this->getAttribute()])->attributes($values);
+        $new->hidden = Hidden::widget([$this->formModel, $this->attribute])->attributes($values);
 
         return $new;
     }

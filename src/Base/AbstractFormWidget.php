@@ -9,7 +9,6 @@ use Yii\Forms\FormModelInterface;
 use Yii\Html\Helper\Utils;
 use Yiisoft\Widget\Widget;
 
-use function array_merge;
 use function is_string;
 
 /**
@@ -27,21 +26,6 @@ abstract class AbstractFormWidget extends Widget
         if ($this->formModel->has($this->attribute) === false) {
             throw new AttributeNotSet();
         }
-    }
-
-    /**
-     * The HTML attributes. The following special options are recognized.
-     *
-     * @param array $values Attribute values indexed by attribute names.
-     *
-     * @return static
-     */
-    public function attributes(array $values): static
-    {
-        $new = clone $this;
-        $new->attributes = array_merge($this->attributes, $values);
-
-        return $new;
     }
 
     /**
@@ -63,6 +47,11 @@ abstract class AbstractFormWidget extends Widget
     public function getAttribute(): string
     {
         return $this->attribute;
+    }
+
+    public function getErrorFirstForAttribute(): string
+    {
+        return $this->formModel->getFirstError($this->attribute);
     }
 
     /**
@@ -98,11 +87,6 @@ abstract class AbstractFormWidget extends Widget
     public function hasError(): bool
     {
         return $this->formModel->hasError($this->attribute);
-    }
-
-    public function getErrorFirstForAttribute(): string
-    {
-        return $this->formModel->getFirstError($this->attribute);
     }
 
     /**

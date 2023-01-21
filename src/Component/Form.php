@@ -32,29 +32,17 @@ use function urldecode;
  */
 final class Form extends Widget
 {
+    use Attribute\Attributes;
     use Attribute\Autocomplete;
     use Attribute\Classes;
     use Attribute\Id;
     use Attribute\Name;
 
-    private array $attributes = [];
+    protected array $attributes = [];
     private string $action = '';
     private string $csrfName = '';
     private string $csrfToken = '';
     private string $method = '';
-
-    /**
-     * The HTML attributes. The following special options are recognized.
-     *
-     * @param array $values Attribute values indexed by attribute names.
-     */
-    public function attributes(array $values): self
-    {
-        $new = clone $this;
-        $new->attributes = $values;
-
-        return $new;
-    }
 
     /**
      * @return string the generated form start tag.

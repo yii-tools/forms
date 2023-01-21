@@ -34,7 +34,7 @@ final class RenderTest extends TestCase
     {
         $this->assertSame(
             '<label for="testform-string">Sam & Dark</label>',
-            Label::widget([new TestForm(), 'string'])->content('Sam & Dark', false)->render(),
+            Label::widget([new TestForm(), 'string'])->content('Sam & Dark')->encode(false)->render(),
         );
     }
 

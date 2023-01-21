@@ -11,6 +11,7 @@ use Yii\Html\Attribute;
  */
 trait Globals
 {
+    use Attribute\Attributes;
     use Attribute\Autofocus;
     use Attribute\Classes;
     use Attribute\Id;

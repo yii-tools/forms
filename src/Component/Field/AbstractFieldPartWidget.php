@@ -1,0 +1,77 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Yii\Forms\Component\Field;
+
+use Closure;
+use InvalidArgumentException;
+use Yii\Forms\Exception\AttributeNotSet;
+use Yii\Forms\FormModelInterface;
+use Yii\Html\Attribute\Attributes;
+use Yiisoft\Widget\Widget;
+
+/**
+ * The AbstractFieldPartWidget class is the base class for widgets that are used to generate the parts of the field.
+ */
+abstract class AbstractFieldPartWidget extends Widget
+{
+    use Attributes;
+
+    protected array $attributes = [];
+    protected Closure|null $closure = null;
+    protected string $content = '';
+    protected string $tag = 'div';
+
+    public function __construct(
+        protected readonly FormModelInterface $formModel,
+        protected readonly string $attribute = ''
+    ) {
+        if ($this->formModel->has($this->attribute) === false) {
+            throw new AttributeNotSet();
+        }
+    }
+
+    /**
+     * Returns a new instance with closure that will be called to obtain content.
+     *
+     * @param Closure $value The closure that will be called to obtain content.
+     */
+    public function closure(Closure $value): self
+    {
+        $new = clone $this;
+        $new->closure = $value;
+
+        return $new;
+    }
+
+    /**
+     * Returns a new instance with the error text.
+     *
+     * @param string $value The error text.
+     */
+    public function content(string $value): self
+    {
+        $new = clone $this;
+        $new->content = $value;
+
+        return $new;
+    }
+
+    /**
+     * Returns a new instance with the container tag name.
+     *
+     * @param string $value The container tag name.
+     */
+    public function tag(string $value): self
+    {
+        if ($value === '') {
+            throw new InvalidArgumentException('Tag name cannot be empty.');
+        }
+
+        $new = clone $this;
+        $new->tag = $value;
+
+        return $new;
+    }
+}

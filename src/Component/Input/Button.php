@@ -21,28 +21,14 @@ use function is_string;
  */
 final class Button extends Widget
 {
+    use Attribute\Attributes;
     use Attribute\Disabled;
     use Attribute\Form;
     use Attribute\Type;
     use Attribute\Value;
     use Globals;
 
-    private array $attributes = [];
-
-    /**
-     * The HTML attributes. The following special options are recognized.
-     *
-     * @param array $values Attribute values indexed by attribute names.
-     *
-     * @return static
-     */
-    public function attributes(array $values): self
-    {
-        $new = clone $this;
-        $new->attributes = $values;
-
-        return $new;
-    }
+    protected array $attributes = [];
 
     public function render(): string
     {
