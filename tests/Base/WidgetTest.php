@@ -7,9 +7,9 @@ namespace Yii\Forms\Tests\Base;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Yii\Forms\Base\AbstractFormWidget;
+use Yii\Forms\FormModelInterface;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Html\Helper\Attributes;
-use Yii\Model\AbstractFormModel;
 use Yii\Support\Assert;
 
 final class WidgetTest extends TestCase
@@ -34,7 +34,7 @@ final class WidgetTest extends TestCase
         $this->assertSame('test', Assert::invokeMethod($widget, 'getId'));
     }
 
-    private function createWidget(AbstractFormModel $formModel, string $fieldAttributes): AbstractFormWidget
+    private function createWidget(FormModelInterface $formModel, string $fieldAttributes): AbstractFormWidget
     {
         return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
             protected array $attributes = ['id' => 'test'];

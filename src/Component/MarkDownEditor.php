@@ -5,12 +5,20 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
+use JsonException;
 use Yii\Forms\Asset\MarkDownEditorAsset;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Model\AbstractFormModel;
+use Yii\Forms\FormModelInterface;
 use Yiisoft\Assets\AssetManager;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 use Yiisoft\Strings\Inflector;
 use Yiisoft\View\WebView;
+
+use function in_array;
+use function json_encode;
 
 final class MarkDownEditor extends AbstractFormWidget
 {
@@ -41,10 +49,10 @@ final class MarkDownEditor extends AbstractFormWidget
     ];
 
     public function __construct(
-        AbstractFormModel $formModel,
+        FormModelInterface $formModel,
         string $attribute,
-        private AssetManager $assetManager,
-        private Webview $webView
+        private readonly AssetManager $assetManager,
+        private readonly Webview $webView
     ) {
         parent::__construct($formModel, $attribute);
     }
@@ -53,7 +61,7 @@ final class MarkDownEditor extends AbstractFormWidget
      * Returns a new instance specifying autofocuses the editor.
      * Defaults to `false`.
      */
-    public function autoFocusEditor(bool $value): static
+    public function autoFocusEditor(bool $value): self
     {
         $new = clone $this;
         $new->editorOptions['autofocus'] = $value;
@@ -184,6 +192,14 @@ final class MarkDownEditor extends AbstractFormWidget
         return $new;
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws JsonException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function render(): string
     {
         $this->registerAssets();
@@ -273,6 +289,9 @@ final class MarkDownEditor extends AbstractFormWidget
         return $new;
     }
 
+    /**
+     * @throws JsonException
+     */
     private function getScript(): string
     {
         $config = '';
@@ -289,13 +308,17 @@ final class MarkDownEditor extends AbstractFormWidget
         foreach ($editorOptions as $attribute => $value) {
             $config .= match ($attribute) {
                 'element' => (string) $value,
-                default => $attribute . ': ' . json_encode($value) . ', ',
+                default => $attribute . ': ' . json_encode($value, JSON_THROW_ON_ERROR) . ', ',
             };
         }
 
-        return "var {$varName} = new SimpleMDE({ $config });";
+        return "var $varName = new SimpleMDE({ $config });";
     }
 
+    /**
+     * @throws JsonException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     private function registerAssets(): void
     {
         $this->assetManager->register(MarkDownEditorAsset::class);
@@ -306,7 +329,7 @@ final class MarkDownEditor extends AbstractFormWidget
     {
         /** @psalm-var string[] $icons */
         foreach ($icons as $icon) {
-            if (!in_array($icon, $this->toolbar)) {
+            if (!in_array($icon, $this->toolbar, true)) {
                 throw new InvalidArgumentException('Invalid toolbar item: ' . $icon);
             }
         }

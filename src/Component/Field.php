@@ -4,164 +4,113 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Component;
 
-use ReflectionException;
-use Yii\Forms\Base;
-use Yii\Forms\FieldAttribute;
-use Yii\Forms\Widget;
+use Closure;
+use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Tag;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
+use Yiisoft\Widget\Widget;
+
+use function array_key_exists;
+use function is_bool;
+use function is_string;
+use function preg_replace;
+use function strtr;
 
 /**
  * Renders the field widget along with label and hint tag (if any) according to template.
  */
-final class Field extends \Yiisoft\Widget\Widget
+final class Field extends Widget
 {
-    use Base\FieldError;
-    use Base\FieldHint;
-    use Base\FieldLabel;
-    use FieldAttribute\After;
-    use FieldAttribute\AfterInput;
-    use FieldAttribute\Before;
-    use FieldAttribute\BeforeInput;
-    use FieldAttribute\Classes;
-    use FieldAttribute\Container;
-    use FieldAttribute\ContainerAttributes;
-    use FieldAttribute\InputContainer;
-    use FieldAttribute\InputContainerAttributes;
-    use FieldAttribute\InputTemplate;
-    use FieldAttribute\InvalidClass;
-    use FieldAttribute\Template;
-    use FieldAttribute\ValidClass;
+    use Field\HasAfterAndBefore;
+    use Field\HasAfterAndBeforeInput;
+    use Field\HasClass;
+    use Field\HasContainer;
+    use Field\HasError;
+    use Field\HasHint;
+    use Field\HasInputContainer;
+    use Field\HasInputTemplate;
+    use Field\HasLabel;
+    use Field\HasTemplate;
+    use Field\HasValidateClass;
 
     protected array $attributes = [];
     private bool|string $ariaDescribedBy = false;
+    private string $class = '';
     private string $inputId = '';
 
-    public function __construct(private Base\AbstractFormWidget $widget)
+    public function __construct(private readonly AbstractFormWidget|Widget $widget)
     {
     }
 
+    /**
+     * Return new instance with specified aria-describedby attribute.
+     *
+     * @param bool|string $ariaDescribedBy The value of the aria-describedby attribute.
+     */
+    public function ariaDescribedBy(bool|string $ariaDescribedBy): self
+    {
+        $new = clone $this;
+        $new->ariaDescribedBy = $ariaDescribedBy;
+
+        return $new;
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function render(): string
     {
+        $renderWidget = match ($this->widget instanceof AbstractFormWidget) {
+            true => $this->renderWidget($this->widget),
+            false => $this->widget->render(),
+        };
+
         return match ($this->container) {
-            true => Tag::create('div', $this->renderWidget(), $this->getContainerAttributes()),
-            false => $this->renderWidget(),
+            true => Tag::create('div', $renderWidget, $this->getContainerAttributes()),
+            false => $renderWidget,
         };
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
-    private function renderError(string $errorMessage = ''): string
+    private function renderError(AbstractFormWidget $widget, string $errorContent = ''): string
     {
-        if ($this->errorMessage !== '') {
-            $errorMessage = $this->errorMessage;
+        if ($this->errorContent !== '') {
+            $errorContent = $this->errorContent;
         }
 
-        $errorTag = Widget\Error::widget([$this->widget->getFormModel(), $this->widget->getAttribute()])
+        $errorTag = Error::widget([$widget->getFormModel(), $widget->getAttribute()])
             ->attributes($this->errorAttributes)
-            ->message($errorMessage)
+            ->content($errorContent)
             ->tag($this->errorTag);
 
-        if (is_callable($this->errorCallback)) {
-            $errorTag = $errorTag->callback($this->errorCallback);
+        if ($this->errorClosure instanceof Closure) {
+            $errorTag = $errorTag->closure($this->errorClosure);
         }
 
         return $errorTag->render();
     }
 
     /**
-     * @throws ReflectionException
+     * Renders the field widget along with label and hint tag (if any) according to template.
      */
-    private function renderHint(): string
-    {
-        $hintAttributes = $this->hintAttributes;
-
-        if (is_bool($this->ariaDescribedBy) && $this->ariaDescribedBy === true) {
-            $hintAttributes['id'] = $this->inputId . '-help';
-        }
-
-        if (is_string($this->ariaDescribedBy) && $this->ariaDescribedBy !== '') {
-            $hintAttributes['id'] = $this->ariaDescribedBy;
-        }
-
-        return Widget\Hint::widget([$this->widget->getFormModel(), $this->widget->getAttribute()])
-            ->attributes($hintAttributes)
-            ->message($this->hintMessage)
-            ->tag($this->hintTag)
-            ->render();
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    protected function renderLabel(): string
-    {
-        $labelAttributes = $this->labelAttributes;
-
-        if (!array_key_exists('for', $labelAttributes)) {
-            $labelAttributes['for'] = $this->widget->getInputId();
-        }
-
-        return Widget\Label::widget([$this->widget->getFormModel(), $this->widget->getAttribute()])
-            ->attributes($labelAttributes)
-            ->content($this->labelMessage)
-            ->render();
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    protected function renderWidget(): string
-    {
-        $errorMessage = '';
-        $widget = $this->widget;
-
-        if (is_bool($this->ariaDescribedBy) && $this->ariaDescribedBy === true) {
-            $widget = $widget->attributes(['aria-describedby' => $this->inputId . '-help']);
-        }
-
-        if ($this->class !== '') {
-            $widget = $widget->class($this->class);
-        }
-
-        if ($widget->hasError()) {
-            $errorMessage = $widget->getErrorFirstForAttribute();
-            $widget = $widget->class($this->invalidClass);
-        } elseif ($widget->isValidated()) {
-            $widget = $widget->class($this->validClass);
-        }
-
-        $fieldTag = $this->renderField($widget);
-
-        return preg_replace(
-            '/^\h*\v+/m',
-            '',
-            trim(
-                strtr(
-                    $this->template,
-                    [
-                        '{error}' => $this->renderError($errorMessage),
-                        '{field}' => $fieldTag,
-                        '{hint}' => $this->renderHint(),
-                        //'{label}' => $labelTag,
-                    ],
-                ),
-            ),
-        );
-    }
-
-    private function renderField(Base\AbstractFormWidget $widget): string
+    private function renderField(AbstractFormWidget $widget, string $label): string
     {
         $inputTag = '';
-        $labelContent = $this->renderLabel();
-        $labelTag = match ($this->labelContainer) {
-            true => Tag::create('div', $labelContent, $this->labelContainerAttributes),
-            false => $labelContent,
-        };
         $widgetContent = $widget->render();
 
         if ($this->before !== '') {
-            $inputTag .= $this->before . PHP_EOL;
+            $inputTag = "$this->before\n";
         }
 
         if ($widgetContent !== '') {
@@ -169,7 +118,7 @@ final class Field extends \Yiisoft\Widget\Widget
                 $this->inputTemplate,
                 [
                     '{beforeInput}' => $this->beforeInput,
-                    '{label}' => $labelTag,
+                    '{label}' => $label,
                     '{input}' => $widgetContent,
                     '{afterInput}' => $this->afterInput,
                 ],
@@ -182,9 +131,118 @@ final class Field extends \Yiisoft\Widget\Widget
         }
 
         if ($this->after !== '') {
-            $inputTag .= PHP_EOL . $this->after . PHP_EOL;
+            $inputTag .= "\n$this->after\n";
         }
 
         return $inputTag;
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    private function renderHint(AbstractFormWidget $widget): string
+    {
+        $hintAttributes = $this->hintAttributes;
+
+        if (is_bool($this->ariaDescribedBy) && $this->ariaDescribedBy === true) {
+            $hintAttributes['id'] = $widget->getId() . '-help';
+        }
+
+        if (is_string($this->ariaDescribedBy) && $this->ariaDescribedBy !== '') {
+            $hintAttributes['id'] = $this->ariaDescribedBy;
+        }
+
+        $hintTag = Hint::widget([$widget->getFormModel(), $widget->getAttribute()])
+            ->attributes($hintAttributes)
+            ->content($this->hintContent)
+            ->tag($this->hintTag);
+
+        if ($this->hintClosure instanceof Closure) {
+            $hintTag = $hintTag->closure($this->hintClosure);
+        }
+
+        return $hintTag->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    private function renderLabel(AbstractFormWidget $widget): string
+    {
+        $labelAttributes = $this->labelAttributes;
+
+        if (!array_key_exists('for', $labelAttributes)) {
+            $labelAttributes['for'] = $widget->getId();
+        }
+
+        $labelTag = Label::widget([$widget->getFormModel(), $widget->getAttribute()])
+            ->attributes($labelAttributes)
+            ->content($this->labelContent);
+
+        if ($this->labelClosure instanceof Closure) {
+            $labelTag = $labelTag->closure($this->labelClosure);
+        }
+
+        return $labelTag->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    private function renderWidget(AbstractFormWidget $widget): string
+    {
+        $errorContent = '';
+        $label = '';
+
+        if (is_bool($this->ariaDescribedBy) && $this->ariaDescribedBy === true) {
+            $widget = $widget->attributes(['aria-describedby' => $widget->getId() . '-help']);
+        }
+
+        if (is_string($this->ariaDescribedBy) && $this->ariaDescribedBy !== '') {
+            $widget = $widget->attributes(['aria-describedby' => $this->ariaDescribedBy]);
+        }
+
+        $widget = $widget->class($this->class);
+
+        if ($widget->hasError()) {
+            $errorContent = $widget->getErrorFirstForAttribute();
+            $widget = $widget->class($this->invalidClass);
+        } elseif ($widget->isValidated()) {
+            $widget = $widget->class($this->validClass);
+        }
+
+        $error = $this->renderError($widget, $errorContent);
+        $hint = $this->renderHint($widget);
+
+        if ($widget instanceof Input\Hidden === false && $this->isLabel()) {
+            $label = $this->renderLabel($widget);
+        }
+
+        $fieldTag = $this->renderField($widget, $label);
+
+        return preg_replace(
+            '/^\h*\v+/m',
+            '',
+            trim(
+                strtr(
+                    $this->template,
+                    [
+                        '{error}' => $error,
+                        '{field}' => $fieldTag,
+                        '{hint}' => $hint,
+                        '{label}' => $label,
+                    ],
+                ),
+            ),
+        );
     }
 }

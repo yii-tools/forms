@@ -1,8 +1,8 @@
 {
-  "name": "forms",
-  "version": "1.0.0",
-  "dependencies": {
-    "simplemde": "^1.11.2"
-  },
-  "license": "mit"
+    "name": "forms",
+    "version": "1.0.0",
+    "dependencies": {
+        "simplemde": "^1.11.2"
+    },
+    "license": "mit"
 }

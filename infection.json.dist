@@ -2,7 +2,10 @@
     "source": {
         "directories": [
             "src"
-        ]
+        ],
+        "excludes": [
+            "Asset"
+        ],
     },
     "logs": {
         "text": "php:\/\/stderr",

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Support;
 
-use Yii\Model\AbstractFormModel;
-
 final class PlaceholderForm extends AbstractFormModel
 {
     private string $text = '';

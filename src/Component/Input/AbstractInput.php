@@ -6,6 +6,7 @@ namespace Yii\Forms\Component\Input;
 
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Attribute;
+use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
 
 use function array_key_exists;
@@ -32,11 +33,11 @@ abstract class AbstractInput extends AbstractFormWidget
         $attributes['type'] = $type;
 
         if (!array_key_exists('id', $attributes)) {
-            $attributes['id'] = $this->getInputId();
+            $attributes['id'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
         }
 
         if (!array_key_exists('name', $attributes)) {
-            $attributes['name'] = $this->getInputName();
+            $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
         }
 
         return Tag::create('input', '', $attributes);

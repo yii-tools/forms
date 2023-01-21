@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace Yii\Forms\Base;
 
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Model\AbstractFormModel;
+use Yii\Forms\FormModelInterface;
+use Yii\Html\Helper\Utils;
 use Yiisoft\Widget\Widget;
+
+use function array_merge;
+use function is_string;
 
 abstract class AbstractFormWidget extends Widget
 {
@@ -15,7 +19,7 @@ abstract class AbstractFormWidget extends Widget
     protected array $attributes = [];
     private string $charset = 'UTF-8';
 
-    public function __construct(protected AbstractFormModel $formModel, protected string $attribute)
+    public function __construct(protected FormModelInterface $formModel, protected string $attribute)
     {
         if ($this->formModel->has($this->attribute) === false) {
             throw new AttributeNotSet();
@@ -59,35 +63,22 @@ abstract class AbstractFormWidget extends Widget
     }
 
     /**
-     * @return AbstractFormModel The form model of the widget.
+     * @return FormModelInterface The form model of the widget.
      */
-    public function getFormModel(): AbstractFormModel
+    public function getFormModel(): FormModelInterface
     {
         return $this->formModel;
     }
 
     /**
-     * @return string The input ID of the widget.
+     * @return string The ID of the widget.
      */
-    public function getInputId(): string
+    public function getId(): string
     {
-        return $this->formModel->getInputId($this->attribute, $this->charset);
-    }
-
-    /**
-     * @return bool Whether the widget has an error.
-     */
-    public function hasError(): bool
-    {
-        return $this->formModel->error()->has($this->attribute);
-    }
-
-    /**
-     * @return bool Whether the widget is empty.
-     */
-    public function isEmpty(): bool
-    {
-        return $this->formModel->isEmpty();
+        return match (isset($this->attributes['id']) && is_string($this->attributes['id'])) {
+            true => $this->attributes['id'],
+            false => Utils::generateInputId($this->formModel->getFormName(), $this->attribute),
+        };
     }
 
     /**
@@ -99,27 +90,16 @@ abstract class AbstractFormWidget extends Widget
     }
 
     /**
-     * @return string The ID of the widget.
+     * @return bool Whether the widget has an error.
      */
-    protected function getId(): string
+    public function hasError(): bool
     {
-        return match (isset($this->attributes['id']) && is_string($this->attributes['id'])) {
-            true => $this->attributes['id'],
-            false => $this->getInputId(),
-        };
+        return $this->formModel->hasError($this->attribute);
     }
 
     public function getErrorFirstForAttribute(): string
     {
-        return $this->formModel->error()->getFirst($this->attribute);
-    }
-
-    /**
-     * @return string The input name of the widget.
-     */
-    protected function getInputName(): string
-    {
-        return $this->formModel->getInputName($this->attribute);
+        return $this->formModel->getFirstError($this->attribute);
     }
 
     /**
@@ -136,5 +116,13 @@ abstract class AbstractFormWidget extends Widget
     protected function getValue(): mixed
     {
         return $this->formModel->getAttributeValue($this->attribute);
+    }
+
+    /**
+     * @return bool Whether the widget is empty.
+     */
+    private function isEmpty(): bool
+    {
+        return $this->formModel->isEmpty();
     }
 }

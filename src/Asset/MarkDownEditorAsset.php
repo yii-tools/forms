@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms\Asset;
 
 use Yiisoft\Assets\AssetBundle;
+use Yiisoft\Files\PathMatcher\PathMatcher;
 
 final class MarkDownEditorAsset extends AssetBundle
 {
@@ -17,4 +18,16 @@ final class MarkDownEditorAsset extends AssetBundle
     public array $js = [
         'dist/simplemde.min.js',
     ];
+
+    public function __construct()
+    {
+        $pathMatcher = new PathMatcher();
+
+        $this->publishOptions = [
+            'filter' => $pathMatcher->only(
+                '**dist/simplemde.min.css',
+                '**dist/simplemde.min.js',
+            ),
+        ];
+    }
 }

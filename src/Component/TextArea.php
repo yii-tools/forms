@@ -6,8 +6,8 @@ namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Forms\Base\Globals;
 use Yii\Html\Attribute;
+use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
 
 use function array_key_exists;
@@ -31,7 +31,6 @@ final class TextArea extends AbstractFormWidget
     use Attribute\Placeholder;
     use Attribute\Readonlys;
     use Attribute\Required;
-    use Globals;
 
     /**
      * Returns a new instance specifying maximum number of characters per line of text for the UA to show.
@@ -79,14 +78,14 @@ final class TextArea extends AbstractFormWidget
         }
 
         if (!array_key_exists('id', $attributes)) {
-            $attributes['id'] = $this->getInputId();
+            $attributes['id'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
         }
 
         if (!array_key_exists('name', $attributes)) {
-            $attributes['name'] = $this->getInputName();
+            $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
         }
 
-        $placeHolder = $this->getPlaceHolder();
+        $placeHolder = $this->getPlaceholder();
 
         if (!array_key_exists('placeholder', $attributes) && '' !== $placeHolder) {
             $attributes['placeholder'] = $placeHolder;
@@ -98,7 +97,7 @@ final class TextArea extends AbstractFormWidget
     /**
      * The number of lines of text for the UA to show.
      *
-     * @param int $value
+     * @param int $value The number of lines of text for the UA to show.
      *
      * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/textarea.html#textarea.attrs.rows
      */

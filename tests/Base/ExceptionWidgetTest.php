@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\Exception\AttributeNotSet;
+use Yii\Forms\FormModelInterface;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Model\AbstractFormModel;
 
 final class ExceptionWidgetTest extends TestCase
 {
@@ -34,7 +34,7 @@ final class ExceptionWidgetTest extends TestCase
         $widget = $this->widget(new TestForm(), 'noExist');
     }
 
-    private function widget(AbstractFormModel $formModel, string $fieldAttributes): AbstractFormWidget
+    private function widget(FormModelInterface $formModel, string $fieldAttributes): AbstractFormWidget
     {
         return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
             public function render(): string

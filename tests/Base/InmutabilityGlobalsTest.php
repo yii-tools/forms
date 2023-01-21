@@ -7,8 +7,8 @@ namespace Yii\Forms\Tests\Base;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 use Yii\Forms\Base\AbstractFormWidget;
+use Yii\Forms\FormModelInterface;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Model\AbstractFormModel;
 
 final class InmutabilityGlobalsTest extends TestCase
 {
@@ -28,7 +28,7 @@ final class InmutabilityGlobalsTest extends TestCase
         $this->assertNotSame($globals, $globals->title(''));
     }
 
-    private function createWidget(AbstractFormModel $formModel, string $fieldAttributes): AbstractFormWidget
+    private function createWidget(FormModelInterface $formModel, string $fieldAttributes): AbstractFormWidget
     {
         return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
             public function render(): string
