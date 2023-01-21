@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Base;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\FormModelInterface;
 use Yii\Forms\Tests\Support\TestForm;
 
-final class InmutabilityGlobalsTest extends TestCase
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
+final class ImmutabilityGlobalsTest extends TestCase
 {
-    /**
-     * @throws ReflectionException
-     */
     public function testImmutability(): void
     {
-        $globals = $this->createWidget(new TestForm(), 'string');
+        $globals = $this->createWidget(new TestForm());
+
         $this->assertNotSame($globals, $globals->attributes([]));
         $this->assertNotSame($globals, $globals->autoFocus());
         $this->assertNotSame($globals, $globals->class(''));
@@ -25,12 +25,13 @@ final class InmutabilityGlobalsTest extends TestCase
         $this->assertNotSame($globals, $globals->id(''));
         $this->assertNotSame($globals, $globals->name(''));
         $this->assertNotSame($globals, $globals->tabindex(0));
+        $this->assertNotSame($globals, $globals->template(''));
         $this->assertNotSame($globals, $globals->title(''));
     }
 
-    private function createWidget(FormModelInterface $formModel, string $fieldAttributes): AbstractFormWidget
+    private function createWidget(FormModelInterface $formModel): AbstractFormWidget
     {
-        return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
+        return new class ($formModel, 'string') extends AbstractFormWidget {
             public function render(): string
             {
                 return '';

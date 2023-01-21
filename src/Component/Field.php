@@ -6,6 +6,7 @@ namespace Yii\Forms\Component;
 
 use Closure;
 use Yii\Forms\Base\AbstractFormWidget;
+use Yii\Forms\Base\HasPrefixAndSuffix;
 use Yii\Html\Tag;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -24,8 +25,6 @@ use function strtr;
  */
 final class Field extends Widget
 {
-    use Field\HasAfterAndBefore;
-    use Field\HasAfterAndBeforeInput;
     use Field\HasClass;
     use Field\HasContainer;
     use Field\HasError;
@@ -35,6 +34,7 @@ final class Field extends Widget
     use Field\HasLabel;
     use Field\HasTemplate;
     use Field\HasValidateClass;
+    use HasPrefixAndSuffix;
 
     protected array $attributes = [];
     private bool|string $ariaDescribedBy = false;
@@ -102,39 +102,29 @@ final class Field extends Widget
     }
 
     /**
-     * Renders the field widget along with label and hint tag (if any) according to template.
+     * Renders the input widget for the field.
      */
-    private function renderField(AbstractFormWidget $widget, string $label): string
+    private function renderInput(AbstractFormWidget $widget, string $label): string
     {
-        $inputTag = '';
-        $widgetContent = $widget->render();
+        $render = '';
+        $renderWidget = $widget->render();
 
-        if ($this->before !== '') {
-            $inputTag = "$this->before\n";
-        }
-
-        if ($widgetContent !== '') {
-            $widgetContent = strtr(
+        if ($renderWidget !== '') {
+            $renderInput = strtr(
                 $this->inputTemplate,
                 [
-                    '{beforeInput}' => $this->beforeInput,
+                    '{input}' => $renderWidget,
                     '{label}' => $label,
-                    '{input}' => $widgetContent,
-                    '{afterInput}' => $this->afterInput,
                 ],
             );
 
-            $inputTag .= match ($this->inputContainer) {
-                true => Tag::create('div', $widgetContent, $this->inputContainerAttributes),
-                false => $widgetContent,
+            $render = match ($this->inputContainer) {
+                true => Tag::create('div', $renderInput, $this->inputContainerAttributes),
+                false => $renderInput,
             };
         }
 
-        if ($this->after !== '') {
-            $inputTag .= "\n$this->after\n";
-        }
-
-        return $inputTag;
+        return $render;
     }
 
     /**
@@ -227,8 +217,6 @@ final class Field extends Widget
             $label = $this->renderLabel($widget);
         }
 
-        $fieldTag = $this->renderField($widget, $label);
-
         return preg_replace(
             '/^\h*\v+/m',
             '',
@@ -237,9 +225,11 @@ final class Field extends Widget
                     $this->template,
                     [
                         '{error}' => $error,
-                        '{field}' => $fieldTag,
+                        '{field}' => $this->renderInput($widget, $label),
                         '{hint}' => $hint,
                         '{label}' => $label,
+                        '{prefix}' => $this->prefix,
+                        '{suffix}' => $this->suffix,
                     ],
                 ),
             ),

@@ -47,6 +47,6 @@ final class Text extends AbstractInput
             $attributes['placeholder'] = $placeHolder;
         }
 
-        return $this->input('text', $attributes);
+        return $this->run('input', '', 'text', $attributes);
     }
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Component\Field;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Stringable;
 use Yii\Forms\Component\ButtonGroup;
 use Yii\Forms\Component\Field;
@@ -16,76 +15,24 @@ use Yii\Forms\Tests\Support\BasicForm;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class RenderTest extends TestCase
 {
     use TestTrait;
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
-    public function testAfterField(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div class="form-group input-group me-3">
-            <div class="form-floating flex-grow-1">
-            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
-            <label for="testform-string">Name</label>
-            </div>
-            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-            <div>
-            String hint
-            </div>
-            </div>
-            HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->after('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
-                ->class('form-control')
-                ->containerClass('form-group input-group me-3')
-                ->inputContainer(true)
-                ->inputContainerClass('form-floating flex-grow-1')
-                ->inputTemplate('{input}' . PHP_EOL . '{label}')
-                ->labelContent('Name')
-                ->render(),
-        );
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    public function testAfterFieldWithStringable(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div class="form-group input-group me-3">
-            <div class="form-floating flex-grow-1">
-            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
-            <label for="testform-string">Name</label>
-            </div>
-            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-            <div>
-            String hint
-            </div>
-            </div>
-            HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->after(new class () implements Stringable {
-                    public function __toString(): string
-                    {
-                        return '<span class="input-group-text"><i class="bi bi-person-fill"></i></span>';
-                    }
-                })
-                ->class('form-control')
-                ->containerClass('form-group input-group me-3')
-                ->inputContainer(true)
-                ->inputContainerClass('form-floating flex-grow-1')
-                ->inputTemplate('{input}' . PHP_EOL . '{label}')
-                ->labelContent('Name')
-                ->render(),
-        );
-    }
-
     public function testAfterInputWithStringable(): void
     {
         Assert::equalsWithoutLE(
@@ -99,25 +46,28 @@ final class RenderTest extends TestCase
                 Text::widget([new BasicForm(), 'email'])
                     ->ariaDescribedBy('basic-addon2')
                     ->ariaLabel("Recipient's username")
-                    ->placeHolder("Recipient's username"),
-            ])
-                ->afterInput(
-                    new class () implements Stringable {
-                        public function __toString(): string
-                        {
-                            return '<span class="input-group-text" id="basic-addon2">@example.com</span>';
+                    ->placeHolder("Recipient's username")
+                    ->suffix(
+                        new class () implements Stringable {
+                            public function __toString(): string
+                            {
+                                return '<span class="input-group-text" id="basic-addon2">@example.com</span>';
+                            }
                         }
-                    }
-                )
+                    ),
+            ])
                 ->class('form-control')
                 ->containerClass('input-group mb-3')
-                ->inputTemplate('{input}' . PHP_EOL . '{afterInput}')
+                ->notLabel()
                 ->render(),
         );
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testAriaDescribedByWithTrue(): void
     {
@@ -135,7 +85,6 @@ final class RenderTest extends TestCase
             </div>
             HTML,
             Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->after('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
                 ->ariaDescribedBy(true)
                 ->class('form-control')
                 ->containerClass('form-group input-group me-3')
@@ -143,12 +92,16 @@ final class RenderTest extends TestCase
                 ->inputContainerClass('form-floating flex-grow-1')
                 ->inputTemplate('{input}' . PHP_EOL . '{label}')
                 ->labelContent('Name')
+                ->suffix('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
                 ->render(),
         );
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testAriaDescribedByWithString(): void
     {
@@ -166,7 +119,6 @@ final class RenderTest extends TestCase
             </div>
             HTML,
             Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->after('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
                 ->ariaDescribedBy('testform-string-help')
                 ->class('form-control')
                 ->containerClass('form-group input-group me-3')
@@ -174,79 +126,16 @@ final class RenderTest extends TestCase
                 ->inputContainerClass('form-floating flex-grow-1')
                 ->inputTemplate('{input}' . PHP_EOL . '{label}')
                 ->labelContent('Name')
+                ->suffix('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
                 ->render(),
         );
     }
 
     /**
-     * @throws ReflectionException
-     */
-    public function testBeforeField(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div class="form-group input-group me-3">
-            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-            <div class="form-floating flex-grow-1">
-            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
-            <label for="testform-string">Name</label>
-            </div>
-            <div>
-            String hint
-            </div>
-            </div>
-            HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->before('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
-                ->class('form-control')
-                ->containerClass('form-group input-group me-3')
-                ->inputContainer(true)
-                ->inputContainerClass('form-floating flex-grow-1')
-                ->inputTemplate('{input}' . PHP_EOL . '{label}')
-                ->labelContent('Name')
-                ->render(),
-        );
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    public function testBeforeFieldWithStringable(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div class="form-group input-group me-3">
-            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-            <div class="form-floating flex-grow-1">
-            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
-            <label for="testform-string">Name</label>
-            </div>
-            <div>
-            String hint
-            </div>
-            </div>
-            HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->before(
-                    new class () implements Stringable {
-                        public function __toString(): string
-                        {
-                            return '<span class="input-group-text"><i class="bi bi-person-fill"></i></span>';
-                        }
-                    }
-                )
-                ->class('form-control')
-                ->containerClass('form-group input-group me-3')
-                ->inputContainer(true)
-                ->inputContainerClass('form-floating flex-grow-1')
-                ->inputTemplate('{input}' . PHP_EOL . '{label}')
-                ->labelContent('Name')
-                ->render(),
-        );
-    }
-
-    /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testBeforeInputWithStringable(): void
     {
@@ -261,25 +150,28 @@ final class RenderTest extends TestCase
                 Text::widget([new BasicForm(), 'username'])
                     ->ariaDescribedBy('basic-addon1')
                     ->ariaLabel('Username')
-                    ->placeHolder('Username'),
-            ])
-                ->beforeInput(
-                    new class () implements Stringable {
-                        public function __toString(): string
-                        {
-                            return '<span class="input-group-text" id="basic-addon1">@</span>';
+                    ->placeHolder('Username')
+                    ->prefix(
+                        new class () implements Stringable {
+                            public function __toString(): string
+                            {
+                                return '<span class="input-group-text" id="basic-addon1">@</span>';
+                            }
                         }
-                    }
-                )
+                    ),
+            ])
                 ->class('form-control')
                 ->containerClass('input-group mb-3')
-                ->inputTemplate('{beforeInput}' . PHP_EOL . '{input}')
+                ->notLabel()
                 ->render(),
         );
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testContainerAttributes(): void
     {
@@ -300,7 +192,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testErrorAttributes(): void
     {
@@ -329,7 +224,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testErrorClass(): void
     {
@@ -358,7 +256,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testErrorClosure(): void
     {
@@ -380,16 +281,21 @@ final class RenderTest extends TestCase
             HTML,
             Field::widget([Text::widget([$formModel, 'string'])->placeholder('Name')])
                 ->class('form-control')
-                ->errorClosure(static function (FormModelInterface $formModel): string {
-                    return '<div class="invalid-feedback">' . "\n" . 'This closure error content' . "\n" . '</div>';
-                })
+                ->errorClosure(
+                    static function (FormModelInterface $formModel): string {
+                        return '<div class="invalid-feedback">' . "\n" . 'This closure error content' . "\n" . '</div>';
+                    },
+                )
                 ->invalidClass('is-invalid')
                 ->render(),
         );
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testErrorContent(): void
     {
@@ -419,7 +325,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testErrorTag(): void
     {
@@ -447,7 +356,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testHintAttributes(): void
     {
@@ -471,7 +383,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testHintClass(): void
     {
@@ -495,7 +410,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testHintClosure(): void
     {
@@ -526,7 +444,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testHintContent(): void
     {
@@ -550,7 +471,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testHintTag(): void
     {
@@ -572,7 +496,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testInputContainerAttributes(): void
     {
@@ -590,19 +517,22 @@ final class RenderTest extends TestCase
             </div>
             HTML,
             Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
-                ->after('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
                 ->class('form-control')
                 ->containerClass('form-group input-group me-3')
                 ->inputContainer(true)
                 ->inputContainerAttributes(['class' => 'form-floating flex-grow-1'])
                 ->inputTemplate('{input}' . PHP_EOL . '{label}')
                 ->labelContent('Name')
+                ->suffix('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
                 ->render(),
         );
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testInvalidClass(): void
     {
@@ -630,7 +560,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testInvalidClassWithFormEmptyData(): void
     {
@@ -654,7 +587,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testLabelAttributes(): void
     {
@@ -678,7 +614,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testLabelClass(): void
     {
@@ -702,7 +641,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testLabelClosure(): void
     {
@@ -730,7 +672,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testNotLabel(): void
     {
@@ -753,7 +698,155 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testPrefixField(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="form-group input-group me-3">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <div class="form-floating flex-grow-1">
+            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
+            <label for="testform-string">Name</label>
+            </div>
+            <div>
+            String hint
+            </div>
+            </div>
+            HTML,
+            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
+                ->class('form-control')
+                ->containerClass('form-group input-group me-3')
+                ->inputContainer(true)
+                ->inputContainerClass('form-floating flex-grow-1')
+                ->inputTemplate('{input}' . PHP_EOL . '{label}')
+                ->labelContent('Name')
+                ->prefix('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testPrefixFieldWithStringable(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="form-group input-group me-3">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <div class="form-floating flex-grow-1">
+            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
+            <label for="testform-string">Name</label>
+            </div>
+            <div>
+            String hint
+            </div>
+            </div>
+            HTML,
+            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
+                ->class('form-control')
+                ->containerClass('form-group input-group me-3')
+                ->inputContainer(true)
+                ->inputContainerClass('form-floating flex-grow-1')
+                ->inputTemplate('{input}' . PHP_EOL . '{label}')
+                ->labelContent('Name')
+                ->prefix(
+                    new class () implements Stringable {
+                        public function __toString(): string
+                        {
+                            return '<span class="input-group-text"><i class="bi bi-person-fill"></i></span>';
+                        }
+                    }
+                )
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testSuffixField(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="form-group input-group me-3">
+            <div class="form-floating flex-grow-1">
+            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
+            <label for="testform-string">Name</label>
+            </div>
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <div>
+            String hint
+            </div>
+            </div>
+            HTML,
+            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
+                ->class('form-control')
+                ->containerClass('form-group input-group me-3')
+                ->inputContainer(true)
+                ->inputContainerClass('form-floating flex-grow-1')
+                ->inputTemplate('{input}' . PHP_EOL . '{label}')
+                ->labelContent('Name')
+                ->suffix('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testSuffixFieldWithStringable(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="form-group input-group me-3">
+            <div class="form-floating flex-grow-1">
+            <input class="form-control" id="testform-string" name="TestForm[string]" type="text" placeholder="Name">
+            <label for="testform-string">Name</label>
+            </div>
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <div>
+            String hint
+            </div>
+            </div>
+            HTML,
+            Field::widget([Text::widget([new TestForm(), 'string'])->placeholder('Name')])
+                ->class('form-control')
+                ->containerClass('form-group input-group me-3')
+                ->inputContainer(true)
+                ->inputContainerClass('form-floating flex-grow-1')
+                ->inputTemplate('{input}' . PHP_EOL . '{label}')
+                ->labelContent('Name')
+                ->suffix(new class () implements Stringable {
+                    public function __toString(): string
+                    {
+                        return '<span class="input-group-text"><i class="bi bi-person-fill"></i></span>';
+                    }
+                })
+                ->template('{field}' . PHP_EOL . '{suffix}' . PHP_EOL . '{hint}')
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testValidClass(): void
     {
@@ -778,7 +871,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testValidClassWithFormEmptyData(): void
     {
@@ -802,7 +898,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testWidgetButtonGroup(): void
     {
@@ -830,7 +929,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testWidgetHidden(): void
     {

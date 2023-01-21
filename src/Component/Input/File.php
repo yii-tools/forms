@@ -67,9 +67,11 @@ final class File extends AbstractInput
         // input type="file" not supported value attribute.
         unset($attributes['value']);
 
+        $render = $this->run('input', '', 'file', $attributes);
+
         return match ($this->hidden) {
-            null => $this->input('file', $attributes),
-            default => $this->hidden->name($name)->render() . PHP_EOL . $this->input('file', $attributes),
+            null => $render,
+            default => $this->hidden->name($name)->render() . PHP_EOL . $render,
         };
     }
 }

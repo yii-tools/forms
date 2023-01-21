@@ -4,19 +4,30 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Component\ButtonGroup;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Component\ButtonGroup;
 use Yii\Forms\Component\Input\Button;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
-final class ButtonGroupTest extends TestCase
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
+final class RenderTest extends TestCase
 {
     use TestTrait;
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testContainerAttributes(): void
     {
@@ -35,7 +46,11 @@ final class ButtonGroupTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws CircularReferenceException
+     * @throws Exception
      */
     public function testContainerClass(): void
     {
@@ -54,7 +69,11 @@ final class ButtonGroupTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testIndividualButtonAttributes(): void
     {
@@ -76,7 +95,11 @@ final class ButtonGroupTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testRender(): void
     {
@@ -94,7 +117,11 @@ final class ButtonGroupTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testRenderWithTag(): void
     {
@@ -115,7 +142,11 @@ final class ButtonGroupTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testVisible(): void
     {
@@ -137,7 +168,11 @@ final class ButtonGroupTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testWithoutContainer(): void
     {

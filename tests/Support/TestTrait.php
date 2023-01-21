@@ -8,6 +8,7 @@ use Yiisoft\Aliases\Aliases;
 use Yiisoft\Assets\AssetLoader;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Assets\AssetPublisher;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Test\Support\Container\SimpleContainer;
 use Yiisoft\Test\Support\EventDispatcher\SimpleEventDispatcher;
 use Yiisoft\View\WebView;
@@ -18,6 +19,9 @@ trait TestTrait
     private AssetManager $assetManager;
     private WebView $webView;
 
+    /**
+     * @throws InvalidConfigException
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -43,6 +47,6 @@ trait TestTrait
             ],
         );
 
-        WidgetFactory::initialize($container, []);
+        WidgetFactory::initialize($container);
     }
 }

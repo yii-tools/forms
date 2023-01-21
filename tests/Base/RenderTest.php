@@ -12,14 +12,14 @@ use Yii\Forms\Tests\Support\TestForm;
 use Yii\Html\Helper\Attributes;
 use Yii\Support\Assert;
 
-final class WidgetTest extends TestCase
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
+final class RenderTest extends TestCase
 {
-    /**
-     * @throws ReflectionException
-     */
     public function testAttributes(): void
     {
-        $widget = $this->createWidget(new TestForm(), 'string')->attributes(['class' => 'test']);
+        $widget = $this->createWidget(new TestForm())->attributes(['class' => 'test']);
 
         $this->assertSame('<class="test" id="test">', $widget->render());
     }
@@ -29,14 +29,14 @@ final class WidgetTest extends TestCase
      */
     public function testGetId(): void
     {
-        $widget = $this->createWidget(new TestForm(), 'string');
+        $widget = $this->createWidget(new TestForm());
 
         $this->assertSame('test', Assert::invokeMethod($widget, 'getId'));
     }
 
-    private function createWidget(FormModelInterface $formModel, string $fieldAttributes): AbstractFormWidget
+    private function createWidget(FormModelInterface $formModel): AbstractFormWidget
     {
-        return new class ($formModel, $fieldAttributes) extends AbstractFormWidget {
+        return new class ($formModel, 'string') extends AbstractFormWidget {
             protected array $attributes = ['id' => 'test'];
 
             public function render(): string

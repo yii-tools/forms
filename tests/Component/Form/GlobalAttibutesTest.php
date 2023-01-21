@@ -2,19 +2,28 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component;
+namespace Yii\Forms\Tests\Component\Form;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Component\Form;
 use Yii\Forms\Tests\Support\TestTrait;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class GlobalAttibutesTest extends TestCase
 {
     use TestTrait;
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testAttributes(): void
     {
@@ -27,7 +36,10 @@ final class GlobalAttibutesTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testClass(): void
     {
@@ -40,7 +52,10 @@ final class GlobalAttibutesTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testId(): void
     {
@@ -53,7 +68,10 @@ final class GlobalAttibutesTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testName(): void
     {

@@ -8,6 +8,9 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Tests\Support\BasicForm;
 use Yii\Forms\Tests\Support\TestTrait;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class HasErrorTest extends TestCase
 {
     use TestTrait;

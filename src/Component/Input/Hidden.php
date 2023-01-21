@@ -32,14 +32,6 @@ final class Hidden extends AbstractFormWidget
     {
         $attributes = $this->attributes;
 
-        if (!array_key_exists('id', $attributes)) {
-            $attributes['id'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
-        }
-
-        if (!array_key_exists('name', $attributes)) {
-            $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
-        }
-
         $value = match (array_key_exists('value', $attributes)) {
             true => $attributes['value'],
             false => $this->getValue() === '' ? null : $this->getValue(),
@@ -54,9 +46,8 @@ final class Hidden extends AbstractFormWidget
             );
         }
 
-        $attributes['type'] = 'hidden';
         $attributes['value'] = $value;
 
-        return Tag::create('input', '', $attributes);
+        return $this->run('input', '', 'hidden', $attributes);
     }
 }

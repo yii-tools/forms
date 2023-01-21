@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component\Input\Button;
+namespace Yii\Forms\Tests\Component\Form;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Component\Input\Button;
+use Yii\Forms\Component\Form;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -15,7 +15,7 @@ use Yiisoft\Factory\NotFoundException;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class ButtonTest extends TestCase
+final class InputAttributesTest extends TestCase
 {
     use TestTrait;
 
@@ -25,8 +25,13 @@ final class ButtonTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testRender(): void
+    public function testAutocomplete(): void
     {
-        $this->assertSame('<input type="button">', Button::widget()->render());
+        $this->assertSame(
+            <<<HTML
+            <form autocomplete="on">
+            HTML,
+            Form::widget()->autocomplete('on')->begin(),
+        );
     }
 }

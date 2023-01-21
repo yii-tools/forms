@@ -37,7 +37,11 @@ trait HasHint
     private function getInternalHint(string $attribute): string
     {
         $hint = '';
-        $hints = method_exists($this, 'getHints') ? $this->getHints() : [];
+        $hints = [];
+
+        if (method_exists($this, 'getHints')) {
+            $hints = $this->getHints();
+        }
 
         if (array_key_exists($attribute, $hints)) {
             $hint = $hints[$attribute];

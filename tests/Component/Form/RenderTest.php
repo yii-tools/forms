@@ -5,17 +5,27 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Component\Form;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
+use Stringable;
 use Yii\Forms\Component\Form;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
-final class FormTest extends TestCase
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
+final class RenderTest extends TestCase
 {
     use TestTrait;
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testAcceptCharset(): void
     {
@@ -28,7 +38,10 @@ final class FormTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testAction(): void
     {
@@ -41,7 +54,10 @@ final class FormTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testBegin(): void
     {
@@ -111,14 +127,12 @@ final class FormTest extends TestCase
     /**
      * @dataProvider dataProviderCsrf
      *
-     * @param string $expected
-     * @param string $method
-     * @param string|Stringable $csrfToken
-     * @param string $csrfName
-     *
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
-    public function testCsrf(string $expected, string $method, $csrfToken, string $csrfName): void
+    public function testCsrf(string $expected, string $method, string|Stringable $csrfToken, string $csrfName): void
     {
         $formWidget = $csrfName !== ''
             ? Form::widget()->action('/foo')->csrf($csrfToken, $csrfName)->method($method)->begin()
@@ -127,7 +141,10 @@ final class FormTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testEnd(): void
     {
@@ -141,7 +158,10 @@ final class FormTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testNovalidate(): void
     {
@@ -154,7 +174,10 @@ final class FormTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testRender(): void
     {

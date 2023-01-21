@@ -4,17 +4,35 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Component\MarkDownEditor;
 
+use JsonException;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use Yii\Forms\Asset\MarkDownEditorAsset;
 use Yii\Forms\Component\MarkDownEditor;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class RenderTest extends TestCase
 {
     use TestTrait;
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testAutoFocusEditor(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->autoFocusEditor(false);
@@ -23,6 +41,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testAutoSave(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->autoSave(500);
@@ -35,6 +62,15 @@ final class RenderTest extends TestCase
         );
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testForceSync(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->forceSync(false);
@@ -43,6 +79,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testGetElementId(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string']);
@@ -55,6 +100,15 @@ final class RenderTest extends TestCase
         $this->assertSame($expected, $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testHiddenIcons(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])
@@ -64,6 +118,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testIndentWithTabs(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->indentWithTabs(false);
@@ -72,6 +135,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testInitialValue(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->initialValue('Hello World');
@@ -80,6 +152,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testLineWrapping(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->lineWrapping(true);
@@ -88,6 +169,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testOptions(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])
@@ -97,6 +187,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testPromptURLs(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->promptURLs(true);
@@ -105,6 +204,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testPlaceholder(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->placeholder('Hello World');
@@ -113,6 +221,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testRegisterAssets(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string']);
@@ -121,6 +238,15 @@ final class RenderTest extends TestCase
         $this->assertInstanceof(MarkDownEditorAsset::class, $this->assetManager->getBundle(MarkDownEditorAsset::class));
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testRun(): void
     {
         $this->assertSame(
@@ -131,6 +257,15 @@ final class RenderTest extends TestCase
         );
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testShowIcons(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])
@@ -140,6 +275,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testSpellChecker(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->spellChecker(true);
@@ -148,6 +292,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testStyleSelectedText(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->styleSelectedText(true);
@@ -156,6 +309,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testTabSize(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->tabSize(2);
@@ -164,6 +326,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testToolbar(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->toolbar(['bold', 'italic']);
@@ -172,6 +343,15 @@ final class RenderTest extends TestCase
         $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
     }
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws JsonException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     * @throws ReflectionException
+     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
+     */
     public function testToolbarTips(): void
     {
         $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->toolbarTips(true);
@@ -182,10 +362,10 @@ final class RenderTest extends TestCase
 
     private function getScript(): string
     {
-        $webViewState = Assert::inaccessibleProperty($this->webView, 'state');
+        $script = '';
 
-        foreach ($webViewState->getJS() as $js) {
-            foreach ($js as $key => $value) {
+        foreach (Assert::inaccessibleProperty($this->webView, 'state')->getJS() as $js) {
+            foreach ($js as $value) {
                 $script = $value;
             }
         }

@@ -8,6 +8,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Tests\Support\TestForm;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class HasPlaceholderTest extends TestCase
 {
     public function testGetPlaceholder(): void

@@ -7,8 +7,6 @@ namespace Yii\Forms\Component;
 use InvalidArgumentException;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Attribute;
-use Yii\Html\Helper\Utils;
-use Yii\Html\Tag;
 
 use function array_key_exists;
 use function in_array;
@@ -77,21 +75,13 @@ final class TextArea extends AbstractFormWidget
             throw new InvalidArgumentException('TextArea widget must be a string or null value.');
         }
 
-        if (!array_key_exists('id', $attributes)) {
-            $attributes['id'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
-        }
-
-        if (!array_key_exists('name', $attributes)) {
-            $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
-        }
-
         $placeHolder = $this->getPlaceholder();
 
         if (!array_key_exists('placeholder', $attributes) && '' !== $placeHolder) {
             $attributes['placeholder'] = $placeHolder;
         }
 
-        return Tag::create('textarea', (string) $content, $attributes);
+        return $this->run('textarea', (string) $content, null, $attributes);
     }
 
     /**

@@ -5,17 +5,26 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Component\TextArea;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Component\TextArea;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class RenderTest extends TestCase
 {
     use TestTrait;
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testCols(): void
     {
@@ -28,7 +37,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testContent(): void
     {
@@ -41,7 +53,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testRows(): void
     {
@@ -54,7 +69,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testWrap(): void
     {
@@ -67,7 +85,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testWrapWithSoft(): void
     {
@@ -80,7 +101,10 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testRender(): void
     {

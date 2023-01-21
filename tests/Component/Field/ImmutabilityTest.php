@@ -9,23 +9,32 @@ use Yii\Forms\Component\Field;
 use Yii\Forms\Component\Input\Text;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
-final class InmutabilityTest extends TestCase
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
+final class ImmutabilityTest extends TestCase
 {
     use TestTrait;
 
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testInmutability(): void
     {
         $field = Field::widget([Text::widget([new TestForm(), 'string'])]);
 
-        $this->assertNotSame($field, $field->after(''));
-        $this->assertNotSame($field, $field->afterInput(''));
         $this->assertNotSame($field, $field->ariaDescribedBy(false));
-        $this->assertNotSame($field, $field->before(''));
-        $this->assertNotSame($field, $field->beforeInput(''));
         $this->assertNotSame($field, $field->class(''));
         $this->assertNotSame($field, $field->container(false));
-        $this->assertNotSame($field, $field->containerAttributes([]));
+        $this->assertNotSame($field, $field->containerAttributes());
         $this->assertNotSame($field, $field->containerClass(''));
         $this->assertNotSame($field, $field->errorAttributes([]));
         $this->assertNotSame($field, $field->errorClass(''));
@@ -38,7 +47,7 @@ final class InmutabilityTest extends TestCase
         $this->assertNotSame($field, $field->hintContent(''));
         $this->assertNotSame($field, $field->hintTag(''));
         $this->assertNotSame($field, $field->inputContainer(false));
-        $this->assertNotSame($field, $field->inputContainerAttributes([]));
+        $this->assertNotSame($field, $field->inputContainerAttributes());
         $this->assertNotSame($field, $field->inputContainerClass(''));
         $this->assertNotSame($field, $field->inputTemplate(''));
         $this->assertNotSame($field, $field->invalidClass(''));
@@ -47,6 +56,10 @@ final class InmutabilityTest extends TestCase
         $this->assertNotSame($field, $field->labelClosure(fn () => ''));
         $this->assertNotSame($field, $field->labelContent(''));
         $this->assertNotSame($field, $field->notLabel());
+        $this->assertNotSame($field, $field->prefix(''));
+        $this->assertNotSame($field, $field->prefix(''));
+        $this->assertNotSame($field, $field->suffix(''));
+        $this->assertNotSame($field, $field->suffix(''));
         $this->assertNotSame($field, $field->template(''));
         $this->assertNotSame($field, $field->validClass(''));
     }

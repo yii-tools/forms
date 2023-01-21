@@ -7,8 +7,10 @@ namespace Yii\Forms\Base;
 use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Forms\FormModelInterface;
 use Yii\Html\Helper\Utils;
+use Yii\Html\Tag;
 use Yiisoft\Widget\Widget;
 
+use function array_key_exists;
 use function is_string;
 
 /**
@@ -17,6 +19,8 @@ use function is_string;
 abstract class AbstractFormWidget extends Widget
 {
     use Globals;
+    use HasPrefixAndSuffix;
+    use HasTemplate;
 
     protected array $attributes = [];
     private string $charset = 'UTF-8';
@@ -103,6 +107,38 @@ abstract class AbstractFormWidget extends Widget
     protected function getValue(): mixed
     {
         return $this->formModel->getAttributeValue($this->attribute);
+    }
+
+    protected function run(string $tag, string $content, string|null $type, array $attributes): string
+    {
+        $attributes['type'] = $type;
+        $prefix = $this->prefix;
+        $suffix = $this->suffix;
+
+        if ($prefix !== '') {
+            $prefix .= PHP_EOL;
+        }
+
+        if (!array_key_exists('id', $attributes)) {
+            $attributes['id'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
+        }
+
+        if (!array_key_exists('name', $attributes)) {
+            $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
+        }
+
+        if ($suffix !== '') {
+            $suffix = PHP_EOL . $suffix . PHP_EOL;
+        }
+
+        return strtr(
+            $this->template,
+            [
+                '{prefix}' => $prefix,
+                '{input}' => Tag::create($tag, $content, $attributes),
+                '{suffix}' => $suffix,
+            ],
+        );
     }
 
     /**

@@ -5,16 +5,25 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Component\ButtonGroup;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Component\ButtonGroup;
 use Yii\Forms\Tests\Support\TestTrait;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class ImmutabilityTest extends TestCase
 {
     use TestTrait;
 
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testImmutability(): void
     {
@@ -22,8 +31,8 @@ final class ImmutabilityTest extends TestCase
 
         $this->assertNotSame($buttonGroup, $buttonGroup->buttons([]));
         $this->assertNotSame($buttonGroup, $buttonGroup->container(false));
-        $this->assertNotSame($buttonGroup, $buttonGroup->containerAttributes([]));
+        $this->assertNotSame($buttonGroup, $buttonGroup->containerAttributes());
         $this->assertNotSame($buttonGroup, $buttonGroup->containerClass(''));
-        $this->assertNotSame($buttonGroup, $buttonGroup->individualButtonAttributes([]));
+        $this->assertNotSame($buttonGroup, $buttonGroup->individualButtonAttributes());
     }
 }

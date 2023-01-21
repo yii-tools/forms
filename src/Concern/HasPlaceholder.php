@@ -37,7 +37,11 @@ trait HasPlaceholder
     private function getInternalPlaceholder(string $attribute): string
     {
         $placeholder = '';
-        $placeholders = method_exists($this, 'getPlaceholders') ? $this->getPlaceholders() : [];
+        $placeholders = [];
+
+        if (method_exists($this, 'getPlaceholders')) {
+            $placeholders = $this->getPlaceholders();
+        }
 
         if (array_key_exists($attribute, $placeholders)) {
             $placeholder = $placeholders[$attribute];

@@ -8,6 +8,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Tests\Support\TestForm;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class HasHintTest extends TestCase
 {
     public function testGetHint(): void

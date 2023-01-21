@@ -57,7 +57,11 @@ trait HasLabel
     private function getInternalLabel(string $attribute): string
     {
         $label = $this->generateLabel($attribute);
-        $labels = method_exists($this, 'getLabels') ? $this->getLabels() : [];
+        $labels = [];
+
+        if (method_exists($this, 'getLabels')) {
+            $labels = $this->getLabels();
+        }
 
         if (array_key_exists($attribute, $labels)) {
             $label = $labels[$attribute];
