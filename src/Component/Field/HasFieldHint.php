@@ -8,9 +8,9 @@ use Closure;
 use Yii\Html\Helper\CssClass;
 
 /**
- * Trait HasHint provides methods for setting hint for the field.
+ * HasFieldHint provides methods for setting hint for the field.
  */
-trait HasHint
+trait HasFieldHint
 {
     private array $hintAttributes = [];
     private string $hintClass = '';

@@ -7,7 +7,7 @@ namespace Yii\Forms\Base;
 use Yii\Html\Attribute;
 
 /**
- * Globals trait implements the common attributes for all form elements.
+ * Globals implements the common attributes for all form elements.
  */
 trait Globals
 {

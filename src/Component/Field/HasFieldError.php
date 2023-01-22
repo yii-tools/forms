@@ -8,9 +8,9 @@ use Closure;
 use Yii\Html\Helper\CssClass;
 
 /**
- * HasError trait provides methods to set error attributes for the field.
+ * HasFieldError provides methods to set error attributes for the field.
  */
-trait HasError
+trait HasFieldError
 {
     private array $errorAttributes = [];
     private string $errorClass = '';

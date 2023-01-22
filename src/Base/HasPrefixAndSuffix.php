@@ -7,7 +7,7 @@ namespace Yii\Forms\Base;
 use Stringable;
 
 /**
- * HasPrefixAndSuffix provides methods to set prefix and suffix field for before and after field html content.
+ * HasPrefixAndSuffix provides methods to set prefix and suffix.
  */
 trait HasPrefixAndSuffix
 {
@@ -15,9 +15,9 @@ trait HasPrefixAndSuffix
     private string $suffix = '';
 
     /**
-     * Return new instance with before field html content.
+     * Return new instance with before html content.
      *
-     * @param string|Stringable $value The html content to be added before the field.
+     * @param string|Stringable $value The html content to be added before.
      */
     public function prefix(string|Stringable $value): static
     {
@@ -28,9 +28,9 @@ trait HasPrefixAndSuffix
     }
 
     /**
-     * Return new instance with after field html content.
+     * Return new instance with after html content.
      *
-     * @param string|Stringable $value The html content to be added after the field.
+     * @param string|Stringable $value The html content to be added after.
      */
     public function suffix(string|Stringable $value): static
     {

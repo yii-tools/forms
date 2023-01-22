@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms\Base;
 
 /**
- * HasTemplate trait provides methods to set input template for the field.
+ * HasTemplate provides the ability to set the template layout.
  */
 trait HasTemplate
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Component\Field;
+namespace Yii\Forms\Base;
 
 use Yii\Html\Helper\CssClass;
 
 /**
- * Trait HasContainer provides methods to configure the HTML container of the field.
+ * HasContainer provides methods to configure the HTML container.
  */
 trait HasContainer
 {
@@ -15,7 +15,7 @@ trait HasContainer
     private array $containerAttributes = [];
 
     /**
-     * Return new instance with container enabled or disabled for the field.
+     * Return new instance with container enabled or disabled.
      *
      * @param bool $value True to enable container, false to disable.
      */

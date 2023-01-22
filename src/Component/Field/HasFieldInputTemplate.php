@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Yii\Forms\Component\Field;
 
 /**
- * HasInputTemplate provides methods to set input template for the field.
+ * HasFieldInputTemplate provides the ability to set the template for the input.
  */
-trait HasInputTemplate
+trait HasFieldInputTemplate
 {
     private string $inputTemplate = "{label}\n{input}" ;
 

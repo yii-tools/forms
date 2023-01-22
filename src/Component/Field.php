@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use Closure;
+use Yii\Forms\Base;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Forms\Base\HasPrefixAndSuffix;
 use Yii\Html\Tag;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -25,16 +25,16 @@ use function strtr;
  */
 final class Field extends Widget
 {
-    use Field\HasClass;
-    use Field\HasContainer;
-    use Field\HasError;
-    use Field\HasHint;
-    use Field\HasInputContainer;
-    use Field\HasInputTemplate;
-    use Field\HasLabel;
-    use Field\HasTemplate;
-    use Field\HasValidateClass;
-    use HasPrefixAndSuffix;
+    use Base\HasContainer;
+    use Base\HasPrefixAndSuffix;
+    use Field\HasFieldClass;
+    use Field\HasFieldError;
+    use Field\HasFieldHint;
+    use Field\HasFieldInputContainer;
+    use Field\HasFieldInputTemplate;
+    use Field\HasFieldLabel;
+    use Field\HasFieldTemplate;
+    use Field\HasFieldValidateClass;
 
     protected array $attributes = [];
     private bool|string $ariaDescribedBy = false;
