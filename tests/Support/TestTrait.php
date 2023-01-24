@@ -11,6 +11,8 @@ use Yiisoft\Assets\AssetPublisher;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Test\Support\Container\SimpleContainer;
 use Yiisoft\Test\Support\EventDispatcher\SimpleEventDispatcher;
+use Yiisoft\Translator\Translator;
+use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\View\WebView;
 use Yiisoft\Widget\WidgetFactory;
 
@@ -43,6 +45,7 @@ trait TestTrait
         $container = new SimpleContainer(
             [
                 AssetManager::class => $this->assetManager,
+                TranslatorInterface::class => new Translator('en'),
                 WebView::class => $this->webView,
             ],
         );

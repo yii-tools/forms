@@ -6,7 +6,6 @@ namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
 use JsonException;
-use Yii\Forms\Asset\MarkDownEditorAsset;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\FormModelInterface;
 use Yiisoft\Assets\AssetManager;
@@ -321,7 +320,7 @@ final class MarkDownEditor extends AbstractFormWidget
      */
     private function registerAssets(): void
     {
-        $this->assetManager->register(MarkDownEditorAsset::class);
+        $this->assetManager->register(Asset\MarkDownEditorAsset::class);
         $this->webView->registerJs($this->getScript());
     }
 

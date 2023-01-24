@@ -10,7 +10,7 @@ use function array_merge;
 use function reset;
 
 /**
- * HasError trait provides methods for managing errors in the model.
+ * HasError provides methods for managing errors in the model.
  */
 trait HasError
 {

@@ -10,7 +10,7 @@ use function array_key_exists;
 use function method_exists;
 
 /**
- * The HasPlaceholder trait provides methods for working with placeholders for attributes of a form model.
+ * HasPlaceholder provides methods for working with placeholders for attributes of a form model.
  */
 trait HasPlaceholder
 {

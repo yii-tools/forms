@@ -15,12 +15,14 @@
         "ext-mbstring": "*",
         "foxy/foxy": "^1.2",
         "yii-tools/html": "^1.0@dev",
-        "yiisoft/assets": "^2.1",
+        "yiisoft/assets": "dev-master as 2.1",
         "yiisoft/files": "^2.0",
         "yiisoft/http": "^1.2",
         "yiisoft/strings": "^2.1",
+        "yiisoft/translator": "^2.2",
+        "yiisoft/translator-message-php": "^1.1",
         "yiisoft/view": "^7.0",
-        "yiisoft/widget": "dev-master",
+        "yiisoft/widget": "^2.0",
         "yiisoft/yii-event": "^1.0"
     },
     "require-dev": {
@@ -45,6 +47,15 @@
     "extra": {
         "branch-alias": {
             "dev-main": "1.0.x-dev"
+        },
+        "config-plugin-options": {
+            "source-directory": "config"
+        },
+        "config-plugin": {
+            "params": "params.php",
+            "common": [
+                "common/*.php"
+            ]
         },
         "foxy": true
     },

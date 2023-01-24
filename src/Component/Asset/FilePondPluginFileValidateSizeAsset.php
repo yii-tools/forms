@@ -2,21 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Asset;
+namespace Yii\Forms\Component\Asset;
 
 use Yiisoft\Assets\AssetBundle;
 use Yiisoft\Files\PathMatcher\PathMatcher;
 
 /**
- * Asset bundle for the MarkDownEditor widget.
+ * Asset bundle for the Filepond plugin file validate size.
  */
-final class MarkDownEditorAsset extends AssetBundle
+final class FilePondPluginFileValidateSizeAsset extends AssetBundle
 {
     public string|null $basePath = '@assets';
     public string|null $baseUrl = '@assetsUrl';
-    public string|null $sourcePath = '@npm/simplemde';
-    public array $css = ['dist/simplemde.min.css'];
-    public array $js = ['dist/simplemde.min.js'];
+    public string|null $sourcePath = '@npm/filepond-plugin-file-validate-size';
+    public array $js = ['dist/filepond-plugin-file-validate-size.min.js'];
 
     public function __construct()
     {
@@ -24,8 +23,7 @@ final class MarkDownEditorAsset extends AssetBundle
 
         $this->publishOptions = [
             'filter' => $pathMatcher->only(
-                '**dist/simplemde.min.css',
-                '**dist/simplemde.min.js',
+                '**dist/filepond-plugin-file-validate-size.min.js',
             ),
         ];
     }

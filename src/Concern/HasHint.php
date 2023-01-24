@@ -10,7 +10,7 @@ use function array_key_exists;
 use function method_exists;
 
 /**
- * HasHint trait provides methods for getting the hint for the specified attribute of the model.
+ * HasHint provides methods for getting the hint for the specified attribute of the model.
  */
 trait HasHint
 {

@@ -7,7 +7,7 @@ namespace Yii\Forms\Tests\Component\MarkDownEditor;
 use JsonException;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
-use Yii\Forms\Asset\MarkDownEditorAsset;
+use Yii\Forms\Component\Asset\MarkDownEditorAsset;
 use Yii\Forms\Component\MarkDownEditor;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
