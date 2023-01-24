@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Support;
 
-final class BasicForm extends AbstractFormModel
+use Yii\Forms\FormModelInterface;
+use Yii\FormModel\AbstractFormModel;
+
+final class BasicForm extends AbstractFormModel implements FormModelInterface
 {
     private string $amount = '';
     private string $email = '';

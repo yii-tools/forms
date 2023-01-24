@@ -31,7 +31,7 @@ final class RenderTest extends TestCase
     {
         $formModel = new TestForm();
 
-        $formModel->addError('string', 'Error content');
+        $formModel->error()->add('string', 'Error content');
         $errorWidget = Error::widget([$formModel, 'string']);
 
         Assert::equalsWithoutLE(

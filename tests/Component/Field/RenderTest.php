@@ -200,7 +200,7 @@ final class RenderTest extends TestCase
     public function testErrorAttributes(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -232,7 +232,7 @@ final class RenderTest extends TestCase
     public function testErrorClass(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -264,7 +264,7 @@ final class RenderTest extends TestCase
     public function testErrorClosure(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -300,7 +300,7 @@ final class RenderTest extends TestCase
     public function testErrorContent(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -333,7 +333,7 @@ final class RenderTest extends TestCase
     public function testErrorTag(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -537,7 +537,7 @@ final class RenderTest extends TestCase
     public function testInvalidClass(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -906,7 +906,7 @@ final class RenderTest extends TestCase
     public function testWidgetButtonGroup(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -937,7 +937,7 @@ final class RenderTest extends TestCase
     public function testWidgetHidden(): void
     {
         $formModel = new TestForm();
-        $formModel->addError('string', 'This is a error content');
+        $formModel->error()->add('string', 'This is a error content');
 
         Assert::equalsWithoutLE(
             <<<HTML

@@ -30,7 +30,7 @@
         "phpunit/phpunit": "^9.5",
         "roave/infection-static-analysis-plugin": "^1.28",
         "vimeo/psalm": "^5.4",
-        "yii-tools/model": "^1.0@dev",
+        "yii-tools/form-model": "^1.0@dev",
         "yii-tools/support": "^1.0@dev",
         "yiisoft/test-support": "^3.0"
     },
