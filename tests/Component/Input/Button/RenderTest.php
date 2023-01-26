@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component\Input\File;
+namespace Yii\Forms\Tests\Component\Input\Button;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Component\Input\File;
-use Yii\Forms\Tests\Support\TestForm;
+use Yii\Forms\Component\Input\Button;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -16,7 +15,7 @@ use Yiisoft\Factory\NotFoundException;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class InputAttibutesTest extends TestCase
+final class RenderTest extends TestCase
 {
     use TestTrait;
 
@@ -26,12 +25,9 @@ final class InputAttibutesTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testAccept(): void
+    public function testDisabled(): void
     {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string][]" type="file" accept="image/png, image/jpeg">',
-            File::widget([new TestForm(), 'string'])->accept('image/png, image/jpeg')->render(),
-        );
+        $this->assertSame('<input type="button" disabled>', Button::widget()->disabled()->render());
     }
 
     /**
@@ -40,12 +36,9 @@ final class InputAttibutesTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testMultiple(): void
+    public function testForm(): void
     {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string][]" type="file" multiple>',
-            File::widget([new TestForm(), 'string'])->multiple()->render(),
-        );
+        $this->assertSame('<input type="button" form="form">', Button::widget()->form('form')->render());
     }
 
     /**
@@ -54,11 +47,19 @@ final class InputAttibutesTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testName(): void
+    public function testRender(): void
     {
-        $this->assertSame(
-            '<input id="testform-string" name="test.name[]" type="file">',
-            File::widget([new TestForm(), 'string'])->name('test.name')->render(),
-        );
+        $this->assertSame('<input type="button">', Button::widget()->render());
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testType(): void
+    {
+        $this->assertSame('<input type="submit">', Button::widget()->type('submit')->render());
     }
 }

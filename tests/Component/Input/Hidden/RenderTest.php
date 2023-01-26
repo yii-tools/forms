@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component\Input\Button;
+namespace Yii\Forms\Tests\Component\Input\Hidden;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Component\Input\Button;
+use Yii\Forms\Component\Input\Hidden;
+use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -15,7 +16,7 @@ use Yiisoft\Factory\NotFoundException;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class ButtonTest extends TestCase
+final class RenderTest extends TestCase
 {
     use TestTrait;
 
@@ -27,6 +28,9 @@ final class ButtonTest extends TestCase
      */
     public function testRender(): void
     {
-        $this->assertSame('<input type="button">', Button::widget()->render());
+        $this->assertSame(
+            '<input id="testform-string" name="TestForm[string]" type="hidden">',
+            Hidden::widget([new TestForm(), 'string'])->render(),
+        );
     }
 }

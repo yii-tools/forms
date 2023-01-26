@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use Exception;
-use Yii\Forms\Base;
 use Yii\Html\Tag;
 use Yiisoft\Widget\Widget;
 
@@ -41,7 +40,7 @@ use function is_array;
  */
 final class ButtonGroup extends Widget
 {
-    use Base\HasContainer;
+    use Input\Base\HasContainer;
 
     private array $buttons = [];
     /** @psalm-var array[] */

@@ -20,15 +20,17 @@ final class ImmutabilityTest extends TestCase
     use TestTrait;
 
     /**
-     * @throws CircularReferenceException
      * @throws InvalidConfigException
      * @throws NotFoundException
      * @throws NotInstantiableException
+     * @throws CircularReferenceException
      */
     public function testImmutability(): void
     {
         $button = Button::widget();
-        $this->assertNotSame($button, $button->attributes([]));
+
+        $this->assertNotSame($button, $button->disabled());
+        $this->assertNotSame($button, $button->form(''));
         $this->assertNotSame($button, $button->type(''));
     }
 }

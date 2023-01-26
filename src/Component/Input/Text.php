@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
-use Yii\Html\Attribute;
+use Yii\Html\Helper\Utils;
 
 use function array_key_exists;
 use function is_string;
@@ -16,14 +16,14 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.text.html#input.text
  */
-final class Text extends AbstractInput
+final class Text extends AbstractFormInputWidget
 {
-    use Attribute\HasDirname;
-    use Attribute\HasMaxLength;
-    use Attribute\HasMinLength;
-    use Attribute\HasPattern;
-    use Attribute\HasPlaceholder;
-    use Attribute\HasSize;
+    use Base\HasDirname;
+    use Base\HasMaxLength;
+    use Base\HasMinLength;
+    use Base\HasPattern;
+    use Base\HasPlaceholder;
+    use Base\HasSize;
 
     public function render(): string
     {
@@ -37,7 +37,9 @@ final class Text extends AbstractInput
          * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.text.html#input.text.attrs.value
          */
         if ($value !== null && !is_string($value)) {
-            throw new InvalidArgumentException(self::class . ' widget must be a string or null value.');
+            throw new InvalidArgumentException(
+                Utils::shortNameClass(self::class) . ' widget must be a string or null value.',
+            );
         }
 
         $attributes['value'] = $value;

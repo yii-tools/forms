@@ -89,13 +89,12 @@ final class FilePond extends AbstractFormWidget
     ];
 
     public function __construct(
-        FormModelInterface $formModel,
-        string $attribute,
+        private FormModelInterface $formModel,
+        private string $attribute,
         private readonly AssetManager $assetManager,
         private readonly Webview $webView,
         private readonly TranslatorInterface $translator
     ) {
-        parent::__construct($formModel, $attribute);
     }
 
     /**

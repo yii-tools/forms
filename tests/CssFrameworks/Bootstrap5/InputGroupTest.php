@@ -48,7 +48,6 @@ final class InputGroupTest extends TestCase
                     Text::widget([new BasicForm(), 'username'])
                         ->ariaDescribedBy('basic-addon1')
                         ->ariaLabel('Username')
-                        ->template('{prefix}{input}')
                         ->placeHolder('Username')
                         ->prefix('<span class="input-group-text" id="basic-addon1">@</span>'),
                 ],
@@ -71,7 +70,6 @@ final class InputGroupTest extends TestCase
                     Text::widget([new BasicForm(), 'email'])
                         ->ariaDescribedBy('basic-addon2')
                         ->ariaLabel("Recipient's username")
-                        ->template('{input}{suffix}')
                         ->placeHolder("Recipient's username")
                         ->suffix('<span class="input-group-text" id="basic-addon2">@example.com</span>'),
                 ],
@@ -95,7 +93,6 @@ final class InputGroupTest extends TestCase
                     Text::widget([new BasicForm(), 'url'])
                         ->ariaDescribedBy('basic-addon3')
                         ->id('basic-url')
-                        ->template('{prefix}' . PHP_EOL . '{input}')
                         ->prefix('<span class="input-group-text" id="basic-addon3">https://example.com/users/</span>'),
                 ],
             )
@@ -122,7 +119,6 @@ final class InputGroupTest extends TestCase
                 [
                     Text::widget([new BasicForm(), 'amount'])
                         ->ariaLabel('Amount (to the nearest dollar)')
-                        ->template('{prefix}' . PHP_EOL . '{input}' . PHP_EOL . '{suffix}')
                         ->prefix('<span class="input-group-text">$</span>')
                         ->suffix('<span class="input-group-text">.00</span>'),
                 ],
@@ -148,15 +144,14 @@ final class InputGroupTest extends TestCase
                     Text::widget([new BasicForm(), 'server'])
                         ->ariaLabel('Server')
                         ->class('form-control')
-                        ->template('{prefix}{suffix}{input}')
                         ->placeHolder('Server')
                         ->prefix(
                             Text::widget([new BasicForm(), 'username'])
-                            ->ariaLabel('Username')
-                            ->class('form-control')
-                            ->placeHolder('Username')
-                        )
-                        ->suffix('<span class="input-group-text">@</span>'),
+                                ->ariaLabel('Username')
+                                ->class('form-control')
+                                ->placeHolder('Username') . PHP_EOL .
+                            '<span class="input-group-text">@</span>'
+                        ),
                 ],
             )
                 ->container(false)
@@ -178,8 +173,7 @@ final class InputGroupTest extends TestCase
                     TextArea::widget([new BasicForm(), 'textArea'])
                         ->ariaLabel('With textarea')
                         ->class('form-control')
-                        ->prefix('<span class="input-group-text">With textarea</span>')
-                        ->template('{prefix}' . PHP_EOL . '{input}'),
+                        ->prefix('<span class="input-group-text">With textarea</span>'),
                 ],
             )
                 ->container(false)

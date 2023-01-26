@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component\Input\Text;
+namespace Yii\Forms\Tests\Component\Input\File;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Component\Input\Text;
+use Yii\Forms\Component\Input\File;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
@@ -30,8 +30,8 @@ final class InputAttributesTest extends TestCase
     public function testAriaDescribedBy(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" aria-describedby="test">',
-            Text::widget([new TestForm(), 'string'])->ariaDescribedBy('test')->render(),
+            '<input id="testform-string" name="TestForm[string][]" type="file" aria-describedby="test">',
+            File::widget([new TestForm(), 'string'])->ariaDescribedBy('test')->render(),
         );
     }
 
@@ -44,8 +44,8 @@ final class InputAttributesTest extends TestCase
     public function testAriaLabel(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" aria-label="test">',
-            Text::widget([new TestForm(), 'string'])->ariaLabel('test')->render(),
+            '<input id="testform-string" name="TestForm[string][]" type="file" aria-label="test">',
+            File::widget([new TestForm(), 'string'])->ariaLabel('test')->render(),
         );
     }
 
@@ -58,8 +58,8 @@ final class InputAttributesTest extends TestCase
     public function testDisabled(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" disabled>',
-            Text::widget([new TestForm(), 'string'])->disabled()->render(),
+            '<input id="testform-string" name="TestForm[string][]" type="file" disabled>',
+            File::widget([new TestForm(), 'string'])->disabled()->render(),
         );
     }
 
@@ -72,8 +72,8 @@ final class InputAttributesTest extends TestCase
     public function testForm(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" form="test">',
-            Text::widget([new TestForm(), 'string'])->form('test')->render(),
+            '<input id="testform-string" name="TestForm[string][]" type="file" form="test">',
+            File::widget([new TestForm(), 'string'])->form('test')->render(),
         );
     }
 
@@ -88,9 +88,9 @@ final class InputAttributesTest extends TestCase
         Assert::equalsWithoutLE(
             <<<HTML
             <span>Prefix</span>
-            <input id="testform-string" name="TestForm[string]" type="text">
+            <input id="testform-string" name="TestForm[string][]" type="file">
             HTML,
-            Text::widget([new TestForm(), 'string'])->prefix('<span>Prefix</span>')->render(),
+            File::widget([new TestForm(), 'string'])->prefix('<span>Prefix</span>')->render(),
         );
     }
 
@@ -105,10 +105,10 @@ final class InputAttributesTest extends TestCase
         Assert::equalsWithoutLE(
             <<<HTML
             <span>Prefix</span>
-            <input id="testform-string" name="TestForm[string]" type="text">
+            <input id="testform-string" name="TestForm[string][]" type="file">
             <span>Suffix</span>
             HTML,
-            Text::widget([new TestForm(), 'string'])
+            File::widget([new TestForm(), 'string'])
                 ->prefix('<span>Prefix</span>')
                 ->suffix('<span>Suffix</span>')
                 ->render(),
@@ -124,8 +124,8 @@ final class InputAttributesTest extends TestCase
     public function testReadonly(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" readonly>',
-            Text::widget([new TestForm(), 'string'])->readonly()->render(),
+            '<input id="testform-string" name="TestForm[string][]" type="file" readonly>',
+            File::widget([new TestForm(), 'string'])->readonly()->render(),
         );
     }
 
@@ -138,8 +138,8 @@ final class InputAttributesTest extends TestCase
     public function testRequired(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" required>',
-            Text::widget([new TestForm(), 'string'])->required()->render(),
+            '<input id="testform-string" name="TestForm[string][]" type="file" required>',
+            File::widget([new TestForm(), 'string'])->required()->render(),
         );
     }
 
@@ -153,10 +153,10 @@ final class InputAttributesTest extends TestCase
     {
         Assert::equalsWithoutLE(
             <<<HTML
-            <input id="testform-string" name="TestForm[string]" type="text">
+            <input id="testform-string" name="TestForm[string][]" type="file">
             <span>Suffix</span>
             HTML,
-            Text::widget([new TestForm(), 'string'])->suffix('<span>Suffix</span>')->render(),
+            File::widget([new TestForm(), 'string'])->suffix('<span>Suffix</span>')->render(),
         );
     }
 }

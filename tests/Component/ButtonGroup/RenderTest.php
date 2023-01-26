@@ -29,6 +29,28 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    public function testButtons(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <input type="Submit" value="Submit">
+            <input type="Reset" value="Reset">
+            </div>
+            HTML,
+            ButtonGroup::widget()
+                ->buttons([['label' => 'Submit', 'type' => 'Submit'], ['label' => 'Reset', 'type' => 'Reset']])
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws Exception
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testContainerAttributes(): void
     {
         Assert::equalsWithoutLE(

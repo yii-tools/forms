@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use Closure;
-use Yii\Forms\Base;
-use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Tag;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -25,8 +23,6 @@ use function strtr;
  */
 final class Field extends Widget
 {
-    use Base\HasContainer;
-    use Base\HasPrefixAndSuffix;
     use Field\HasFieldClass;
     use Field\HasFieldError;
     use Field\HasFieldHint;
@@ -35,13 +31,15 @@ final class Field extends Widget
     use Field\HasFieldLabel;
     use Field\HasFieldTemplate;
     use Field\HasFieldValidateClass;
+    use Input\Base\HasContainer;
+    use Input\Base\HasPrefixAndSuffix;
 
     protected array $attributes = [];
     private bool|string $ariaDescribedBy = false;
     private string $class = '';
     private string $inputId = '';
 
-    public function __construct(private readonly AbstractFormWidget|Widget $widget)
+    public function __construct(private readonly Input\AbstractFormInputWidget|Widget $widget)
     {
     }
 
@@ -66,7 +64,7 @@ final class Field extends Widget
      */
     public function render(): string
     {
-        $renderWidget = match ($this->widget instanceof AbstractFormWidget) {
+        $renderWidget = match ($this->widget instanceof Input\AbstractFormInputWidget) {
             true => $this->renderWidget($this->widget),
             false => $this->widget->render(),
         };
@@ -83,7 +81,7 @@ final class Field extends Widget
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    private function renderError(AbstractFormWidget $widget, string $errorContent = ''): string
+    private function renderError(Input\AbstractFormInputWidget $widget, string $errorContent = ''): string
     {
         if ($this->errorContent !== '') {
             $errorContent = $this->errorContent;
@@ -104,7 +102,7 @@ final class Field extends Widget
     /**
      * Renders the input widget for the field.
      */
-    private function renderInput(AbstractFormWidget $widget, string $label): string
+    private function renderInput(Input\AbstractFormInputWidget $widget, string $label): string
     {
         $render = '';
         $renderWidget = $widget->render();
@@ -133,7 +131,7 @@ final class Field extends Widget
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    private function renderHint(AbstractFormWidget $widget): string
+    private function renderHint(Input\AbstractFormInputWidget $widget): string
     {
         $hintAttributes = $this->hintAttributes;
 
@@ -163,7 +161,7 @@ final class Field extends Widget
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    private function renderLabel(AbstractFormWidget $widget): string
+    private function renderLabel(Input\AbstractFormInputWidget $widget): string
     {
         $labelAttributes = $this->labelAttributes;
 
@@ -188,7 +186,7 @@ final class Field extends Widget
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    private function renderWidget(AbstractFormWidget $widget): string
+    private function renderWidget(Input\AbstractFormInputWidget $widget): string
     {
         $errorContent = '';
         $label = '';

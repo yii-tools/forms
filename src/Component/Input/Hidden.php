@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
-use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Html\Attribute;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
 
@@ -19,12 +17,8 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.hidden.html#input.hidden.attrs.value
  */
-final class Hidden extends AbstractFormWidget
+final class Hidden extends AbstractFormInputWidget
 {
-    use Attribute\CanBeDisabled;
-    use Attribute\HasForm;
-    use Attribute\HasValue;
-
     /**
      * @return string the generated input tag.
      */

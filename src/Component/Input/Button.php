@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
-use Yii\Forms\Base\Globals;
-use Yii\Html\Attribute;
+use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
-use Yiisoft\Widget\Widget;
 
 use function array_key_exists;
 use function is_string;
@@ -19,16 +17,11 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button
  */
-final class Button extends Widget
+final class Button extends AbstractFormWidget
 {
-    use Attribute\CanBeDisabled;
-    use Attribute\HasAttributes;
-    use Attribute\HasForm;
-    use Attribute\HasType;
-    use Attribute\HasValue;
-    use Globals;
-
-    protected array $attributes = [];
+    use Base\CanBeDisabled;
+    use Base\HasForm;
+    use Base\HasType;
 
     public function render(): string
     {

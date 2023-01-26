@@ -8,6 +8,7 @@ use InvalidArgumentException;
 use JsonException;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\FormModelInterface;
+use Yii\Html\Helper\Utils;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -48,12 +49,11 @@ final class MarkDownEditor extends AbstractFormWidget
     ];
 
     public function __construct(
-        FormModelInterface $formModel,
-        string $attribute,
+        private FormModelInterface $formModel,
+        private string $attribute,
         private readonly AssetManager $assetManager,
         private readonly Webview $webView
     ) {
-        parent::__construct($formModel, $attribute);
     }
 
     /**
@@ -286,6 +286,11 @@ final class MarkDownEditor extends AbstractFormWidget
         $new->editorOptions['toolbarTips'] = $value;
 
         return $new;
+    }
+
+    private function getId(): string
+    {
+        return Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
     }
 
     /**

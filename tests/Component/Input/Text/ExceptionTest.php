@@ -44,7 +44,7 @@ final class ExceptionTest extends TestCase
     public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Yii\Forms\Component\Input\Text widget must be a string or null value.');
+        $this->expectExceptionMessage('Text::class widget must be a string or null value.');
 
         Text::widget([new TestForm(), 'array'])->render();
     }

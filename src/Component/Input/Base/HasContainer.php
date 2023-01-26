@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Base;
+namespace Yii\Forms\Component\Input\Base;
 
 use Yii\Html\Helper\CssClass;
 

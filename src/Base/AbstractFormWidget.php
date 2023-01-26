@@ -4,148 +4,145 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Base;
 
-use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\FormModelInterface;
-use Yii\Html\Helper\Utils;
-use Yii\Html\Tag;
+use Yii\Html\Helper\CssClass;
 use Yiisoft\Widget\Widget;
 
-use function array_key_exists;
-use function is_string;
-
 /**
- * AbstractFormWidget is the base class for widgets that are used to collect user input.
+ * AbstractFormWidget is the base class for widgets not related to a specific form input.
  */
 abstract class AbstractFormWidget extends Widget
 {
-    use Globals;
-    use HasPrefixAndSuffix;
-    use HasTemplate;
-
     protected array $attributes = [];
-    private string $charset = 'UTF-8';
-
-    public function __construct(protected FormModelInterface $formModel, protected string $attribute)
-    {
-        if ($this->formModel->has($this->attribute) === false) {
-            throw new AttributeNotSet();
-        }
-    }
 
     /**
-     * Returns a new instance specifying the character encoding of the form submission.
+     * The HTML attributes. The following special options are recognized.
      *
-     * @param string $value The character encoding of the form submission.
+     * @param array $values Attribute values indexed by attribute names.
      */
-    public function charset(string $value): static
+    public function attributes(array $values): static
     {
         $new = clone $this;
-        $new->charset = $value;
+        $new->attributes = array_merge($this->attributes, $values);
 
         return $new;
     }
 
     /**
-     * @return string The attribute of the widget.
+     * Returns a new instance with the specified the focus on the control (put cursor into it) when the page loads.
+     * Only one form element could be in focus at the same time.
+     *
+     * @link https://www.w3.org/TR/html52/sec-forms.html#autofocusing-a-form-control-the-autofocus-attribute
      */
-    public function getAttribute(): string
+    public function autofocus(): static
     {
-        return $this->attribute;
-    }
+        $new = clone $this;
+        $new->attributes['autofocus'] = true;
 
-    public function getErrorFirstForAttribute(): string
-    {
-        return $this->formModel->getFirstError($this->attribute);
+        return $new;
     }
 
     /**
-     * @return FormModelInterface The form model of the widget.
+     * Returns a new instance with the specified class added.
+     *
+     * @param string $value The class value to add.
+     *
+     * @link https://html.spec.whatwg.org/#classes
      */
-    public function getFormModel(): FormModelInterface
+    public function class(string $value): static
     {
-        return $this->formModel;
+        $new = clone $this;
+        CssClass::add($new->attributes, $value);
+
+        return $new;
     }
 
     /**
-     * @return string The ID of the widget.
+     * Returns a new instance with the specified the ID of the widget.
+     *
+     * @param string|null $id The ID of the widget.
+     *
+     * @link https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute
      */
-    public function getId(): string
+    public function id(string|null $id): static
     {
-        return match (isset($this->attributes['id']) && is_string($this->attributes['id'])) {
-            true => $this->attributes['id'],
-            false => Utils::generateInputId($this->formModel->getFormName(), $this->attribute),
-        };
+        $new = clone $this;
+        $new->attributes['id'] = $id;
+
+        return $new;
     }
 
     /**
-     * @return bool Whether the widget is valid.
+     * Returns a new instance with the specified the name part of the name/value pair associated with this element for
+     * the purposes of form submission.
+     *
+     * @param string|null $value The name of the widget.
+     *
+     * @link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-name
      */
-    public function isValidated(): bool
+    public function name(string|null $value): static
     {
-        return !$this->isEmpty() && !$this->hasError();
+        $new = clone $this;
+        $new->attributes['name'] = $value;
+
+        return $new;
     }
 
     /**
-     * @return bool Whether the widget has an error.
+     * Returns a new instance with the specified the tabindex global attribute indicates that its element can be
+     * focused, and where it participates in sequential keyboard navigation (usually with the Tab key, hence the name).
+     *
+     * It accepts an integer as a value, with different results depending on the integer's value:
+     *
+     * - A negative value (usually `tabindex="-1"`) means that the element is not reachable via sequential keyboard
+     * navigation, but could be focused with Javascript or visually. It's mostly useful to create accessible widgets
+     * with JavaScript.
+     *
+     * - `tabindex="0"` means that the element should be focusable in sequential keyboard navigation, but its order is
+     * defined by the document's source order.
+     *
+     * - A positive value means the element should be focusable in sequential keyboard navigation, with its order
+     * defined by the value of the number. That is, tabindex="4" is focused before tabindex="5", but after tabindex="3".
+     *
+     * @param int $value The tabindex value.
+     *
+     * @link https://html.spec.whatwg.org/multipage/interaction.html#attr-tabindex
      */
-    public function hasError(): bool
+    public function tabIndex(int $value): static
     {
-        return $this->formModel->hasError($this->attribute);
+        $new = clone $this;
+        $new->attributes['tabindex'] = $value;
+
+        return $new;
     }
 
     /**
-     * @return string The placeholder of the widget.
+     * Returns a new instance with the specified the title global attribute contains text representing advisory
+     * information related to the element it belongs to.
+     *
+     * @param string $value The title of the widget.
+     *
+     * @link https://html.spec.whatwg.org/multipage/dom.html#attr-title
      */
-    protected function getPlaceholder(): string
+    public function title(string $value): static
     {
-        return $this->formModel->getPlaceholder($this->attribute);
+        $new = clone $this;
+        $new->attributes['title'] = $value;
+
+        return $new;
     }
 
     /**
-     * @return mixed The value of the widget.
+     * Returns a new instance with the specified the value content attribute gives the default value of the field.
+     *
+     * @param mixed $value The value of the widget.
+     *
+     * @link https://html.spec.whatwg.org/multipage/input.html#attr-input-value
      */
-    protected function getValue(): mixed
+    public function value(mixed $value): static
     {
-        return $this->formModel->getAttributeValue($this->attribute);
-    }
+        $new = clone $this;
+        $new->attributes['value'] = $value;
 
-    protected function run(string $tag, string $content, string|null $type, array $attributes): string
-    {
-        $attributes['type'] = $type;
-        $prefix = $this->prefix;
-        $suffix = $this->suffix;
-
-        if ($prefix !== '') {
-            $prefix .= PHP_EOL;
-        }
-
-        if (!array_key_exists('id', $attributes)) {
-            $attributes['id'] = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
-        }
-
-        if (!array_key_exists('name', $attributes)) {
-            $attributes['name'] = Utils::generateInputName($this->formModel->getFormName(), $this->attribute);
-        }
-
-        if ($suffix !== '') {
-            $suffix = PHP_EOL . $suffix . PHP_EOL;
-        }
-
-        return strtr(
-            $this->template,
-            [
-                '{prefix}' => $prefix,
-                '{input}' => Tag::create($tag, $content, $attributes),
-                '{suffix}' => $suffix,
-            ],
-        );
-    }
-
-    /**
-     * @return bool Whether the widget is empty.
-     */
-    private function isEmpty(): bool
-    {
-        return $this->formModel->isEmpty();
+        return $new;
     }
 }
