@@ -65,5 +65,11 @@
             "infection/extension-installer": true,
             "foxy/foxy": true
         }
+    },
+    "scripts": {
+        "check-dependencies": "composer-require-checker",
+        "mutation": "roave-infection-static-analysis-plugin",
+        "psalm": "psalm",
+        "test": "phpunit"
     }
 }

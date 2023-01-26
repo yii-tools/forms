@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://github.com/yii-tools/filament" target="_blank">
+    <a href="https://github.com/yii-tools/awesome" target="_blank">
         <img src="https://avatars.githubusercontent.com/u/121752654?s=200&v=4" height="100px">
     </a>
     <h1 align="center">Forms.</h1>
@@ -8,18 +8,20 @@
 
 ## Install
 
+For install this package, you need [composer](https://getcomposer.org/).  
+
 ```shell
 composer require yii-tools/forms
 ```
 
-### Composer require checker
+## Checking dependencies
 
 This package uses [composer-require-checker](https://github.com/maglnet/ComposerRequireChecker) to check if all dependencies are correctly defined in `composer.json`.
 
 To run the checker, execute the following command:
 
 ```shell
-./vendor/bin/composer-require-checker
+composer run check-dependencies
 ```
 
 ## Mutation testing
@@ -27,23 +29,23 @@ To run the checker, execute the following command:
 Mutation testing is checked with [Infection](https://infection.github.io/). To run it:
 
 ```shell
-./vendor/bin/roave-infection-static-analysis-plugin
-```
-
-## Unit testing
-
-Unit testing is checked with [PHPUnit](https://phpunit.de/). To run it:
-
-```shell
-./vendor/bin/phpunit
+composer run mutation
 ```
 
 ## Static analysis
 
-Static analysis is checked with [Psalm](https://psalm.dev/). To run it:
+The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
 
 ```shell
-./vendor/bin/psalm
+composer run psalm
+```
+
+## Testing
+
+The code is tested with [PHPUnit](https://phpunit.de/). To run tests:
+
+```
+composer run test
 ```
 
 ## CI status
