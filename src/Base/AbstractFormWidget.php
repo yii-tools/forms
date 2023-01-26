@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Base;
 
-use Yii\Html\Helper\CssClass;
 use Yiisoft\Widget\Widget;
 
 /**
@@ -12,20 +11,12 @@ use Yiisoft\Widget\Widget;
  */
 abstract class AbstractFormWidget extends Widget
 {
+    use HasAttributes;
+    use HasClass;
+    use HasId;
+    use HasName;
+
     protected array $attributes = [];
-
-    /**
-     * The HTML attributes. The following special options are recognized.
-     *
-     * @param array $values Attribute values indexed by attribute names.
-     */
-    public function attributes(array $values): static
-    {
-        $new = clone $this;
-        $new->attributes = array_merge($this->attributes, $values);
-
-        return $new;
-    }
 
     /**
      * Returns a new instance with the specified the focus on the control (put cursor into it) when the page loads.
@@ -37,52 +28,6 @@ abstract class AbstractFormWidget extends Widget
     {
         $new = clone $this;
         $new->attributes['autofocus'] = true;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance with the specified class added.
-     *
-     * @param string $value The class value to add.
-     *
-     * @link https://html.spec.whatwg.org/#classes
-     */
-    public function class(string $value): static
-    {
-        $new = clone $this;
-        CssClass::add($new->attributes, $value);
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance with the specified the ID of the widget.
-     *
-     * @param string|null $id The ID of the widget.
-     *
-     * @link https://html.spec.whatwg.org/multipage/dom.html#the-id-attribute
-     */
-    public function id(string|null $id): static
-    {
-        $new = clone $this;
-        $new->attributes['id'] = $id;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance with the specified the name part of the name/value pair associated with this element for
-     * the purposes of form submission.
-     *
-     * @param string|null $value The name of the widget.
-     *
-     * @link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-name
-     */
-    public function name(string|null $value): static
-    {
-        $new = clone $this;
-        $new->attributes['name'] = $value;
 
         return $new;
     }

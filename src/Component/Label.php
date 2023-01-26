@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Component;
 
 use Closure;
-use Yii\Html\Attribute\HasForm;
 use Yii\Html\Helper\Encode;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
@@ -19,7 +18,7 @@ use function array_key_exists;
  */
 final class Label extends Field\AbstractFieldPartWidget
 {
-    use HasForm;
+    use Input\Base\HasForm;
 
     private bool $encode = true;
 

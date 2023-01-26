@@ -33,5 +33,12 @@ final class InputAttributesTest extends TestCase
             HTML,
             Form::widget()->autocomplete('on')->begin(),
         );
+
+        $this->assertSame(
+            <<<HTML
+            <form autocomplete="off">
+            HTML,
+            Form::widget()->autocomplete('off')->begin(),
+        );
     }
 }
