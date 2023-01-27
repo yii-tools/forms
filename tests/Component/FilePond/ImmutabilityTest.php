@@ -158,14 +158,12 @@ final class ImmutabilityTest extends TestCase
         $filePond = FilePond::widget([new TestForm(), 'string']);
 
         $this->assertNotSame($filePond, $filePond->allowMultiple(false));
-        $this->assertNotSame($filePond, $filePond->canBePluginImageExifOrientation());
-        $this->assertNotSame($filePond, $filePond->canBePluginFileValidateSize());
-        $this->assertNotSame($filePond, $filePond->canBePluginFileValidateType());
         $this->assertNotSame($filePond, $filePond->canBePluginImageCrop());
-        $this->assertNotSame($filePond, $filePond->canBePluginImagePreview());
+        $this->assertNotSame($filePond, $filePond->canBePluginPdfPreview());
         $this->assertNotSame($filePond, $filePond->className('filepond'));
         $this->assertNotSame($filePond, $filePond->imageResizeTargetWidth(100));
         $this->assertNotSame($filePond, $filePond->maxFiles(1));
+        $this->assertNotSame($filePond, $filePond->labelIdle(''));
         $this->assertNotSame($filePond, $filePond->options([]));
         $this->assertNotSame($filePond, $filePond->pluginDefault([]));
         $this->assertNotSame($filePond, $filePond->required(false));

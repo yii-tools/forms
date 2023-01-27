@@ -1,10 +1,10 @@
 {
     "name": "yii-tools/forms",
     "type": "library",
-    "description": "Filament forms for Yii 3",
+    "description": "Awesome Forms",
     "keywords": [
-        "yii",
-        "filament",
+        "yii-tools",
+        "awesome",
         "forms"
     ],
     "license": "mit",
@@ -14,8 +14,9 @@
         "php": "^8.1",
         "ext-mbstring": "*",
         "foxy/foxy": "^1.2",
+        "yii-tools/filepond-asset": "^1.0@dev",
         "yii-tools/html": "^1.0@dev",
-        "yiisoft/assets": "dev-master as 2.1",
+        "yiisoft/assets": "^3.0",
         "yiisoft/files": "^2.0",
         "yiisoft/http": "^1.2",
         "yiisoft/strings": "^2.1",
@@ -29,7 +30,7 @@
         "maglnet/composer-require-checker": "^4.3",
         "phpunit/phpunit": "^9.5",
         "roave/infection-static-analysis-plugin": "^1.28",
-        "vimeo/psalm": "^5.4",
+        "vimeo/psalm": "^5.6",
         "yii-tools/form-model": "^1.0@dev",
         "yii-tools/support": "^1.0@dev",
         "yiisoft/test-support": "^3.0"

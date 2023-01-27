@@ -14,6 +14,7 @@ use Yiisoft\Definitions\Exception\NotInstantiableException;
 use Yiisoft\Factory\NotFoundException;
 use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\View\WebView;
+use Yii\FilePond\Asset\Npm;
 
 final class FilePond extends AbstractFormWidget
 {
@@ -27,17 +28,15 @@ final class FilePond extends AbstractFormWidget
 
     private array $options = [];
     /** @psalm-var string[] */
-    private array $pluging = [];
-    /** @psalm-var string[] */
     private array $plugingAssets = [
-        'FilePondPluginFileEncode' => Asset\FilePondPluginFileEncodeAsset::class,
-        'FilePondPluginFileValidateSize' => Asset\FilePondPluginFileValidateSizeAsset::class,
-        'FilePondPluginFileValidateType' => Asset\FilePondPluginFileValidateTypeAsset::class,
-        'FilePondPluginImageCrop' => Asset\FilePondPluginImageCropAsset::class,
-        'FilePondPluginImageExifOrientation' => Asset\FilePondPluginImageExifOrientationAsset::class,
-        'FilePondPluginImagePreview' => Asset\FilePondPluginImagePreviewAsset::class,
-        'FilePondPluginImageTransform' => Asset\FilePondPluginImageTransformAsset::class,
-        'FilePondPluginPdfPreview' => Asset\FilePondPluginPdfPreviewAsset::class,
+        'FilePondPluginFileEncode' => Npm\FilePondPluginFileEncodeAsset::class,
+        'FilePondPluginFileValidateSize' => Npm\FilePondPluginFileValidateSizeAsset::class,
+        'FilePondPluginFileValidateType' => Npm\FilePondPluginFileValidateTypeAsset::class,
+        'FilePondPluginImageCrop' => Npm\FilePondPluginImageCropAsset::class,
+        'FilePondPluginImageExifOrientation' => Npm\FilePondPluginImageExifOrientationAsset::class,
+        'FilePondPluginImagePreview' => Npm\FilePondPluginImagePreviewAsset::class,
+        'FilePondPluginImageTransform' => Npm\FilePondPluginImageTransformAsset::class,
+        'FilePondPluginPdfPreview' => Npm\FilePondPluginPdfPreviewAsset::class,
     ];
     /** @psalm-var string[] */
     private array $pluginDefault = [
@@ -47,6 +46,7 @@ final class FilePond extends AbstractFormWidget
         'FilePondPluginImageExifOrientation',
         'FilePondPluginImagePreview',
     ];
+    private string $translationCategory = 'filepond';
     /** @psalm-var string[] */
     private array $translationTagDefault = [
         'labelIdle',
@@ -111,56 +111,12 @@ final class FilePond extends AbstractFormWidget
     }
 
     /**
-     * Return new instance wheather enable or disable plugin image exif orientation.
-     */
-    public function canBePluginImageExifOrientation(): self
-    {
-        $new = clone $this;
-        $new->pluging[] = 'FilePondPluginImageExifOrientation';
-
-        return $new;
-    }
-
-    /**
-     * Return new instance wheather enable or disable plugin file validate size.
-     */
-    public function canBePluginFileValidateSize(): self
-    {
-        $new = clone $this;
-        $new->pluging[] = 'FilePondPluginFileValidateSize';
-
-        return $new;
-    }
-
-    /**
-     * Return new instance wheather enable or disable plugin image preview.
-     */
-    public function canBePluginFileValidateType(): self
-    {
-        $new = clone $this;
-        $new->pluging[] = 'FilePondPluginFileValidateType';
-
-        return $new;
-    }
-
-    /**
      * Return new instance wheather enable or disable plugin image crop.
      */
     public function canBePluginImageCrop(): self
     {
         $new = clone $this;
-        $new->pluging[] = 'FilePondPluginImageCrop';
-
-        return $new;
-    }
-
-    /**
-     * Return new instance wheather enable or disable plugin image preview.
-     */
-    public function canBePluginImagePreview(): self
-    {
-        $new = clone $this;
-        $new->pluging[] = 'FilePondPluginImagePreview';
+        $new->pluginDefault[] = 'FilePondPluginImageCrop';
 
         return $new;
     }
@@ -171,7 +127,7 @@ final class FilePond extends AbstractFormWidget
     public function canBePluginPdfPreview(): self
     {
         $new = clone $this;
-        $new->pluging[] = 'FilePondPluginPdfPreview';
+        $new->pluginDefault[] = 'FilePondPluginPdfPreview';
 
         return $new;
     }
@@ -206,6 +162,21 @@ final class FilePond extends AbstractFormWidget
     {
         $new = clone $this;
         $new->options['maxFiles'] = $value;
+
+        return $new;
+    }
+
+    /**
+     * Return new instance with the label shown to indicate this is a drop area. FilePond will automatically bind browse
+     * file events to the element with CSS class.
+     *
+     * @param string $value The label shown to indicate this is a drop area.
+     * Default: `Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`.
+     */
+    public function labelIdle(string $value): self
+    {
+        $new = clone $this;
+        $new->options['labelIdle'] = $value;
 
         return $new;
     }
@@ -297,12 +268,11 @@ final class FilePond extends AbstractFormWidget
 
     private function buildTranslation(): array
     {
-        $translator = $this->translator->withDefaultCategory('filepond');
         $translation = [];
 
         foreach ($this->translationTagDefault as $tag) {
             if (array_key_exists($tag, $this->options) === false) {
-                $translation[$tag] = $translator->translate($tag);
+                $translation[$tag] = $this->translator->translate($tag, [], $this->translationCategory);
             }
         }
 
@@ -314,7 +284,7 @@ final class FilePond extends AbstractFormWidget
         $closure = $this->fileValidateTypeDetectType;
         $id = Utils::generateInputId($this->formModel->getFormName(), $this->attribute);
         $options = array_merge($this->options, $this->buildTranslation());
-        $pluginConfig = implode(', ', $this->pluginDefault) . ', ' . implode(', ', $this->pluging);
+        $pluginConfig = implode(', ', $this->pluginDefault);
         $setOptions = json_encode($options);
 
         return <<<JS
@@ -333,13 +303,12 @@ final class FilePond extends AbstractFormWidget
     {
         $assetManager = $this->assetManager;
         $depends = [];
-        $plugins = array_merge($this->pluginDefault, $this->pluging);
 
-        foreach ($plugins as $plugin) {
+        foreach ($this->pluginDefault as $plugin) {
             $depends[] = $this->plugingAssets[$plugin];
         }
 
-        $assetManager->registerCustomized(Asset\FilePondAsset::class, ['depends' => $depends]);
+        $assetManager->registerCustomized(Npm\FilePondAsset::class, ['depends' => $depends]);
 
         $this->webView->registerJs($this->getScript());
     }
