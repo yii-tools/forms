@@ -312,7 +312,7 @@ final class MarkDownEditor extends AbstractFormWidget
         foreach ($editorOptions as $attribute => $value) {
             $config .= match ($attribute) {
                 'element' => (string) $value,
-                default => $attribute . ': ' . json_encode($value, JSON_THROW_ON_ERROR) . ', ',
+                default => $attribute . ': ' . json_encode($value, JSON_THROW_ON_ERROR),
             };
         }
 

@@ -145,14 +145,6 @@ final class FilePond extends AbstractFormWidget
         return $new;
     }
 
-    public function imageResizeTargetWidth(int $value): self
-    {
-        $new = clone $this;
-        $new->options['imageResizeTargetWidth'] = $value;
-
-        return $new;
-    }
-
     /**
      * Return new instance with number of files to load and display in the list.
      *
@@ -256,7 +248,7 @@ final class FilePond extends AbstractFormWidget
             ->class($className);
 
         if (array_key_exists('allowMultiple', $this->options) && $this->options['allowMultiple']) {
-            $fileTag->multiple();
+            $fileTag = $fileTag->multiple();
         }
 
         if (array_key_exists('className', $this->options) && is_string($this->options['className'])) {

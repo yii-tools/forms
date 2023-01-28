@@ -35,10 +35,9 @@ final class RenderTest extends TestCase
      */
     public function testAutoFocusEditor(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->autoFocusEditor(false);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->autoFocusEditor(false)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('autofocus: false', $this->getScript());
     }
 
     /**
@@ -52,13 +51,11 @@ final class RenderTest extends TestCase
      */
     public function testAutoSave(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->autoSave(500);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->autoSave(500)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
-        $this->assertSame(
-            ['delay' => 500, 'enabled' => true, 'uniqueId' => Assert::invokeMethod($markDownEditor, 'getId')],
-            Assert::inaccessibleProperty($markDownEditor, 'editorOptions')['autosave'],
+        $this->assertStringContainsString(
+            'autosave: {"delay":500,"enabled":true,"uniqueId":"testform-string"}',
+            $this->getScript(),
         );
     }
 
@@ -73,10 +70,9 @@ final class RenderTest extends TestCase
      */
     public function testForceSync(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->forceSync(false);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->forceSync(false)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('forceSync: false', $this->getScript());
     }
 
     /**
@@ -90,14 +86,9 @@ final class RenderTest extends TestCase
      */
     public function testGetElementId(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string']);
-        $markDownEditor->render();
-        $expected = 'var TestformString = new SimpleMDE({ element: document.getElementById("testform-string"), ' .
-        'toolbar: ["bold","italic","strikethrough","heading","heading-smaller","heading-bigger","heading-1","heading-2",' .
-        '"heading-3","code","quote","unordered-list","ordered-list","link","image","table","horizontal-rule","preview",' .
-        '"side-by-side","fullscreen","guide"],  });';
+        MarkDownEditor::widget([new TestForm(), 'string'])->render();
 
-        $this->assertSame($expected, $this->getScript());
+        $this->assertStringContainsString('element: document.getElementById("testform-string")', $this->getScript());
     }
 
     /**
@@ -111,11 +102,11 @@ final class RenderTest extends TestCase
      */
     public function testHiddenIcons(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])
-            ->hiddenIcons(['heading-1', 'heading-2', 'heading-3']);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])
+            ->hiddenIcons(['heading-1', 'heading-2', 'heading-3'])
+            ->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('hideIcons: ["heading-1","heading-2","heading-3"', $this->getScript());
     }
 
     /**
@@ -129,10 +120,9 @@ final class RenderTest extends TestCase
      */
     public function testIndentWithTabs(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->indentWithTabs(false);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->indentWithTabs(false)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('indentWithTabs: false', $this->getScript());
     }
 
     /**
@@ -146,10 +136,9 @@ final class RenderTest extends TestCase
      */
     public function testInitialValue(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->initialValue('Hello World');
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->initialValue('Hello World')->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('initialValue: "Hello World"', $this->getScript());
     }
 
     /**
@@ -163,10 +152,9 @@ final class RenderTest extends TestCase
      */
     public function testLineWrapping(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->lineWrapping(true);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->lineWrapping(true)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('lineWrapping: true', $this->getScript());
     }
 
     /**
@@ -180,11 +168,9 @@ final class RenderTest extends TestCase
      */
     public function testOptions(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])
-            ->options('placeholder', 'Hello World');
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->options('placeholder', 'Hello World')->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('placeholder: "Hello World"', $this->getScript());
     }
 
     /**
@@ -198,10 +184,9 @@ final class RenderTest extends TestCase
      */
     public function testPromptURLs(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->promptURLs(true);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->promptURLs(true)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('promptURLs: true', $this->getScript());
     }
 
     /**
@@ -215,10 +200,9 @@ final class RenderTest extends TestCase
      */
     public function testPlaceholder(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->placeholder('Hello World');
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->placeholder('Hello World')->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('placeholder: "Hello World"', $this->getScript());
     }
 
     /**
@@ -230,24 +214,7 @@ final class RenderTest extends TestCase
      * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
-    public function testRegisterAssets(): void
-    {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string']);
-        $markDownEditor->render();
-
-        $this->assertInstanceof(MarkDownEditorAsset::class, $this->assetManager->getBundle(MarkDownEditorAsset::class));
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws JsonException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     * @throws ReflectionException
-     * @throws \Yiisoft\Assets\Exception\InvalidConfigException
-     */
-    public function testRun(): void
+    public function testRender(): void
     {
         $this->assertSame(
             <<<HTML
@@ -255,6 +222,7 @@ final class RenderTest extends TestCase
             HTML,
             MarkDownEditor::widget([new TestForm(), 'string'])->render(),
         );
+        $this->assertTrue($this->assetManager->isRegisteredBundle(MarkDownEditorAsset::class));
     }
 
     /**
@@ -268,11 +236,11 @@ final class RenderTest extends TestCase
      */
     public function testShowIcons(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])
-            ->showIcons(['heading-1', 'heading-2', 'heading-3']);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])
+            ->showIcons(['heading-1', 'heading-2', 'heading-3'])
+            ->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('showIcons: ["heading-1","heading-2","heading-3"]', $this->getScript());
     }
 
     /**
@@ -286,10 +254,9 @@ final class RenderTest extends TestCase
      */
     public function testSpellChecker(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->spellChecker(true);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->spellChecker(true)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('spellChecker: true', $this->getScript());
     }
 
     /**
@@ -303,10 +270,9 @@ final class RenderTest extends TestCase
      */
     public function testStyleSelectedText(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->styleSelectedText(true);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->styleSelectedText(true)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('styleSelectedText: true', $this->getScript());
     }
 
     /**
@@ -320,10 +286,9 @@ final class RenderTest extends TestCase
      */
     public function testTabSize(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->tabSize(2);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->tabSize(2)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('tabSize: 2', $this->getScript());
     }
 
     /**
@@ -337,10 +302,9 @@ final class RenderTest extends TestCase
      */
     public function testToolbar(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->toolbar(['bold', 'italic']);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->toolbar(['bold', 'italic'])->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('toolbar: ["bold","italic"]', $this->getScript());
     }
 
     /**
@@ -354,10 +318,9 @@ final class RenderTest extends TestCase
      */
     public function testToolbarTips(): void
     {
-        $markDownEditor = MarkDownEditor::widget([new TestForm(), 'string'])->toolbarTips(true);
-        $markDownEditor->render();
+        MarkDownEditor::widget([new TestForm(), 'string'])->toolbarTips(true)->render();
 
-        $this->assertSame(Assert::invokeMethod($markDownEditor, 'getScript'), $this->getScript());
+        $this->assertStringContainsString('toolbarTips: true', $this->getScript());
     }
 
     private function getScript(): string
