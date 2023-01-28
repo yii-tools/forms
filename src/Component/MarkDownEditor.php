@@ -9,6 +9,7 @@ use JsonException;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\FormModelInterface;
 use Yii\Html\Helper\Utils;
+use Yii\SimpleMde\Asset\Npm\Min\MarkDownEditorAsset;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -325,7 +326,7 @@ final class MarkDownEditor extends AbstractFormWidget
      */
     private function registerAssets(): void
     {
-        $this->assetManager->register(Asset\MarkDownEditorAsset::class);
+        $this->assetManager->register(MarkDownEditorAsset::class);
         $this->webView->registerJs($this->getScript());
     }
 

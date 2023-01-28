@@ -6,10 +6,10 @@ namespace Yii\Forms\Tests\Component\MarkDownEditor;
 
 use JsonException;
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Component\Asset\MarkDownEditorAsset;
 use Yii\Forms\Component\MarkDownEditor;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
+use Yii\SimpleMde\Asset\Npm\Min\MarkDownEditorAsset;
 use Yii\Support\Assert;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;

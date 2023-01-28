@@ -17,6 +17,7 @@
         "foxy/foxy": "^1.2",
         "yii-tools/filepond-asset": "^1.0@dev",
         "yii-tools/html": "^1.0@dev",
+        "yii-tools/simplemde-asset": "^1.0@dev",
         "yiisoft/assets": "^3.0",
         "yiisoft/files": "^2.0",
         "yiisoft/http": "^1.2",

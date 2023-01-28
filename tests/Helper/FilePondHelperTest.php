@@ -31,7 +31,7 @@ final class FilePondHelperTest extends TestCase
                     'data' => 'VGVzdE1lCg==',
                 ], JSON_THROW_ON_ERROR),
             ],
-            dirname(__DIR__) . '/Support/runtime',
+            dirname(__DIR__) . '/Support/runtime/',
         );
 
         $this->assertFileExists(dirname(__DIR__) . '/Support/runtime/test.txt');
