@@ -1,11 +1,12 @@
 {
     "name": "yii-tools/forms",
     "type": "library",
-    "description": "Awesome Forms",
+    "description": "Awesome Forms for YiiFramework v.3.0.",
     "keywords": [
         "yii-tools",
         "awesome",
-        "forms"
+        "forms",
+        "yii3"
     ],
     "license": "mit",
     "minimum-stability": "dev",
