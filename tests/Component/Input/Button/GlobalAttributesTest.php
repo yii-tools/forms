@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Component\Button;
+namespace Yii\Forms\Tests\Component\Input\Button;
 
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Component\Input\Button;

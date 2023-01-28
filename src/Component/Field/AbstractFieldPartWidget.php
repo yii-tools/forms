@@ -37,7 +37,7 @@ abstract class AbstractFieldPartWidget extends Widget
      *
      * @param Closure $value The closure that will be called to obtain content.
      */
-    public function closure(Closure $value): self
+    public function closure(Closure $value): static
     {
         $new = clone $this;
         $new->closure = $value;
@@ -50,7 +50,7 @@ abstract class AbstractFieldPartWidget extends Widget
      *
      * @param string $value The error text.
      */
-    public function content(string $value): self
+    public function content(string $value): static
     {
         $new = clone $this;
         $new->content = $value;
@@ -63,7 +63,7 @@ abstract class AbstractFieldPartWidget extends Widget
      *
      * @param string $value The container tag name.
      */
-    public function tag(string $value): self
+    public function tag(string $value): static
     {
         if ($value === '') {
             throw new InvalidArgumentException('Tag name cannot be empty.');

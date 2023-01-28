@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Component\FilePond;
 
-use JsonException;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\FilePond\Asset\Npm;
 use Yii\Forms\Component\FilePond;
 use Yii\Forms\Tests\Support\TestForm;
@@ -27,10 +25,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testAllowMultiple(): void
@@ -43,10 +39,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testCanBePluginImageCrop(): void
@@ -64,10 +58,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testCanBePluginPdfPreview(): void
@@ -85,10 +77,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testClassName(): void
@@ -101,10 +91,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testLabelIdle(): void
@@ -122,10 +110,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testMaxFiles(): void
@@ -138,10 +124,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testOptions(): void
@@ -159,10 +143,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testPluingDefault(): void
@@ -179,10 +161,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testRender(): void
@@ -209,10 +189,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testRequired(): void
@@ -225,10 +203,8 @@ final class RenderTest extends TestCase
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
-     * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testTranslation(): void
@@ -276,11 +252,17 @@ final class RenderTest extends TestCase
         $this->assertStringContainsString('imageValidateSizeLabelExpectedMaxResolution', $script);
     }
 
+    /**
+     * @psalm-suppress MixedMethodCall
+     */
     private function getScript(): string
     {
         $script = '';
 
-        foreach (Assert::inaccessibleProperty($this->webView, 'state')->getJS() as $js) {
+        /** @psalm-var string[][] $getAllJs */
+        $getAllJs = Assert::inaccessibleProperty($this->webView, 'state')->getJS();
+
+        foreach ($getAllJs as $js) {
             foreach ($js as $value) {
                 $script = $value;
             }

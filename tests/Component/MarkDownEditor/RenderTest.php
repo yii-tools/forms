@@ -6,7 +6,6 @@ namespace Yii\Forms\Tests\Component\MarkDownEditor;
 
 use JsonException;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Component\Asset\MarkDownEditorAsset;
 use Yii\Forms\Component\MarkDownEditor;
 use Yii\Forms\Tests\Support\TestForm;
@@ -30,7 +29,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testAutoFocusEditor(): void
@@ -46,7 +44,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testAutoSave(): void
@@ -65,7 +62,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testForceSync(): void
@@ -81,7 +77,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testGetElementId(): void
@@ -97,7 +92,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testHiddenIcons(): void
@@ -115,7 +109,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testIndentWithTabs(): void
@@ -131,7 +124,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testInitialValue(): void
@@ -147,7 +139,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testLineWrapping(): void
@@ -163,7 +154,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testOptions(): void
@@ -179,7 +169,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testPromptURLs(): void
@@ -195,7 +184,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testPlaceholder(): void
@@ -211,7 +199,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testRender(): void
@@ -231,7 +218,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testShowIcons(): void
@@ -249,7 +235,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testSpellChecker(): void
@@ -265,7 +250,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testStyleSelectedText(): void
@@ -281,7 +265,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testTabSize(): void
@@ -297,7 +280,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testToolbar(): void
@@ -313,7 +295,6 @@ final class RenderTest extends TestCase
      * @throws JsonException
      * @throws NotFoundException
      * @throws NotInstantiableException
-     * @throws ReflectionException
      * @throws \Yiisoft\Assets\Exception\InvalidConfigException
      */
     public function testToolbarTips(): void
@@ -323,11 +304,17 @@ final class RenderTest extends TestCase
         $this->assertStringContainsString('toolbarTips: true', $this->getScript());
     }
 
+    /**
+     * @psalm-suppress MixedMethodCall
+     */
     private function getScript(): string
     {
         $script = '';
 
-        foreach (Assert::inaccessibleProperty($this->webView, 'state')->getJS() as $js) {
+        /** @psalm-var string[][] $getAllJs */
+        $getAllJs = Assert::inaccessibleProperty($this->webView, 'state')->getJS();
+
+        foreach ($getAllJs as $js) {
             foreach ($js as $value) {
                 $script = $value;
             }
