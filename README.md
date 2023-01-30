@@ -1,6 +1,7 @@
 <p align="center">
     <a href="https://github.com/yii-tools/forms" target="_blank">
         <img src="https://avatars.githubusercontent.com/u/121752654?s=200&v=4" height="100px">
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991110.png" height="100px">
     </a>
     <h1 align="center">Awesome Forms for YiiFramework v.3.0.</h1>
     <br>
@@ -58,8 +59,8 @@ composer run test
 [![codecov](https://codecov.io/gh/yii-tools/forms/branch/main/graph/badge.svg?token=MF0XUGVLYC)](https://codecov.io/gh/yii-tools/forms)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fyii-tools%2Fforms%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/yii-tools/forms/main)
 [![static analysis](https://github.com/yii-tools/forms/actions/workflows/static.yml/badge.svg)](https://github.com/yii-tools/forms/actions/workflows/static.yml)
-[![type-coverage](https://shepherd.dev/github/yii-tools/forms/coverage.svg)](https://shepherd.dev/github/yiii-tools/forms)
-[![StyleCI](https://github.styleci.io/repos/584520921/shield?branch=main)](https://github.styleci.io/repos/584520921?branch=main)
+[![type-coverage](https://shepherd.dev/github/yii-tools/forms/coverage.svg)](https://shepherd.dev/github/yii-tools/forms)
+[![StyleCI](https://github.styleci.io/repos/585248342/shield?branch=main)](https://github.styleci.io/repos/585248342?branch=main)
 
 ## License
 
