@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Component\Input\Date;
 use Yii\Forms\Tests\Support\TestForm;
 
-final class DateTest extends TestCase
+final class RenderTest extends TestCase
 {
     public function testRender(): void
     {
