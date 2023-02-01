@@ -25,21 +25,40 @@ final class FilePondHelper
      */
     public static function save(array $files, string $path): void
     {
+        self::procesedFile($files, $path);
+    }
+
+    /**
+     * @throws JsonException
+     */
+    public static function saveWithReturningFiles(array $files, string $path): array
+    {
+        return self::procesedFile($files, $path);
+    }
+
+    private static function procesedFile(array $files, string $path): array
+    {
+        $savedFiles = [];
+
         /** @psalm-var array<array-key, string|null> $files */
         foreach ($files as $file) {
             if (is_string($file) && $file !== '') {
                 /** @psalm-var object|false|null $file */
-                $file = json_decode($file, false, 512, JSON_THROW_ON_ERROR);
+                $file = json_decode($file, false, flags: JSON_THROW_ON_ERROR);
             }
 
             if (is_object($file) && is_string($file->data) && is_string($file->name)) {
-                self::writeFile(
-                    $path,
-                    base64_decode($file->data),
-                    self::sanitizeFilename($file->name)
-                );
+                $filename = self::sanitizeFilename($file->name);
+
+                $result = self::writeFile($path, base64_decode($file->data), $filename);
+
+                if ($result) {
+                    $savedFiles[] = $path . $filename;
+                }
             }
         }
+
+        return $savedFiles;
     }
 
     private static function sanitizeFilename(string $filename): string
@@ -65,10 +84,13 @@ final class FilePondHelper
         return preg_replace("/[^a-zA-Z0-9\_\s]/", '', $str);
     }
 
-    private static function writeFile(string $path, string $data, string $filename): void
+    private static function writeFile(string $path, string $data, string $filename): bool
     {
-        $handle = fopen($path . DIRECTORY_SEPARATOR . $filename, 'wb');
-        fwrite($handle, $data);
+        $handle = fopen($path . $filename, 'wb');
+        $result = fwrite($handle, $data);
+
         fclose($handle);
+
+        return $result !== false;
     }
 }

@@ -9,6 +9,7 @@ use Yiisoft\Assets\AssetLoader;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Assets\AssetPublisher;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Files\FileHelper;
 use Yiisoft\Test\Support\Container\SimpleContainer;
 use Yiisoft\Test\Support\EventDispatcher\SimpleEventDispatcher;
 use Yiisoft\Translator\Translator;
@@ -16,8 +17,14 @@ use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\View\WebView;
 use Yiisoft\Widget\WidgetFactory;
 
+use function closedir;
+use function is_dir;
+use function opendir;
+use function readdir;
+
 trait TestTrait
 {
+    private Aliases $aliases;
     private AssetManager $assetManager;
     private WebView $webView;
 
@@ -28,7 +35,7 @@ trait TestTrait
     {
         parent::setUp();
 
-        $aliases = new Aliases(
+        $this->aliases = new Aliases(
             [
                 '@root' => __DIR__ . '/runtime',
                 '@assets' => '@root',
@@ -37,10 +44,9 @@ trait TestTrait
                 '@npm' => dirname(__DIR__, 2) . '/node_modules',
             ],
         );
-
-        $this->assetManager = new AssetManager($aliases, new AssetLoader($aliases, false, []));
+        $this->assetManager = new AssetManager($this->aliases, new AssetLoader($this->aliases, false, []));
         $this->webView = new WebView(dirname(__DIR__) . '/runtime', new SimpleEventDispatcher());
-        $this->assetManager = $this->assetManager->withPublisher(new AssetPublisher($aliases));
+        $this->assetManager = $this->assetManager->withPublisher(new AssetPublisher($this->aliases));
 
         $container = new SimpleContainer(
             [
@@ -51,5 +57,42 @@ trait TestTrait
         );
 
         WidgetFactory::initialize($container);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        $this->removeFiles('@root');
+    }
+
+    /**
+     * Remove files from the directory.
+     *
+     * @throws RuntimeException
+     */
+    protected function removeFiles(string $basePath): void
+    {
+        $handle = opendir($dir = $this->aliases->get($basePath));
+
+        if ($handle === false) {
+            throw new RuntimeException("Unable to open directory: $dir");
+        }
+
+        while (($file = readdir($handle)) !== false) {
+            if ($file === '.' || $file === '..' || $file === '.gitignore') {
+                continue;
+            }
+
+            $path = $dir . DIRECTORY_SEPARATOR . $file;
+
+            if (is_dir($path)) {
+                FileHelper::removeDirectory($path);
+            } else {
+                FileHelper::unlink($path);
+            }
+        }
+
+        closedir($handle);
     }
 }
