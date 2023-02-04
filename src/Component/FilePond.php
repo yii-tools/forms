@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Component;
 
+use Yii\FilePond\Asset\Npm;
+use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Forms\FormModelInterface;
 use Yii\Html\Helper\Utils;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
@@ -14,7 +15,6 @@ use Yiisoft\Definitions\Exception\NotInstantiableException;
 use Yiisoft\Factory\NotFoundException;
 use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\View\WebView;
-use Yii\FilePond\Asset\Npm;
 
 final class FilePond extends AbstractFormWidget
 {

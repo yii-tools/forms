@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Component\Input;
 
+use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\FormModelInterface;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
 
