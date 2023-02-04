@@ -8,9 +8,12 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Component\Input\Date;
 use Yii\Forms\Tests\Support\TestForm;
+use Yii\Forms\Tests\Support\TestTrait;
 
 final class ExceptionTest extends TestCase
 {
+    use TestTrait;
+
     public function testStep(): void
     {
         $this->expectException(InvalidArgumentException::class);

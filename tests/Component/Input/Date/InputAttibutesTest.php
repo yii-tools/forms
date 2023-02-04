@@ -7,9 +7,12 @@ namespace Forge\Form\Tests\Input\Date;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Component\Input\Date;
 use Yii\Forms\Tests\Support\TestForm;
+use Yii\Forms\Tests\Support\TestTrait;
 
 final class InputAttibutesTest extends TestCase
 {
+    use TestTrait;
+
     public function testMax(): void
     {
         $this->assertSame(
