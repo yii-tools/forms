@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Base;
 
 use PHPUnit\Framework\TestCase;
+use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Component\Input\AbstractFormInputWidget;
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\FormModelInterface;
 use Yii\Forms\Tests\Support\TestForm;
 
 /**

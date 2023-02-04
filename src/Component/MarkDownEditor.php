@@ -6,8 +6,8 @@ namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
 use JsonException;
+use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Base\AbstractFormWidget;
-use Yii\Forms\FormModelInterface;
 use Yii\Html\Helper\Utils;
 use Yii\SimpleMde\Asset\Npm\Min\MarkDownEditorAsset;
 use Yiisoft\Assets\AssetManager;

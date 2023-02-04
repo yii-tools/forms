@@ -6,11 +6,11 @@ namespace Yii\Forms\Tests\Component\Field;
 
 use PHPUnit\Framework\TestCase;
 use Stringable;
+use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Component\ButtonGroup;
 use Yii\Forms\Component\Field;
 use Yii\Forms\Component\Input\Hidden;
 use Yii\Forms\Component\Input\Text;
-use Yii\Forms\FormModelInterface;
 use Yii\Forms\Tests\Support\BasicForm;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;

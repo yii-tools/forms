@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Support;
 
-use Yii\Forms\FormModelInterface;
 use Yii\FormModel\AbstractFormModel;
 
-final class TestForm extends AbstractFormModel implements FormModelInterface
+final class TestForm extends AbstractFormModel
 {
     private array $array = [];
     private string $mĄkA = '';
