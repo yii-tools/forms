@@ -50,4 +50,18 @@ final class RenderTest extends TestCase
             Text::widget([new TestForm(), 'string'])->render(),
         );
     }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testValue(): void
+    {
+        $this->assertSame(
+            '<input id="testform-string" name="TestForm[string]" type="text" value="value">',
+            Text::widget([new TestForm(), 'string'])->value('value')->render()
+        );
+    }
 }
