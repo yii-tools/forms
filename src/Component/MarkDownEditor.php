@@ -7,9 +7,9 @@ namespace Yii\Forms\Component;
 use InvalidArgumentException;
 use JsonException;
 use Yii\FormModel\FormModelInterface;
-use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Helper\Utils;
 use Yii\SimpleMde\Asset\Npm\Min\MarkDownEditorAsset;
+use Yii\Widget\Component\AbstractComponentWidget;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -21,7 +21,7 @@ use Yiisoft\View\WebView;
 use function in_array;
 use function json_encode;
 
-final class MarkDownEditor extends AbstractFormWidget
+final class MarkDownEditor extends AbstractComponentWidget
 {
     /** @psalm-var array<string, mixed> $editorOptions */
     private array $editorOptions = [];

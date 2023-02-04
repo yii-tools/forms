@@ -28,7 +28,7 @@ final class ExceptionTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testConstruct(): void
+    public function testAttributeNotSet(): void
     {
         $this->expectException(AttributeNotSet::class);
         $this->expectExceptionMessage('Failed to create widget because "attribute" is not set or not exists.');

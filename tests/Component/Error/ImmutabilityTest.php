@@ -30,7 +30,6 @@ final class ImmutabilityTest extends TestCase
     {
         $error = Error::widget([new TestForm(), 'string']);
 
-        $this->assertNotSame($error, $error->attributes([]));
         $this->assertNotSame($error, $error->closure(static fn () => ''));
         $this->assertNotSame($error, $error->content(''));
         $this->assertNotSame($error, $error->tag('div'));

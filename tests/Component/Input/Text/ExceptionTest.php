@@ -27,20 +27,6 @@ final class ExceptionTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testDirname(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The value cannot be empty.');
-
-        Text::widget([new TestForm(), 'string'])->dirname('')->render();
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);

@@ -14,14 +14,6 @@ final class ExceptionTest extends TestCase
 {
     use TestTrait;
 
-    public function testStep(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The value must be a number.');
-
-        Date::widget([new TestForm(), 'string'])->step('x')->render();
-    }
-
     public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);

@@ -30,9 +30,6 @@ final class ImmutabilityTest extends TestCase
         $buttonGroup = ButtonGroup::widget();
 
         $this->assertNotSame($buttonGroup, $buttonGroup->buttons([]));
-        $this->assertNotSame($buttonGroup, $buttonGroup->container(false));
-        $this->assertNotSame($buttonGroup, $buttonGroup->containerAttributes());
-        $this->assertNotSame($buttonGroup, $buttonGroup->containerClass(''));
         $this->assertNotSame($buttonGroup, $buttonGroup->individualButtonAttributes());
     }
 }

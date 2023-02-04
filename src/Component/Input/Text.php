@@ -6,6 +6,8 @@ namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
 use Yii\Html\Helper\Utils;
+use Yii\Widget\Input\AbstractInputWidget;
+use Yii\Widget\Input\Concern;
 
 use function array_key_exists;
 use function is_string;
@@ -16,14 +18,14 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.text.html#input.text
  */
-final class Text extends AbstractFormInputWidget
+final class Text extends AbstractInputWidget
 {
-    use Base\HasDirname;
-    use Base\HasMaxLength;
-    use Base\HasMinLength;
-    use Base\HasPattern;
-    use Base\HasPlaceholder;
-    use Base\HasSize;
+    use Concern\HasDirname;
+    use Concern\HasMaxLength;
+    use Concern\HasMinLength;
+    use Concern\HasPattern;
+    use Concern\HasPlaceholder;
+    use Concern\HasSize;
 
     public function render(): string
     {

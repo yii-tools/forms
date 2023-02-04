@@ -6,6 +6,7 @@ namespace Yii\Forms\Component;
 
 use Exception;
 use Yii\Html\Tag;
+use Yii\Widget\Input\Concern\HasContainer;
 use Yiisoft\Widget\Widget;
 
 use function array_merge;
@@ -40,7 +41,7 @@ use function is_array;
  */
 final class ButtonGroup extends Widget
 {
-    use Input\Base\HasContainer;
+    use HasContainer;
 
     private array $buttons = [];
     /** @psalm-var array[] */
