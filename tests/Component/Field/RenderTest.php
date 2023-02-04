@@ -698,7 +698,6 @@ final class RenderTest extends TestCase
         );
     }
 
-
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
