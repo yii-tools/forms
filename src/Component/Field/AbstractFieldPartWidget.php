@@ -7,8 +7,8 @@ namespace Yii\Forms\Component\Field;
 use Closure;
 use InvalidArgumentException;
 use Yii\FormModel\FormModelInterface;
-use Yii\Forms\Base\HasAttributes;
 use Yii\Forms\Exception\AttributeNotSet;
+use Yii\Widget\Component\Concern\HasAttributes;
 use Yiisoft\Widget\Widget;
 
 /**

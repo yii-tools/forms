@@ -6,8 +6,9 @@ namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
 use Stringable;
-use Yii\Forms\Base;
 use Yii\Html\Tag;
+use Yii\Widget\Component\Concern;
+use Yii\Widget\Input;
 use Yiisoft\Http\Method;
 use Yiisoft\Widget\Widget;
 
@@ -32,11 +33,11 @@ use function urldecode;
  */
 final class Form extends Widget
 {
-    use Base\HasAttributes;
-    use Base\HasClass;
-    use Base\HasId;
-    use Base\HasName;
-    use Input\Base\HasAutocomplete;
+    use Concern\HasAttributes;
+    use Concern\HasClass;
+    use Concern\HasId;
+    use Concern\HasName;
+    use Input\Concern\HasAutocomplete;
 
     protected array $attributes = [];
     private string $action = '';

@@ -6,8 +6,8 @@ namespace Yii\Forms\Component;
 
 use Yii\FilePond\Asset\Npm;
 use Yii\FormModel\FormModelInterface;
-use Yii\Forms\Base\AbstractFormWidget;
 use Yii\Html\Helper\Utils;
+use Yii\Widget\Component\AbstractComponentWidget;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
@@ -16,7 +16,7 @@ use Yiisoft\Factory\NotFoundException;
 use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\View\WebView;
 
-final class FilePond extends AbstractFormWidget
+final class FilePond extends AbstractComponentWidget
 {
     use FilePond\HasPluginFileValidateSize;
     use FilePond\HasPluginFileValidateType;

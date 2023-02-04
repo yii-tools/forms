@@ -33,42 +33,6 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testAfterInputWithStringable(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div class="input-group mb-3">
-            <input class="form-control" id="basicform-email" name="BasicForm[email]" type="text" aria-describedby="basic-addon2" aria-label="Recipient&apos;s username" placeholder="Recipient&apos;s username">
-            <span class="input-group-text" id="basic-addon2">@example.com</span>
-            </div>
-            HTML,
-            Field::widget([
-                Text::widget([new BasicForm(), 'email'])
-                    ->ariaDescribedBy('basic-addon2')
-                    ->ariaLabel("Recipient's username")
-                    ->placeHolder("Recipient's username")
-                    ->suffix(
-                        new class () implements Stringable {
-                            public function __toString(): string
-                            {
-                                return '<span class="input-group-text" id="basic-addon2">@example.com</span>';
-                            }
-                        }
-                    ),
-            ])
-                ->class('form-control')
-                ->containerClass('input-group mb-3')
-                ->notLabel()
-                ->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAriaDescribedByWithTrue(): void
     {
         Assert::equalsWithoutLE(
@@ -127,42 +91,6 @@ final class RenderTest extends TestCase
                 ->inputTemplate('{input}' . PHP_EOL . '{label}')
                 ->labelContent('Name')
                 ->suffix('<span class="input-group-text"><i class="bi bi-person-fill"></i></span>')
-                ->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testBeforeInputWithStringable(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input class="form-control" id="basicform-username" name="BasicForm[username]" type="text" aria-describedby="basic-addon1" aria-label="Username" placeholder="Username">
-            </div>
-            HTML,
-            Field::widget([
-                Text::widget([new BasicForm(), 'username'])
-                    ->ariaDescribedBy('basic-addon1')
-                    ->ariaLabel('Username')
-                    ->placeHolder('Username')
-                    ->prefix(
-                        new class () implements Stringable {
-                            public function __toString(): string
-                            {
-                                return '<span class="input-group-text" id="basic-addon1">@</span>';
-                            }
-                        }
-                    ),
-            ])
-                ->class('form-control')
-                ->containerClass('input-group mb-3')
-                ->notLabel()
                 ->render(),
         );
     }
@@ -770,6 +698,43 @@ final class RenderTest extends TestCase
         );
     }
 
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testPrefixInputWithStringable(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input class="form-control" id="basicform-username" name="BasicForm[username]" type="text" aria-describedby="basic-addon1" aria-label="Username" placeholder="Username">
+            </div>
+            HTML,
+            Field::widget([
+                Text::widget([new BasicForm(), 'username'])
+                    ->ariaDescribedBy('basic-addon1')
+                    ->ariaLabel('Username')
+                    ->placeHolder('Username')
+                    ->prefix(
+                        new class () implements Stringable {
+                            public function __toString(): string
+                            {
+                                return '<span class="input-group-text" id="basic-addon1">@</span>';
+                            }
+                        }
+                    ),
+            ])
+                ->class('form-control')
+                ->containerClass('input-group mb-3')
+                ->notLabel()
+                ->render(),
+        );
+    }
+
     /**
      * @throws CircularReferenceException
      * @throws InvalidConfigException
@@ -838,6 +803,42 @@ final class RenderTest extends TestCase
                     }
                 })
                 ->template('{field}' . PHP_EOL . '{suffix}' . PHP_EOL . '{hint}')
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testSuffixInputWithStringable(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="input-group mb-3">
+            <input class="form-control" id="basicform-email" name="BasicForm[email]" type="text" aria-describedby="basic-addon2" aria-label="Recipient&apos;s username" placeholder="Recipient&apos;s username">
+            <span class="input-group-text" id="basic-addon2">@example.com</span>
+            </div>
+            HTML,
+            Field::widget([
+                Text::widget([new BasicForm(), 'email'])
+                    ->ariaDescribedBy('basic-addon2')
+                    ->ariaLabel("Recipient's username")
+                    ->placeHolder("Recipient's username")
+                    ->suffix(
+                        new class () implements Stringable {
+                            public function __toString(): string
+                            {
+                                return '<span class="input-group-text" id="basic-addon2">@example.com</span>';
+                            }
+                        }
+                    ),
+            ])
+                ->class('form-control')
+                ->containerClass('input-group mb-3')
+                ->notLabel()
                 ->render(),
         );
     }

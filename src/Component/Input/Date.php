@@ -6,6 +6,8 @@ namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
 use Yii\Html\Helper\Utils;
+use Yii\Widget\Input\AbstractInputWidget;
+use Yii\Widget\Input\Concern;
 
 use function array_key_exists;
 use function is_string;
@@ -16,11 +18,11 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html#input.date
  */
-final class Date extends AbstractFormInputWidget
+final class Date extends AbstractInputWidget
 {
-    use Base\HasMax;
-    use Base\HasMin;
-    use Base\HasStep;
+    use Concern\HasMax;
+    use Concern\HasMin;
+    use Concern\HasStep;
 
     public function render(): string
     {

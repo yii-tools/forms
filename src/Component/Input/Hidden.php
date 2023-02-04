@@ -7,6 +7,7 @@ namespace Yii\Forms\Component\Input;
 use InvalidArgumentException;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
+use Yii\Widget\Input\AbstractInputWidget;
 
 use function array_key_exists;
 use function is_string;
@@ -17,7 +18,7 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.hidden.html#input.hidden.attrs.value
  */
-final class Hidden extends AbstractFormInputWidget
+final class Hidden extends AbstractInputWidget
 {
     /**
      * @return string the generated input tag.

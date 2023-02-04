@@ -30,7 +30,6 @@ final class ImmutabilityTest extends TestCase
     {
         $hint = Hint::widget([new TestForm(), 'string']);
 
-        $this->assertNotSame($hint, $hint->attributes([]));
         $this->assertNotSame($hint, $hint->closure(fn () => ''));
         $this->assertNotSame($hint, $hint->content(''));
         $this->assertNotSame($hint, $hint->tag('div'));

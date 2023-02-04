@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms\Component\Input;
 
 use Yii\Html\Helper\Utils;
+use Yii\Widget\Input\AbstractInputWidget;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Definitions\Exception\NotInstantiableException;
@@ -19,7 +20,7 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.file.html#input.file
  */
-final class File extends AbstractFormInputWidget
+final class File extends AbstractInputWidget
 {
     private Hidden|null $hidden = null;
 

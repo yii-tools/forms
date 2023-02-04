@@ -13,30 +13,6 @@ final class InputAttibutesTest extends TestCase
 {
     use TestTrait;
 
-    public function testMax(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="date" max="1996-12-19">',
-            Date::widget([new TestForm(), 'string'])->max('1996-12-19')->render(),
-        );
-    }
-
-    public function testMin(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="date" min="1996-12-19">',
-            Date::widget([new TestForm(), 'string'])->min('1996-12-19')->render(),
-        );
-    }
-
-    public function testStep(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="date" step="20">',
-            Date::widget([new TestForm(), 'string'])->step(20)->render(),
-        );
-    }
-
     public function testValue(): void
     {
         // Value string `1996-12-19`.

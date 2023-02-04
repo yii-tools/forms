@@ -27,20 +27,6 @@ final class ExceptionTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testAutocomplete(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Autocomplete must be "on" or "off".');
-
-        TextArea::widget([new TestForm(), 'string'])->autocomplete('')->render();
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testContent(): void
     {
         $this->expectException(InvalidArgumentException::class);

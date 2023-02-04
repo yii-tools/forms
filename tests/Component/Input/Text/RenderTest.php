@@ -6,6 +6,7 @@ namespace Yii\Forms\Tests\Component\Input\Text;
 
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Component\Input\Text;
+use Yii\Forms\Tests\Support\PlaceholderForm;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
@@ -26,67 +27,13 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testDirname(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" dirname="test">',
-            Text::widget([new TestForm(), 'string'])->dirname('test')->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testMaxLength(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" maxlength="10">',
-            Text::widget([new TestForm(), 'string'])->maxLength(10)->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testMinLength(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" minlength="10">',
-            Text::widget([new TestForm(), 'string'])->minLength(10)->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testPattern(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" pattern="test">',
-            Text::widget([new TestForm(), 'string'])->pattern('test')->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testPlaceholder(): void
     {
         $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" placeholder="test">',
-            Text::widget([new TestForm(), 'string'])->placeholder('test')->render(),
+            <<<HTML
+            <input id="placeholderform-text" name="PlaceholderForm[text]" type="text" placeholder="Enter your text">
+            HTML,
+            Text::widget([new PlaceholderForm(), 'text'])->render(),
         );
     }
 
@@ -101,20 +48,6 @@ final class RenderTest extends TestCase
         $this->assertSame(
             '<input id="testform-string" name="TestForm[string]" type="text">',
             Text::widget([new TestForm(), 'string'])->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testSize(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string]" type="text" size="10">',
-            Text::widget([new TestForm(), 'string'])->size(10)->render(),
         );
     }
 }

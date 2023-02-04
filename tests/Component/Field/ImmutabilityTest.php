@@ -33,9 +33,6 @@ final class ImmutabilityTest extends TestCase
 
         $this->assertNotSame($field, $field->ariaDescribedBy(false));
         $this->assertNotSame($field, $field->class(''));
-        $this->assertNotSame($field, $field->container(false));
-        $this->assertNotSame($field, $field->containerAttributes());
-        $this->assertNotSame($field, $field->containerClass(''));
         $this->assertNotSame($field, $field->errorAttributes([]));
         $this->assertNotSame($field, $field->errorClass(''));
         $this->assertNotSame($field, $field->errorClosure(fn () => ''));
@@ -56,10 +53,6 @@ final class ImmutabilityTest extends TestCase
         $this->assertNotSame($field, $field->labelClosure(fn () => ''));
         $this->assertNotSame($field, $field->labelContent(''));
         $this->assertNotSame($field, $field->notLabel());
-        $this->assertNotSame($field, $field->prefix(''));
-        $this->assertNotSame($field, $field->prefix(''));
-        $this->assertNotSame($field, $field->suffix(''));
-        $this->assertNotSame($field, $field->suffix(''));
         $this->assertNotSame($field, $field->template(''));
         $this->assertNotSame($field, $field->validClass(''));
     }

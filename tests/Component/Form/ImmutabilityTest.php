@@ -30,8 +30,6 @@ final class ImmutabilityTest extends TestCase
         $form = Form::widget();
 
         $this->assertNotSame($form, $form->acceptCharset(''));
-        $this->assertNotSame($form, $form->attributes([]));
-        $this->assertNotSame($form, $form->autocomplete('on'));
         $this->assertNotSame($form, $form->action(''));
         $this->assertNotSame($form, $form->csrf(''));
         $this->assertNotSame($form, $form->enctype('text/plain'));
