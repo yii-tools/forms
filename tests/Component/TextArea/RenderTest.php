@@ -27,22 +27,6 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testCols(): void
-    {
-        $this->assertSame(
-            <<<HTML
-            <textarea id="testform-string" name="TestForm[string]" cols="20"></textarea>
-            HTML,
-            TextArea::widget([new TestForm(), 'string'])->cols(20)->render()
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testContent(): void
     {
         $this->assertSame(
@@ -82,54 +66,6 @@ final class RenderTest extends TestCase
             <textarea id="testform-string" name="TestForm[string]"></textarea>
             HTML,
             TextArea::widget([new TestForm(), 'string'])->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testRows(): void
-    {
-        $this->assertSame(
-            <<<HTML
-            <textarea id="testform-string" name="TestForm[string]" rows="2"></textarea>
-            HTML,
-            TextArea::widget([new TestForm(), 'string'])->rows(2)->render()
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testWrap(): void
-    {
-        $this->assertSame(
-            <<<HTML
-            <textarea id="testform-string" name="TestForm[string]" wrap="hard"></textarea>
-            HTML,
-            TextArea::widget([new TestForm(), 'string'])->wrap()->render()
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testWrapWithSoft(): void
-    {
-        $this->assertSame(
-            <<<HTML
-            <textarea id="testform-string" name="TestForm[string]" wrap="soft"></textarea>
-            HTML,
-            TextArea::widget([new TestForm(), 'string'])->wrap('soft')->render()
         );
     }
 }
