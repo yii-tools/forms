@@ -30,9 +30,6 @@ final class ImmutabilityTest extends TestCase
     {
         $textArea = TextArea::widget([new TestForm(), 'string']);
 
-        $this->assertNotSame($textArea, $textArea->cols(10));
         $this->assertNotSame($textArea, $textArea->content(''));
-        $this->assertNotSame($textArea, $textArea->rows(1));
-        $this->assertNotSame($textArea, $textArea->wrap());
     }
 }

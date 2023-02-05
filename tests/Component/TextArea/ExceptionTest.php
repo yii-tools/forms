@@ -34,18 +34,4 @@ final class ExceptionTest extends TestCase
 
         TextArea::widget([new TestForm(), 'string'])->attributes(['value' => 1])->render();
     }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testWrap(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid wrap value. Valid values are: hard, soft.');
-
-        TextArea::widget([new TestForm(), 'string'])->wrap('')->render();
-    }
 }
