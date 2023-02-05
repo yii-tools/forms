@@ -33,10 +33,10 @@ use function urldecode;
 final class Form extends Widget
 {
     use Attribute\HasAttributes;
+    use Attribute\HasAutocomplete;
     use Attribute\HasClass;
     use Attribute\HasId;
     use Attribute\HasName;
-    use Attribute\HasAutocomplete;
 
     protected array $attributes = [];
     private string $action = '';
