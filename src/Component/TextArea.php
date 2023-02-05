@@ -6,7 +6,7 @@ namespace Yii\Forms\Component;
 
 use InvalidArgumentException;
 use Yii\Widget\Input\AbstractInputWidget;
-use Yii\Widget\Input\Concern;
+use Yii\Widget\Attribute;
 
 use function array_key_exists;
 use function in_array;
@@ -19,11 +19,11 @@ use function is_string;
  */
 final class TextArea extends AbstractInputWidget
 {
-    use Concern\HasAutocomplete;
-    use Concern\HasDirname;
-    use Concern\HasMaxLength;
-    use Concern\HasMinLength;
-    use Concern\HasPlaceholder;
+    use Attribute\HasAutocomplete;
+    use Attribute\HasDirname;
+    use Attribute\HasMaxLength;
+    use Attribute\HasMinLength;
+    use Attribute\HasPlaceholder;
 
     /**
      * Returns a new instance specifying maximum number of characters per line of text for the UA to show.

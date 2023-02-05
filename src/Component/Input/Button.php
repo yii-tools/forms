@@ -7,8 +7,8 @@ namespace Yii\Forms\Component\Input;
 use InvalidArgumentException;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
+use Yii\Widget\Attribute;
 use Yii\Widget\Component\AbstractComponentWidget;
-use Yii\Widget\Input\Concern;
 
 use function array_key_exists;
 use function is_string;
@@ -20,9 +20,9 @@ use function is_string;
  */
 final class Button extends AbstractComponentWidget
 {
-    use Concern\CanBeDisabled;
-    use Concern\HasForm;
-    use Concern\HasType;
+    use Attribute\CanBeDisabled;
+    use Attribute\HasForm;
+    use Attribute\HasType;
 
     public function render(): string
     {

@@ -6,7 +6,7 @@ namespace Yii\Forms\Component;
 
 use Exception;
 use Yii\Html\Tag;
-use Yii\Widget\Input\Concern\HasContainer;
+use Yii\Widget\Attribute\HasContainer;
 use Yiisoft\Widget\Widget;
 
 use function array_merge;
