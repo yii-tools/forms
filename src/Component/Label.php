@@ -8,7 +8,7 @@ use Closure;
 use Yii\Html\Helper\Encode;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
-use Yii\Widget\Input\Concern;
+use Yii\Widget\Attribute;
 
 use function array_key_exists;
 
@@ -19,7 +19,7 @@ use function array_key_exists;
  */
 final class Label extends Field\AbstractFieldPartWidget
 {
-    use Concern\HasForm;
+    use Attribute\HasForm;
 
     private bool $encode = true;
 

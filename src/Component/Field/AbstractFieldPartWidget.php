@@ -8,7 +8,7 @@ use Closure;
 use InvalidArgumentException;
 use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Widget\Component\Concern\HasAttributes;
+use Yii\Widget\Attribute\HasAttributes;
 use Yiisoft\Widget\Widget;
 
 /**

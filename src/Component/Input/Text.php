@@ -7,7 +7,7 @@ namespace Yii\Forms\Component\Input;
 use InvalidArgumentException;
 use Yii\Html\Helper\Utils;
 use Yii\Widget\Input\AbstractInputWidget;
-use Yii\Widget\Input\Concern;
+use Yii\Widget\Attribute;
 
 use function array_key_exists;
 use function is_string;
@@ -20,12 +20,12 @@ use function is_string;
  */
 final class Text extends AbstractInputWidget
 {
-    use Concern\HasDirname;
-    use Concern\HasMaxLength;
-    use Concern\HasMinLength;
-    use Concern\HasPattern;
-    use Concern\HasPlaceholder;
-    use Concern\HasSize;
+    use Attribute\HasDirname;
+    use Attribute\HasMaxLength;
+    use Attribute\HasMinLength;
+    use Attribute\HasPattern;
+    use Attribute\HasPlaceholder;
+    use Attribute\HasSize;
 
     public function render(): string
     {

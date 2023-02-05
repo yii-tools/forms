@@ -6,8 +6,8 @@ namespace Yii\Forms\Component\Input;
 
 use InvalidArgumentException;
 use Yii\Html\Helper\Utils;
+use Yii\Widget\Attribute;
 use Yii\Widget\Input\AbstractInputWidget;
-use Yii\Widget\Input\Concern;
 
 use function array_key_exists;
 use function is_string;
@@ -20,9 +20,9 @@ use function is_string;
  */
 final class Date extends AbstractInputWidget
 {
-    use Concern\HasMax;
-    use Concern\HasMin;
-    use Concern\HasStep;
+    use Attribute\HasMax;
+    use Attribute\HasMin;
+    use Attribute\HasStep;
 
     public function render(): string
     {

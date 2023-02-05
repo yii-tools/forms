@@ -7,7 +7,7 @@ namespace Yii\Forms\Component;
 use Closure;
 use Yii\Html\Tag;
 use Yii\Widget\Input\AbstractInputWidget;
-use Yii\Widget\Input\Concern;
+use Yii\Widget\Attribute;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Definitions\Exception\NotInstantiableException;
@@ -25,8 +25,8 @@ use function strtr;
  */
 final class Field extends Widget
 {
-    use Concern\HasContainer;
-    use Concern\HasPrefixAndSuffix;
+    use Attribute\HasContainer;
+    use Attribute\HasPrefixAndSuffix;
     use Field\HasFieldClass;
     use Field\HasFieldError;
     use Field\HasFieldHint;
