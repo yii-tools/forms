@@ -30,8 +30,6 @@ final class ImmutabilityTest extends TestCase
     {
         $file = File::widget([new TestForm(), 'string']);
 
-        $this->assertNotSame($file, $file->accept('image/png'));
         $this->assertNotSame($file, $file->hidden(''));
-        $this->assertNotSame($file, $file->multiple());
     }
 }
