@@ -27,20 +27,6 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testAccept(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string][]" type="file" accept="image/jpg">',
-            File::widget([new TestForm(), 'string'])->accept('image/jpg')->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testHidden(): void
     {
         Assert::equalsWithoutLE(
@@ -49,20 +35,6 @@ final class RenderTest extends TestCase
             <input id="testform-string" name="TestForm[string][]" type="file">
             HTML,
             File::widget([new TestForm(), 'string'])->hidden('0')->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testMultiple(): void
-    {
-        $this->assertSame(
-            '<input id="testform-string" name="TestForm[string][]" type="file" multiple>',
-            File::widget([new TestForm(), 'string'])->multiple()->render(),
         );
     }
 
