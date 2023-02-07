@@ -6,7 +6,6 @@ namespace Yii\Forms\Tests\Support;
 
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Test\Support\Container\SimpleContainer;
-use Yiisoft\Test\Support\EventDispatcher\SimpleEventDispatcher;
 use Yiisoft\Widget\WidgetFactory;
 
 trait TestTrait
