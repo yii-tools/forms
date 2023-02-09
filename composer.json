@@ -27,6 +27,7 @@
         "roave/infection-static-analysis-plugin": "^1.28",
         "vimeo/psalm": "^5.6",
         "yii-tools/support": "^1.0@dev",
+        "yii-tools/yii-validator": "^1.0@dev",
         "yiisoft/test-support": "^3.0"
     },
     "autoload": {

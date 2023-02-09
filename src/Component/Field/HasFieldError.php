@@ -17,6 +17,7 @@ trait HasFieldError
     private Closure|null $errorClosure = null;
     private string $errorContent = '';
     private string $errorTag = 'div';
+    private bool $showAllErrors = false;
 
     /**
      * Returns a new instance with the error attributes.
@@ -79,6 +80,17 @@ trait HasFieldError
     {
         $new = clone $this;
         $new->errorTag = $value;
+
+        return $new;
+    }
+
+    /**
+     * Returns a new instance with the show all errors flag.
+     */
+    public function showAllErrors(): static
+    {
+        $new = clone $this;
+        $new->showAllErrors = true;
 
         return $new;
     }
