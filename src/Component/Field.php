@@ -83,8 +83,13 @@ final class Field extends Widget
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    private function renderError(AbstractInputWidget $widget, string $errorContent = ''): string
+    private function renderError(AbstractInputWidget $widget): string
     {
+        $errorContent = match ($this->showAllErrors) {
+            true => $widget->getErrorsForAttribute(),
+            default => $widget->getErrorFirstForAttribute(),
+        };
+
         if ($this->errorContent !== '') {
             $errorContent = $this->errorContent;
         }
@@ -204,13 +209,12 @@ final class Field extends Widget
         $widget = $widget->class($this->class);
 
         if ($widget->hasError()) {
-            $errorContent = $widget->getErrorFirstForAttribute();
             $widget = $widget->class($this->invalidClass);
         } elseif ($widget->isValidated()) {
             $widget = $widget->class($this->validClass);
         }
 
-        $error = $this->renderError($widget, $errorContent);
+        $error = $this->renderError($widget);
         $hint = $this->renderHint($widget);
 
         if ($widget instanceof Input\Hidden === false && $this->isLabel()) {
