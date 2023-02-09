@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Component\Field;
 
 use PHPUnit\Framework\TestCase;
-use Yii\FormModel\FormModelInterface;
-use Yii\Forms\Component\ButtonGroup;
 use Yii\Forms\Component\Field;
 use Yii\Forms\Component\Input\Text;
 use Yii\Forms\Tests\Support\TestTrait;
