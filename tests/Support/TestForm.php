@@ -11,6 +11,7 @@ final class TestForm extends AbstractFormModel
     private array $array = [];
     private string $mĄkA = '';
     private string|null $string = '';
+    private object|null $object = null;
 
     public function customErrorCallback(): string
     {
