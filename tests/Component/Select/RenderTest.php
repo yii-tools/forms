@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\Component\Select;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use Yii\Forms\Component\Select;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
