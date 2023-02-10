@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Yii\Forms\Tests\CssFrameworks\Bootstrap5;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Component\Field;
-use Yii\Forms\Component\Input\Text;
-use Yii\Forms\Component\TextArea;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Text;
 use Yii\Forms\Tests\Support\BasicForm;
 use Yii\Forms\Tests\Support\TestTrait;
+use Yii\Forms\TextArea;
 use Yii\Support\Assert;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
