@@ -75,9 +75,7 @@ final class ValidatorTest extends TestCase
             <label for="validatorformattributes-username">Username</label>
             <input class="form-control is-invalid" id="validatorformattributes-username" name="ValidatorFormAttributes[username]" type="text" maxlength="10" required minlength="3" pattern="^[a-z]+$">
             <div>
-            Value cannot be blank.
-            This value must contain at least 3 characters.
-            Value is invalid.
+            Value cannot be blank.<br>This value must contain at least 3 characters.<br>Value is invalid.
             </div>
             </div>
             HTML,
@@ -165,8 +163,7 @@ final class ValidatorTest extends TestCase
             <label for="validatorform-username">Username</label>
             <input class="form-control is-invalid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="s1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
             <div>
-            This value must contain at least 3 characters.
-            Value is invalid.
+            This value must contain at least 3 characters.<br>Value is invalid.
             </div>
             </div>
             HTML,
