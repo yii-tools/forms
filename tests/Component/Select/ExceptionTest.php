@@ -6,15 +6,24 @@ namespace Yii\Forms\Tests\Component\Select;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
-use StdClass;
+use stdClass;
 use Yii\Forms\Component\Select;
 use Yii\Forms\Tests\Support\TestForm;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class ExceptionTest extends TestCase
 {
     /**
-     * @throws ReflectionException
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function testValue(): void
     {
@@ -25,6 +34,7 @@ final class ExceptionTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Select::class widget value can not be an object.');
+
         Select::widget([$formModel, 'object'])->render();
     }
 }

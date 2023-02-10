@@ -33,38 +33,38 @@ abstract class AbstractSelect extends AbstractInputWidget
         };
         $items = [];
         $itemsAttributes = $this->itemsAttributes;
-        /** @psalm-var string[]|string[][] */
+        /** @psalm-var string[]|string[][] $values */
         $values = $this->items;
 
         foreach ($values as $value => $content) {
             if (is_array($content)) {
-                /** @var array */
+                /** @psalm-var array $groupAttrs */
                 $groupAttrs = $this->groups[$value] ?? [];
                 $options = [];
 
                 foreach ($content as $v => $c) {
-                    /** @var array */
+                    /** @psalm-var array */
                     $itemsAttributes[$v] ??= [];
                     $options[] = Tag::create(
                         'option',
                         $c,
                         array_merge(
                             $itemsAttributes[$v],
-                            ['selected' => in_array($v, $formValue) ? true : false, 'value' => $v],
+                            ['selected' => in_array($v, $formValue), 'value' => $v],
                         )
                     );
                 }
 
                 $items[] = Tag::create('optgroup', implode(PHP_EOL, $options), $groupAttrs);
             } else {
-                /** @var array */
+                /** @psalm-var array */
                 $itemsAttributes[$value] ??= [];
                 $items[] = Tag::create(
                     'option',
                     $content,
                     array_merge(
                         $itemsAttributes[$value],
-                        ['selected' => in_array($value, $formValue) ? true : false, 'value' => $value],
+                        ['selected' => in_array($value, $formValue), 'value' => $value],
                     )
                 );
             }
