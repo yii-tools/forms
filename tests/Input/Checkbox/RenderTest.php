@@ -9,7 +9,7 @@ use Yii\Forms\Input\Checkbox;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Support\Assert;
 
-final class CheckboxTest extends TestCase
+final class RenderTest extends TestCase
 {
     public function testChecked(): void
     {
