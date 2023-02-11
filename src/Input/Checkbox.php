@@ -49,7 +49,7 @@ final class Checkbox extends Base\AbstractCheckbox
 
         $checkboxTag = $this->run('input', '', 'checkbox', $attributes);
 
-        $inputCheckbox = match ($this->label) {
+        $inputCheckbox = match ($label) {
             null => $checkboxTag,
             default => Label::widget([$this->formModel, $this->attribute])
                 ->encode(false)
@@ -57,7 +57,7 @@ final class Checkbox extends Base\AbstractCheckbox
                 ->render(),
         };
 
-        if ($this->verticalAlignment) {
+        if ($this->verticalAlignment && $label !== null) {
             $inputCheckbox = Tag::create(
                 'div',
                 Label::widget([$this->formModel, $this->attribute])->content($label)->render() . PHP_EOL . $checkboxTag,
