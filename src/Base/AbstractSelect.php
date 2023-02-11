@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Yii\Forms\Base;
 
 use Yii\Html\Tag;
+use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yii\Widget\Input\AbstractInputWidget;
 
 use function array_merge;
 use function get_debug_type;

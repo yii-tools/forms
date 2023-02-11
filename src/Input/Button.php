@@ -6,8 +6,8 @@ namespace Yii\Forms\Input;
 
 use InvalidArgumentException;
 use Yii\Html\Tag;
+use Yii\Widget\AbstractComponentWidget;
 use Yii\Widget\Attribute;
-use Yii\Widget\Component\AbstractComponentWidget;
 
 use function array_key_exists;
 use function is_string;

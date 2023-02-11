@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Yii\Forms\Input;
 
 use Yii\Html\Helper\Utils;
+use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yii\Widget\Input\AbstractInputWidget;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Definitions\Exception\NotInstantiableException;
