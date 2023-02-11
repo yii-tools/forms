@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Yii\Forms\Input\Base;
 
 use Yii\Forms\Input\Hidden;
+use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute\CanBeChecked;
-use Yii\Widget\Input\AbstractInputWidget;
 
 abstract class AbstractCheckbox extends AbstractInputWidget
 {

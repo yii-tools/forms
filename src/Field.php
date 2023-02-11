@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms;
 
 use Yii\Html\Tag;
-use Yii\Widget\Input\AbstractInputWidget;
+use Yii\Widget\AbstractInputWidget;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Definitions\Exception\NotInstantiableException;

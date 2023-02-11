@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Base;
 
+use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yii\Widget\Input\AbstractInputWidget;
 
 abstract class AbstractTextArea extends AbstractInputWidget
 {
