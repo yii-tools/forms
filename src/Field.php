@@ -30,7 +30,7 @@ final class Field extends Base\AbstractField
         };
 
         return match ($this->container) {
-            true => Tag::create('div', $renderWidget, $this->getContainerAttributes()),
+            true => Tag::create('div', $renderWidget, $this->containerAttributes),
             false => $renderWidget,
         };
     }
