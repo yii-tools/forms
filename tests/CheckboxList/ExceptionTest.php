@@ -27,6 +27,23 @@ final class ExceptionTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    public function testContainer(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The container tag must be a non-empty string.');
+
+        CheckboxList::widget([new TestForm(), 'string'])
+            ->containerTag('')
+            ->items([0 => 'inactive', 1 => 'active'])
+            ->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);

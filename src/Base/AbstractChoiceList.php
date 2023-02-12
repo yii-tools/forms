@@ -119,10 +119,6 @@ abstract class AbstractChoiceList extends AbstractInputWidget
         /** @psalm-var mixed */
         $attributes['value'] = $valueDefault;
 
-        if (array_key_exists('type', $attributes)) {
-            unset($attributes['type']);
-        }
-
         $checkboxTag = $this->run('input', '', $type, $attributes);
 
         return Label::widget([$this->formModel, $this->attribute])
