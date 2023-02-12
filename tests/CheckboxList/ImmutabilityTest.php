@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Select;
+namespace Yii\Forms\Tests\CheckboxList;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use stdClass;
-use Yii\Forms\Select;
+use Yii\Forms\CheckboxList;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
@@ -18,7 +16,7 @@ use Yiisoft\Factory\NotFoundException;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class ExceptionTest extends TestCase
+final class ImmutabilityTest extends TestCase
 {
     use TestTrait;
 
@@ -28,16 +26,12 @@ final class ExceptionTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testValue(): void
+    public function testImmutability(): void
     {
-        $formModel = new TestForm();
+        $checkboxList = CheckboxList::widget([new TestForm(), 'array']);
 
-        // Value object `stdClass`.
-        $formModel->setAttributeValue('object', new stdClass());
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Select::class widget value can not be an object.');
-
-        Select::widget([$formModel, 'object'])->render();
+        $this->assertNotSame($checkboxList, $checkboxList->containerTag('div'));
+        $this->assertNotSame($checkboxList, $checkboxList->individualItemsAttributes());
+        $this->assertNotSame($checkboxList, $checkboxList->separator(''));
     }
 }

@@ -33,7 +33,7 @@ final class InputAttibutesTest extends TestCase
         $formModel = new TestForm();
 
         // Value string `1996-12-19`.
-        $formModel->setValue('string', '1996-12-19');
+        $formModel->setAttributeValue('string', '1996-12-19');
 
         $this->assertSame(
             '<input id="testform-string" name="TestForm[string]" type="date" value="1996-12-19">',
@@ -41,7 +41,7 @@ final class InputAttibutesTest extends TestCase
         );
 
         // Value `null`.
-        $formModel->setValue('string', null);
+        $formModel->setAttributeValue('string', null);
 
         $this->assertSame(
             '<input id="testform-string" name="TestForm[string]" type="date">',

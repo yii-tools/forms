@@ -9,6 +9,10 @@ use Yii\Forms\Label;
 use Yii\Html\Helper\Encode;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
 /**
  * The input element with a type attribute whose value is "checkbox" represents a state or option that can be toggled.
@@ -17,15 +21,21 @@ use Yii\Html\Tag;
  */
 final class Checkbox extends Base\AbstractCheckbox
 {
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function render(): string
     {
         $attributes = $this->attributes;
         $label = $this->label;
 
-        /** @var mixed */
+        /** @psalm-var mixed $value */
         $value = $this->getValue();
 
-        /** @var mixed */
+        /** @var mixed $valueDefault */
         $valueDefault = $attributes['value'] ?? null;
 
         /**
@@ -40,7 +50,7 @@ final class Checkbox extends Base\AbstractCheckbox
             default => "$value" === "$valueDefault",
         };
 
-        /** @var mixed */
+        /** @psalm-var mixed */
         $attributes['value'] = is_bool($valueDefault) ? (int) $valueDefault : $valueDefault;
 
         if ($this->label === '') {
