@@ -8,7 +8,9 @@ use Yii\FormModel\AbstractFormModel;
 
 final class TestForm extends AbstractFormModel
 {
-    private array $array = [];
+    private array|null $array = [];
+    private bool|null $bool = false;
+    private int $int = 0;
     private string $mĄkA = '';
     private string|null $string = '';
     private object|null $object = null;

@@ -139,7 +139,7 @@ final class RenderTest extends TestCase
     public function testMultiple(): void
     {
         $formModel = new TestForm();
-        $formModel->setValue('array', [1, 4]);
+        $formModel->setAttributeValue('array', [1, 4]);
 
         Assert::equalsWithoutLE(
             <<<HTML
@@ -319,7 +319,7 @@ final class RenderTest extends TestCase
         $formModel = new TestForm();
 
         // Value int `1`.
-        $formModel->setValue('string', 1);
+        $formModel->setAttributeValue('string', 1);
         Assert::equalsWithoutLE(
             <<<HTML
             <select id="testform-string" name="TestForm[string]">
@@ -334,7 +334,7 @@ final class RenderTest extends TestCase
         );
 
         // Value int `2`.
-        $formModel->setValue('string', 2);
+        $formModel->setAttributeValue('string', 2);
         Assert::equalsWithoutLE(
             <<<HTML
             <select id="testform-string" name="TestForm[string]">
@@ -349,7 +349,7 @@ final class RenderTest extends TestCase
         );
 
         // Value iterable `[2, 3]`.
-        $formModel->setValue('array', [2, 3]);
+        $formModel->setAttributeValue('array', [2, 3]);
         Assert::equalsWithoutLE(
             <<<HTML
             <select id="testform-array" name="TestForm[array]">
@@ -364,7 +364,7 @@ final class RenderTest extends TestCase
         );
 
         // Value string `1`.
-        $formModel->setValue('string', '1');
+        $formModel->setAttributeValue('string', '1');
         Assert::equalsWithoutLE(
             <<<HTML
             <select id="testform-string" name="TestForm[string]">
@@ -379,7 +379,7 @@ final class RenderTest extends TestCase
         );
 
         // Value string `2`.
-        $formModel->setValue('string', 2);
+        $formModel->setAttributeValue('string', 2);
         Assert::equalsWithoutLE(
             <<<HTML
             <select id="testform-string" name="TestForm[string]">
@@ -394,7 +394,7 @@ final class RenderTest extends TestCase
         );
 
         // Value `null`.
-        $formModel->setValue('string', null);
+        $formModel->setAttributeValue('string', null);
         Assert::equalsWithoutLE(
             <<<HTML
             <select id="testform-string" name="TestForm[string]">

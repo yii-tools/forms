@@ -7,6 +7,10 @@ namespace Yii\Forms\Input\Base;
 use Yii\Forms\Input\Hidden;
 use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute\CanBeChecked;
+use Yiisoft\Definitions\Exception\CircularReferenceException;
+use Yiisoft\Definitions\Exception\InvalidConfigException;
+use Yiisoft\Definitions\Exception\NotInstantiableException;
+use Yiisoft\Factory\NotFoundException;
 
 abstract class AbstractCheckbox extends AbstractInputWidget
 {
@@ -23,6 +27,11 @@ abstract class AbstractCheckbox extends AbstractInputWidget
      *
      * @param string $value The value of the "unchecked" state.
      * @param array $values The Attribute values indexed by attribute names for hidden widget.
+     *
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
      */
     public function hidden(string $value, array $values = []): static
     {
@@ -71,8 +80,6 @@ abstract class AbstractCheckbox extends AbstractInputWidget
 
     /**
      * Returns a new instance specifying whether the label to be displayed in the same line.
-     *
-     * @param bool $value Whether the label to be displayed in the same line.
      */
     public function verticalAlignment(): static
     {

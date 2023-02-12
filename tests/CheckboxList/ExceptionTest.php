@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Select;
+namespace Yii\Forms\Tests\CheckboxList;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use stdClass;
-use Yii\Forms\Select;
+use Yii\Forms\CheckboxList;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yiisoft\Definitions\Exception\CircularReferenceException;
@@ -30,14 +29,9 @@ final class ExceptionTest extends TestCase
      */
     public function testValue(): void
     {
-        $formModel = new TestForm();
-
-        // Value object `stdClass`.
-        $formModel->setAttributeValue('object', new stdClass());
-
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Select::class widget value can not be an object.');
+        $this->expectExceptionMessage('CheckboxList::class widget must be a array or null value.');
 
-        Select::widget([$formModel, 'object'])->render();
+        CheckboxList::widget([new TestForm(), 'string'])->items([0 => 'inactive', 1 => 'active'])->render();
     }
 }
