@@ -29,6 +29,25 @@ final class InputAttibutesTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    public function testAutofocus(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div id="testform-array" autofocus>
+            <label><input name="TestForm[array][]" type="checkbox" value="1">Female</label>
+            <label><input name="TestForm[array][]" type="checkbox" value="2">Male</label>
+            </div>
+            HTML,
+            CheckboxList::widget([new TestForm(), 'array'])->autofocus()->items($this->sex)->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testDisabled(): void
     {
         Assert::equalsWithoutLE(
