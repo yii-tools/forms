@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Base;
 
 use InvalidArgumentException;
-use Stringable;
 use Yii\Forms\Label;
 use Yii\Html\Helper\Utils;
 use Yii\Widget\AbstractInputWidget;
