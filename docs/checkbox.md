@@ -26,7 +26,7 @@ That would generate the following code:
 
 For default the label is generated from the attribute name. You can change it by using the `label()` method.
 
-### Checkbox prefix
+### Checkbox with prefix
 
 ```php
 <?php
@@ -49,7 +49,7 @@ That would generate the following code:
 <label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
 ```
 
-### Checkbox suffix
+### Checkbox with suffix
 
 ```php
 <?php
@@ -72,7 +72,7 @@ That would generate the following code:
 <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
 ```
 
-### Checkbox container
+### Checkbox with container
 
 ```php
 <?php
@@ -95,7 +95,7 @@ That would generate the following code:
 </div>
 ```
 
-### Field Checkbox
+### Field with Checkbox
 
 ```php
 declare(strict_types=1);
@@ -120,7 +120,7 @@ That would generate the following code:
 </div>
 ```
 
-### Field checkbox change label position
+### Field with checkbox change label position
 
 ```php
 declare(strict_types=1);
@@ -145,7 +145,7 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-### Field checkbox enclosed by label for widget checkbox
+### Field with checkbox enclosed by label
 
 ```php
 declare(strict_types=1);
@@ -168,7 +168,7 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-### Field checkbox any label
+### Field with checkbox any label
 
 ```php
 declare(strict_types=1);
