@@ -64,7 +64,6 @@ final class File extends AbstractInputWidget
 
         $attributes['name'] = Utils::generateArrayableName($name);
 
-
         // input type="file" not supported value attribute.
         unset($attributes['value']);
 
