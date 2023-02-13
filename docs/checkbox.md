@@ -220,4 +220,4 @@ Method                 | Parameter        | Description                         
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
 `value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
 
-**Note:** *You can find all the [examples](/docs/checkbox.md).*
+**Note:** *You can find all the [examples](/tests/Doc/CheckboxDocTest.php) in the test file.*
