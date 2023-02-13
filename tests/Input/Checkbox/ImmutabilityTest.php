@@ -30,11 +30,12 @@ final class ImmutabilityTest extends TestCase
     {
         $checkbox = Checkbox::widget([new TestForm(), 'string']);
 
+        $this->assertNotSame($checkbox, $checkbox->container(false));
+        $this->assertNotSame($checkbox, $checkbox->containerAttributes());
+        $this->assertNotSame($checkbox, $checkbox->containerClass(''));
         $this->assertNotSame($checkbox, $checkbox->hidden(''));
         $this->assertNotSame($checkbox, $checkbox->label(''));
         $this->assertNotSame($checkbox, $checkbox->labelAttributes([]));
         $this->assertNotSame($checkbox, $checkbox->notLabel());
-        $this->assertNotSame($checkbox, $checkbox->verticalAlignment());
-        $this->assertNotSame($checkbox, $checkbox->verticalAlignmentAttributes([]));
     }
 }

@@ -48,24 +48,7 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testHidden(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input name="TestForm[string]" type="hidden" value="0">
-            <label for="testform-string"><input id="testform-string" name="TestForm[string]" type="checkbox" value="1">String</label>
-            HTML,
-            Checkbox::widget([new TestForm(), 'string'])->hidden('0')->value(1)->render(),
-        );
-    }
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function testVerticalAlignment(): void
+    public function testContainer(): void
     {
         Assert::equalsWithoutLE(
             <<<HTML
@@ -74,7 +57,7 @@ final class RenderTest extends TestCase
             <input id="testform-string" name="TestForm[string]" type="checkbox">
             </div>
             HTML,
-            Checkbox::widget([new TestForm(), 'string'])->verticalAlignment()->render(),
+            Checkbox::widget([new TestForm(), 'string'])->container(true)->render(),
         );
     }
 
@@ -84,7 +67,7 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testVerticalAlignmentAttributes(): void
+    public function testContainerAttributes(): void
     {
         Assert::equalsWithoutLE(
             <<<HTML
@@ -94,9 +77,48 @@ final class RenderTest extends TestCase
             </div>
             HTML,
             Checkbox::widget([new TestForm(), 'string'])
-                ->verticalAlignment()
-                ->verticalAlignmentAttributes(['class' => 'test'])
+                ->container(true)
+                ->containerAttributes(['class' => 'test'])
                 ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testContainerCssClass(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div class="test">
+            <label for="testform-string">String</label>
+            <input id="testform-string" name="TestForm[string]" type="checkbox">
+            </div>
+            HTML,
+            Checkbox::widget([new TestForm(), 'string'])
+                ->container(true)
+                ->containerClass('test')
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testHidden(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input name="TestForm[string]" type="hidden" value="0">
+            <label for="testform-string"><input id="testform-string" name="TestForm[string]" type="checkbox" value="1">String</label>
+            HTML,
+            Checkbox::widget([new TestForm(), 'string'])->hidden('0')->value(1)->render(),
         );
     }
 

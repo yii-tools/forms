@@ -72,7 +72,7 @@ abstract class AbstractChoiceList extends AbstractInputWidget
         $attributes = array_merge($attributes, $this->itemsAttributes);
 
         if (array_key_exists('autofocus', $attributes)) {
-            $containerAttributes['autofocus'] = is_bool($attributes['autofocus']) && $attributes['autofocus'];
+            $containerAttributes['autofocus'] = is_bool($attributes['autofocus']);
             unset($attributes['autofocus']);
         }
 
