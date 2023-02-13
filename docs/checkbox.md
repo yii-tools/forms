@@ -37,10 +37,7 @@ use App\Form\ContactForm;
 use Yii\Forms\Input\Checkbox;
 ?>
 
-<?= Checkbox::widget([new ContactForm(), 'agree'])
-    ->prefix('<span><i class="bi bi-check"></i></span>')
-    ->render()
-?>
+<?= Checkbox::widget([new ContactForm(), 'agree'])->prefix('<span><i class="bi bi-check"></i></span>')->render() ?>
 ```
 
 That would generate the following code:
@@ -60,10 +57,7 @@ use App\Form\ContactForm;
 use Yii\Forms\Input\Checkbox;
 ?>
 
-<?= Checkbox::widget([new ContactForm(), 'agree'])
-    ->suffix('<span><i class="bi bi-check"></i></span>')
-    ->render()
-?>
+<?= Checkbox::widget([new ContactForm(), 'agree'])->suffix('<span><i class="bi bi-check"></i></span>')->render() ?>
 ```
 
 That would generate the following code:
@@ -105,9 +99,10 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Checkbox;
 ?>
 
-<?= Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
-    ->class('button is-block is-info is-fullwidth')
-    ->render()
+<?=
+    Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+        ->class('button is-block is-info is-fullwidth')
+        ->render()
 ?>
 ```
 
@@ -130,11 +125,12 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Checkbox;
 ?>
 
-<?= Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
-    ->class('button is-block is-info is-fullwidth')
-    ->labelContent('I agree')
-    ->inputTemplate('{input}' . PHP_EOL . '{label}')
-    ->render()
+<?=
+    Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+        ->class('button is-block is-info is-fullwidth')
+        ->labelContent('I agree')
+        ->inputTemplate('{input}' . PHP_EOL . '{label}')
+        ->render()
 ?>
 ```
 
@@ -155,10 +151,11 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Checkbox;
 ?>
 
-<?= Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
-    ->class('button is-block is-info is-fullwidth')
-    ->inputTemplate('{input}')
-    ->render(),
+<?=
+    Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+        ->class('button is-block is-info is-fullwidth')
+        ->inputTemplate('{input}')
+        ->render()
 ?>
 ```
 
@@ -178,16 +175,69 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Checkbox;
 ?>
 
-<?= Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
-    ->class('button is-block is-info is-fullwidth')
-    ->notLabel()
-    ->render(),
+<?=
+    Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+        ->class('button is-block is-info is-fullwidth')
+        ->notLabel()
+        ->render()
 ?>
 ```
 
 ```html
 <div>
     <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
+</div>
+```
+
+### Example with Field prefix
+
+```php
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?=
+    Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+        ->class('button is-block is-info is-fullwidth')
+        ->prefix('<span><i class="bi bi-check"></i></span>')
+        ->render()
+?>
+```
+
+```html
+<div>
+    <span><i class="bi bi-check"></i></span>
+    <label for="contactform-agree">Agree</label>
+    <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
+</div>
+```
+
+### Example with Field suffix
+
+```php
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?=
+    Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+        ->class('button is-block is-info is-fullwidth')
+        ->suffix('<span><i class="bi bi-check"></i></span>')
+        ->render()
+?>
+```
+
+```html
+<div>
+    <label for="contactform-agree">Agree</label>
+    <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
+    <span><i class="bi bi-check"></i></span>
 </div>
 ```
 

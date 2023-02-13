@@ -115,5 +115,35 @@ final class CheckboxDocTest extends TestCase
                 ->notLabel()
                 ->render(),
         );
+
+        // prefix
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <span><i class="bi bi-check"></i></span>
+            <label for="contactform-agree">Agree</label>
+            <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
+            </div>
+            HTML,
+            Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+                ->class('button is-block is-info is-fullwidth')
+                ->prefix('<span><i class="bi bi-check"></i></span>')
+                ->render(),
+        );
+
+        // suffix
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-agree">Agree</label>
+            <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
+            <span><i class="bi bi-check"></i></span>
+            </div>
+            HTML,
+            Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+                ->class('button is-block is-info is-fullwidth')
+                ->suffix('<span><i class="bi bi-check"></i></span>')
+                ->render(),
+        );
     }
 }
