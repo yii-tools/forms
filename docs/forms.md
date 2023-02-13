@@ -24,15 +24,6 @@ final class ContactForm extends AbstractFormModel
     private string $message = '';
     private string $name = '';
     private string $subject = '';
-
-    public function clear(): void
-    {
-        $this->attachment = [];
-        $this->email = '';
-        $this->message = '';
-        $this->name = '';
-        $this->subject = '';
-    }
 }
 ```
 
