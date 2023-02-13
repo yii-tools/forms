@@ -7,7 +7,6 @@ namespace Yii\Forms\Tests\Doc;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Button;
-use Yii\Forms\Tests\Support\ContactForm;
 use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
 
