@@ -104,3 +104,23 @@ That would generate the following code:
     <input type="button">
 </div>
 ```
+
+### Methods of the widget
+
+All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
+
+Method                 | Parameter        | Description                                                                                                           | Default
+-----------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
+`attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
+`autoFocus()`          | `bool`           | The value of the HTML `autofocus` attribute.                                                                          | `true`
+`class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
+`disabled()`           | `bool`           | The value of the HTML `disabled` attribute.                                                                           | `false`
+`form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
+`id()`                 | `null|string`    | The value of the HTML `id` attribute.                                                                                 | `''`
+`name()`               | `string`         | The value of the HTML `name` attribute.                                                                               | `''`
+`tabIndex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
+`title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
+`type()`               | `string`         | The value of the HTML `type` attribute.                                                                               | `'button'`
+`value()`              | `string`         | The value of the HTML `value` attribute.                                                                              | `''`
+
+**Note:** *You can find all the [examples](/tests/Doc/ButtonDocTest.php) in the test file.*
