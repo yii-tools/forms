@@ -193,7 +193,7 @@ use Yii\Forms\Input\Checkbox;
 
 ### Methods of the widget
 
-All methods are available on the widget instance. All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
+All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
 
 Method                 | Parameter        | Description                                                                                                           | Default
 -----------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
