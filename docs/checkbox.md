@@ -252,11 +252,11 @@ Method                 | Parameter        | Description                         
 `containerClass()`     | `string`         | The HTML class for the container.                                                                                     | `''`
 `disabled()`           | `''`             | The value of the HTML `disabled` attribute.                                                                           | `false`
 `form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                 | `null|string`    | The value of the HTML `id` attribute.                                                                                 | `''`
+`id()`                 | `null, string`   | The value of the HTML `id` attribute.                                                                                 | `''`
 `label()`              | `string`         | The label for the widget.                                                                                             | `true`
 `labelAttributes()`    | `array`          | The HTML attributes for the label.                                                                                    | `[]`
 `labelClass()`         | `string`         | The HTML class for the label.                                                                                         | `''`
-`name()`               | `null|string`    | The value of the HTML `name` attribute.                                                                               | `''`
+`name()`               | `null, string`   | The value of the HTML `name` attribute.                                                                               | `''`
 `notLabel()`           | `''`             | When the widget does not render the label.                                                                            | `null`
 `prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
 `readonly()`           | `''`             | The value of the HTML `readonly` attribute.                                                                           | `true`
