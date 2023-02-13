@@ -85,6 +85,10 @@ abstract class AbstractField extends Widget
         $error = $this->renderError($widget);
         $hint = $this->renderHint($widget);
 
+        if ($widget instanceof Forms\Input\Checkbox && str_contains($this->inputTemplate, '{label}')) {
+            $widget = $widget->notLabel();
+        }
+
         if ($widget instanceof Forms\Input\Hidden === false && $this->isLabel()) {
             $label = $this->renderLabel($widget);
         }
