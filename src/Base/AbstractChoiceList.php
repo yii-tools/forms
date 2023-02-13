@@ -6,6 +6,7 @@ namespace Yii\Forms\Base;
 
 use InvalidArgumentException;
 use Yii\Forms\Label;
+use Yii\Html\Helper\CssClass;
 use Yii\Html\Helper\Utils;
 use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
@@ -19,10 +20,22 @@ abstract class AbstractChoiceList extends AbstractInputWidget
     use Attribute\CanBeChecked;
     use Attribute\HasContainer;
     use Attribute\HasItems;
+    use Attribute\HasLabel;
 
     protected string $containerTag = 'div';
     protected array $individualItemsAttributes = [];
     protected string $separator = PHP_EOL;
+
+    /**
+     * Return new instance specifying the items of the checkbox list, when the widget is used in boolean mode.
+     */
+    public function boolean(): static
+    {
+        $new = clone $this;
+        $new->items = ['0' => 'No', '1' => 'Yes'];
+
+        return $new;
+    }
 
     /**
      * Return new instance specified the tag name for the container element.

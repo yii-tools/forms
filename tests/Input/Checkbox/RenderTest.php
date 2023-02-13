@@ -128,6 +128,51 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    public function testLabel(): void
+    {
+        $this->assertSame(
+            '<label for="testform-string"><input id="testform-string" name="TestForm[string]" type="checkbox">Red</label>',
+            Checkbox::widget([new TestForm(), 'string'])->label('Red')->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testLabelAttributes(): void
+    {
+        $this->assertSame(
+            '<label class="test-class" for="testform-string"><input id="testform-string" name="TestForm[string]" type="checkbox">Red</label>',
+            Checkbox::widget([new TestForm(), 'string'])
+                ->label('Red')
+                ->labelAttributes(['class' => 'test-class'])
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testLabelClass(): void
+    {
+        $this->assertSame(
+            '<label class="test-class" for="testform-string"><input id="testform-string" name="TestForm[string]" type="checkbox">Red</label>',
+            Checkbox::widget([new TestForm(), 'string'])->label('Red')->labelClass('test-class')->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testNotLabel(): void
     {
         $this->assertSame(

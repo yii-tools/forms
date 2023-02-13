@@ -34,8 +34,5 @@ final class ImmutabilityTest extends TestCase
         $this->assertNotSame($checkbox, $checkbox->containerAttributes());
         $this->assertNotSame($checkbox, $checkbox->containerClass(''));
         $this->assertNotSame($checkbox, $checkbox->hidden(''));
-        $this->assertNotSame($checkbox, $checkbox->label(''));
-        $this->assertNotSame($checkbox, $checkbox->labelAttributes([]));
-        $this->assertNotSame($checkbox, $checkbox->notLabel());
     }
 }

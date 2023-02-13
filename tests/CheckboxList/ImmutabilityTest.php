@@ -30,6 +30,7 @@ final class ImmutabilityTest extends TestCase
     {
         $checkboxList = CheckboxList::widget([new TestForm(), 'array']);
 
+        $this->assertNotSame($checkboxList, $checkboxList->boolean());
         $this->assertNotSame($checkboxList, $checkboxList->containerTag('div'));
         $this->assertNotSame($checkboxList, $checkboxList->individualItemsAttributes());
         $this->assertNotSame($checkboxList, $checkboxList->separator(''));
