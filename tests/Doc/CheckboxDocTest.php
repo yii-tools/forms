@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Checkbox;
 use Yii\Forms\Tests\Support\ContactForm;
+use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
 
 /**
@@ -15,6 +16,8 @@ use Yii\Support\Assert;
  */
 final class CheckboxDocTest extends TestCase
 {
+    use TestTrait;
+
     public function testCheckbox(): void
     {
         // default.
