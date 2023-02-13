@@ -19,6 +19,10 @@ For install this package, you need [composer](https://getcomposer.org/) and `mbs
 composer require yii-tools/forms
 ```
 
+## Usage
+
+For use this package, read the [docs](/docs/forms.md).
+
 ## Checking dependencies
 
 This package uses [composer-require-checker](https://github.com/maglnet/ComposerRequireChecker) to check if all dependencies are correctly defined in `composer.json`.

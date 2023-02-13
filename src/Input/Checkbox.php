@@ -54,7 +54,7 @@ final class Checkbox extends Base\AbstractCheckbox
         /** @psalm-var mixed */
         $attributes['value'] = is_bool($valueDefault) ? (int) $valueDefault : $valueDefault;
 
-        if ($this->label === '') {
+        if ($label === '') {
             $label = Encode::content($this->formModel->getLabel($this->attribute));
         }
 
