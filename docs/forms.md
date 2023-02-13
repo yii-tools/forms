@@ -38,3 +38,5 @@ final class ContactForm extends AbstractFormModel
 
 ### Using widgets
 
+- [Checkbox](/docs/checkbox.md)
+
