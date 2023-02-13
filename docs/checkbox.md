@@ -4,7 +4,7 @@
 
 The `Checkbox` widget is designed to return the status of the checkbox. Generally it returns two values, by default it is `0` for unchecked, and `1` for checkeded.
 
-### Checkbox
+### Example
 
 ```php
 <?php
@@ -26,7 +26,7 @@ That would generate the following code:
 
 For default the label is generated from the attribute name. You can change it by using the `label()` method.
 
-### Checkbox with prefix
+### Example with prefix
 
 ```php
 <?php
@@ -49,7 +49,7 @@ That would generate the following code:
 <label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
 ```
 
-### Checkbox with suffix
+### Example with suffix
 
 ```php
 <?php
@@ -72,7 +72,7 @@ That would generate the following code:
 <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
 ```
 
-### Checkbox with container
+### Example with container
 
 ```php
 <?php
@@ -95,7 +95,7 @@ That would generate the following code:
 </div>
 ```
 
-### Field with Checkbox
+### Example with Field
 
 ```php
 declare(strict_types=1);
@@ -120,7 +120,7 @@ That would generate the following code:
 </div>
 ```
 
-### Field with checkbox change label position
+### Example with Field change label position
 
 ```php
 declare(strict_types=1);
@@ -145,7 +145,7 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-### Field with checkbox enclosed by label
+### Example with Field enclosed by label
 
 ```php
 declare(strict_types=1);
@@ -168,7 +168,7 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-### Field with checkbox any label
+### Example with Field any label
 
 ```php
 declare(strict_types=1);
