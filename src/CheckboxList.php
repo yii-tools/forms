@@ -18,6 +18,8 @@ final class CheckboxList extends Base\AbstractChoiceList
 {
     public function render(): string
     {
+        $labelContainer = '';
+
         /**
          * @psalm-var array[] $attributes
          * @psalm-var array[] $containerAttributes
@@ -59,9 +61,18 @@ final class CheckboxList extends Base\AbstractChoiceList
             );
         }
 
+        if (!empty($this->label)) {
+            $labelContainer = Label::widget([$this->formModel, $this->attribute])
+                ->attributes($this->labelAttributes)
+                ->content($this->label)
+                ->render() . $this->separator;
+        }
+
+        $checkboxList = implode($this->separator, $checkboxItems);
+
         return match ($this->container) {
-            true => Tag::create($this->containerTag, implode($this->separator, $checkboxItems), $containerAttributes),
-            default => implode($this->separator, $checkboxItems),
+            true => $labelContainer . Tag::create($this->containerTag, $checkboxList, $containerAttributes),
+            default => $checkboxList,
         };
     }
 }

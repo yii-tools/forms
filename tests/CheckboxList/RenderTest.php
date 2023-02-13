@@ -30,6 +30,26 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    public function testBoolean(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label for="testform-array">Do you like this post?</label>
+            <div id="testform-array">
+            <label><input name="TestForm[array][]" type="checkbox" value="0">No</label>
+            <label><input name="TestForm[array][]" type="checkbox" value="1">Yes</label>
+            </div>
+            HTML,
+            CheckboxList::widget([new TestForm(), 'array'])->boolean()->label('Do you like this post?')->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testContainerWithFalse(): void
     {
         Assert::equalsWithoutLE(
@@ -137,6 +157,77 @@ final class RenderTest extends TestCase
             CheckboxList::widget([new TestForm(), 'array'])
                 ->items($this->sex)
                 ->itemsAttributes(['class' => 'test-class'])
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testLabel(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label for="testform-array">Select your gender?</label>
+            <div id="testform-array">
+            <label><input name="TestForm[array][]" type="checkbox" value="1">Female</label>
+            <label><input name="TestForm[array][]" type="checkbox" value="2">Male</label>
+            </div>
+            HTML,
+            CheckboxList::widget([new TestForm(), 'array'])
+                ->items($this->sex)
+                ->label('Select your gender?')
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testLabelAttributes(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label class="test-class" for="testform-array">Select your gender?</label>
+            <div id="testform-array">
+            <label><input name="TestForm[array][]" type="checkbox" value="1">Female</label>
+            <label><input name="TestForm[array][]" type="checkbox" value="2">Male</label>
+            </div>
+            HTML,
+            CheckboxList::widget([new TestForm(), 'array'])
+                ->items($this->sex)
+                ->label('Select your gender?')
+                ->labelAttributes(['class' => 'test-class'])
+                ->render(),
+        );
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testLabelClass(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label class="test-class" for="testform-array">Select your gender?</label>
+            <div id="testform-array">
+            <label><input name="TestForm[array][]" type="checkbox" value="1">Female</label>
+            <label><input name="TestForm[array][]" type="checkbox" value="2">Male</label>
+            </div>
+            HTML,
+            CheckboxList::widget([new TestForm(), 'array'])
+                ->items($this->sex)
+                ->label('Select your gender?')
+                ->labelClass('test-class')
                 ->render(),
         );
     }

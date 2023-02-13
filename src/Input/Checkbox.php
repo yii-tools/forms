@@ -31,6 +31,7 @@ final class Checkbox extends Base\AbstractCheckbox
     {
         $attributes = $this->attributes;
         $label = $this->label;
+        $labelTag = Label::widget([$this->formModel, $this->attribute])->attributes($this->labelAttributes);
 
         /** @psalm-var mixed $value */
         $value = $this->getValue();
@@ -61,16 +62,13 @@ final class Checkbox extends Base\AbstractCheckbox
 
         $inputCheckbox = match ($label) {
             null => $checkboxTag,
-            default => Label::widget([$this->formModel, $this->attribute])
-                ->encode(false)
-                ->content($checkboxTag . $label)
-                ->render(),
+            default => $labelTag->encode(false)->content($checkboxTag . $label)->render(),
         };
 
         if ($this->container && $label !== null) {
             $inputCheckbox = Tag::create(
                 'div',
-                Label::widget([$this->formModel, $this->attribute])->content($label)->render() . PHP_EOL . $checkboxTag,
+                $labelTag->content($label)->render() . PHP_EOL . $checkboxTag,
                 $this->containerAttributes,
             );
         }

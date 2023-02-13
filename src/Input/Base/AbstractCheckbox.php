@@ -16,12 +16,11 @@ use Yiisoft\Factory\NotFoundException;
 abstract class AbstractCheckbox extends AbstractInputWidget
 {
     use Attribute\CanBeChecked;
+    use Attribute\HasLabel;
 
     protected bool $container = false;
     protected array $containerAttributes = [];
     protected Hidden|null $hidden = null;
-    protected null|string $label = '';
-    protected array $labelAttributes = [];
 
     /**
      * Return new instance with container enabled or disabled.
@@ -77,43 +76,6 @@ abstract class AbstractCheckbox extends AbstractInputWidget
     {
         $new = clone $this;
         $new->hidden = Hidden::widget([$this->formModel, $this->attribute])->attributes($values)->value($value);
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance specifying the label of checkbox.
-     *
-     * @param string $value The label of checkbox.
-     */
-    public function label(string $value): static
-    {
-        $new = clone $this;
-        $new->label = $value;
-
-        return $new;
-    }
-
-    /**
-     * Return a new instance specifying the attributes for label.
-     *
-     * @param array $values Attribute values indexed by attribute names.
-     */
-    public function labelAttributes(array $values): static
-    {
-        $new = clone $this;
-        $new->labelAttributes = $values;
-
-        return $new;
-    }
-
-    /**
-     * Returns a new instance specifying whether the label not to be displayed.
-     */
-    public function notLabel(): static
-    {
-        $new = clone $this;
-        $new->label = null;
 
         return $new;
     }
