@@ -65,7 +65,6 @@ final class CheckboxList extends Base\AbstractChoiceList
             $labelContainer = Label::widget([$this->formModel, $this->attribute])
                 ->attributes($this->labelAttributes)
                 ->content($this->label)
-                ->encode(true)
                 ->render() . $this->separator;
         }
 
