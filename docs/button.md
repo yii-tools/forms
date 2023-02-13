@@ -1,6 +1,6 @@
 ## Button widget
 
-[button](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button) is an input element with a type attribute whose value is `button`, `submit` or `reset`, representing a button labeled by its contents.
+[Button](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button) is an input element with a type attribute whose value is `button`, `submit` or `reset`, representing a button labeled by its contents.
 
 ### Example
 
