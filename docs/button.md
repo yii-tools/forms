@@ -1,4 +1,4 @@
-## Button widget
+## Button
 
 [Button](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button) is an input element with a type attribute whose value is `button`, `submit` or `reset`, representing a button labeled by its contents.
 
@@ -73,7 +73,7 @@ use App\Form\ContactForm;
 use Yii\Forms\Input\Button;
 ?>
 
-<?= Button::widget()->value('Click me')->render() ?>
+<?= Button::widget()->value('Click me') ?>
 ```
 
 That would generate the following code:
@@ -94,7 +94,7 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Button;
 ?>
 
-<?= Field::widget([Button::widget()])->render(), ?>
+<?= Field::widget([Button::widget()]) ?>
 ```
 
 That would generate the following code:
