@@ -31,3 +31,4 @@ final class ContactForm extends AbstractFormModel
 
 - [Button](/docs/button.md)
 - [Checkbox](/docs/checkbox.md)
+- [Date](/docs/date.md)
