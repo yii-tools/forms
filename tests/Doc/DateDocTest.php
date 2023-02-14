@@ -74,7 +74,7 @@ final class DateDocTest extends TestCase
             </div>
             HTML,
             Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
-                ->prefix('<span><i class="fa fa-calendar"></i></span>')])
+                ->prefix('<span><i class="fa fa-calendar"></i></span>'), ])
                 ->render(),
         );
 
@@ -88,7 +88,7 @@ final class DateDocTest extends TestCase
             </div>
             HTML,
             Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
-                ->suffix('<span><i class="fa fa-calendar"></i></span>')])
+                ->suffix('<span><i class="fa fa-calendar"></i></span>'), ])
                 ->render(),
         );
     }
