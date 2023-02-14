@@ -154,3 +154,5 @@ Method                 | Parameter        | Description                         
 `tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
 `value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
+
+**Note:** *You can find all the [examples](/tests/Doc/DateDocTest.php) in the test file.*
