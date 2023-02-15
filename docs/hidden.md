@@ -59,4 +59,4 @@ Method                 | Parameter        | Description                         
 
 **Note:** *You can find all the [examples](/tests/Doc/HiddenDocTest.php) in the test file.*
 
-** Not allowed attribute: `autofocus`, `readonly`, `required`, `tabindex` and `title`, its use will cause an exception. **	
+**Not allowed attribute: `autofocus`, `readonly`, `required`, `tabindex` and `title`, its use will cause an exception.**	
