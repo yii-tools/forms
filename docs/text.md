@@ -150,7 +150,7 @@ Method                 | Parameter        | Description                         
 `placeholder()`        | `string`         | The value of the HTML `placeholder` attribute.                                                                        | `''`
 `prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
 `readonly()`           |                  | The value of the HTML `readonly` attribute.                                                                           | `true`
-`required()`           |                  | The value of the HTML `required` attribute.                                                                           | `true`\
+`required()`           |                  | The value of the HTML `required` attribute.                                                                           | `true`
 `size()`               | `int`            | The value of the HTML `size` attribute.                                                                               | `null`
 `suffix()`             | `string`         | The suffix for the widget.                                                                                            | `''`
 `tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
