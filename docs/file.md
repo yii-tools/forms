@@ -159,17 +159,17 @@ Method                 | Parameter        | Description                         
 `ariaDescribedBy()`    | `string`         | The value of the HTML `aria-describedby` attribute.                                                                   | `''`
 `ariaLabel()`          | `string`         | The value of the HTML `aria-label` attribute.                                                                         | `''`
 `attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
-`autoFocus()`          | `bool`           | The value of the HTML `autofocus` attribute.                                                                          | `true`
+`autoFocus()`          |                  | The value of the HTML `autofocus` attribute.                                                                          | `true`
 `charset()`            | `string`         | The charset of the HTML document.                                                                                     | `UTF-8`
 `class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
-`disabled()`           | `''`             | The value of the HTML `disabled` attribute.                                                                           | `false`
+`disabled()`           |                  | The value of the HTML `disabled` attribute.                                                                           | `false`
 `form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
 `id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
-`multiple()`           | `''`             | The value of the HTML `multiple` attribute.                                                                           | `true`
+`multiple()`           |                  | The value of the HTML `multiple` attribute.                                                                           | `true`
 `name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
 `prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
-`readonly()`           | `''`             | The value of the HTML `readonly` attribute.                                                                           | `true`
-`required()`           | `''`             | The value of the HTML `required` attribute.                                                                           | `true`
+`readonly()`           |                  | The value of the HTML `readonly` attribute.                                                                           | `true`
+`required()`           |                  | The value of the HTML `required` attribute.                                                                           | `true`
 `suffix()`             | `string`         | The suffix for the widget.                                                                                            | `''`
 `tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
