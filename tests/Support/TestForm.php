@@ -13,6 +13,7 @@ final class TestForm extends AbstractFormModel
     private int $int = 0;
     private string $mĄkA = '';
     private string|null $string = '';
+    private string|null $stringHidden = '';
     private object|null $object = null;
 
     public function customErrorCallback(): string

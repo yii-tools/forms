@@ -27,6 +27,86 @@ final class ExceptionTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    public function testAutofocus(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Hidden::class widget must not be autofocus, required, readonly, tabindex or title attribute.'
+        );
+
+        Hidden::widget([new TestForm(), 'string'])->autofocus()->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testRequired(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Hidden::class widget must not be autofocus, required, readonly, tabindex or title attribute.'
+        );
+
+        Hidden::widget([new TestForm(), 'string'])->required()->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testReadonly(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Hidden::class widget must not be autofocus, required, readonly, tabindex or title attribute.'
+        );
+
+        Hidden::widget([new TestForm(), 'string'])->readonly()->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testTabindex(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Hidden::class widget must not be autofocus, required, readonly, tabindex or title attribute.'
+        );
+
+        Hidden::widget([new TestForm(), 'string'])->tabindex(1)->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
+    public function testTitle(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Hidden::class widget must not be autofocus, required, readonly, tabindex or title attribute.'
+        );
+
+        Hidden::widget([new TestForm(), 'string'])->title('test-title')->render();
+    }
+
+    /**
+     * @throws CircularReferenceException
+     * @throws InvalidConfigException
+     * @throws NotFoundException
+     * @throws NotInstantiableException
+     */
     public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);

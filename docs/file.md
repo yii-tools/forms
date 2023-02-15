@@ -176,4 +176,4 @@ Method                 | Parameter        | Description                         
 `unchecked()`          | `string,array`   | The value that should be submitted when the file input is not checked. The first value is the value of the HTML `value` attribute. The second value is the value of the HTML attributes for widget `Hidden::class`. | `''`                                
 `value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
 
-**Note:** *You can find all the [examples](/tests/Doc/DateDocTest.php) in the test file.*
+**Note:** *You can find all the [examples](/tests/Doc/FileDocTest.php) in the test file.*
