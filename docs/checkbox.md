@@ -26,6 +26,27 @@ That would generate the following code:
 
 For default the label is generated from the attribute name. You can change it by using the `label()` method.
 
+### Example with input hidden for unchecked
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?= Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0') ?>
+```
+
+That would generate the following code:
+
+```html
+<input name="ContactForm[agree]" type="hidden" value="0">
+<label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+```
+
 ### Example with prefix
 
 ```php
@@ -244,26 +265,27 @@ Method                 | Parameter        | Description                         
 `ariaDescribedBy()`    | `string`         | The value of the HTML `aria-describedby` attribute.                                                                   | `''`
 `ariaLabel()`          | `string`         | The value of the HTML `aria-label` attribute.                                                                         | `''`
 `attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
-`autoFocus()`          | `bool`           | The value of the HTML `autofocus` attribute.                                                                          | `true`
+`autoFocus()`          |                  | The value of the HTML `autofocus` attribute.                                                                          | `true`
 `charset()`            | `string`         | The charset of the HTML document.                                                                                     | `UTF-8`
 `class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
 `container()`          | `bool`           | The container for the widget.                                                                                         | `false`
 `containerAttributes()`| `array`          | The HTML attributes for the container.                                                                                | `[]`
 `containerClass()`     | `string`         | The HTML class for the container.                                                                                     | `''`
-`disabled()`           | `''`             | The value of the HTML `disabled` attribute.                                                                           | `false`
+`disabled()`           |                  | The value of the HTML `disabled` attribute.                                                                           | `false`
 `form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                 | `null, string`   | The value of the HTML `id` attribute.                                                                                 | `''`
+`id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
 `label()`              | `string`         | The label for the widget.                                                                                             | `true`
 `labelAttributes()`    | `array`          | The HTML attributes for the label.                                                                                    | `[]`
 `labelClass()`         | `string`         | The HTML class for the label.                                                                                         | `''`
-`name()`               | `null, string`   | The value of the HTML `name` attribute.                                                                               | `''`
-`notLabel()`           | `''`             | When the widget does not render the label.                                                                            | `null`
+`name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
+`notLabel()`           |                  | When the widget does not render the label.                                                                            | `null`
 `prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
-`readonly()`           | `''`             | The value of the HTML `readonly` attribute.                                                                           | `true`
-`required()`           | `''`             | The value of the HTML `required` attribute.                                                                           | `true`
+`readonly()`           |                  | The value of the HTML `readonly` attribute.                                                                           | `true`
+`required()`           |                  | The value of the HTML `required` attribute.                                                                           | `true`
 `suffix()`             | `string`         | The suffix for the widget.                                                                                            | `''`
 `tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
+`unchecked()`          | `string,array`   | The value that should be submitted when the checkbox is not checked. The first value is the value of the HTML `value` attribute. The second value is the value of the HTML attributes for widget `Hidden::class`. | `''`
 `value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
 
 **Note:** *You can find all the [examples](/tests/Doc/CheckboxDocTest.php) in the test file.*

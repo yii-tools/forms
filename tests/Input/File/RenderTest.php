@@ -34,7 +34,7 @@ final class RenderTest extends TestCase
             <input id="testform-string" name="TestForm[string]" type="hidden" value="0">
             <input id="testform-string" name="TestForm[string][]" type="file">
             HTML,
-            File::widget([new TestForm(), 'string'])->hidden('0')->render(),
+            File::widget([new TestForm(), 'string'])->unchecked('0')->render(),
         );
     }
 

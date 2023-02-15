@@ -111,14 +111,14 @@ final class RenderTest extends TestCase
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function testHidden(): void
+    public function testUnchecked(): void
     {
         Assert::equalsWithoutLE(
             <<<HTML
             <input name="TestForm[string]" type="hidden" value="0">
             <label for="testform-string"><input id="testform-string" name="TestForm[string]" type="checkbox" value="1">String</label>
             HTML,
-            Checkbox::widget([new TestForm(), 'string'])->hidden('0')->value(1)->render(),
+            Checkbox::widget([new TestForm(), 'string'])->unchecked('0')->value(1)->render(),
         );
     }
 

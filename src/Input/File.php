@@ -26,7 +26,7 @@ final class File extends AbstractInputWidget
     use Attribute\CanBeMultiple;
     use Attribute\HasAccept;
 
-    private Hidden|null $hidden = null;
+    private Hidden|null $unchecked = null;
 
     /**
      * Returns a new instance with hidden widget that corresponds to "unchecked" state of the input.
@@ -39,12 +39,12 @@ final class File extends AbstractInputWidget
      * @throws NotInstantiableException
      * @throws NotFoundException
      */
-    public function hidden(string $value, array $values = []): self
+    public function unchecked(string $value, array $values = []): self
     {
         $values['value'] = $value;
 
         $new = clone $this;
-        $new->hidden = Hidden::widget([$this->formModel, $this->attribute])->attributes($values);
+        $new->unchecked = Hidden::widget([$this->formModel, $this->attribute])->attributes($values);
 
         return $new;
     }
@@ -69,9 +69,9 @@ final class File extends AbstractInputWidget
 
         $render = $this->run('input', '', 'file', $attributes);
 
-        return match ($this->hidden) {
+        return match ($this->unchecked) {
             null => $render,
-            default => $this->hidden->name($name)->render() . PHP_EOL . $render,
+            default => $this->unchecked->name($name)->render() . PHP_EOL . $render,
         };
     }
 }
