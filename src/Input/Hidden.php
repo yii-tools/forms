@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Yii\Forms\Input;
 
 use InvalidArgumentException;
-use Yii\Html\Tag;
 use Yii\Widget\AbstractInputWidget;
 
 use function array_key_exists;
@@ -25,6 +24,15 @@ final class Hidden extends AbstractInputWidget
     public function render(): string
     {
         $attributes = $this->attributes;
+        $notAllowedAttributes = ['autofocus', 'required', 'readonly', 'tabindex', 'title'];
+
+        foreach ($notAllowedAttributes as $attribute) {
+            if (array_key_exists($attribute, $attributes)) {
+                throw new InvalidArgumentException(
+                    'Hidden::class widget must not be autofocus, required, readonly, tabindex or title attribute.'
+                );
+            }
+        }
 
         $value = match (array_key_exists('value', $attributes)) {
             true => $attributes['value'],
