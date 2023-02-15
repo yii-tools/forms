@@ -22,27 +22,6 @@ That would generate the following code:
 <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 ```
 
-### Example with prefix
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Input\File;
-?>
-
-<?= File::widget([new ContactForm(), 'attachment'])->prefix('<span><i class="fa fa-file"></i></span>') ?>
-```
-
-That would generate the following code:
-
-```html
-<span><i class="fa fa-file"></i></span>
-<input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
-```
-
 ### Example with input hidden for unchecked
 
 ```php
@@ -62,6 +41,27 @@ That would generate the following code:
 ```html
 <input id="contactform-agree" name="ContactForm[agree]" type="hidden" value="0">
 <input id="contactform-agree" name="ContactForm[agree][]" type="file">
+```
+
+### Example with prefix
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\File;
+?>
+
+<?= File::widget([new ContactForm(), 'attachment'])->prefix('<span><i class="fa fa-file"></i></span>') ?>
+```
+
+That would generate the following code:
+
+```html
+<span><i class="fa fa-file"></i></span>
+<input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 ```
 
 ### Example with suffix
