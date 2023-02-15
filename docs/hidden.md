@@ -57,6 +57,6 @@ Method                 | Parameter        | Description                         
 `name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
 `value()`              | `string`         | The value of the HTML `value` attribute.                                                                              | `''`
 
-**Note:** *You can find all the [examples](/tests/Doc/HiddenDocTest.php) in the test file.*
+**Not allowed attribute: `autofocus`, `readonly`, `required`, `tabindex` and `title`, its use will cause an exception.**
 
-**Not allowed attribute: `autofocus`, `readonly`, `required`, `tabindex` and `title`, its use will cause an exception.**	
+**Note:** *You can find all the [examples](/tests/Doc/HiddenDocTest.php) in the test file.*
