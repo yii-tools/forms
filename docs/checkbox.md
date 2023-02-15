@@ -26,6 +26,27 @@ That would generate the following code:
 
 For default the label is generated from the attribute name. You can change it by using the `label()` method.
 
+### Example with input hidden for unchecked
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?= Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0') ?>
+```
+
+That would generate the following code:
+
+```html
+<input name="ContactForm[agree]" type="hidden" value="0">
+<label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+```
+
 ### Example with prefix
 
 ```php
@@ -252,11 +273,11 @@ Method                 | Parameter        | Description                         
 `containerClass()`     | `string`         | The HTML class for the container.                                                                                     | `''`
 `disabled()`           | `''`             | The value of the HTML `disabled` attribute.                                                                           | `false`
 `form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                 | `null, string`   | The value of the HTML `id` attribute.                                                                                 | `''`
+`id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
 `label()`              | `string`         | The label for the widget.                                                                                             | `true`
 `labelAttributes()`    | `array`          | The HTML attributes for the label.                                                                                    | `[]`
 `labelClass()`         | `string`         | The HTML class for the label.                                                                                         | `''`
-`name()`               | `null, string`   | The value of the HTML `name` attribute.                                                                               | `''`
+`name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
 `notLabel()`           | `''`             | When the widget does not render the label.                                                                            | `null`
 `prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
 `readonly()`           | `''`             | The value of the HTML `readonly` attribute.                                                                           | `true`
@@ -264,6 +285,7 @@ Method                 | Parameter        | Description                         
 `suffix()`             | `string`         | The suffix for the widget.                                                                                            | `''`
 `tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
+`unchecked()`          | `string,array`   | The value that should be submitted when the checkbox is not checked. The first value is the value of the HTML `value` attribute. The second value is the value of the HTML attributes for widget `Hidden::class`. | `''`
 `value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
 
 **Note:** *You can find all the [examples](/tests/Doc/CheckboxDocTest.php) in the test file.*

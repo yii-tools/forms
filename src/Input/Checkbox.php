@@ -73,9 +73,9 @@ final class Checkbox extends Base\AbstractCheckbox
             );
         }
 
-        return match ($this->hidden) {
+        return match ($this->unchecked) {
             null => $inputCheckbox,
-            default => $this->hidden
+            default => $this->unchecked
                 ->id(null)
                 ->name(Utils::generateInputName($this->formModel->getFormName(), $this->attribute))->render() . PHP_EOL .
                 $inputCheckbox,

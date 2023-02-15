@@ -20,7 +20,7 @@ abstract class AbstractCheckbox extends AbstractInputWidget
 
     protected bool $container = false;
     protected array $containerAttributes = [];
-    protected Hidden|null $hidden = null;
+    protected Hidden|null $unchecked = null;
 
     /**
      * Return new instance with container enabled or disabled.
@@ -72,10 +72,10 @@ abstract class AbstractCheckbox extends AbstractInputWidget
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
-    public function hidden(string $value, array $values = []): static
+    public function unchecked(string $value, array $values = []): static
     {
         $new = clone $this;
-        $new->hidden = Hidden::widget([$this->formModel, $this->attribute])->attributes($values)->value($value);
+        $new->unchecked = Hidden::widget([$this->formModel, $this->attribute])->attributes($values)->value($value);
 
         return $new;
     }

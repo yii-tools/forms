@@ -1,6 +1,6 @@
-## Date
+## File
 
-[Date](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html#input.date) is a control that lets the user enter a date. It is displayed with a calendar widget in supporting browsers, which allows easy date selection. The format of the date is controlled by the `pattern` attribute, using the syntax described in the [HTML specification](https://www.w3.org/TR/2012/WD-html-markup-20120329/datatypes.html#common.data.date). If the `pattern` attribute is not specified, the user agent will provide a default value.
+[File](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.file.html#input.file) is a control that lets the user select a file. The file(s) selected by the user can then be uploaded to a server with [PSR-7](https://github.com/php-fig/http-message), or manipulated by JavaScript via the [File API](https://www.w3.org/TR/FileAPI/). 
 
 ### Example
 
@@ -10,16 +10,16 @@
 declare(strict_types=1);
 
 use App\Form\ContactForm;
-use Yii\Forms\Input\Date;
+use Yii\Forms\Input\File;
 ?>
 
-<?= Date::widget([new ContactForm(), 'dateofMessage']) ?>
+<?=  File::widget([new ContactForm(), 'attachment']) ?>
 ```
 
 That would generate the following code:
 
 ```html
-<input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+<input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 ```
 
 ### Example with prefix
@@ -30,17 +30,38 @@ That would generate the following code:
 declare(strict_types=1);
 
 use App\Form\ContactForm;
-use Yii\Forms\Input\Date;
+use Yii\Forms\Input\File;
 ?>
 
-<?= Date::widget([new ContactForm(), 'dateofMessage'])->prefix('<span><i class="fa fa-calendar"></i></span>') ?>
+<?= File::widget([new ContactForm(), 'attachment'])->prefix('<span><i class="fa fa-file"></i></span>') ?>
 ```
 
 That would generate the following code:
 
 ```html
-<span><i class="fa fa-calendar"></i></span>
-<input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+<span><i class="fa fa-file"></i></span>
+<input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
+```
+
+### Example with input hidden for unchecked
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\File;
+?>
+
+<?= File::widget([new ContactForm(), 'agree'])->unchecked('0') ?>
+```
+
+That would generate the following code:
+
+```html
+<input id="contactform-agree" name="ContactForm[agree]" type="hidden" value="0">
+<input id="contactform-agree" name="ContactForm[agree][]" type="file">
 ```
 
 ### Example with suffix
@@ -51,17 +72,17 @@ That would generate the following code:
 declare(strict_types=1);
 
 use App\Form\ContactForm;
-use Yii\Forms\Input\Date;
+use Yii\Forms\Input\File;
 ?>
 
-<?= Date::widget([new ContactForm(), 'dateofMessage'])->suffix('<span><i class="fa fa-calendar"></i></span>') ?>
+<?= File::widget([new ContactForm(), 'attachment'])->suffix('<span><i class="fa fa-file"></i></span>') ?>
 ```
 
 That would generate the following code:
 
 ```html
-<input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-<span><i class="fa fa-calendar"></i></span>
+<input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
+<span><i class="fa fa-file"></i></span>
 ```
 
 ### Example with Field
@@ -71,18 +92,18 @@ declare(strict_types=1);
 
 use App\Form\ContactForm;
 use Yii\Forms\Field;
-use Yii\Forms\Input\Date;
+use Yii\Forms\Input\File;
 ?>
 
-<?= Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])]) ?>
+<?= Field::widget([File::widget([new ContactForm(), 'attachment'])]) ?>
 ```
 
 That would generate the following code:
 
 ```html
 <div>
-    <label for="contactform-dateofmessage">Dateof Message</label>
-    <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+    <label for="contactform-attachment">Attachment</label>
+    <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 </div>
 ```
 
@@ -93,17 +114,17 @@ declare(strict_types=1);
 
 use App\Form\ContactForm;
 use Yii\Forms\Field;
-use Yii\Forms\Input\Date;
+use Yii\Forms\Input\File;
 ?>
 
-<?= Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])->prefix('<span><i class="fa fa-calendar"></i></span>')]) ?>
+<?= Field::widget([File::widget([new ContactForm(), 'attachment'])->prefix('<span><i class="fa fa-file"></i></span>'), ]) ?>
 ```
 
 ```html
 <div>
-    <label for="contactform-dateofmessage">Dateof Message</label>
-    <span><i class="fa fa-calendar"></i></span>
-    <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+    <label for="contactform-attachment">Attachment</label>
+    <span><i class="fa fa-file"></i></span>
+    <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 </div>
 ```
 
@@ -114,17 +135,17 @@ declare(strict_types=1);
 
 use App\Form\ContactForm;
 use Yii\Forms\Field;
-use Yii\Forms\Input\Date;
+use Yii\Forms\Input\File;
 ?>
 
-<?= Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])->suffix('<span><i class="fa fa-calendar"></i></span>')]) ?>
+<?= Field::widget([File::widget([new ContactForm(), 'attachment'])->suffix('<span><i class="fa fa-file"></i></span>'), ]) ?>
 ```
 
 ```html
 <div>
-    <label for="contactform-dateofmessage">Dateof Message</label>
-    <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-    <span><i class="fa fa-calendar"></i></span>
+    <label for="contactform-attachment">Attachment</label>
+    <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
+    <span><i class="fa fa-file"></i></span>
 </div>
 ```
 
@@ -134,6 +155,7 @@ All methods are immutable, which means that they will return a new instance of t
 
 Method                 | Parameter        | Description                                                                                                           | Default
 -----------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
+`accept()`             | `string`         | The value of the HTML `accept` attribute.                                                                             | `''`
 `ariaDescribedBy()`    | `string`         | The value of the HTML `aria-describedby` attribute.                                                                   | `''`
 `ariaLabel()`          | `string`         | The value of the HTML `aria-label` attribute.                                                                         | `''`
 `attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
@@ -143,16 +165,15 @@ Method                 | Parameter        | Description                         
 `disabled()`           | `''`             | The value of the HTML `disabled` attribute.                                                                           | `false`
 `form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
 `id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
-`max()`                | `int,string`     | The value of the HTML `max` attribute.                                                                                | `''`
-`min()`                | `int,string`     | The value of the HTML `min` attribute.                                                                                | `''`
+`multiple()`           | `''`             | The value of the HTML `multiple` attribute.                                                                           | `true`
 `name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
 `prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
 `readonly()`           | `''`             | The value of the HTML `readonly` attribute.                                                                           | `true`
 `required()`           | `''`             | The value of the HTML `required` attribute.                                                                           | `true`
-`step()`               | `int,string`     | The value of the HTML `step` attribute.                                                                               | `''`
 `suffix()`             | `string`         | The suffix for the widget.                                                                                            | `''`
 `tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
+`unchecked()`          | `string,array`   | The value that should be submitted when the file input is not checked. The first value is the value of the HTML `value` attribute. The second value is the value of the HTML attributes for widget `Hidden::class`. | `''`                                
 `value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
 
 **Note:** *You can find all the [examples](/tests/Doc/DateDocTest.php) in the test file.*

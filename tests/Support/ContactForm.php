@@ -9,5 +9,6 @@ use Yii\FormModel\AbstractFormModel;
 final class ContactForm extends AbstractFormModel
 {
     private bool $agree = false;
+    private array $attachment = [];
     private string $dateofMessage = '';
 }

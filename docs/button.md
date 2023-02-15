@@ -116,8 +116,8 @@ Method                 | Parameter        | Description                         
 `class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
 `disabled()`           | `bool`           | The value of the HTML `disabled` attribute.                                                                           | `false`
 `form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                 | `null, string`   | The value of the HTML `id` attribute.                                                                                 | `''`
-`name()`               | `null, string`   | The value of the HTML `name` attribute.                                                                               | `''`
+`id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
+`name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
 `tabIndex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
 `title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
 `type()`               | `string`         | The value of the HTML `type` attribute.                                                                               | `'button'`

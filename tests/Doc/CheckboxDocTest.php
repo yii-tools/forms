@@ -28,7 +28,16 @@ final class CheckboxDocTest extends TestCase
             Checkbox::widget([new ContactForm(), 'agree'])->render(),
         );
 
-        // prefix
+        // unchecked.
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input name="ContactForm[agree]" type="hidden" value="0">
+            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+            HTML,
+            Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0')->render(),
+        );
+
+        // prefix.
         Assert::equalsWithoutLE(
             <<<HTML
             <label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
@@ -38,7 +47,7 @@ final class CheckboxDocTest extends TestCase
                 ->render(),
         );
 
-        // suffix
+        // suffix.
         Assert::equalsWithoutLE(
             <<<HTML
             <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
@@ -116,7 +125,7 @@ final class CheckboxDocTest extends TestCase
                 ->render(),
         );
 
-        // prefix
+        // prefix.
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -131,7 +140,7 @@ final class CheckboxDocTest extends TestCase
                 ->render(),
         );
 
-        // suffix
+        // suffix.
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
