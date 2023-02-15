@@ -34,3 +34,4 @@ final class ContactForm extends AbstractFormModel
 - [Date](/docs/date.md)
 - [File](/docs/file.md)
 - [Hidden](/docs/hidden.md)
+- [Text](/docs/text.md)
