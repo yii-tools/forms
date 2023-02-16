@@ -41,7 +41,7 @@ abstract class AbstractChoiceList extends AbstractInputWidget
      *
      * @param string $value The tag name for the container element.
      */
-    public function containerTag(string $value): self
+    public function containerTag(string $value): static
     {
         if ($value === '') {
             throw new InvalidArgumentException('The container tag must be a non-empty string.');
@@ -71,7 +71,7 @@ abstract class AbstractChoiceList extends AbstractInputWidget
      *
      * @param string $value The separator between the generated checkbox list items.
      */
-    public function separator(string $value): self
+    public function separator(string $value): static
     {
         $new = clone $this;
         $new->separator = $value;

@@ -920,7 +920,7 @@ final class RenderTest extends TestCase
             Field::widget(
                 [
                     ButtonGroup::widget()
-                        ->buttons([['label' => 'Submit', 'type' => 'Submit'], ['label' => 'Reset', 'type' => 'Reset']]),
+                        ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']]),
                 ],
             )
                 ->class('form-control')

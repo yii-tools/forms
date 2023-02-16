@@ -33,11 +33,9 @@ abstract class AbstractForm extends Widget
      *
      * @param string $value The accept-charset attribute value.
      *
-     * @return self
-     *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-accept-charset
      */
-    public function acceptCharset(string $value): self
+    public function acceptCharset(string $value): static
     {
         $new = clone $this;
         $new->attributes['accept-charset'] = $value;
@@ -51,11 +49,9 @@ abstract class AbstractForm extends Widget
      *
      * @param string $value The action attribute value.
      *
-     * @return self
-     *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-action
      */
-    public function action(string $value): self
+    public function action(string $value): static
     {
         $new = clone $this;
         $new->action = $value;
@@ -68,10 +64,8 @@ abstract class AbstractForm extends Widget
      *
      * @param string|Stringable $csrfToken The CSRF-token attribute value.
      * @param string $csrfName The CSRF-token attribute name.
-     *
-     * @return self
      */
-    public function csrf(string|Stringable $csrfToken, string $csrfName = '_csrf'): self
+    public function csrf(string|Stringable $csrfToken, string $csrfName = '_csrf'): static
     {
         $new = clone $this;
         $new->csrfToken = (string) $csrfToken;
@@ -85,11 +79,9 @@ abstract class AbstractForm extends Widget
      *
      * @param string $value The enctype attribute value.
      *
-     * @return self
-     *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-enctype
      */
-    public function enctype(string $value): self
+    public function enctype(string $value): static
     {
         if (
             $value !== 'multipart/form-data' &&
@@ -113,11 +105,9 @@ abstract class AbstractForm extends Widget
      *
      * @param string $value The method attribute value.
      *
-     * @return self
-     *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-method
      */
-    public function method(string $value): self
+    public function method(string $value): static
     {
         $new = clone $this;
         $new->method = strtoupper($value);
@@ -129,11 +119,9 @@ abstract class AbstractForm extends Widget
      * Returns a new instances with the novalidate attributes are boolean attributes. If present, they indicate that the
      * form is not to be validated during submission.
      *
-     * @return self
-     *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-novalidate
      */
-    public function noValidate(): self
+    public function noValidate(): static
     {
         $new = clone $this;
         $new->attributes['novalidate'] = true;
@@ -147,11 +135,9 @@ abstract class AbstractForm extends Widget
      *
      * @param string $value The target attribute value.
      *
-     * @return self
-     *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-target
      */
-    public function target(string $value): self
+    public function target(string $value): static
     {
         if ($value !== '_blank' && $value !== '_self' && $value !== '_parent' && $value !== '_top') {
             throw new InvalidArgumentException(

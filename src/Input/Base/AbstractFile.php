@@ -30,7 +30,7 @@ abstract class AbstractFile extends AbstractInputWidget
      * @throws NotInstantiableException
      * @throws NotFoundException
      */
-    public function unchecked(string $value, array $values = []): self
+    public function unchecked(string $value, array $values = []): static
     {
         $values['value'] = $value;
 

@@ -39,7 +39,7 @@ final class RenderTest extends TestCase
             </div>
             HTML,
             ButtonGroup::widget()
-                ->buttons([['label' => 'Submit', 'type' => 'Submit'], ['label' => 'Reset', 'type' => 'Reset']])
+                ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']])
                 ->render(),
         );
     }
@@ -62,8 +62,8 @@ final class RenderTest extends TestCase
             HTML,
             ButtonGroup::widget()
                 ->buttons([
-                    ['attributes' => ['disabled' => true], 'label' => 'Submit', 'type' => 'Submit'],
-                    ['attributes' => ['disabled' => true], 'label' => 'Reset', 'type' => 'Reset'],
+                    ['attributes' => ['disabled' => true], 'type' => 'Submit', 'value' => 'Submit'],
+                    ['attributes' => ['disabled' => true], 'type' => 'Reset', 'value' => 'Reset'],
                 ])
                 ->individualButtonAttributes(['0' => ['class' => 'btn btn-lg'], '1' => ['class' => 'btn btn-md']])
                 ->render(),
@@ -87,7 +87,7 @@ final class RenderTest extends TestCase
             </div>
             HTML,
             ButtonGroup::widget()
-                ->buttons([['label' => 'Submit', 'type' => 'Submit'], ['label' => 'Reset', 'type' => 'Reset']])
+                ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']])
                 ->render(),
         );
     }
@@ -135,8 +135,8 @@ final class RenderTest extends TestCase
             ButtonGroup::widget()
                 ->buttons(
                     [
-                        ['label' => 'Submit', 'type' => 'Submit', 'visible' => false],
-                        ['label' => 'Reset', 'type' => 'Reset'],
+                        ['type' => 'Submit', 'value' => 'Submit', 'visible' => false],
+                        ['type' => 'Reset', 'value' => 'Reset'],
                     ]
                 )
                 ->render(),
@@ -158,7 +158,7 @@ final class RenderTest extends TestCase
             <input type="Reset" value="Reset">
             HTML,
             ButtonGroup::widget()
-                ->buttons([['label' => 'Submit', 'type' => 'Submit'], ['label' => 'Reset', 'type' => 'Reset']])
+                ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']])
                 ->container(false)
                 ->render(),
         );

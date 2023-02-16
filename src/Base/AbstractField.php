@@ -48,7 +48,7 @@ abstract class AbstractField extends Widget
      *
      * @param bool|string $ariaDescribedBy The value of the aria-describedby attribute.
      */
-    public function ariaDescribedBy(bool|string $ariaDescribedBy): self
+    public function ariaDescribedBy(bool|string $ariaDescribedBy): static
     {
         $new = clone $this;
         $new->ariaDescribedBy = $ariaDescribedBy;
