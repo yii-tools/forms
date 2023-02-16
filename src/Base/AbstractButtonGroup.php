@@ -31,10 +31,8 @@ abstract class AbstractButtonGroup extends Widget
      * - visible: bool, optional, whether this button is visible. Defaults to true.
      *
      * @param array $values The buttons' configuration.
-     *
-     * @return self
      */
-    public function buttons(array $values): self
+    public function buttons(array $values): static
     {
         $new = clone $this;
         $new->buttons = $values;
@@ -47,11 +45,9 @@ abstract class AbstractButtonGroup extends Widget
      *
      * @param array $values The button attributes.
      *
-     * @return self
-     *
      * @psalm-param array[] $values
      */
-    public function individualButtonAttributes(array $values = []): self
+    public function individualButtonAttributes(array $values = []): static
     {
         $new = clone $this;
         $new->individualButtonAttributes = $values;
@@ -78,19 +74,26 @@ abstract class AbstractButtonGroup extends Widget
                 /** @psalm-var array $attributes */
                 $attributes = $button['attributes'] ?? [];
 
-                // Set individual button attributes.
-                $individualButtonAttributes = $this->individualButtonAttributes[$key] ?? [];
-                $attributes = array_merge($attributes, $individualButtonAttributes);
-                $label = is_string($button['label']) ? $button['label'] : '';
-                $type = is_string($button['type']) ? $button['type'] : 'button';
-                /** @psalm-var bool $visible */
-                $visible = $button['visible'] ?? true;
+                $visible = match (array_key_exists('visible', $button) && is_bool($button['visible'])) {
+                    true => $button['visible'],
+                    default => true,
+                };
 
-                if ($visible === false) {
-                    continue;
+                if ($visible) {
+                    // Set individual button attributes.
+                    $individualButtonAttributes = $this->individualButtonAttributes[$key] ?? [];
+                    $attributes = array_merge($attributes, $individualButtonAttributes);
+                    $value = match (array_key_exists('value', $button) && is_string($button['value'])) {
+                        true => $button['value'],
+                        default => null,
+                    };
+                    $type = match (array_key_exists('type', $button) && is_string($button['type'])) {
+                        true => $button['type'],
+                        default => 'button',
+                    };
+
+                    $htmlButtons[] = Button::widget()->attributes($attributes)->value($value)->type($type)->render();
                 }
-
-                $htmlButtons[] = Button::widget()->attributes($attributes)->value($label)->type($type)->render();
             } else {
                 $htmlButtons[] = $button;
             }

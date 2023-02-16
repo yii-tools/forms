@@ -23,7 +23,7 @@ abstract class AbstractTextArea extends AbstractInputWidget
      *
      * @param string $value The initial contents of the control.
      */
-    public function content(string $value): self
+    public function content(string $value): static
     {
         $new = clone $this;
         $new->attributes['value'] = $value;
