@@ -62,7 +62,7 @@ final class ButtonGroupDocTest extends TestCase
             Field::widget(
                 [
                     ButtonGroup::widget()
-                        ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']])
+                        ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']]),
                 ]
             )->render()
         );
@@ -80,7 +80,7 @@ final class ButtonGroupDocTest extends TestCase
             Field::widget(
                 [
                     ButtonGroup::widget()
-                        ->buttons([Button::widget()->type('submit'), Button::widget()->type('reset')])
+                        ->buttons([Button::widget()->type('submit'), Button::widget()->type('reset')]),
                 ]
             )->render()
         );
