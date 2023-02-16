@@ -70,6 +70,9 @@ abstract class AbstractButtonGroup extends Widget
         $buttons = $this->buttons;
 
         foreach ($buttons as $key => $button) {
+            $type = 'button';
+            $value = null;
+
             if (is_array($button)) {
                 /** @psalm-var array $attributes */
                 $attributes = $button['attributes'] ?? [];
@@ -83,14 +86,13 @@ abstract class AbstractButtonGroup extends Widget
                     // Set individual button attributes.
                     $individualButtonAttributes = $this->individualButtonAttributes[$key] ?? [];
                     $attributes = array_merge($attributes, $individualButtonAttributes);
-                    $value = match (array_key_exists('value', $button) && is_string($button['value'])) {
-                        true => $button['value'],
-                        default => null,
-                    };
-                    $type = match (array_key_exists('type', $button) && is_string($button['type'])) {
-                        true => $button['type'],
-                        default => 'button',
-                    };
+                    if (array_key_exists('value', $button) && is_string($button['value'])) {
+                        $value = $button['value'];
+                    }
+
+                    if (array_key_exists('type', $button) && is_string($button['type'])) {
+                        $type = $button['type'];
+                    }
 
                     $htmlButtons[] = Button::widget()->attributes($attributes)->value($value)->type($type)->render();
                 }
