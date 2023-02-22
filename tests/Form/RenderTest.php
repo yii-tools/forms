@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\Form;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 use Yii\Forms\Form;
@@ -91,7 +92,7 @@ final class RenderTest extends TestCase
      *
      * @return array test data
      */
-    public function dataProviderCsrf(): array
+    public static function csrf(): array
     {
         return [
             // empty csrf name and token
@@ -125,13 +126,12 @@ final class RenderTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProviderCsrf
-     *
      * @throws CircularReferenceException
      * @throws InvalidConfigException
      * @throws NotFoundException
      * @throws NotInstantiableException
      */
+    #[DataProvider('csrf')]
     public function testCsrf(string $expected, string $method, string|Stringable $csrfToken, string $csrfName): void
     {
         $formWidget = $csrfName !== ''
