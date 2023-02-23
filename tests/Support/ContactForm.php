@@ -12,4 +12,5 @@ final class ContactForm extends AbstractFormModel
     private array $attachment = [];
     private string $dateofMessage = '';
     private string $name = '';
+    private array $reason = [];
 }
