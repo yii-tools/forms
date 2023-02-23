@@ -267,6 +267,7 @@ Method                 | Parameter        | Description                         
 `attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
 `autoFocus()`          |                  | The value of the HTML `autofocus` attribute.                                                                          | `true`
 `charset()`            | `string`         | The charset of the HTML document.                                                                                     | `UTF-8`
+`checked()`            | `boolean`        | The value of the HTML `checked` attribute.                                                                            | `false`
 `class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
 `container()`          | `bool`           | The container for the widget.                                                                                         | `false`
 `containerAttributes()`| `array`          | The HTML attributes for the container.                                                                                | `[]`

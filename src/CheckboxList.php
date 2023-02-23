@@ -52,6 +52,14 @@ final class CheckboxList extends Base\AbstractChoiceList
             /** @psalm-var array $individualItemsAttributes */
             $individualItemsAttributes = $this->individualItemsAttributes[$valueDefault] ?? [];
 
+            if (isset($this->individualPrefix[$valueDefault]) && is_string($this->individualPrefix[$valueDefault])) {
+                $this->prefix = $this->individualPrefix[$valueDefault];
+            }
+
+            if (isset($this->individualSuffix[$valueDefault]) && is_string($this->individualSuffix[$valueDefault])) {
+                $this->suffix = $this->individualSuffix[$valueDefault];
+            }
+
             $checkboxItems[] = $this->renderChoiceTag(
                 'checkbox',
                 array_merge($attributes, $individualItemsAttributes),

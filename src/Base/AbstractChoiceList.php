@@ -23,10 +23,12 @@ abstract class AbstractChoiceList extends AbstractInputWidget
 
     protected string $containerTag = 'div';
     protected array $individualItemsAttributes = [];
+    protected array $individualPrefix = [];
+    protected array $individualSuffix = [];
     protected string $separator = PHP_EOL;
 
     /**
-     * Return new instance specifying the items of the checkbox list, when the widget is used in boolean mode.
+     * Return new instance configured the widget in boolean mode.
      */
     public function boolean(): static
     {
@@ -62,6 +64,32 @@ abstract class AbstractChoiceList extends AbstractInputWidget
     {
         $new = clone $this;
         $new->individualItemsAttributes = $values;
+
+        return $new;
+    }
+
+    /**
+     * Return new instance specified individual prefix for choice widget.
+     *
+     * @param array $values The prefix for individual items.
+     */
+    public function individualPrefix(array $values): static
+    {
+        $new = clone $this;
+        $new->individualPrefix = $values;
+
+        return $new;
+    }
+
+    /**
+     * Return new instance specified individual suffix for choice widget.
+     *
+     * @param array $values The suffix for individual items.
+     */
+    public function individualSuffix(array $values): static
+    {
+        $new = clone $this;
+        $new->individualSuffix = $values;
 
         return $new;
     }
