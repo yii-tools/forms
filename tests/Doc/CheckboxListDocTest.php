@@ -49,7 +49,7 @@ final class CheckboxListDocTest extends TestCase
                     [
                         '1' => '<span><i class="bi bi-align-top"></i></span>',
                         '2' => '<span><i class="bi bi-check"></i></span>',
-                        '3' => '<span><i class="bi bi-app"></i></i></span>'
+                        '3' => '<span><i class="bi bi-app"></i></i></span>',
                     ],
                 )
                 ->render(),
@@ -70,7 +70,7 @@ final class CheckboxListDocTest extends TestCase
                     [
                         '1' => '<span><i class="bi bi-align-top"></i></span>',
                         '2' => '<span><i class="bi bi-check"></i></span>',
-                        '3' => '<span><i class="bi bi-app"></i></i></span>'
+                        '3' => '<span><i class="bi bi-app"></i></i></span>',
                     ],
                 )
                 ->render(),
