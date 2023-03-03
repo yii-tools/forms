@@ -1,8 +1,8 @@
-## Button group
+# Button group
 
-Button group is a component which can be used to create a set of buttons that are related to each other. This is a wrapper for the [Button](button.md) widget.
+It's a component which can be used to create a set of buttons that are related to each other. This is a wrapper for the [Button](button.md) widget.
 
-### Example
+## Example
 
 ```php
 <?php
@@ -24,7 +24,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with button widget
+## Example with button widget
 
 ```php
 <?php
@@ -47,7 +47,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field
+## Example with Field
 
 ```php
 <?php
@@ -72,7 +72,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field and button widget
+## Example with Field and button widget
 
 ```php
 <?php
@@ -98,16 +98,16 @@ That would generate the following code:
 </div>
 ```
 
-### Methods of the widget
+## Methods of the widget
 
 All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
 
-Method                        | Parameter        | Description                                                                                                           | Default
-------------------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
-`buttons()`                   | `array`          | The buttons to be rendered.                                                                                           | `[]`	
-`container()`                 | `bool`           | The container for the widget.                                                                                         | `false`
-`containerAttributes()`       | `array`          | The HTML attributes for the container.                                                                                | `[]`
-`containerClass()`            | `string`         | The HTML class for the container.                                                                                     | `''`
-`individualButtonAttributes()`| `array`          | The HTML attributes for the individual buttons.                                                                       | `[]`
+| Method                         | Parameter | Description                                     | Default |
+|--------------------------------|-----------|-------------------------------------------------|---------|
+| `buttons()`                    | `array`   | The buttons to be rendered.                     | `[]`	   |
+| `container()`                  | `bool`    | The container for the widget.                   | `false` |
+| `containerAttributes()`        | `array`   | The HTML attributes for the container.          | `[]`    |
+| `containerClass()`             | `string`  | The HTML class for the container.               | `''`    |
+| `individualButtonAttributes()` | `array`   | The HTML attributes for the individual buttons. | `[]`    |
 
 **Note:** *You can find all the [examples](/tests/Doc/ButtonGroupDocTest.php) in the test file.*

@@ -1,8 +1,8 @@
-## Button
+# Button
 
-[Button](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button) is an input element with a type attribute whose value is `button`, `submit` or `reset`, representing a button labeled by its contents.
+It's an input element with a type attribute whose value is `button`, `submit` or `reset`, representing a [Button](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button) labeled by its contents.
 
-### Example
+## Example
 
 ```php
 <?php
@@ -22,7 +22,7 @@ That would generate the following code:
 <input type="button">
 ```
 
-### Example type submit
+## Example type submit
 
 ```php
 <?php
@@ -42,7 +42,7 @@ That would generate the following code:
 <input type="submit">
 ```
 
-### Example type reset
+## Example type reset
 
 ```php
 <?php
@@ -62,7 +62,7 @@ That would generate the following code:
 <input type="reset">
 ```
 
-### Example with value
+## Example with value
 
 ```php
 <?php
@@ -82,7 +82,7 @@ That would generate the following code:
 <input type="button" value="Click me">
 ```
 
-### Example with Field
+## Example with Field
 
 ```php
 <?php
@@ -105,22 +105,22 @@ That would generate the following code:
 </div>
 ```
 
-### Methods of the widget
+## Methods of the widget
 
 All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
 
-Method                 | Parameter        | Description                                                                                                           | Default
------------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
-`attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
-`autoFocus()`          | `bool`           | The value of the HTML `autofocus` attribute.                                                                          | `true`
-`class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
-`disabled()`           | `bool`           | The value of the HTML `disabled` attribute.                                                                           | `false`
-`form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
-`name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
-`tabIndex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
-`title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
-`type()`               | `string`         | The value of the HTML `type` attribute.                                                                               | `'button'`
-`value()`              | `string`         | The value of the HTML `value` attribute.                                                                              | `''`
+| Method         | Parameter     | Description                                  | Default    |
+|----------------|---------------|----------------------------------------------|------------|
+| `attributes()` | `array`       | The HTML attributes for the widget.          | `[]`       |
+| `autoFocus()`  | `bool`        | The value of the HTML `autofocus` attribute. | `true`     |
+| `class()`      | `string`      | The HTML class for the widget.               | `''`       |
+| `disabled()`   | `bool`        | The value of the HTML `disabled` attribute.  | `false`    |
+| `form()`       | `string`      | The value of the HTML `form` attribute.      | `''`       |
+| `id()`         | `null,string` | The value of the HTML `id` attribute.        | `''`       |
+| `name()`       | `null,string` | The value of the HTML `name` attribute.      | `''`       |
+| `tabIndex()`   | `int`         | The value of the HTML `tabindex` attribute.  | `0`        |
+| `title()`      | `string`      | The value of the HTML `title` attribute.     | `''`       |
+| `type()`       | `string`      | The value of the HTML `type` attribute.      | `'button'` |
+| `value()`      | `string`      | The value of the HTML `value` attribute.     | `''`       |
 
 **Note:** *You can find all the [examples](/tests/Doc/ButtonDocTest.php) in the test file.*

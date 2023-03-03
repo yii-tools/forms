@@ -1,7 +1,8 @@
-## Text
+# Text
 
-[Text](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.text.html#input.text) is a control that lets the user enter a single line of text. It can be used for any text, including e-mail addresses and URLs. The text is displayed in a fixed-width font (usually the user's default monospace font).
-### Example
+It's a control that lets the user enter a single line of [Text](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.text.html#input.text). It can be used for any text, including e-mail addresses and URLs. The text is displayed in a fixed-width font (usually the user's default monospace font).
+
+## Example
 
 ```php
 <?php
@@ -21,7 +22,7 @@ That would generate the following code:
 <input id="contactform-name" name="ContactForm[name]" type="text">
 ```
 
-### Example with prefix
+## Example with prefix
 
 ```php
 <?php
@@ -42,7 +43,7 @@ That would generate the following code:
 <input id="contactform-name" name="ContactForm[name]" type="text">
 ```
 
-### Example with suffix
+## Example with suffix
 
 ```php
 <?php
@@ -63,7 +64,7 @@ That would generate the following code:
 <span><i class="bi bi-person-fill"></i></span>
 ```
 
-### Example with Field
+## Example with Field
 
 ```php
 declare(strict_types=1);
@@ -85,7 +86,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field prefix
+## Example with Field prefix
 
 ```php
 declare(strict_types=1);
@@ -106,7 +107,7 @@ use Yii\Forms\Input\Text;
 </div>
 ```
 
-### Example with Field suffix
+## Example with Field suffix
 
 ```php
 declare(strict_types=1);
@@ -127,34 +128,34 @@ use Yii\Forms\Input\Text;
 </div>
 ```
 
-### Methods of the widget
+## Methods of the widget
 
 All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
 
-Method                 | Parameter        | Description                                                                                                           | Default
------------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
-`ariaDescribedBy()`    | `string`         | The value of the HTML `aria-describedby` attribute.                                                                   | `''`
-`ariaLabel()`          | `string`         | The value of the HTML `aria-label` attribute.                                                                         | `''`
-`attributes()`         | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
-`autoFocus()`          |                  | The value of the HTML `autofocus` attribute.                                                                          | `true`
-`charset()`            | `string`         | The charset of the HTML document.                                                                                     | `UTF-8`
-`class()`              | `string`         | The HTML class for the widget.                                                                                        | `''`
-`dirname()`            | `string`         | The value of the HTML `dirname` attribute.                                                                            | `''`
-`disabled()`           |                  | The value of the HTML `disabled` attribute.                                                                           | `false`
-`form()`               | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                 | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
-`maxlength()`          | `int`            | The value of the HTML `maxlength` attribute.                                                                          | `null`
-`minlength()`          | `int`            | The value of the HTML `minlength` attribute.                                                                          | `null`
-`name()`               | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
-`pattern()`            | `string`         | The value of the HTML `pattern` attribute.                                                                            | `''`
-`placeholder()`        | `string`         | The value of the HTML `placeholder` attribute.                                                                        | `''`
-`prefix()`             | `string`         | The prefix for the widget.                                                                                            | `''`
-`readonly()`           |                  | The value of the HTML `readonly` attribute.                                                                           | `true`
-`required()`           |                  | The value of the HTML `required` attribute.                                                                           | `true`
-`size()`               | `int`            | The value of the HTML `size` attribute.                                                                               | `null`
-`suffix()`             | `string`         | The suffix for the widget.                                                                                            | `''`
-`tabindex()`           | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
-`title()`              | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
-`value()`              | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
+| Method              | Parameter     | Description                                         | Default |
+|---------------------|---------------|-----------------------------------------------------|---------|
+| `ariaDescribedBy()` | `string`      | The value of the HTML `aria-describedby` attribute. | `''`    |
+| `ariaLabel()`       | `string`      | The value of the HTML `aria-label` attribute.       | `''`    |
+| `attributes()`      | `array`       | The HTML attributes for the widget.                 | `[]`    |
+| `autoFocus()`       |               | The value of the HTML `autofocus` attribute.        | `true`  |
+| `charset()`         | `string`      | The charset of the HTML document.                   | `UTF-8` |
+| `class()`           | `string`      | The HTML class for the widget.                      | `''`    |
+| `dirname()`         | `string`      | The value of the HTML `dirname` attribute.          | `''`    |
+| `disabled()`        |               | The value of the HTML `disabled` attribute.         | `false` |
+| `form()`            | `string`      | The value of the HTML `form` attribute.             | `''`    |
+| `id()`              | `null,string` | The value of the HTML `id` attribute.               | `''`    |
+| `maxlength()`       | `int`         | The value of the HTML `maxlength` attribute.        | `null`  |
+| `minlength()`       | `int`         | The value of the HTML `minlength` attribute.        | `null`  |
+| `name()`            | `null,string` | The value of the HTML `name` attribute.             | `''`    |
+| `pattern()`         | `string`      | The value of the HTML `pattern` attribute.          | `''`    |
+| `placeholder()`     | `string`      | The value of the HTML `placeholder` attribute.      | `''`    |
+| `prefix()`          | `string`      | The prefix for the widget.                          | `''`    |
+| `readonly()`        |               | The value of the HTML `readonly` attribute.         | `true`  |
+| `required()`        |               | The value of the HTML `required` attribute.         | `true`  |
+| `size()`            | `int`         | The value of the HTML `size` attribute.             | `null`  |
+| `suffix()`          | `string`      | The suffix for the widget.                          | `''`    |
+| `tabindex()`        | `int`         | The value of the HTML `tabindex` attribute.         | `0`     |
+| `title()`           | `string`      | The value of the HTML `title` attribute.            | `''`    |
+| `value()`           | `mixed`       | The value of the HTML `value` attribute.            | `''`    |
 
 **Note:** *You can find all the [examples](/tests/Doc/TextDocTest.php) in the test file.*
