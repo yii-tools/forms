@@ -13,26 +13,13 @@ use Yii\Forms\Input\Hidden;
 use Yii\Forms\Input\Text;
 use Yii\Forms\Tests\Support\BasicForm;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class RenderTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAriaDescribedByWithTrue(): void
     {
         Assert::equalsWithoutLE(
@@ -61,12 +48,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAriaDescribedByWithString(): void
     {
         Assert::equalsWithoutLE(
@@ -95,12 +76,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testContainerAttributes(): void
     {
         Assert::equalsWithoutLE(
@@ -119,12 +94,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testErrorAttributes(): void
     {
         $formModel = new TestForm();
@@ -151,12 +120,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testErrorClass(): void
     {
         $formModel = new TestForm();
@@ -183,12 +146,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testErrorClosure(): void
     {
         $formModel = new TestForm();
@@ -219,12 +176,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testErrorContent(): void
     {
         $formModel = new TestForm();
@@ -252,12 +203,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testErrorTag(): void
     {
         $formModel = new TestForm();
@@ -283,12 +228,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testHintAttributes(): void
     {
         $formModel = new TestForm();
@@ -310,12 +249,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testHintClass(): void
     {
         $formModel = new TestForm();
@@ -337,12 +270,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testHintClosure(): void
     {
         $formModel = new TestForm();
@@ -371,12 +298,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testHintContent(): void
     {
         $formModel = new TestForm();
@@ -398,12 +319,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testHintTag(): void
     {
         $formModel = new TestForm();
@@ -423,12 +338,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testInputContainerAttributes(): void
     {
         Assert::equalsWithoutLE(
@@ -456,12 +365,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testInvalidClass(): void
     {
         $formModel = new TestForm();
@@ -487,12 +390,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testInvalidClassWithFormEmptyData(): void
     {
         $formModel = new TestForm();
@@ -514,12 +411,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testLabelAttributes(): void
     {
         $formModel = new TestForm();
@@ -541,12 +432,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testLabelClass(): void
     {
         $formModel = new TestForm();
@@ -568,12 +453,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testLabelClosure(): void
     {
         $formModel = new TestForm();
@@ -599,12 +478,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testNotLabel(): void
     {
         $formModel = new TestForm();
@@ -625,12 +498,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testPrefixField(): void
     {
         Assert::equalsWithoutLE(
@@ -658,12 +525,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testPrefixFieldWithStringable(): void
     {
         Assert::equalsWithoutLE(
@@ -698,12 +559,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testPrefixInputWithStringable(): void
     {
         Assert::equalsWithoutLE(
@@ -734,12 +589,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testSuffixField(): void
     {
         Assert::equalsWithoutLE(
@@ -767,12 +616,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testSuffixFieldWithStringable(): void
     {
         Assert::equalsWithoutLE(
@@ -806,12 +649,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testSuffixInputWithStringable(): void
     {
         Assert::equalsWithoutLE(
@@ -842,12 +679,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testValidClass(): void
     {
         $formModel = new TestForm();
@@ -870,12 +701,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testValidClassWithFormEmptyData(): void
     {
         $formModel = new TestForm();
@@ -897,12 +722,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testWidgetButtonGroup(): void
     {
         $formModel = new TestForm();
@@ -928,12 +747,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testWidgetHidden(): void
     {
         $formModel = new TestForm();

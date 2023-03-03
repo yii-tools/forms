@@ -8,26 +8,13 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 use Yii\Forms\Form;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class RenderTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAcceptCharset(): void
     {
         $this->assertSame(
@@ -38,12 +25,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAction(): void
     {
         $this->assertSame(
@@ -54,12 +35,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testBegin(): void
     {
         $this->assertSame(
@@ -125,12 +100,6 @@ final class RenderTest extends TestCase
         ];
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     #[DataProvider('csrf')]
     public function testCsrf(string $expected, string $method, string|Stringable $csrfToken, string $csrfName): void
     {
@@ -140,12 +109,6 @@ final class RenderTest extends TestCase
         $this->assertSame($expected, $formWidget);
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testEnd(): void
     {
         Form::widget()->begin();
@@ -157,12 +120,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testNovalidate(): void
     {
         $this->assertSame(
@@ -173,12 +130,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testRender(): void
     {
         $this->assertSame(

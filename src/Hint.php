@@ -12,7 +12,7 @@ use Yii\Html\Tag;
  */
 final class Hint extends Field\AbstractFieldPartWidget
 {
-    public function render(): string
+    protected function run(): string
     {
         $closure = $this->closure;
         $content = $this->content;

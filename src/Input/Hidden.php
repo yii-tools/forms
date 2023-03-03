@@ -21,7 +21,7 @@ final class Hidden extends AbstractInputWidget
     /**
      * @return string the generated input tag.
      */
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $notAllowedAttributes = ['autofocus', 'required', 'readonly', 'tabindex', 'title'];
@@ -48,6 +48,6 @@ final class Hidden extends AbstractInputWidget
 
         $attributes['value'] = $value;
 
-        return $this->run('input', '', 'hidden', $attributes);
+        return $this->renderInput('input', '', 'hidden', $attributes);
     }
 }

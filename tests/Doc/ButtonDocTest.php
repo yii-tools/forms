@@ -7,7 +7,6 @@ namespace Yii\Forms\Tests\Doc;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Button;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
 
 /**
@@ -15,8 +14,6 @@ use Yii\Support\Assert;
  */
 final class ButtonDocTest extends TestCase
 {
-    use TestTrait;
-
     public function testButton(): void
     {
         // default.

@@ -6,7 +6,7 @@ namespace Yii\Forms\Input;
 
 use InvalidArgumentException;
 use Yii\Html\Tag;
-use Yii\Widget\AbstractComponentWidget;
+use Yii\Widget\AbstractWidget;
 use Yii\Widget\Attribute;
 
 use function array_key_exists;
@@ -17,13 +17,14 @@ use function is_string;
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button
  */
-final class Button extends AbstractComponentWidget
+final class Button extends AbstractWidget
 {
     use Attribute\CanBeDisabled;
     use Attribute\HasForm;
     use Attribute\HasType;
+    use Attribute\HasValue;
 
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $value = $attributes['value'] ?? null;

@@ -2,17 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Forge\Form\Tests\Input\Date;
+namespace Yii\Forms\Tests\Input\Date;
 
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Input\Date;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
 
 final class InputAttibutesTest extends TestCase
 {
-    use TestTrait;
-
     public function testValue(): void
     {
         // Value string `1996-12-19`.

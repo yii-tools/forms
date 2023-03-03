@@ -16,7 +16,7 @@ use Yii\Html\Tag;
  */
 final class CheckboxList extends Base\AbstractChoiceList
 {
-    public function render(): string
+    protected function run(): string
     {
         $labelContainer = '';
 

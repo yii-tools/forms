@@ -26,7 +26,7 @@ final class Text extends AbstractInputWidget
     use Attribute\HasPlaceholder;
     use Attribute\HasSize;
 
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $value = match (array_key_exists('value', $attributes)) {
@@ -48,6 +48,6 @@ final class Text extends AbstractInputWidget
             $attributes['placeholder'] = $placeHolder;
         }
 
-        return $this->run('input', '', 'text', $attributes);
+        return $this->renderInput('input', '', 'text', $attributes);
     }
 }

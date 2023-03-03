@@ -8,25 +8,12 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Input\Hidden;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class ExceptionTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAutofocus(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -37,12 +24,6 @@ final class ExceptionTest extends TestCase
         Hidden::widget([new TestForm(), 'string'])->autofocus()->render();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testRequired(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -53,12 +34,6 @@ final class ExceptionTest extends TestCase
         Hidden::widget([new TestForm(), 'string'])->required()->render();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testReadonly(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -69,12 +44,6 @@ final class ExceptionTest extends TestCase
         Hidden::widget([new TestForm(), 'string'])->readonly()->render();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testTabindex(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -85,12 +54,6 @@ final class ExceptionTest extends TestCase
         Hidden::widget([new TestForm(), 'string'])->tabindex(1)->render();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testTitle(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -101,12 +64,6 @@ final class ExceptionTest extends TestCase
         Hidden::widget([new TestForm(), 'string'])->title('test-title')->render();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testValue(): void
     {
         $this->expectException(InvalidArgumentException::class);

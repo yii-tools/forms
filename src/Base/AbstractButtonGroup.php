@@ -6,14 +6,14 @@ namespace Yii\Forms\Base;
 
 use Exception;
 use Yii\Forms\Input\Button;
+use Yii\Widget\AbstractWidget;
 use Yii\Widget\Attribute\HasContainer;
-use Yiisoft\Widget\Widget;
 
 use function array_merge;
 use function implode;
 use function is_array;
 
-abstract class AbstractButtonGroup extends Widget
+abstract class AbstractButtonGroup extends AbstractWidget
 {
     use HasContainer;
 

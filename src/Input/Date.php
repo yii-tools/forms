@@ -23,7 +23,7 @@ final class Date extends AbstractInputWidget
     use Attribute\HasMin;
     use Attribute\HasStep;
 
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $value = match (array_key_exists('value', $attributes)) {
@@ -40,6 +40,6 @@ final class Date extends AbstractInputWidget
 
         $attributes['value'] = $value;
 
-        return $this->run('input', '', 'date', $attributes);
+        return $this->renderInput('input', '', 'date', $attributes);
     }
 }

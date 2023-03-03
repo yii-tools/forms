@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Hidden;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
 
 /**
@@ -16,8 +15,6 @@ use Yii\Support\Assert;
  */
 final class HiddenDocTest extends TestCase
 {
-    use TestTrait;
-
     public function testHidden(): void
     {
         // default.

@@ -7,14 +7,9 @@ namespace Yii\Forms\Tests\Field;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Forms\Tests\Support\ValidatorForm;
 use Yii\Forms\Tests\Support\ValidatorFormAttributes;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 use Yiisoft\Validator\Validator;
 
 /**
@@ -22,14 +17,6 @@ use Yiisoft\Validator\Validator;
  */
 final class ValidatorTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAttributesWithShowAllErrors(): void
     {
         $formModel = new ValidatorFormAttributes();
@@ -55,12 +42,6 @@ final class ValidatorTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAttributesWithShowAllErrorsWithTrue(): void
     {
         $formModel = new ValidatorFormAttributes();
@@ -112,12 +93,6 @@ final class ValidatorTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testShowAllErrors(): void
     {
         $formModel = new ValidatorForm();
@@ -143,12 +118,6 @@ final class ValidatorTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testShowAllErrorsWithTrue(): void
     {
         $formModel = new ValidatorForm();

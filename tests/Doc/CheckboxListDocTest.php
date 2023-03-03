@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\CheckboxList;
 use Yii\Forms\Field;
 use Yii\Forms\Tests\Support\ContactForm;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
 
 /**
@@ -16,8 +15,6 @@ use Yii\Support\Assert;
  */
 final class CheckboxListDocTest extends TestCase
 {
-    use TestTrait;
-
     private array $items = ['1' => 'Technical', '2' => 'Sales', '3' => 'Other'];
 
     public function testCheckbox(): void

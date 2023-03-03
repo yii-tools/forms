@@ -38,7 +38,7 @@ final class ButtonGroup extends Base\AbstractButtonGroup
     /**
      * @throws Exception
      */
-    public function render(): string
+    protected function run(): string
     {
         return match ($this->container) {
             true => Tag::create('div', $this->renderButtons(), $this->containerAttributes),

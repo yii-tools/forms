@@ -10,11 +10,7 @@ use Yii\Forms\Field;
 use Yii\Html\Tag;
 use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
-use Yiisoft\Widget\Widget;
+use Yii\Widget\AbstractWidget;
 
 use function array_key_exists;
 use function is_bool;
@@ -22,7 +18,7 @@ use function is_string;
 use function preg_replace;
 use function strtr;
 
-abstract class AbstractField extends Widget
+abstract class AbstractField extends AbstractWidget
 {
     use Attribute\HasContainer;
     use Attribute\HasPrefixAndSuffix;
@@ -35,11 +31,10 @@ abstract class AbstractField extends Widget
     use Field\HasFieldTemplate;
     use Field\HasFieldValidateClass;
 
-    protected array $attributes = [];
     protected bool|string $ariaDescribedBy = false;
     protected string $class = '';
 
-    public function __construct(protected readonly AbstractInputWidget|Widget $widget)
+    public function __construct(protected readonly AbstractInputWidget|AbstractWidget $widget)
     {
     }
 
@@ -56,12 +51,6 @@ abstract class AbstractField extends Widget
         return $new;
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     protected function renderWidget(AbstractInputWidget $widget): string
     {
         $label = '';
@@ -112,12 +101,6 @@ abstract class AbstractField extends Widget
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     private function renderError(AbstractInputWidget $widget): string
     {
         $errorContent = match ($this->showAllErrors) {
@@ -167,12 +150,6 @@ abstract class AbstractField extends Widget
         return $render;
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     private function renderHint(AbstractInputWidget $widget): string
     {
         $hintAttributes = $this->hintAttributes;
@@ -197,12 +174,6 @@ abstract class AbstractField extends Widget
         return $hintTag->render();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     private function renderLabel(AbstractInputWidget $widget): string
     {
         $labelAttributes = $this->labelAttributes;
