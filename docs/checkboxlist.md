@@ -1,8 +1,8 @@
-## CheckboxList
+# CheckboxList
 
-A widget that displays a list of checkboxes.
+It's an input element that displays a list of checkboxes [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox).
 
-### Example
+## Example
 
 ```php
 <?php
@@ -26,7 +26,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with boolean
+## Example with boolean
 
 ```php
 <?php
@@ -50,7 +50,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with prefix
+## Example with prefix
 
 ```php
 <?php
@@ -84,7 +84,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with suffix
+## Example with suffix
 
 ```php
 <?php
@@ -118,7 +118,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with container tag
+## Example with container tag
 
 ```php
 <?php
@@ -142,7 +142,7 @@ That would generate the following code:
 </article>
 ```
 
-### Example with Field
+## Example with Field
 
 ```php
 <?php
@@ -173,7 +173,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field change label position
+## Example with Field change label position
 
 ```php
 <?php
@@ -206,7 +206,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field without label
+## Example with Field without label
 
 ```php
 <?php
@@ -237,7 +237,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field prefix
+## Example with Field prefix
 
 ```php
 <?php
@@ -270,7 +270,7 @@ That would generate the following code:
 </div>
 ```
 
-### Example with Field suffix
+## Example with Field suffix
 
 ```php
 <?php
@@ -303,40 +303,40 @@ That would generate the following code:
 </div>
 ```
 
-### Methods of the widget
+## Methods of the widget
 
 All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
 
-Method                  | Parameter        | Description                                                                                                           | Default
-------------------------|------------------|-----------------------------------------------------------------------------------------------------------------------|---------
-`ariaDescribedBy()`     | `string`         | The value of the HTML `aria-describedby` attribute.                                                                   | `''`
-`ariaLabel()`           | `string`         | The value of the HTML `aria-label` attribute.                                                                         | `''`
-`attributes()`          | `array`          | The HTML attributes for the widget.                                                                                   | `[]`
-`autoFocus()`           |                  | The value of the HTML `autofocus` attribute.                                                                          | `true`
-`boolean()`             |                  | Configured the widget `in boolean mode`. Two checkboxes will be rendered, one for `yes` and one for `no`.             | `false`
-`charset()`             | `string`         | The charset of the HTML document.                                                                                     | `UTF-8`
-`checked()`             | `boolean`        | The value of the HTML `checked` attribute.                                                                            | `false`
-`class()`               | `string`         | The HTML class for the widget.                                                                                        | `''`
-`container()`           | `bool`           | The container for the widget.                                                                                         | `false`
-`containerAttributes() `| `array`          | The HTML attributes for the container.                                                                                | `[]`
-`containerClass()`      | `string`         | The HTML class for the container.                                                                                     | `''`
-`containerTag()`        | `string`         | The HTML tag for the container.                                                                                       | `'div'`
-`disabled()`            |                  | The value of the HTML `disabled` attribute.                                                                           | `false`
-`form()`                | `string`         | The value of the HTML `form` attribute.                                                                               | `''`
-`id()`                  | `null,string`    | The value of the HTML `id` attribute.                                                                                 | `''`
-`individualAttributes()`| `array`          | The HTML attributes for the individual checkboxes.                                                                    | `[]`
-`individualPreffix()`   | `string`         | The HTML preffix for the individual checkboxes.                                                                       | `''`
-`individualSuffix()`    | `string`         | The HTML suffix for the individual checkboxes.                                                                        | `''`
-`label()`               | `string`         | The label for the widget.                                                                                             | `true`
-`labelAttributes()`     | `array`          | The HTML attributes for the label.                                                                                    | `[]`
-`labelClass()`          | `string`         | The HTML class for the label.                                                                                         | `''`
-`name()`                | `null,string`    | The value of the HTML `name` attribute.                                                                               | `''`
-`notLabel()`            |                  | When the widget does not render the label.                                                                            | `null`
-`readonly()`            |                  | The value of the HTML `readonly` attribute.                                                                           | `true`
-`required()`            |                  | The value of the HTML `required` attribute.                                                                           | `true`
-`suffix()`              | `string`         | The suffix for the widget.                                                                                            | `''`
-`tabindex()`            | `int`            | The value of the HTML `tabindex` attribute.                                                                           | `0`
-`title()`               | `string`         | The value of the HTML `title` attribute.                                                                              | `''`
-`value()`               | `mixed`          | The value of the HTML `value` attribute.                                                                              | `''`
+| Method                   | Parameter     | Description                                                                                               | Default |
+|--------------------------|---------------|-----------------------------------------------------------------------------------------------------------|---------|
+| `ariaDescribedBy()`      | `string`      | The value of the HTML `aria-describedby` attribute.                                                       | `''`    |
+| `ariaLabel()`            | `string`      | The value of the HTML `aria-label` attribute.                                                             | `''`    |
+| `attributes()`           | `array`       | The HTML attributes for the widget.                                                                       | `[]`    |
+| `autoFocus()`            |               | The value of the HTML `autofocus` attribute.                                                              | `true`  |
+| `boolean()`              |               | Configured the widget `in boolean mode`. Two checkboxes will be rendered, one for `yes` and one for `no`. | `false` |
+| `charset()`              | `string`      | The charset of the HTML document.                                                                         | `UTF-8` |
+| `checked()`              | `boolean`     | The value of the HTML `checked` attribute.                                                                | `false` |
+| `class()`                | `string`      | The HTML class for the widget.                                                                            | `''`    |
+| `container()`            | `bool`        | The container for the widget.                                                                             | `false` |
+| `containerAttributes() ` | `array`       | The HTML attributes for the container.                                                                    | `[]`    |
+| `containerClass()`       | `string`      | The HTML class for the container.                                                                         | `''`    |
+| `containerTag()`         | `string`      | The HTML tag for the container.                                                                           | `'div'` |
+| `disabled()`             |               | The value of the HTML `disabled` attribute.                                                               | `false` |
+| `form()`                 | `string`      | The value of the HTML `form` attribute.                                                                   | `''`    |
+| `id()`                   | `null,string` | The value of the HTML `id` attribute.                                                                     | `''`    |
+| `individualAttributes()` | `array`       | The HTML attributes for the individual checkboxes.                                                        | `[]`    |
+| `individualPreffix()`    | `string`      | The HTML preffix for the individual checkboxes.                                                           | `''`    |
+| `individualSuffix()`     | `string`      | The HTML suffix for the individual checkboxes.                                                            | `''`    |
+| `label()`                | `string`      | The label for the widget.                                                                                 | `true`  |
+| `labelAttributes()`      | `array`       | The HTML attributes for the label.                                                                        | `[]`    |
+| `labelClass()`           | `string`      | The HTML class for the label.                                                                             | `''`    |
+| `name()`                 | `null,string` | The value of the HTML `name` attribute.                                                                   | `''`    |
+| `notLabel()`             |               | When the widget does not render the label.                                                                | `null`  |
+| `readonly()`             |               | The value of the HTML `readonly` attribute.                                                               | `true`  |
+| `required()`             |               | The value of the HTML `required` attribute.                                                               | `true`  |
+| `suffix()`               | `string`      | The suffix for the widget.                                                                                | `''`    |
+| `tabindex()`             | `int`         | The value of the HTML `tabindex` attribute.                                                               | `0`     |
+| `title()`                | `string`      | The value of the HTML `title` attribute.                                                                  | `''`    |
+| `value()`                | `mixed`       | The value of the HTML `value` attribute.                                                                  | `''`    |
 
 **Note:** *You can find all the [examples](/tests/Doc/CheckboxListDocTest.php) in the test file.*

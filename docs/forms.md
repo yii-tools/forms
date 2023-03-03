@@ -1,10 +1,10 @@
-## Using forms
+# Using forms
 
 Awesome forms for YiiFramework v.3.0. provides a set of classes to create forms in a simple way.
 
 For default widgets provide 2 levels of configuration in `widget.php` file for the factory, `Widget::widget(config: $config);` for the widget. The first level is the default configuration for the widget, the second level is the configuration for the widget instance. The second level is used to override the first level.
 
-### Creating a Form Model
+## Creating a Form Model
 
 To create a form, you need to create a class that extends the `AbstractFormModel::class`. The `AbstractFormModel::class` provide a set of methods to create a form.
 
@@ -26,7 +26,7 @@ final class ContactForm extends AbstractFormModel
     private string $subject = '';
 }
 ```
-### Using components
+## Using components
 
 - [Button group](/docs/button-group.md)
 - [Checkboxlist](/docs/checkboxlist.md)
@@ -37,7 +37,7 @@ final class ContactForm extends AbstractFormModel
 - [Label](/docs/label.md)
 - [Textarea](/docs/textarea.md)
 
-### Using input widgets
+## Using input widgets
 
 - [Button](/docs/button.md)
 - [Checkbox](/docs/checkbox.md)
