@@ -9,10 +9,6 @@ use Yii\Forms\Label;
 use Yii\Html\Helper\Encode;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * The input element with a type attribute whose value is "checkbox" represents a state or option that can be toggled.
@@ -21,13 +17,7 @@ use Yiisoft\Factory\NotFoundException;
  */
 final class Checkbox extends Base\AbstractCheckbox
 {
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $label = $this->label;
@@ -58,7 +48,7 @@ final class Checkbox extends Base\AbstractCheckbox
             $label = Encode::content($this->formModel->getLabel($this->attribute));
         }
 
-        $checkboxTag = $this->run('input', '', 'checkbox', $attributes);
+        $checkboxTag = $this->renderInput('input', '', 'checkbox', $attributes);
 
         $inputCheckbox = match ($label) {
             null => $checkboxTag,

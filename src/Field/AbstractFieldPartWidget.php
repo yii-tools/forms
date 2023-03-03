@@ -8,17 +8,16 @@ use Closure;
 use InvalidArgumentException;
 use Yii\FormModel\FormModelInterface;
 use Yii\Forms\Exception\AttributeNotSet;
+use Yii\Widget\AbstractWidget;
 use Yii\Widget\Attribute\HasAttributes;
-use Yiisoft\Widget\Widget;
 
 /**
  * The AbstractFieldPartWidget class is the base class for widgets that are used to generate the parts of the field.
  */
-abstract class AbstractFieldPartWidget extends Widget
+abstract class AbstractFieldPartWidget extends AbstractWidget
 {
     use HasAttributes;
 
-    protected array $attributes = [];
     protected Closure|null $closure = null;
     protected string $content = '';
     protected string $tag = 'div';

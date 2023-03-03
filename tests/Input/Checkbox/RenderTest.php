@@ -7,26 +7,13 @@ namespace Yii\Forms\Tests\Input\Checkbox;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Input\Checkbox;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class RenderTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testChecked(): void
     {
         // default value is `false`.
@@ -42,12 +29,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testContainer(): void
     {
         Assert::equalsWithoutLE(
@@ -61,12 +42,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testContainerAttributes(): void
     {
         Assert::equalsWithoutLE(
@@ -83,12 +58,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testContainerCssClass(): void
     {
         Assert::equalsWithoutLE(
@@ -105,12 +74,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testUnchecked(): void
     {
         Assert::equalsWithoutLE(
@@ -122,12 +85,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testLabel(): void
     {
         $this->assertSame(
@@ -136,12 +93,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testLabelAttributes(): void
     {
         $this->assertSame(
@@ -153,12 +104,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testLabelClass(): void
     {
         $this->assertSame(
@@ -167,12 +112,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testNotLabel(): void
     {
         $this->assertSame(
@@ -181,12 +120,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testRender(): void
     {
         $this->assertSame(

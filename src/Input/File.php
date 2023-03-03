@@ -20,7 +20,7 @@ final class File extends Base\AbstractFile
     /**
      * @return string the generated input tag.
      */
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
 
@@ -35,7 +35,7 @@ final class File extends Base\AbstractFile
         // input type="file" not supported value attribute.
         unset($attributes['value']);
 
-        $render = $this->run('input', '', 'file', $attributes);
+        $render = $this->renderInput('input', '', 'file', $attributes);
 
         return match ($this->unchecked) {
             null => $render,

@@ -19,7 +19,7 @@ use function is_object;
  */
 final class Select extends Base\AbstractSelect
 {
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
 
@@ -48,6 +48,6 @@ final class Select extends Base\AbstractSelect
             $items .= PHP_EOL . implode(PHP_EOL, $this->renderItems($value)) . PHP_EOL;
         }
 
-        return $this->run('select', $items, null, $attributes);
+        return $this->renderInput('select', $items, null, $attributes);
     }
 }

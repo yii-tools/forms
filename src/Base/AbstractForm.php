@@ -7,11 +7,11 @@ namespace Yii\Forms\Base;
 use InvalidArgumentException;
 use Stringable;
 use Yii\Widget\Attribute;
-use Yiisoft\Widget\Widget;
+use Yii\Widget\AbstractWidget;
 
 use function strtoupper;
 
-abstract class AbstractForm extends Widget
+abstract class AbstractForm extends AbstractWidget
 {
     use Attribute\HasAttributes;
     use Attribute\HasAutocomplete;
@@ -19,7 +19,6 @@ abstract class AbstractForm extends Widget
     use Attribute\HasId;
     use Attribute\HasName;
 
-    protected array $attributes = [];
     protected string $action = '';
     protected string $csrfName = '';
     protected string $csrfToken = '';

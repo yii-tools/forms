@@ -7,10 +7,6 @@ namespace Yii\Forms\Input\Base;
 use Yii\Forms\Input\Hidden;
 use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 abstract class AbstractFile extends AbstractInputWidget
 {
@@ -24,11 +20,6 @@ abstract class AbstractFile extends AbstractInputWidget
      *
      * @param string $value The value of the "unchecked" state.
      * @param array $values The Attribute values indexed by attribute names for hidden widget.
-     *
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotInstantiableException
-     * @throws NotFoundException
      */
     public function unchecked(string $value, array $values = []): static
     {

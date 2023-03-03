@@ -9,25 +9,12 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Error;
 use Yii\Forms\Exception\AttributeNotSet;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class ExceptionTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAttributeNotSet(): void
     {
         $this->expectException(AttributeNotSet::class);
@@ -36,12 +23,6 @@ final class ExceptionTest extends TestCase
         Error::widget([new TestForm(), '']);
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testTag(): void
     {
         $this->expectException(InvalidArgumentException::class);

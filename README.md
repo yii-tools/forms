@@ -21,7 +21,7 @@ composer require yii-tools/forms
 
 ## Usage
 
-For use this package, read the [docs](/docs/forms.md).
+[Check the documentation docs](/docs/forms.md) to learn about usage.
 
 ## Checking dependencies
 

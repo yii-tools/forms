@@ -4,31 +4,16 @@ declare(strict_types=1);
 
 namespace Yii\Forms\Tests\ButtonGroup;
 
-use Exception;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\ButtonGroup;
 use Yii\Forms\Input\Button;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class RenderTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws Exception
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testButtons(): void
     {
         Assert::equalsWithoutLE(
@@ -44,13 +29,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws Exception
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testIndividualButtonAttributes(): void
     {
         Assert::equalsWithoutLE(
@@ -70,13 +48,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws Exception
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testRender(): void
     {
         Assert::equalsWithoutLE(
@@ -92,13 +63,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws Exception
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testRenderWithTag(): void
     {
         Assert::equalsWithoutLE(
@@ -117,13 +81,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws Exception
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testVisible(): void
     {
         Assert::equalsWithoutLE(
@@ -143,13 +100,6 @@ final class RenderTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws Exception
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testWithoutContainer(): void
     {
         Assert::equalsWithoutLE(

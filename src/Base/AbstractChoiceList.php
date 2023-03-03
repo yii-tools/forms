@@ -9,10 +9,6 @@ use Yii\Forms\Label;
 use Yii\Html\Helper\Utils;
 use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 abstract class AbstractChoiceList extends AbstractInputWidget
 {
@@ -141,12 +137,6 @@ abstract class AbstractChoiceList extends AbstractInputWidget
         return [$attributes, $containerAttributes];
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     protected function renderChoiceTag(
         string $type,
         array $attributes,
@@ -159,7 +149,7 @@ abstract class AbstractChoiceList extends AbstractInputWidget
         /** @psalm-var mixed */
         $attributes['value'] = $valueDefault;
 
-        $checkboxTag = $this->run('input', '', $type, $attributes);
+        $checkboxTag = $this->renderInput('input', '', $type, $attributes);
 
         return Label::widget([$this->formModel, $this->attribute])
             ->content($checkboxTag . $label)

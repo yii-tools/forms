@@ -16,7 +16,7 @@ use function is_string;
  */
 final class TextArea extends Base\AbstractTextArea
 {
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $content = match (array_key_exists('value', $attributes)) {
@@ -39,6 +39,6 @@ final class TextArea extends Base\AbstractTextArea
             $attributes['placeholder'] = $placeHolder;
         }
 
-        return $this->run('textarea', (string) $content, null, $attributes);
+        return $this->renderInput('textarea', (string) $content, null, $attributes);
     }
 }

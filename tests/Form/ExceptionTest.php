@@ -7,25 +7,12 @@ namespace Yii\Forms\Tests\Form;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Form;
-use Yii\Forms\Tests\Support\TestTrait;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class ExceptionTest extends TestCase
 {
-    use TestTrait;
-
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testEnctype(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -37,12 +24,6 @@ final class ExceptionTest extends TestCase
         Form::widget()->enctype('')->begin();
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testTarget(): void
     {
         $this->expectException(InvalidArgumentException::class);

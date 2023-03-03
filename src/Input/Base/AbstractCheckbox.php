@@ -8,10 +8,6 @@ use Yii\Forms\Input\Hidden;
 use Yii\Html\Helper\CssClass;
 use Yii\Widget\AbstractInputWidget;
 use Yii\Widget\Attribute;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 abstract class AbstractCheckbox extends AbstractInputWidget
 {
@@ -66,11 +62,6 @@ abstract class AbstractCheckbox extends AbstractInputWidget
      *
      * @param string $value The value of the "unchecked" state.
      * @param array $values The Attribute values indexed by attribute names for hidden widget.
-     *
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
      */
     public function unchecked(string $value, array $values = []): static
     {

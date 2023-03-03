@@ -92,7 +92,7 @@ final class Form extends Base\AbstractForm
         return $form;
     }
 
-    public function render(): string
+    protected function run(): string
     {
         return Tag::end('form');
     }

@@ -56,7 +56,7 @@ final class Label extends Field\AbstractFieldPartWidget
         return $new;
     }
 
-    public function render(): string
+    protected function run(): string
     {
         $attributes = $this->attributes;
         $closure = $this->closure;

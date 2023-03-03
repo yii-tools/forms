@@ -8,31 +8,19 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 use Yii\Forms\Tests\Support\BasicForm;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Forms\TextArea;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class InputGroupTest extends TestCase
 {
-    use TestTrait;
-
     /**
      * Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember
      * to place <label>s outside the input group.
      *
      * @link https://getbootstrap.com/docs/5.2/forms/input-group/#basic-example
-     *
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
      */
     public function testBasicExample(): void
     {

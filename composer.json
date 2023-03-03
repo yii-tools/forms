@@ -18,8 +18,7 @@
         "yii-tools/form-model": "^1.0@dev",
         "yii-tools/html": "^1.0@dev",
         "yiisoft/http": "^1.2",
-        "yiisoft/strings": "^2.1",
-        "yiisoft/widget": "^2.0"
+        "yiisoft/strings": "^2.1"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.3",

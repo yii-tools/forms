@@ -7,28 +7,15 @@ namespace Yii\Forms\Tests\CheckboxList;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\CheckboxList;
 use Yii\Forms\Tests\Support\TestForm;
-use Yii\Forms\Tests\Support\TestTrait;
 use Yii\Support\Assert;
-use Yiisoft\Definitions\Exception\CircularReferenceException;
-use Yiisoft\Definitions\Exception\InvalidConfigException;
-use Yiisoft\Definitions\Exception\NotInstantiableException;
-use Yiisoft\Factory\NotFoundException;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
 final class InputAttibutesTest extends TestCase
 {
-    use TestTrait;
-
     private array $sex = [1 => 'Female', 2 => 'Male'];
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testAutofocus(): void
     {
         Assert::equalsWithoutLE(
@@ -42,12 +29,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testDisabled(): void
     {
         Assert::equalsWithoutLE(
@@ -61,12 +42,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testId(): void
     {
         Assert::equalsWithoutLE(
@@ -80,12 +55,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testName(): void
     {
         Assert::equalsWithoutLE(
@@ -99,12 +68,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testSeparator(): void
     {
         Assert::equalsWithoutLE(
@@ -122,12 +85,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testTabindex(): void
     {
         Assert::equalsWithoutLE(
@@ -141,12 +98,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testValue(): void
     {
         // Value iterable `[2]`.
@@ -186,12 +137,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testValueWithForm(): void
     {
         $formModel = new TestForm();
@@ -233,12 +178,6 @@ final class InputAttibutesTest extends TestCase
         );
     }
 
-    /**
-     * @throws CircularReferenceException
-     * @throws InvalidConfigException
-     * @throws NotFoundException
-     * @throws NotInstantiableException
-     */
     public function testWithoutId(): void
     {
         Assert::equalsWithoutLE(
