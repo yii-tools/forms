@@ -1,6 +1,6 @@
 # Checkbox
 
-It's an input element with a type attribute whose value is "checkbox" representing a [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox) control.
+It's an input element with a type attribute whose value is `checkbox` representing a [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox) control.
 
 The `Checkbox` widget is designed to return the status of the checkbox. Generally it returns two values, by default it is `0` for unchecked, and `1` for checked.
 
