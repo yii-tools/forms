@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 use Closure;
 use Yii\Html\Helper\CssClass;
 
 /**
- * HasFieldLabel provides the ability to set the label for the field.
+ * Provides methods for configuring field label.
  */
 trait HasFieldLabel
 {
@@ -16,6 +16,7 @@ trait HasFieldLabel
     private string $labelClass = '';
     private Closure|null $labelClosure = null;
     private string $labelContent = '';
+    private bool $labelEncode = true;
     private bool $notLabel = false;
 
     /**
@@ -67,6 +68,19 @@ trait HasFieldLabel
     {
         $new = clone $this;
         $new->labelContent = $value;
+
+        return $new;
+    }
+
+    /**
+     * Returns a new instance with the value indicating whether the label should be HTML-encoded.
+     *
+     * @param bool $value The value indicating whether the label should be HTML-encoded.
+     */
+    public function labelEncode(bool $value): static
+    {
+        $new = clone $this;
+        $new->labelEncode = $value;
 
         return $new;
     }

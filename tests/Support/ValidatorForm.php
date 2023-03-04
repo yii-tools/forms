@@ -26,4 +26,9 @@ final class ValidatorForm extends AbstractFormModel
             ],
         ];
     }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
 }

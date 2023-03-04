@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 /**
- * HasFieldClass provides a method to set the widget class for the field.
+ * Provides a method to set the widget attribute html `class` for the field.
  */
 trait HasFieldClass
 {

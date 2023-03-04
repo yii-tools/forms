@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 use Closure;
 use Yii\Html\Helper\CssClass;
 
 /**
- * HasFieldError provides methods to set error attributes for the field.
+ * Provides methods for configuring field error.
  */
 trait HasFieldError
 {

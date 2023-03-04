@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Hint;
+namespace Yii\Forms\Tests\Field\Hint;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\Hint;
+use Yii\Forms\Field\Hint;
 use Yii\Forms\Tests\Support\TestForm;
 
 /**

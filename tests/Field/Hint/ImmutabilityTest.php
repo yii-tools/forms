@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Hint;
+namespace Yii\Forms\Tests\Field\Hint;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Hint;
+use Yii\Forms\Field\Hint;
 use Yii\Forms\Tests\Support\TestForm;
 
 /**

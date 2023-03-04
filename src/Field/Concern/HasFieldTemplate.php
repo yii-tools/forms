@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 /**
- * HasFieldTemplate provides the ability to set the template layout.
+ * Provides the ability to set the template layout for the field.
  */
 trait HasFieldTemplate
 {

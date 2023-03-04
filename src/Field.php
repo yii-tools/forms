@@ -8,7 +8,7 @@ use Yii\Html\Tag;
 use Yii\Widget\AbstractInputWidget;
 
 /**
- * Renders the field widget along with label and hint tag (if any) according to template.
+ * Renders the field along with `label`, `hint`, `error`, `prefix`, `suffix`, and `container`.
  */
 final class Field extends Base\AbstractField
 {

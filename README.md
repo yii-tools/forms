@@ -21,7 +21,7 @@ composer require yii-tools/forms
 
 ## Usage
 
-[Check the documentation docs](/docs/forms.md) to learn about usage.
+[Check the documentation docs](/docs/awesome-forms.md) to learn about usage.
 
 ## Checking dependencies
 

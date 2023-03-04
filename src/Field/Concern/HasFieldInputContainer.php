@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 use Yii\Html\Helper\CssClass;
 
 /**
- * HasFieldInputContainer provides methods to set input container for the field.
+ * Provide methods for configuring field input container.
  */
 trait HasFieldInputContainer
 {
