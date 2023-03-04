@@ -30,7 +30,9 @@ That would generate the following code:
 
 ## Structure
 
-For default the field template its `"{prefix}\n{field}\n{suffix}\n{hint}\n{error}"` and the input template `"{field}"` its `"{label}\n{input}"`. The field template can be changed by the `\Yii\Forms\Field::template()` method and the input template can be changed by the `\Yii\Forms\Field::inputTemplate()` method. Additionally each input widget can have its own template, which can be changed by the `\Yii\Widget\AbstractInputWidget::template()` method.
+For default the field template its `"{prefix}\n{field}\n{suffix}\n{hint}\n{error}"` and the input template its `"{label}\n{input}"`.
+
+The field template can be changed by the `\Yii\Forms\Field::template()` method and the input template can be changed by the `\Yii\Forms\Field::inputTemplate()` method. Additionally each input widget can have its own template, which can be changed by the `\Yii\Widget\AbstractInputWidget::template()` method.
 
 ```text
 main container - div default value true.
