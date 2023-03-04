@@ -94,8 +94,8 @@ That would generate the following code:
 
 ```html
 <div class="test-class">
-	<label for="contactform-name">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -118,8 +118,8 @@ That would generate the following code:
 
 ```html
 <div data-test="test">
-	<label for="contactform-name">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -147,8 +147,8 @@ That would generate the following code:
 ```html
 <div>
     <span><i class="fas fa-user"></i></span>
-	<label for="contactform-name">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -175,9 +175,9 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="contactform-name">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
-	<span><i class="fas fa-user"></i></span>
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
+    <span><i class="fas fa-user"></i></span>
 </div>
 ```
 
@@ -209,11 +209,11 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="validatorform-username">Username</label>
-	<input class="is-invalid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-	<div>
-    	This value must contain at least 3 characters.
-	</div>
+    <label for="validatorform-username">Username</label>
+    <input class="is-invalid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <div>
+        This value must contain at least 3 characters.
+    </div>
 </div>
 ```
 
@@ -246,7 +246,7 @@ That would generate the following code:
 ```html
 <div>
     <label for="validatorform-username">Username</label>
-	<input class="is-valid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="andres" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <input class="is-valid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="andres" maxlength="10" required minlength="3" pattern="^[a-z]+$">
 </div>
 ```
 
@@ -308,7 +308,7 @@ That would generate the following code:
 
 ```html
 <div>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <input id="contactform-name" name="ContactForm[name]" type="text">
     <label for="contactform-name">Name</label>
 </div>
 ```
