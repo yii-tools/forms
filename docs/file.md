@@ -1,6 +1,6 @@
 # File
 
-It's a control that lets the user select a [File](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.file.html#input.file). The file(s) selected by the user can then be uploaded to a server with [PSR-7](https://github.com/php-fig/http-message), or manipulated by JavaScript via the [File API](https://www.w3.org/TR/FileAPI/). 
+It's an input element with a type attribute whose value is `file` representing [File](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.file.html#input.file). The file(s) selected by the user can then be uploaded to a server with [PSR-7](https://github.com/php-fig/http-message), or manipulated by JavaScript via the [File API](https://www.w3.org/TR/FileAPI/). 
 
 ## Example
 
