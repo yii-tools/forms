@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Error;
+namespace Yii\Forms\Tests\Field\Error;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Error;
+use Yii\Forms\Field\Error;
 use Yii\Forms\Tests\Support\TestForm;
 
 /**

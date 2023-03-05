@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 /**
- * HasFieldValidateClass provides the ability to set the css class to add to the field when it is valid or invalid.
+ * Provides the ability to set the attribute html `class` to add to the field when it is `valid` or `invalid`.
  */
 trait HasFieldValidateClass
 {

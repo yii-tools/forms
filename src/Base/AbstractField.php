@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Yii\Forms\Base;
 
 use Closure;
-use Yii\Forms;
 use Yii\Forms\Field;
+use Yii\Forms\Field\Concern;
+use Yii\Forms\Input;
 use Yii\Html\Tag;
 use Yii\Widget\AbstractInputWidget;
-use Yii\Widget\Attribute;
 use Yii\Widget\AbstractWidget;
+use Yii\Widget\Attribute;
 
 use function array_key_exists;
 use function is_bool;
@@ -22,14 +23,14 @@ abstract class AbstractField extends AbstractWidget
 {
     use Attribute\HasContainer;
     use Attribute\HasPrefixAndSuffix;
-    use Field\HasFieldClass;
-    use Field\HasFieldError;
-    use Field\HasFieldHint;
-    use Field\HasFieldInputContainer;
-    use Field\HasFieldInputTemplate;
-    use Field\HasFieldLabel;
-    use Field\HasFieldTemplate;
-    use Field\HasFieldValidateClass;
+    use Concern\HasFieldClass;
+    use Concern\HasFieldError;
+    use Concern\HasFieldHint;
+    use Concern\HasFieldInputContainer;
+    use Concern\HasFieldInputTemplate;
+    use Concern\HasFieldLabel;
+    use Concern\HasFieldTemplate;
+    use Concern\HasFieldValidateClass;
 
     protected bool|string $ariaDescribedBy = false;
     protected string $class = '';
@@ -74,11 +75,11 @@ abstract class AbstractField extends AbstractWidget
         $error = $this->renderError($widget);
         $hint = $this->renderHint($widget);
 
-        if ($widget instanceof Forms\Input\Checkbox && str_contains($this->inputTemplate, '{label}')) {
+        if ($widget instanceof Input\Checkbox && str_contains($this->inputTemplate, '{label}')) {
             $widget = $widget->notLabel();
         }
 
-        if ($widget instanceof Forms\Input\Hidden === false && $this->isLabel()) {
+        if ($widget instanceof Input\Hidden === false && $this->isLabel()) {
             $label = $this->renderLabel($widget);
         }
 
@@ -112,7 +113,7 @@ abstract class AbstractField extends AbstractWidget
             $errorContent = $this->errorContent;
         }
 
-        $errorTag = Forms\Error::widget([$widget->getFormModel(), $widget->getAttribute()])
+        $errorTag = Field\Error::widget([$widget->getFormModel(), $widget->getAttribute()])
             ->attributes($this->errorAttributes)
             ->content($errorContent)
             ->tag($this->errorTag);
@@ -162,7 +163,7 @@ abstract class AbstractField extends AbstractWidget
             $hintAttributes['id'] = $this->ariaDescribedBy;
         }
 
-        $hintTag = Forms\Hint::widget([$widget->getFormModel(), $widget->getAttribute()])
+        $hintTag = Field\Hint::widget([$widget->getFormModel(), $widget->getAttribute()])
             ->attributes($hintAttributes)
             ->content($this->hintContent)
             ->tag($this->hintTag);
@@ -182,9 +183,10 @@ abstract class AbstractField extends AbstractWidget
             $labelAttributes['for'] = $widget->getId();
         }
 
-        $labelTag = Forms\Label::widget([$widget->getFormModel(), $widget->getAttribute()])
+        $labelTag = Field\Label::widget([$widget->getFormModel(), $widget->getAttribute()])
             ->attributes($labelAttributes)
-            ->content($this->labelContent);
+            ->content($this->labelContent)
+            ->encode($this->labelEncode);
 
         if ($this->labelClosure instanceof Closure) {
             $labelTag = $labelTag->closure($this->labelClosure);

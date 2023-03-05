@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms;
+namespace Yii\Forms\Field;
 
 use Closure;
 use Yii\Html\Tag;
 
 /**
- * The Error widget generates an error content for the specified model attribute.
+ * Generates a hint content for the specified model attribute.
  */
-final class Error extends Field\AbstractFieldPartWidget
+final class Hint extends AbstractFieldPartWidget
 {
     protected function run(): string
     {
@@ -18,7 +18,7 @@ final class Error extends Field\AbstractFieldPartWidget
         $content = $this->content;
 
         if ($content === '') {
-            $content = $this->formModel->getFirstError($this->attribute);
+            $content = $this->formModel->getHint($this->attribute);
         }
 
         $contentTag = Tag::create($this->tag, $content, $this->attributes);

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Hint;
+namespace Yii\Forms\Tests\Field\Error;
 
 use PHPUnit\Framework\TestCase;
-use Yii\Forms\Hint;
+use Yii\Forms\Field\Error;
 use Yii\Forms\Tests\Support\TestForm;
 use Yii\Support\Assert;
 
@@ -14,14 +14,17 @@ use Yii\Support\Assert;
  */
 final class RenderTest extends TestCase
 {
-    public function testFormModelWithAddHint(): void
+    public function testFormModelWithAddError(): void
     {
-        $errorWidget = Hint::widget([new TestForm(), 'string']);
+        $formModel = new TestForm();
+
+        $formModel->error()->add('string', 'Error content');
+        $errorWidget = Error::widget([$formModel, 'string']);
 
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
-            String hint
+            Error content
             </div>
             HTML,
             $errorWidget->render(),
@@ -30,16 +33,16 @@ final class RenderTest extends TestCase
 
     public function testRender(): void
     {
-        $hintWidget = Hint::widget([new TestForm(), 'string']);
-        $hintWidget = $hintWidget->content('Custom string hint');
+        $errorWidget = Error::widget([new TestForm(), 'string']);
+        $errorWidget = $errorWidget->content('Custom error content');
 
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
-            Custom string hint
+            Custom error content
             </div>
             HTML,
-            $hintWidget->render(),
+            $errorWidget->render(),
         );
     }
 }

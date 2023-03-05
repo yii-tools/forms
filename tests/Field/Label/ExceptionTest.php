@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Tests\Label;
+namespace Yii\Forms\Tests\Field\Label;
 
 use PHPUnit\Framework\TestCase;
 use Yii\Forms\Exception\AttributeNotSet;
-use Yii\Forms\Label;
+use Yii\Forms\Field\Label;
 use Yii\Forms\Tests\Support\TestForm;
 
 /**

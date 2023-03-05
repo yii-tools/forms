@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms\Input;
 
 use InvalidArgumentException;
-use Yii\Forms\Label;
+use Yii\Forms\Field\Label;
 use Yii\Html\Helper\Encode;
 use Yii\Html\Helper\Utils;
 use Yii\Html\Tag;

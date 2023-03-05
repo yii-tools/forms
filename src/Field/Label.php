@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms;
+namespace Yii\Forms\Field;
 
 use Closure;
 use Yii\Html\Helper\Encode;
@@ -13,11 +13,11 @@ use Yii\Widget\Attribute;
 use function array_key_exists;
 
 /**
- * The Label widget generates a label tag for the specified form model attribute.
+ * Generates a label tag for the specified form model attribute.
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/label.html
  */
-final class Label extends Field\AbstractFieldPartWidget
+final class Label extends AbstractFieldPartWidget
 {
     use Attribute\HasForm;
 

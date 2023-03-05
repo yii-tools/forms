@@ -39,6 +39,7 @@ final class ImmutabilityTest extends TestCase
         $this->assertNotSame($field, $field->labelClass(''));
         $this->assertNotSame($field, $field->labelClosure(fn () => ''));
         $this->assertNotSame($field, $field->labelContent(''));
+        $this->assertNotSame($field, $field->labelEncode(false));
         $this->assertNotSame($field, $field->notLabel());
         $this->assertNotSame($field, $field->showAllErrors());
         $this->assertNotSame($field, $field->template(''));

@@ -70,7 +70,7 @@ final class CheckboxList extends Base\AbstractChoiceList
         }
 
         if (!empty($this->label)) {
-            $labelContainer = Label::widget([$this->formModel, $this->attribute])
+            $labelContainer = Field\Label::widget([$this->formModel, $this->attribute])
                 ->attributes($this->labelAttributes)
                 ->content($this->label)
                 ->render() . $this->separator;

@@ -12,7 +12,7 @@ use Yii\Widget\AbstractWidget;
 use Yii\Widget\Attribute\HasAttributes;
 
 /**
- * The AbstractFieldPartWidget class is the base class for widgets that are used to generate the parts of the field.
+ * The base class for widgets that are used to generate the parts of the field `label`, `error` and `hint`.
  */
 abstract class AbstractFieldPartWidget extends AbstractWidget
 {

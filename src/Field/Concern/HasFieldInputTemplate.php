@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yii\Forms\Field;
+namespace Yii\Forms\Field\Concern;
 
 /**
- * HasFieldInputTemplate provides the ability to set the template for the input.
+ * Provides the ability to set the template for the input of the field.
  */
 trait HasFieldInputTemplate
 {
