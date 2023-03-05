@@ -1,6 +1,10 @@
 # Date
 
-It's an input element with a type attribute whose value is `date` representing [Date](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html#input.date). It is displayed with a calendar widget in supporting browsers, which allows easy date selection. The format of the date is controlled by the `pattern` attribute, using the syntax described in the [HTML specification](https://www.w3.org/TR/2012/WD-html-markup-20120329/datatypes.html#common.data.date). If the `pattern` attribute is not specified, the user agent will provide a default value.
+It's an input element with a type attribute whose value is `date` representing [Date](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.date.html#input.date).
+
+It's displayed with a calendar widget in supporting browsers, which allows easy date selection.
+
+The format of the date is controlled by the `pattern` attribute, using the syntax described in the [HTML specification](https://www.w3.org/TR/2012/WD-html-markup-20120329/datatypes.html#common.data.date). If the `pattern` attribute isn't specified, the user personal digital assistant will give a default value.
 
 ## Example
 

@@ -1,6 +1,6 @@
 # CheckboxList
 
-It's an input element that displays a list of checkboxes [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox).
+It's an input element that displays a list of [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox).
 
 ## Example
 

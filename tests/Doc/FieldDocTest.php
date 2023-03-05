@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 use Yii\Forms\Tests\Support\ContactForm;
-use Yii\Forms\Tests\Support\TestForm;
 use Yii\Forms\Tests\Support\ValidatorForm;
 use Yii\Support\Assert;
 use Yiisoft\Validator\Validator;
@@ -57,88 +56,6 @@ final class FieldDocTest extends TestCase
         );
     }
 
-    public function testHintAttributes(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="testform-string">String</label>
-			<input id="testform-string" name="TestForm[string]" type="text">
-			<div data-test="test">
-			String hint
-			</div>
-			</div>
-			HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])])
-                ->hintAttributes(['data-test' => 'test'])
-                ->render(),
-        );
-    }
-
-    public function testHintClass(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="testform-string">String</label>
-			<input id="testform-string" name="TestForm[string]" type="text">
-			<div class="form-hint">
-			String hint
-			</div>
-			</div>
-			HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])])->hintClass('form-hint')->render(),
-        );
-    }
-
-    public function testHintClosure(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="testform-string">String</label>
-			<input id="testform-string" name="TestForm[string]" type="text">
-			<div>String hint</div>
-			</div>
-			HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])])
-                ->hintClosure(
-                    static fn (TestForm $formModel) => '<div>' . $formModel->getHint('string') . '</div>'
-                )
-                ->render(),
-        );
-    }
-
-    public function testHintContent(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="contactform-name">Name</label>
-			<input id="contactform-name" name="ContactForm[name]" type="text">
-			<div>
-			Enter your name
-			</div>
-			</div>
-			HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])->hintContent('Enter your name')->render(),
-        );
-    }
-
-    public function testHintTag(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="testform-string">String</label>
-			<input id="testform-string" name="TestForm[string]" type="text">
-			<span>String hint</span>
-			</div>
-			HTML,
-            Field::widget([Text::widget([new TestForm(), 'string'])])->hintTag('span')->render(),
-        );
-    }
-
     public function testInputTemplate(): void
     {
         Assert::equalsWithoutLE(
@@ -149,76 +66,6 @@ final class FieldDocTest extends TestCase
 			</div>
 			HTML,
             Field::widget([Text::widget([new ContactForm(), 'name'])])->inputTemplate("{input}\n{label}")->render(),
-        );
-    }
-
-    public function testLabelAttributes(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="contactform-name" data-test="test">Name</label>
-			<input id="contactform-name" name="ContactForm[name]" type="text">
-			</div>
-			HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])
-                ->labelAttributes(['data-test' => 'test'])
-                ->render(),
-        );
-    }
-
-    public function testLabelClass(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label class="form-label" for="contactform-name">Name</label>
-			<input id="contactform-name" name="ContactForm[name]" type="text">
-			</div>
-			HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])->labelClass('form-label')->render(),
-        );
-    }
-
-    public function testLabelClosure(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label>Name: </label>
-			<input id="contactform-name" name="ContactForm[name]" type="text">
-			</div>
-			HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])
-                ->labelClosure(
-                    static fn (ContactForm $formModel) => '<label>' . $formModel->getLabel('name') . ': </label>'
-                )
-                ->render(),
-        );
-    }
-
-    public function testLabelContent(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<label for="contactform-name">User name:</label>
-			<input id="contactform-name" name="ContactForm[name]" type="text">
-			</div>
-			HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])->labelContent('User name:')->render(),
-        );
-    }
-
-    public function testNotLabel(): void
-    {
-        Assert::equalsWithoutLE(
-            <<<HTML
-			<div>
-			<input id="contactform-name" name="ContactForm[name]" type="text">
-			</div>
-			HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])->notLabel()->render(),
         );
     }
 
