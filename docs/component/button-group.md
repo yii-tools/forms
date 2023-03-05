@@ -1,6 +1,8 @@
 # Button group
 
-It's a component which can be used to create a set of buttons that are related to each other. This is a wrapper for the [Button](button.md) widget.
+It's a part which can be used to create a set of buttons that are related to each other.
+
+This is a wrapper for the [Button](/docs/input/button.md) widget.
 
 ## Example
 

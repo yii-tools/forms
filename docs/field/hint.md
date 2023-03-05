@@ -1,6 +1,6 @@
 # Hint
 
-For default the hint its the attribute hint of the form model, which can be changed by the `\Yii\Forms\Field::hintContent()` method.
+For default the hint it's the attribute hint of the form model, which can be changed by the `\Yii\Forms\Field::hintContent()` method.
 
 For example, the following code for change the hint content.
 
@@ -88,7 +88,7 @@ That would generate the following code:
 </div>
 ```
 
-Or the following code for add attribute to the hint.
+Or the following code for added attribute to the hint.
 
 ```php
 <?php
@@ -141,3 +141,15 @@ That would generate the following code:
     <span>String hint</span>
 </div>
 ```
+
+All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
+
+| Method              | Parameter     | Description                                  | Default    |
+|---------------------|---------------|----------------------------------------------|------------|
+| `hintAttribute()`   | `array`       | The HTML attributes for the container tag.   | `[]`       |
+| `hintClass()`       | `string`      | The HTML class for the container tag.        | `''`       |
+| `hintClosure()`     | `Closure`     | The closure that returns the content.        | `null`     |
+| `hintContent()`     | `string`      | The content.                                 | `''`       |	
+| `hintTag()`         | `string`      | The tag name.                                | `div`      |
+
+**Note:** *You can find all the [examples](/tests/doc/HintTest.php) in the test file.*

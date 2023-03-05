@@ -2,7 +2,9 @@
 
 It's an input element with a type attribute whose value is `checkbox` representing a [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox) control.
 
-The `Checkbox` widget is designed to return the status of the checkbox. Generally it returns two values, by default it is `0` for unchecked, and `1` for checked.
+The `Checkbox` widget is designed to return the status of the checkbox.
+
+It returns two values, by default, it's `0` for unchecked, and `1` for checked.
 
 ## Example
 
@@ -24,7 +26,7 @@ That would generate the following code:
 <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
 ```
 
-For default the label is generated from the attribute name. You can change it by using the `label()` method.
+For default, the label is generated from the attribute name. You can change it by using the `label()` method.
 
 ## Example with input hidden for unchecked
 
@@ -160,7 +162,7 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-## Example with Field enclosed by label
+## Example with Field inside by label
 
 ```php
 declare(strict_types=1);

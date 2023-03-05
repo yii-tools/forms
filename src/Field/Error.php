@@ -8,28 +8,58 @@ use Closure;
 use Yii\Html\Tag;
 
 /**
- * Generates an error content for the specified model attribute.
+ * Get an error content for the specified model attribute.
  */
 final class Error extends AbstractFieldPartWidget
 {
+    private bool $showAllErrors = false;
+
+    /**
+     * Return new instance with specified if they show all errors or the first error by attribute if it exists.
+     *
+     * @param bool $value If they show all errors or the first error by attribute if it exists.
+     */
+    public function showAllErrors(bool $value = true): static
+    {
+        $new = clone $this;
+        $new->showAllErrors = $value;
+
+        return $new;
+    }
+
     protected function run(): string
     {
         $closure = $this->closure;
         $content = $this->content;
+        $errorContent = $this->getErrorFromModel();
 
-        if ($content === '') {
-            $content = $this->formModel->getFirstError($this->attribute);
+        if ($content !== '') {
+            $content = Tag::create($this->tag, $content, $this->attributes);
         }
 
-        $contentTag = Tag::create($this->tag, $content, $this->attributes);
+        if ($content === '' && $errorContent !== '') {
+            $content = Tag::create($this->tag, $errorContent, $this->attributes);
+        }
 
         if ($closure instanceof Closure) {
-            $contentTag = (string) $closure($this->formModel);
+            $content = (string) $closure($this->formModel);
         }
 
         return match ($content !== '') {
-            true => $contentTag,
+            true => $content,
             default => '',
+        };
+    }
+
+    private function getErrorFromModel(): string
+    {
+        if ($this->formModel->hasError($this->attribute) === false) {
+            return '';
+        }
+
+        return match ($this->showAllErrors) {
+            true => implode('<br>', $this->formModel->getError($this->attribute)),
+            default => $this->formModel->getFirstError($this->attribute),
         };
     }
 }

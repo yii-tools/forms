@@ -1,6 +1,6 @@
 # Field
 
-Its a widget for create a field with a input or component widget, which can be used in a form. 
+It's a widget to create a field with an input or part-widget, which can be used in a form. 
 
 For create a field, you can use the `\Yii\Forms\Field::widget()` method, which accepts an array of `\Yii\Widget\AbstractInputWidget` objects and `\Yii\Widget\AbstractWidget` objects in the constructor method.
 
@@ -30,7 +30,7 @@ That would generate the following code:
 
 ## Elements
 
-This field contains the following elements:
+This field has the following elements:
 
 - Container
 - Prefix
@@ -42,7 +42,7 @@ This field contains the following elements:
 
 For default the field template its `"{prefix}\n{field}\n{suffix}\n{hint}\n{error}"` and the input template its `"{label}\n{input}"`.
 
-The field template can be changed by the `\Yii\Forms\Field::template()` method and the input template can be changed by the `\Yii\Forms\Field::inputTemplate()` method. Additionally each input widget can have its own template, which can be changed by the `\Yii\Widget\AbstractInputWidget::template()` method.
+The field template can be changed by the `\Yii\Forms\Field::template()` method and the input template can be changed by the `\Yii\Forms\Field::inputTemplate()` method. Additionally, each input widget can have its own template, which can be changed by the `\Yii\Widget\AbstractInputWidget::template()` method.
 
 ```text
 main container - div default value true.
@@ -63,7 +63,7 @@ main container - div default value true.
 
 Its a `div` element, which can be disabled by the `\Yii\Forms\Field::container()` method.
 
-For example, the following code for disable the main container.
+For example, the following code for disabling the main container.
 
 ```php
 <?php
@@ -109,7 +109,7 @@ That would generate the following code:
 </div>
 ```
 
-Or the following code for add attribute to the main container.
+Or the following code for added attribute to the main container.
 
 ```php
 <?php
@@ -135,7 +135,7 @@ That would generate the following code:
 
 ## Prefix
 
-Allows you to add a prefix to the field in string format.
+It Allows you to add a prefix to the field in string format.
 
 For example, the following code for add icon to the field prefix.
 
@@ -164,7 +164,7 @@ That would generate the following code:
 
 ## Suffix
 
-Allows you to add a suffix to the field in string format.
+It Allows you to add a suffix to the field in string format.
 
 For example, the following code for add icon to the field suffix.
 
@@ -193,9 +193,9 @@ That would generate the following code:
 
 ## Invalid class
 
-Allows you to add a class to the field when the field is invalid.
+It Allows you to add a class to the field when the field is invalid.
 
-For example, the following code for add class `is-invalid` to the field when the field is invalid.
+For example, the following code for adds class `is-invalid` to the field when the field is invalid.
 
 ```php
 <?php
@@ -229,9 +229,9 @@ That would generate the following code:
 
 ## Valid class
 
-Allows you to add a class to the field when the field is valid.
+It Allows you to add a class to the field when the field is valid.
 
-For example, the following code for add class `is-valid` to the field when the field is valid.
+For example, the following code for adds class `is-valid` to the field when the field is valid.
 
 ```php
 <?php
@@ -262,7 +262,7 @@ That would generate the following code:
 
 ## Template
 
-Allows you to flexibly customize the order of the field elements. The template is a string that contains the names of the elements of the field separated by break lines.
+It Allows you to flexibly customize the order of the field elements. The template is a string that has the names of the elements of the field separated by break lines.
 
 For example, the following code for change the order of the field elements.
 
@@ -297,7 +297,7 @@ That would generate the following code:
 
 ## Input template
 
-Allows you to flexibly customize the order of the input elements. The template is a string that contains the names of the elements of the input separated by break lines.
+It Allows you to flexibly customize the order of the input elements. The template is a string that has the names of the elements of the input separated by break lines.
 
 For example, the following code for change the order of the input elements.
 

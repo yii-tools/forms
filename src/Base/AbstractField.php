@@ -104,18 +104,10 @@ abstract class AbstractField extends AbstractWidget
 
     private function renderError(AbstractInputWidget $widget): string
     {
-        $errorContent = match ($this->showAllErrors) {
-            true => $widget->getErrorsForAttribute(),
-            default => $widget->getErrorFirstForAttribute(),
-        };
-
-        if ($this->errorContent !== '') {
-            $errorContent = $this->errorContent;
-        }
-
         $errorTag = Field\Error::widget([$widget->getFormModel(), $widget->getAttribute()])
             ->attributes($this->errorAttributes)
-            ->content($errorContent)
+            ->content($this->errorContent)
+            ->showAllErrors($this->showAllErrors)
             ->tag($this->errorTag);
 
         if ($this->errorClosure instanceof Closure) {
