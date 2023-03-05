@@ -7,7 +7,7 @@ namespace Yii\Forms\Base;
 use Exception;
 use Yii\Forms\Input\Button;
 use Yii\Widget\AbstractWidget;
-use Yii\Widget\Attribute\HasContainer;
+use Yii\Widget\Attribute;
 
 use function array_merge;
 use function implode;
@@ -15,8 +15,10 @@ use function is_array;
 
 abstract class AbstractButtonGroup extends AbstractWidget
 {
-    use HasContainer;
+    use Attribute\HasAttributes;
+    use Attribute\HasContainer;
 
+    protected array $attributes = [];
     protected array $buttons = [];
     /** @psalm-var array[] */
     protected array $individualButtonAttributes = [];

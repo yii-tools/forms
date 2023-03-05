@@ -19,7 +19,7 @@ final class Error extends AbstractFieldPartWidget
      *
      * @param bool $value If they show all errors or the first error by attribute if it exists.
      */
-    public function showAllErrors(bool $value = true): static
+    public function showAllErrors(bool $value): static
     {
         $new = clone $this;
         $new->showAllErrors = $value;
