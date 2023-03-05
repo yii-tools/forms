@@ -322,3 +322,36 @@ That would generate the following code:
     <label for="contactform-name">Name</label>
 </div>
 ```
+
+## Methods of the widget
+
+All methods are immutable, which means that they will return a new instance of the widget with the specified option set.
+
+| Method                  | Parameter | Description                                       | Default |
+|-------------------------|-----------|---------------------------------------------------|---------|
+| `class()`               | `string`  | The class of the field container.                 | `''`    |
+| `container()`           | `bool`    | Allows you to enable or disable field container.  | `true`  |
+| `containerAttributes()` | `bool`    | The HTML attributes for the field container.      | `true`  |
+| `errorAttributes()`     | `array`   | The HTML attributes for the container tag.        | `[]`    |
+| `errorClass()`          | `string`  | The HTML class for the container tag.             | `''`    |
+| `errorClosure()`        | `Closure` | The closure that returns the content.             | `null`  |
+| `errorContent()`        | `string`  | The content.                                      | `''`    |	
+| `errortag()`            | `string`  | The tag name.                                     | `div`   |
+| `hintAttribute()`       | `array`   | The HTML attributes for the container tag.        | `[]`    |
+| `hintClass()`           | `string`  | The HTML class for the container tag.             | `''`    |
+| `hintClosure()`         | `Closure` | The closure that returns the content.             | `null`  |
+| `hintContent()`         | `string`  | The content.                                      | `''`    |	
+| `hintTag()`             | `string`  | The tag name.                                     | `div`   |
+| `inputTemplate()`       | `string`  | The template of the input.                        | `''`    |
+| `invalidClass()`        | `string`  | The class of the field when the field is invalid. | `''`    |	
+| `labelAttributes()`     | `array`   | The HTML attributes for the label tag.            | `[]`    |
+| `labelClass()`          | `string`  | The HTML class for the label tag.                 | `''`    |
+| `labelClosure()`        | `Closure` | The closure that returns the content.             | `null`  |
+| `labelContent()`        | `string`  | The content of the label.                         | `''`    |
+| `labelEncode()`         | `bool`    | Whether to encode the label content.              | `true`  |
+| `notLabel()`            | `null`    | Disable the label.                                | `false` |
+| `prefix()`              | `string`  | The prefix of the field.                          | `''`    |
+| `showAllErrors()`       | `bool`    | Show all errors.                                  | `false` |
+| `suffix()`              | `string`  | The suffix of the field.                          | `''`    |
+| `template()`            | `string`  | The template of the field.                        | `''`    |
+| `validClass()`          | `string`  | The class of the field when the field is valid.   | `''`    |

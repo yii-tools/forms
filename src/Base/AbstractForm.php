@@ -20,6 +20,7 @@ abstract class AbstractForm extends AbstractWidget
     use Attribute\HasName;
 
     protected string $action = '';
+    protected array $attributes = [];
     protected string $csrfName = '';
     protected string $csrfToken = '';
     protected string $method = '';

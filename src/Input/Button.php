@@ -19,10 +19,13 @@ use function is_string;
  */
 final class Button extends AbstractWidget
 {
+    use Attribute\HasAttributes;
     use Attribute\CanBeDisabled;
     use Attribute\HasForm;
     use Attribute\HasType;
     use Attribute\HasValue;
+
+    protected array $attributes = [];
 
     protected function run(): string
     {
