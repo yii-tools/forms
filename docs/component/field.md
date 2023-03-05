@@ -1,10 +1,10 @@
 # Field
 
-Allows to create a form field with `label`, `input`, `error`, `hint`, `prefix`, `suffix`, and `container`.
+Its a widget for create a field with a input or component widget, which can be used in a form. 
 
 For create a field, you can use the `\Yii\Forms\Field::widget()` method, which accepts an array of `\Yii\Widget\AbstractInputWidget` objects and `\Yii\Widget\AbstractWidget` objects in the constructor method.
 
-For example, the following code for create a field with a `text input` widget.
+For example, the following code for create a field with a `input text` widget.
 
 ```php	
 <?php
@@ -28,7 +28,17 @@ That would generate the following code:
 </div>
 ```
 
-## Structure
+## Elements
+
+This field contains the following elements:
+
+- Container
+- Prefix
+- Label
+- Input container
+- Suffix
+- Hint
+- Error
 
 For default the field template its `"{prefix}\n{field}\n{suffix}\n{hint}\n{error}"` and the input template its `"{label}\n{input}"`.
 

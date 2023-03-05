@@ -31,7 +31,7 @@ final class ContactForm extends AbstractFormModel
 - [Button group](/docs/component/button-group.md)
 - [Checkboxlist](/docs/component/checkboxlist.md)
 - [Field](/docs/component/field.md)
-    - [Structure](/docs/component/field.md#structure)
+    - [Elements](/docs/component/field.md#elements)
     - [Container](/docs/component/field.md#container)
     - [Prefix](/docs/component/field.md#prefix)
     - [Label](/docs/field/label.md)    
