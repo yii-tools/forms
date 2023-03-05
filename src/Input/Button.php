@@ -19,8 +19,8 @@ use function is_string;
  */
 final class Button extends AbstractWidget
 {
-    use Attribute\HasAttributes;
     use Attribute\CanBeDisabled;
+    use Attribute\HasAttributes;
     use Attribute\HasForm;
     use Attribute\HasType;
     use Attribute\HasValue;
