@@ -26,11 +26,11 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="validatorform-username">Username</label>
-	<input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-	<div>
-    	This value must contain at least 3 characters.
-	</div>
+    <label for="validatorform-username">Username</label>
+    <input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <div>
+        This value must contain at least 3 characters.
+    </div>
 </div>
 ```
 
@@ -59,10 +59,10 @@ That would generate the following code:
 ```html
 <div>
     <label for="validatorform-username">Username</label>
-	<input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-	<div>
-		This value must contain at least 3 characters.<br>Value is invalid.
-	</div>
+    <input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <div>
+        This value must contain at least 3 characters.<br>Value is invalid.
+    </div>
 </div>
 ```
 
@@ -93,11 +93,11 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="validatorform-username">Username</label>
-	<input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-	<div>
-		This value contain 1 character, but must contain at least 3 characters.
-	</div>
+    <label for="validatorform-username">Username</label>
+    <input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <div>
+        This value contain 1 character, but must contain at least 3 characters.
+    </div>
 </div>
 ```
 
@@ -133,8 +133,8 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="validatorform-username">Username</label>
-	<input id="validatorform-username" name="ValidatorForm[username]" type="text" value="sa" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <label for="validatorform-username">Username</label>
+    <input id="validatorform-username" name="ValidatorForm[username]" type="text" value="sa" maxlength="10" required minlength="3" pattern="^[a-z]+$">
     This value contain 2 character, but must contain at least 3 characters.
 </div>
 ```
@@ -163,11 +163,11 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="validatorform-username">Username</label>
-	<input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-	<div class="test-class">
-		This value must contain at least 3 characters.
-	</div>
+    <label for="validatorform-username">Username</label>
+    <input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <div class="test-class">
+        This value must contain at least 3 characters.
+    </div>
 </div>
 ```
 
@@ -195,10 +195,10 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="validatorform-username">Username</label>
-	<input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-	<div data-test="test">
-		This value must contain at least 3 characters.
-	</div>
+    <label for="validatorform-username">Username</label>
+    <input id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
+    <div data-test="test">
+        This value must contain at least 3 characters.
+    </div>
 </div>
 ```

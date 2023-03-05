@@ -22,10 +22,10 @@ That would generate the following code:
 ```html
 <div>
     <label for="contactform-name">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
-	<div>
-		Enter your name
-	</div>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
+    <div>
+        Enter your name
+    </div>
 </div>
 ```
 
@@ -54,8 +54,8 @@ That would generate the following code:
 ```html
 <div>
     <label for="testform-string">String</label>
-	<input id="testform-string" name="TestForm[string]" type="text">
-	<div>
+    <input id="testform-string" name="TestForm[string]" type="text">
+    <div>
         String hint
     </div>
 </div>
@@ -80,11 +80,11 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="testform-string">String</label>
-	<input id="testform-string" name="TestForm[string]" type="text">
-	<div class="form-hint">
-		String hint
-	</div>
+    <label for="testform-string">String</label>
+    <input id="testform-string" name="TestForm[string]" type="text">
+    <div class="form-hint">
+        String hint
+    </div>
 </div>
 ```
 
@@ -107,11 +107,11 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="testform-string">String</label>
-	<input id="testform-string" name="TestForm[string]" type="text">
+    <label for="testform-string">String</label>
+    <input id="testform-string" name="TestForm[string]" type="text">
     <div data-test="test">
-		String hint
-	</div>
+        String hint
+    </div>
 </div>
 ```
 
@@ -136,8 +136,8 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="testform-string">String</label>
-	<input id="testform-string" name="TestForm[string]" type="text">
-	<span>String hint</span>
+    <label for="testform-string">String</label>
+    <input id="testform-string" name="TestForm[string]" type="text">
+    <span>String hint</span>
 </div>
 ```

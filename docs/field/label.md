@@ -21,8 +21,8 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="contactform-name">User name:</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <label for="contactform-name">User name:</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -53,7 +53,7 @@ That would generate the following code:
 ```html
 <div>
     <label>Name: </label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -77,7 +77,7 @@ That would generate the following code:
 ```html
 <div>
     <label class="form-label" for="contactform-name">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -100,8 +100,8 @@ That would generate the following code:
 
 ```html
 <div>
-	<label for="contactform-name" data-test="test">Name</label>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <label for="contactform-name" data-test="test">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
@@ -126,6 +126,6 @@ That would generate the following code:
 
 ```html
 <div>
-	<input id="contactform-name" name="ContactForm[name]" type="text">
+    <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
