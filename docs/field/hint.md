@@ -152,4 +152,4 @@ All methods are immutable, which means that they will return a new instance of t
 | `hintContent()`     | `string`      | The content.                                 | `''`       |	
 | `hintTag()`         | `string`      | The tag name.                                | `div`      |
 
-**Note:** *You can find all the [examples](/tests/doc/HintTest.php) in the test file.*
+**Note:** *You can find all the [examples](/tests/Doc/HintTest.php) in the test file.*
