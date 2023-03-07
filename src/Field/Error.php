@@ -15,11 +15,11 @@ final class Error extends AbstractFieldPartWidget
     private bool $showAllErrors = false;
 
     /**
-     * Return new instance with specified if they show all errors or the first error by attribute if it exists.
+     * Return a new instance with specified if they show all errors or the first error by attribute if it exists.
      *
      * @param bool $value If they show all errors or the first error by attribute if it exists.
      */
-    public function showAllErrors(bool $value): static
+    public function showAllErrors(bool $value): self
     {
         $new = clone $this;
         $new->showAllErrors = $value;

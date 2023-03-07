@@ -62,7 +62,7 @@ trait HasFieldLabel
     /**
      * Returns a new instance with the label attribute value is a string that defines the text of the label element.
      *
-     * @param string $value The value of the label attribute. If null, the label will not be rendered.
+     * @param string $value The value of the label attribute. If null, the label won't be rendered.
      */
     public function labelContent(string $value): static
     {
@@ -86,7 +86,7 @@ trait HasFieldLabel
     }
 
     /**
-     * Returns a new instance where the label is not rendered.
+     * Returns a new instance where the label isn't rendered.
      */
     public function notLabel(): static
     {

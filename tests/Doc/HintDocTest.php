@@ -14,7 +14,7 @@ use Yii\Support\Assert;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class HintTest extends TestCase
+final class HintDocTest extends TestCase
 {
     public function testAttributes(): void
     {

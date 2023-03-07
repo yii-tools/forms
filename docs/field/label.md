@@ -141,4 +141,4 @@ All methods are immutable, which means that they will return a new instance of t
 | `labelEncode()`     | `bool`        | Whether to encode the label content.   | `true`     |
 | `notLabel()`        | `null`        | Disable the label.                     | `false`    |
 
-**Note:** *You can find all the [examples](/tests/Doc/LabelTest.php) in the test file.*
+**Note:** *You can find all the [examples](/tests/Doc/LabelDocTest.php) in the test file.*

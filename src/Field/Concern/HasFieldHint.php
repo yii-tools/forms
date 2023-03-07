@@ -8,7 +8,7 @@ use Closure;
 use Yii\Html\Helper\CssClass;
 
 /**
- * Provides methods for configuring field hint.
+ * Provides methods for a configuring field hint.
  */
 trait HasFieldHint
 {

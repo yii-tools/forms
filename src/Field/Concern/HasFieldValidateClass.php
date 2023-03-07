@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yii\Forms\Field\Concern;
 
 /**
- * Provides the ability to set the attribute html `class` to add to the field when it is `valid` or `invalid`.
+ * Provides the ability to set the attribute html `class` to add to the field when it's `valid` or `invalid`.
  */
 trait HasFieldValidateClass
 {

@@ -10,7 +10,7 @@ use function array_key_exists;
 use function is_string;
 
 /**
- * The textarea element represents a multi-line plain-text edit control for the element’s raw value.
+ * Represents a multi-line plain-text edit control for the element’s raw value.
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/textarea.html
  */

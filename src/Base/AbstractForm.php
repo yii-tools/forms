@@ -45,7 +45,7 @@ abstract class AbstractForm extends AbstractWidget
 
     /**
      * Returns a new instances with the action and form-action content attributes, if specified, must have a value that
-     * is a valid non-empty URL potentially surrounded by spaces.
+     * is a valid non-empty URL surrounded by spaces.
      *
      * @param string $value The action attribute value.
      *
@@ -101,7 +101,7 @@ abstract class AbstractForm extends AbstractWidget
     }
 
     /**
-     * Returns a new instances with the method attribute specifies how the form-data should be submitted.
+     * Returns a new instances with the method attribute specify how the form-data should be submitted.
      *
      * @param string $value The method attribute value.
      *
@@ -116,8 +116,9 @@ abstract class AbstractForm extends AbstractWidget
     }
 
     /**
-     * Returns a new instances with the novalidate attributes are boolean attributes. If present, they indicate that the
-     * form is not to be validated during submission.
+     * Return new instances with the novalidate attributes are boolean attributes.
+     *
+     * If present, they indicate that the form isn't to be validated during submission.
      *
      * @link https://www.w3.org/TR/html52/sec-forms.html#element-attrdef-form-novalidate
      */
