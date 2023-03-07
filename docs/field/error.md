@@ -170,4 +170,4 @@ All methods are immutable, which means that they will return a new instance of t
 | `errortag()`        | `string`      | The tag name.                                | `div`      |
 | `showAllErrors()`   | `bool`        | Show all errors.                             | `false`    |
 
-**Note:** *You can find all the [examples](/tests/Doc/ErrorTest.php) in the test file.*
+**Note:** *You can find all the [examples](/tests/Doc/ErrorDocTest.php) in the test file.*

@@ -329,6 +329,7 @@ All methods are immutable, which means that they will return a new instance of t
 
 | Method                  | Parameter | Description                                       | Default |
 |-------------------------|-----------|---------------------------------------------------|---------|
+| `ariaDescribedBy()`     | `string`  | The aria-describedby attribute.                   | `''`    |
 | `class()`               | `string`  | The class of the field container.                 | `''`    |
 | `container()`           | `bool`    | Allows you to enable or disable field container.  | `true`  |
 | `containerAttributes()` | `bool`    | The HTML attributes for the field container.      | `true`  |
@@ -355,3 +356,5 @@ All methods are immutable, which means that they will return a new instance of t
 | `suffix()`              | `string`  | The suffix of the field.                          | `''`    |
 | `template()`            | `string`  | The template of the field.                        | `''`    |
 | `validClass()`          | `string`  | The class of the field when the field is valid.   | `''`    |
+
+**Note:** *You can find all the [examples](/tests/Doc/FieldDocTest.php) in the test file.*

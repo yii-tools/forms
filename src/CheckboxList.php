@@ -12,7 +12,7 @@ use Yii\Html\Tag;
 /*
  * Generates a list of checkboxes.
  *
- * A checkbox list allows multiple selection.
+ * A checkbox list allows many selections.
  */
 final class CheckboxList extends Base\AbstractChoiceList
 {

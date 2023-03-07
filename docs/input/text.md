@@ -2,7 +2,8 @@
 
 It's an input element with a type attribute whose value is `text` representing [Text](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.text.html#input.text).
 
-It can be used for any text, including e-mail addresses and URLs. The text is displayed in a fixed-width font (usually the user's default monospace font).
+It can be used for any text, including e-mail addresses and URLs. The text is displayed in a fixed-width font (usually
+the user's default monospace font).
 
 ## Example
 

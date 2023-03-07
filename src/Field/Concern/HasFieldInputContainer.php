@@ -7,7 +7,7 @@ namespace Yii\Forms\Field\Concern;
 use Yii\Html\Helper\CssClass;
 
 /**
- * Provide methods for configuring field input container.
+ * Provides methods for configuring field input container.
  */
 trait HasFieldInputContainer
 {

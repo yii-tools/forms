@@ -13,7 +13,7 @@ use function implode;
 use function is_object;
 
 /**
- * The select element represents a control for selecting among a list of options.
+ * Represents a control for selecting among a list of options.
  *
  * @link https://www.w3.org/TR/2012/WD-html-markup-20120329/select.html
  */

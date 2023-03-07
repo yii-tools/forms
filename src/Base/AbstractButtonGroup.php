@@ -25,7 +25,7 @@ abstract class AbstractButtonGroup extends AbstractWidget
 
     /**
      * Returns a new instance specifying List of buttons. Each array element represents a single button which can be
-     * specified as a string or an array of  the following structure:
+     * specified as a string or an array of the following structure:
      *
      * - label: string, required, the button label.
      * - attributes: array, optional, the HTML attributes of the button.
@@ -43,7 +43,7 @@ abstract class AbstractButtonGroup extends AbstractWidget
     }
 
     /**
-     * Returns a new instance specifying attributes for button.
+     * Returns a new instance specifying attributes for the button.
      *
      * @param array $values The button attributes.
      *

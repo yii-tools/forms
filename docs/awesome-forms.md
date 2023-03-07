@@ -4,7 +4,7 @@ Awesome forms for YiiFramework v.3.0 provides a set of classes to create forms i
 
 ## Creating a form model
 
-To create a form, you need to create a class that extends the `AbstractFormModel::class`. The `AbstractFormModel::class` give a set of methods to create a form.
+To create a form model, you need to create a class that extends the `Yii\FormModel\AbstractFormModel::class`.
 
 ```php
 <?php
@@ -40,6 +40,7 @@ final class ContactForm extends AbstractFormModel
     - [Valid class](/docs/component/field.md#valid-class)
     - [Template](/docs/component/field.md#template)
     - [Input template](/docs/component/field.md#input-template)
+- [Form](/docs/component/form.md)
 
 ## Input widget
 

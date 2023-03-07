@@ -13,7 +13,7 @@ use Yii\Support\Assert;
 /**
  * @psalm-suppress PropertyNotSetInConstructor
  */
-final class LabelTest extends TestCase
+final class LabelDocTest extends TestCase
 {
     public function testAttributes(): void
     {
