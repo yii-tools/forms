@@ -20,7 +20,7 @@ final class FormDocTest extends TestCase
             <form accept-charset="UTF-8">
             </form>
             HTML,
-            Form::widget()->acceptCharset('UTF-8')->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->acceptCharset('UTF-8')->begin() . PHP_EOL . Form::end(),
         );
     }
 
@@ -31,7 +31,7 @@ final class FormDocTest extends TestCase
             <form action="/form">
             </form>
             HTML,
-            Form::widget()->action('/form')->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->action('/form')->begin() . PHP_EOL . Form::end(),
         );
     }
 
@@ -43,7 +43,7 @@ final class FormDocTest extends TestCase
             <input name="_csrf" type="hidden" value="csrf-token">
             </form>
             HTML,
-            Form::widget()->csrf('csrf-token')->method('POST')->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->csrf('csrf-token')->method('POST')->begin() . PHP_EOL . Form::end(),
         );
     }
 
@@ -54,7 +54,7 @@ final class FormDocTest extends TestCase
             <form enctype="multipart/form-data">
             </form>
             HTML,
-            Form::widget()->enctype('multipart/form-data')->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->enctype('multipart/form-data')->begin() . PHP_EOL . Form::end(),
         );
     }
 
@@ -65,7 +65,7 @@ final class FormDocTest extends TestCase
             <form method="GET">
             </form>
             HTML,
-            Form::widget()->method('GET')->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->method('GET')->begin() . PHP_EOL . Form::end(),
         );
     }
 
@@ -76,7 +76,7 @@ final class FormDocTest extends TestCase
             <form novalidate>
             </form>
             HTML,
-            Form::widget()->novalidate()->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->novalidate()->begin() . PHP_EOL . Form::end(),
         );
     }
 
@@ -87,7 +87,7 @@ final class FormDocTest extends TestCase
             <form target="_blank">
             </form>
             HTML,
-            Form::widget()->target('_blank')->begin() . PHP_EOL .  Form::end(),
+            Form::widget()->target('_blank')->begin() . PHP_EOL . Form::end(),
         );
     }
 }
