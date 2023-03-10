@@ -26,7 +26,7 @@ That would generate the following code:
 
 ## Prefix
 
-This following code will generate a prefix for the date.
+The following code shows how to create a date with prefix.
 
 ```php
 <?php
@@ -49,7 +49,7 @@ That would generate the following code:
 
 ## Suffix
 
-This following code will generate a suffix for the date.
+The following code shows how to create a date with suffix.
 
 ```php
 <?php
@@ -72,7 +72,7 @@ That would generate the following code:
 
 ## Field
 
-This following code will generate a field for the date.
+The following code shows how to create a field for the date.
 
 ```php
 declare(strict_types=1);
@@ -96,7 +96,7 @@ That would generate the following code:
 
 ## Field prefix
 
-This following code will generate a field for the date with prefix.
+The following code shows how to create a field for the date with prefix.
 
 ```php
 declare(strict_types=1);
@@ -119,7 +119,7 @@ use Yii\Forms\Input\Date;
 
 ## Field suffix
 
-This following code will generate a field for the date with suffix.
+The following code shows how to create a field for the date with suffix.
 
 ```php
 declare(strict_types=1);

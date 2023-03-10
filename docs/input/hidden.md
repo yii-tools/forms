@@ -22,7 +22,7 @@ That would generate the following code:
 
 ## Field
 
-This following code will generate a field for the hidden.
+The following code shows how to create a field for a hidden input.
 
 ```php
 declare(strict_types=1);

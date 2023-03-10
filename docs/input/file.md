@@ -24,7 +24,7 @@ That would generate the following code:
 
 ## Input hidden for unchecked
 
-This following code will generate a hidden input for unchecked.
+The following code shows how to create a file with a hidden input for unchecked.
 
 ```php
 <?php
@@ -47,7 +47,7 @@ That would generate the following code:
 
 ## Prefix
 
-This following code will generate a prefix for the file.
+The following code shows how to create a file with a prefix.
 
 ```php
 <?php
@@ -70,7 +70,7 @@ That would generate the following code:
 
 ## Suffix
 
-This following code will generate a suffix for the file.
+The following code shows how to create a file with a suffix.
 
 ```php
 <?php
@@ -93,7 +93,7 @@ That would generate the following code:
 
 ## Field
 
-This following code will generate a field for the file.
+The following code shows how to create a field for the file.
 
 ```php
 declare(strict_types=1);
@@ -117,7 +117,7 @@ That would generate the following code:
 
 ## Field with prefix
 
-This following code will generate a field for the file with prefix.
+The following code shows how to create a field for the file with a prefix.
 
 ```php
 declare(strict_types=1);
@@ -140,7 +140,7 @@ use Yii\Forms\Input\File;
 
 ## Field with suffix
 
-This following code will generate a field for the file with suffix.
+The following code shows how to create a field for the file with a suffix.
 
 ```php
 declare(strict_types=1);

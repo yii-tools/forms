@@ -26,76 +26,9 @@ That would generate the following code:
 
 For default, the label is generated from the attribute name. You can change it by using the `label()` method.
 
-## Input hidden for unchecked
-
-This following code will generate a hidden input for unchecked.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Input\Checkbox;
-?>
-
-<?= Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0') ?>
-```
-
-That would generate the following code:
-
-```html
-<input name="ContactForm[agree]" type="hidden" value="0">
-<label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
-```
-
-## Prefix
-
-This following code will generate a prefix for the checkbox.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Input\Checkbox;
-?>
-
-<?= Checkbox::widget([new ContactForm(), 'agree'])->prefix('<span><i class="bi bi-check"></i></span>') ?>
-```
-
-That would generate the following code:
-
-```html
-<label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
-```
-
-## Suffix
-
-This following code will generate a suffix for the checkbox.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Input\Checkbox;
-?>
-
-<?= Checkbox::widget([new ContactForm(), 'agree'])->suffix('<span><i class="bi bi-check"></i></span>') ?>
-```
-
-That would generate the following code:
-
-```html
-<label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
-```
-
 ## Container
 
-This following code will generate a container for the checkbox.
+The following code shows how to create a checkbox with a container.
 
 ```php
 <?php
@@ -118,9 +51,76 @@ That would generate the following code:
 </div>
 ```
 
+## Input hidden for unchecked
+
+The following code shows how to create a checkbox with a hidden input for unchecked.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?= Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0') ?>
+```
+
+That would generate the following code:
+
+```html
+<input name="ContactForm[agree]" type="hidden" value="0">
+<label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+```
+
+## Prefix
+
+The following code shows how to create a checkbox with a prefix.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?= Checkbox::widget([new ContactForm(), 'agree'])->prefix('<span><i class="bi bi-check"></i></span>') ?>
+```
+
+That would generate the following code:
+
+```html
+<label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+```
+
+## Suffix
+
+The following code shows how to create a checkbox with a suffix.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Input\Checkbox;
+?>
+
+<?= Checkbox::widget([new ContactForm(), 'agree'])->suffix('<span><i class="bi bi-check"></i></span>') ?>
+```
+
+That would generate the following code:
+
+```html
+<label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
+```
+
 ## Field
 
-This following code will generate a field for the checkbox.
+The following code shows how to create a checkbox for a field.
 
 ```php
 declare(strict_types=1);
@@ -147,7 +147,7 @@ That would generate the following code:
 
 ## Field with change label position
 
-This following code will generate a field for the checkbox with change label position.
+The following code shows how to create a checkbox for a field with change label position.
 
 ```php
 declare(strict_types=1);
@@ -174,7 +174,7 @@ use Yii\Forms\Input\Checkbox;
 
 ## Field with inside by label
 
-This following code will generate a field for the checkbox with inside by label.
+The following code shows how to create a checkbox for a field with inside by label.
 
 ```php
 declare(strict_types=1);
@@ -199,7 +199,7 @@ use Yii\Forms\Input\Checkbox;
 
 ## Field without any label
 
-This following code will generate a field for the checkbox without any label.
+The following code shows how to create a checkbox for a field without any label.
 
 ```php
 declare(strict_types=1);
@@ -224,7 +224,7 @@ use Yii\Forms\Input\Checkbox;
 
 ## Field prefix
 
-This following code will generate a field for the checkbox with prefix.
+The following code shows how to create a checkbox for a field with prefix.
 
 ```php
 declare(strict_types=1);
@@ -251,7 +251,7 @@ use Yii\Forms\Input\Checkbox;
 
 ## Field suffix
 
-This following code will generate a field for the checkbox with suffix.
+The following code shows how to create a checkbox for a field with suffix.
 
 ```php
 declare(strict_types=1);

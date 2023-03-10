@@ -63,7 +63,7 @@ main container - div default value true.
 
 Its a `div` element, which can be disabled by the `\Yii\Forms\Field::container()` method.
 
-For example, the following code for disabling the main container.
+The following code shows how to create a field without a container.
 
 ```php
 <?php
@@ -85,7 +85,26 @@ That would generate the following code:
 <input id="contactform-name" name="ContactForm[name]" type="text">
 ```
 
-For example, the following code for add attribute `HTML class` to the main container.
+## Container attributes
+
+The following code shows how to create a field with custom attributes for the container.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Text;
+?>
+
+<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->containerAttributes(['data-test' => 'test']) ?>
+```
+
+## Container class
+
+The following code shows how to create a field with a custom class for the container.
 
 ```php
 <?php
@@ -109,7 +128,20 @@ That would generate the following code:
 </div>
 ```
 
-Or the following code for added attribute to the main container.
+That would generate the following code:
+
+```html
+<div data-test="test">
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
+</div>
+```
+
+## Input template
+
+It Allows you to flexibly customize the order of the input elements. The template is a string that has the names of the elements of the input separated by break lines.
+
+The following code shows how to create a field with a custom input template.
 
 ```php
 <?php
@@ -121,15 +153,49 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 ?>
 
-<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->containerAttributes(['data-test' => 'test']) ?>
+<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->inputTemplate("{input}\n{label}") ?>
 ```
 
 That would generate the following code:
 
 ```html
-<div data-test="test">
-    <label for="contactform-name">Name</label>
+<div>
     <input id="contactform-name" name="ContactForm[name]" type="text">
+    <label for="contactform-name">Name</label>
+</div>
+```
+
+## Invalid class
+
+It Allows you to add a class to the field when the field is invalid.
+
+The following code shows how to create a field with a custom class when the field is invalid.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Text;
+
+$formModel = new ContactForm();
+$formModel->error()->add('name', 'This value must contain at least 3 characters.');
+?>
+
+<?= Field::widget([Text::widget([$formModel, 'name'])])->invalidClass('is-invalid') ?>
+```
+
+That would generate the following code:
+
+```html
+<div>
+    <label for="contactform-name">Name</label>
+    <input class="is-invalid" id="contactform-name" name="ContactForm[name]" type="text">
+    <div>
+        This value must contain at least 3 characters.\n
+    </div>
 </div>
 ```
 
@@ -137,7 +203,7 @@ That would generate the following code:
 
 It Allows you to add a prefix to the field in string format.
 
-For example, the following code for add icon to the field prefix.
+The following code shows how to create a field with a custom prefix.
 
 ```php
 <?php
@@ -166,7 +232,7 @@ That would generate the following code:
 
 It Allows you to add a suffix to the field in string format.
 
-For example, the following code for add icon to the field suffix.
+The following code shows how to create a field with a custom suffix.
 
 ```php
 <?php
@@ -191,80 +257,11 @@ That would generate the following code:
 </div>
 ```
 
-## Invalid class
-
-It Allows you to add a class to the field when the field is invalid.
-
-For example, the following code for adds class `is-invalid` to the field when the field is invalid.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ValidatorForm;
-use Yii\Forms\Field;
-use Yii\Forms\Input\Text;
-use Yiisoft\Validator\Validator;
-
-$formModel = new ValidatorForm();
-$formModel->load(['ValidatorForm' => ['username' => '1']]);
-$formModel->validate(new Validator());
-?>
-
-<?= Field::widget([Text::widget([$formModel, 'username'])])->invalidClass('is-invalid') ?>
-```
-
-That would generate the following code:
-
-```html
-<div>
-    <label for="validatorform-username">Username</label>
-    <input class="is-invalid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="1" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-    <div>
-        This value must contain at least 3 characters.
-    </div>
-</div>
-```
-
-## Valid class
-
-It Allows you to add a class to the field when the field is valid.
-
-For example, the following code for adds class `is-valid` to the field when the field is valid.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ValidatorForm;
-use Yii\Forms\Field;
-use Yii\Forms\Input\Text;
-use Yiisoft\Validator\Validator;
-
-$formModel = new ValidatorForm();
-$formModel->load(['ValidatorForm' => ['username' => 'andres']]);
-$formModel->validate(new Validator());
-?>
-
-<?= Field::widget([Text::widget([$formModel, 'username'])])->validClass('is-valid') ?>
-```
-
-That would generate the following code:
-
-```html
-<div>
-    <label for="validatorform-username">Username</label>
-    <input class="is-valid" id="validatorform-username" name="ValidatorForm[username]" type="text" value="andres" maxlength="10" required minlength="3" pattern="^[a-z]+$">
-</div>
-```
-
 ## Template
 
 It Allows you to flexibly customize the order of the field elements. The template is a string that has the names of the elements of the field separated by break lines.
 
-For example, the following code for change the order of the field elements.
+The following code shows how to create a field with a custom template.
 
 ```php
 <?php
@@ -295,11 +292,11 @@ That would generate the following code:
 </div>
 ```
 
-## Input template
+## Valid class
 
-It Allows you to flexibly customize the order of the input elements. The template is a string that has the names of the elements of the input separated by break lines.
+It Allows you to add a class to the field when the field is valid.
 
-For example, the following code for change the order of the input elements.
+The following code shows how to create a field with a custom class when the field is valid.
 
 ```php
 <?php
@@ -309,17 +306,20 @@ declare(strict_types=1);
 use App\Form\ContactForm;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
+
+$formModel = new ContactForm();
+$formModel->load(['ContactForm' => ['name' => 'andres']]);
 ?>
 
-<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->inputTemplate("{input}\n{label}") ?>
+<?= Field::widget([Text::widget([$formModel, 'name'])])->validClass('is-valid') ?>
 ```
 
 That would generate the following code:
 
 ```html
 <div>
-    <input id="contactform-name" name="ContactForm[name]" type="text">
     <label for="contactform-name">Name</label>
+    <input class="is-valid" id="contactform-name" name="ContactForm[name]" type="text" value="andres">
 </div>
 ```
 
