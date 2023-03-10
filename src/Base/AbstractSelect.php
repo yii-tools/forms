@@ -16,7 +16,6 @@ use function in_array;
 abstract class AbstractSelect extends AbstractInputWidget
 {
     use Attribute\CanBeMultiple;
-    use Attribute\HasForm;
     use Attribute\HasGroup;
     use Attribute\HasItems;
     use Attribute\HasPrompt;

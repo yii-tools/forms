@@ -356,6 +356,7 @@ All methods are immutable, which means that they will return a new instance of t
 | `labelClass()`           | `string`      | The HTML class for the label.                                                                             | `''`    |
 | `name()`                 | `null,string` | The value of the HTML `name` attribute.                                                                   | `''`    |
 | `notLabel()`             |               | When the widget does not render the label.                                                                | `null`  |
+| `prefix()`               | `string`      | The prefix for the widget.                                                                                | `''`    |
 | `readonly()`             |               | The value of the HTML `readonly` attribute.                                                               | `true`  |
 | `required()`             |               | The value of the HTML `required` attribute.                                                               | `true`  |
 | `suffix()`               | `string`      | The suffix for the widget.                                                                                | `''`    |

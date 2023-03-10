@@ -81,17 +81,6 @@ final class TextDocTest extends TestCase
             HTML,
             Text::widget([new ContactForm(), 'name'])->render(),
         );
-
-        // suffix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input id="contactform-name" name="ContactForm[name]" type="text">
-            <span><i class="bi bi-person-fill"></i></span>
-            HTML,
-            Text::widget([new ContactForm(), 'name'])
-                ->suffix('<span><i class="bi bi-person-fill"></i></span>')
-                ->render(),
-        );
     }
 
     public function testSuffix(): void

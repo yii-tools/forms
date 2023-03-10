@@ -28,6 +28,8 @@ final class ContactForm extends AbstractFormModel
 
 - [Button group](/docs/component/button-group.md)
 - [CheckboxList](/docs/component/checkboxlist.md)
+- [Select](/docs/component/select.md)
+- [Textarea](/docs/component/textarea.md)
 
 ## Input widget
 

@@ -17,32 +17,14 @@ final class DateDocTest extends TestCase
 {
     public function testField(): void
     {
-        // prefix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-dateofmessage">Dateof Message</label>
-            <span><i class="fa fa-calendar"></i></span>
-            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-            </div>
-            HTML,
-            Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
-                ->prefix('<span><i class="fa fa-calendar"></i></span>'), ])
-                ->render(),
-        );
-
-        // suffix
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
             <label for="contactform-dateofmessage">Dateof Message</label>
             <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-            <span><i class="fa fa-calendar"></i></span>
             </div>
             HTML,
-            Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
-                ->suffix('<span><i class="fa fa-calendar"></i></span>'), ])
-                ->render(),
+            Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])])->render(),
         );
     }
 
