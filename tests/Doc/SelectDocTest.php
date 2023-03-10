@@ -30,7 +30,7 @@ final class SelectDocTest extends TestCase
             </div>
             HTML,
             Field::widget([Select::widget([new ContactForm(), 'reason'])
-                ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])])
+                ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent']), ])
                 ->render(),
         );
     }
@@ -52,7 +52,7 @@ final class SelectDocTest extends TestCase
             HTML,
             Field::widget([Select::widget([new ContactForm(), 'reason'])
                 ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])
-                ->prefix('<span>Prefix</span>')])
+                ->prefix('<span>Prefix</span>'), ])
                 ->render(),
         );
     }
@@ -74,7 +74,7 @@ final class SelectDocTest extends TestCase
             HTML,
             Field::widget([Select::widget([new ContactForm(), 'reason'])
                 ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])
-                ->suffix('<span>Prefix</span>')])
+                ->suffix('<span>Prefix</span>'), ])
                 ->render(),
         );
     }
