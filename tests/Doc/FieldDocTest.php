@@ -8,9 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 use Yii\Forms\Tests\Support\ContactForm;
-use Yii\Forms\Tests\Support\ValidatorForm;
 use Yii\Support\Assert;
-use Yiisoft\Validator\Validator;
 
 /**
  * @psalm-suppress PropertyNotSetInConstructor
