@@ -7,9 +7,9 @@ For default, the error, it's checked by:
 - `\Yii\FormModel\FormModelInterface:getFirstError()`: Show only the first error of the specified attribute.
 - `\Yii\FormModel\FormModelInterface:getError()`. Show all errors of the specified attribute.
 
-## Content
+## Attributes
 
-The following code shows how to set the error content.
+The following code show error with attribute `HTML attributes`.
 
 ```php
 <?php
@@ -21,7 +21,11 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 ?>
 
-<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->errorContent('This is a custom error message.') ?>
+<?=
+    Field::widget([Text::widget([new ContactForm(), 'name'])])
+        ->errorAttributes(['data-test' => 'test'])
+        ->errorContent('This is a custom error message.')
+?>
 ```
 
 That would generate the following code:
@@ -30,7 +34,40 @@ That would generate the following code:
 <div>
     <label for="contactform-name">Name</label>
     <input id="contactform-name" name="ContactForm[name]" type="text">
-    <div>
+    <div data-test="test">
+        This is a custom error message.
+    </div>
+</div>
+```
+
+## Class
+
+The following code show error with attribute `HTML class`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Text;
+?>
+
+<?=
+    Field::widget([Text::widget([new ContactForm(), 'name'])])
+        ->errorClass('test-class')
+        ->errorContent('This is a custom error message.')
+?>
+```
+
+That would generate the following code:
+
+```html
+<div>
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
+    <div class="test-class">
         This is a custom error message.
     </div>
 </div>
@@ -70,42 +107,9 @@ That would generate the following code:
 </div>
 ```
 
-## Class
+## Content
 
-The following code show error with attribute `HTML class`.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Field;
-use Yii\Forms\Input\Text;
-?>
-
-<?=
-    Field::widget([Text::widget([new ContactForm(), 'name'])])
-        ->errorClass('test-class')
-        ->errorContent('This is a custom error message.')
-?>
-```
-
-That would generate the following code:
-
-```html
-<div>
-    <label for="contactform-name">Name</label>
-    <input id="contactform-name" name="ContactForm[name]" type="text">
-    <div class="test-class">
-        This is a custom error message.
-    </div>
-</div>
-```
-
-## Attributes
-
-The following code show error with attribute `HTML attributes`.
+The following code shows how to set the error content.
 
 ```php
 <?php
@@ -117,11 +121,7 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 ?>
 
-<?=
-    Field::widget([Text::widget([new ContactForm(), 'name'])])
-        ->errorAttributes(['data-test' => 'test'])
-        ->errorContent('This is a custom error message.')
-?>
+<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->errorContent('This is a custom error message.') ?>
 ```
 
 That would generate the following code:
@@ -130,7 +130,7 @@ That would generate the following code:
 <div>
     <label for="contactform-name">Name</label>
     <input id="contactform-name" name="ContactForm[name]" type="text">
-    <div data-test="test">
+    <div>
         This is a custom error message.
     </div>
 </div>

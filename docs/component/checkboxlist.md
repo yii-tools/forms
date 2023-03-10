@@ -191,7 +191,7 @@ That would generate the following code:
 
 ## Field with change label position
 
-The following code shows how to create a checkbox list with three items and field with change label position.
+The following code shows how to create a checkbox list with three items and a field with change label position.
 
 ```php
 <?php
@@ -349,7 +349,7 @@ All methods are immutable, which means that they will return a new instance of t
 | `form()`                 | `string`      | The value of the HTML `form` attribute.                                                                   | `''`    |
 | `id()`                   | `null,string` | The value of the HTML `id` attribute.                                                                     | `''`    |
 | `individualAttributes()` | `array`       | The HTML attributes for the individual checkboxes.                                                        | `[]`    |
-| `individualPreffix()`    | `string`      | The HTML preffix for the individual checkboxes.                                                           | `''`    |
+| `individualPreffix()`    | `string`      | The HTML prefix for the individual checkboxes.                                                            | `''`    |
 | `individualSuffix()`     | `string`      | The HTML suffix for the individual checkboxes.                                                            | `''`    |
 | `label()`                | `string`      | The label for the widget.                                                                                 | `true`  |
 | `labelAttributes()`      | `array`       | The HTML attributes for the label.                                                                        | `[]`    |

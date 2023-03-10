@@ -2,9 +2,9 @@
 
 For default the label it's the attribute label of the form model, which can be changed by the `\Yii\Forms\Field::labelContent()` method.
 
-## Content
+## Attributes
 
-The following code shows how to set the label content.
+The following code show label with attribute `HTML attributes`.
 
 ```php
 <?php
@@ -16,20 +16,43 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 ?>
 
-<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->labelContent('User name:') ?>
+<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->labelAttributes(['data-test' => 'test']) ?>
 ```
 
 That would generate the following code:
 
 ```html
 <div>
-    <label for="contactform-name">User name:</label>
+    <label for="contactform-name" data-test="test">Name</label>
     <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
 
-**Note:** The label content is for default encoded, which can be disabled by the `\Yii\Forms\Field::labelEncode()` method, which we don't recommend for security reasons.
+## Class
 
+The following code show label with attribute `HTML class`.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Text;
+?>
+
+<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->labelClass('form-label') ?>
+```
+
+That would generate the following code:
+
+```html
+<div>
+    <label class="form-label" for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text">
+</div>
+```
 
 ## Closure
 
@@ -62,35 +85,9 @@ That would generate the following code:
 </div>
 ```
 
-## Class
+## Content
 
-The following code show label with attribute `HTML class`.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Field;
-use Yii\Forms\Input\Text;
-?>
-
-<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->labelClass('form-label') ?>
-```
-
-That would generate the following code:
-
-```html
-<div>
-    <label class="form-label" for="contactform-name">Name</label>
-    <input id="contactform-name" name="ContactForm[name]" type="text">
-</div>
-```
-
-## Attributes
-
-The following code show label with attribute `HTML attributes`.
+The following code shows how to set the label content.
 
 ```php
 <?php
@@ -102,17 +99,19 @@ use Yii\Forms\Field;
 use Yii\Forms\Input\Text;
 ?>
 
-<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->labelAttributes(['data-test' => 'test']) ?>
+<?= Field::widget([Text::widget([new ContactForm(), 'name'])])->labelContent('User name:') ?>
 ```
 
 That would generate the following code:
 
 ```html
 <div>
-    <label for="contactform-name" data-test="test">Name</label>
+    <label for="contactform-name">User name:</label>
     <input id="contactform-name" name="ContactForm[name]" type="text">
 </div>
 ```
+
+**Note:** The label content is for default encoded, which can be disabled by the `\Yii\Forms\Field::labelEncode()` method, which we don't recommend for security reasons.
 
 ## Not Label
 

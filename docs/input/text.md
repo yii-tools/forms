@@ -25,7 +25,7 @@ That would generate the following code:
 
 ## Prefix
 
-This following code will generate a prefix for the text.
+The following code shows how to create a text with prefix.
 
 ```php
 <?php
@@ -48,7 +48,7 @@ That would generate the following code:
 
 ## Suffix
 
-This following code will generate a suffix for the text.
+The following code shows how to create a text with suffix.
 
 ```php
 <?php
@@ -71,7 +71,7 @@ That would generate the following code:
 
 ## Field
 
-This following code will generate a field for the text.
+The following code shows how to create a field for the text.
 
 ```php
 declare(strict_types=1);
@@ -95,7 +95,7 @@ That would generate the following code:
 
 ## Field with prefix
 
-This following code will generate a field for the text with prefix.
+The following code shows how to create a field for the text with prefix.
 
 ```php
 declare(strict_types=1);
@@ -118,7 +118,7 @@ use Yii\Forms\Input\Text;
 
 ## Field with suffix
 
-This following code will generate a field for the text with suffix.
+The following code shows how to create a field for the text with suffix.
 
 ```php
 declare(strict_types=1);

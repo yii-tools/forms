@@ -22,7 +22,7 @@ That would generate the following code:
 
 ## Type submit
 
-The following example will generate a submit button.
+The following code shows how to create a submit button.
 
 ```php
 <?php
@@ -44,7 +44,7 @@ That would generate the following code:
 
 ## Type reset
 
-The following example will generate a reset button.
+The following code shows how to create a reset button.
 
 ```php
 <?php
@@ -66,7 +66,7 @@ That would generate the following code:
 
 ## Value
 
-The following example will generate a button with a value.
+The following code shows how to create a button with a value.
 
 ```php
 <?php
@@ -88,7 +88,7 @@ That would generate the following code:
 
 ## Field
 
-This following code will generate a field for the button.
+The following code shows how to create a field for a button.
 
 ```php
 <?php

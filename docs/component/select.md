@@ -78,7 +78,7 @@ That would generate the following code:
 </select>
 ```
 
-## Groups with items attributes
+## Groups with item attributes
 
 The following code shows how to create a select with groups and set attributes for each item.
 
