@@ -1,6 +1,6 @@
-# Forms
+# Awesome forms
 
-Awesome forms for YiiFramework v.3.0 provides a set of classes to create forms in a simple way.
+Awesome forms for YiiFramework v. 3.0 provides a set of classes to create forms in a simple way.
 
 ## Creating a form model
 
