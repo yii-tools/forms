@@ -7,7 +7,9 @@ For default, the error, it's checked by:
 - `\Yii\FormModel\FormModelInterface:getFirstError()`: Show only the first error of the specified attribute.
 - `\Yii\FormModel\FormModelInterface:getError()`. Show all errors of the specified attribute.
 
-For example, the following code shows error with custom content.
+## Content
+
+The following code shows how to set the error content.
 
 ```php
 <?php
@@ -34,7 +36,9 @@ That would generate the following code:
 </div>
 ```
 
-For example, the following code shows error with custom closure content.
+## Closure
+
+The following code shows how to set the error content with a `Closure`.
 
 ```php
 <?php
@@ -66,7 +70,9 @@ That would generate the following code:
 </div>
 ```
 
-For example, the following code show error with attribute `HTML class`.
+## Class
+
+The following code show error with attribute `HTML class`.
 
 ```php
 <?php
@@ -97,7 +103,9 @@ That would generate the following code:
 </div>
 ```
 
-Or the following code for added attribute to the error.
+## Attributes
+
+The following code show error with attribute `HTML attributes`.
 
 ```php
 <?php
@@ -128,7 +136,9 @@ That would generate the following code:
 </div>
 ```
 
-To finish you can also change tag of the hint by the `\Yii\Forms\Field:errorTag()` method.
+## Tag
+
+The following code shows hint with container tag.
 
 ```php
 <?php

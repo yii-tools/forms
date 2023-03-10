@@ -6,8 +6,6 @@ The `Checkbox` widget is designed to return the status of the checkbox.
 
 It returns two values, by default, it's `0` for unchecked, and `1` for checked.
 
-## Example
-
 ```php
 <?php
 
@@ -28,7 +26,9 @@ That would generate the following code:
 
 For default, the label is generated from the attribute name. You can change it by using the `label()` method.
 
-## Example with input hidden for unchecked
+## Input hidden for unchecked
+
+This following code will generate a hidden input for unchecked.
 
 ```php
 <?php
@@ -49,7 +49,9 @@ That would generate the following code:
 <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
 ```
 
-## Example with prefix
+## Prefix
+
+This following code will generate a prefix for the checkbox.
 
 ```php
 <?php
@@ -69,7 +71,9 @@ That would generate the following code:
 <label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
 ```
 
-## Example with suffix
+## Suffix
+
+This following code will generate a suffix for the checkbox.
 
 ```php
 <?php
@@ -89,7 +93,9 @@ That would generate the following code:
 <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
 ```
 
-## Example with container
+## Container
+
+This following code will generate a container for the checkbox.
 
 ```php
 <?php
@@ -112,7 +118,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field
+## Field
+
+This following code will generate a field for the checkbox.
 
 ```php
 declare(strict_types=1);
@@ -137,7 +145,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field change label position
+## Field with change label position
+
+This following code will generate a field for the checkbox with change label position.
 
 ```php
 declare(strict_types=1);
@@ -162,7 +172,9 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-## Example with Field inside by label
+## Field with inside by label
+
+This following code will generate a field for the checkbox with inside by label.
 
 ```php
 declare(strict_types=1);
@@ -185,7 +197,9 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-## Example with Field any label
+## Field without any label
+
+This following code will generate a field for the checkbox without any label.
 
 ```php
 declare(strict_types=1);
@@ -208,7 +222,9 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-## Example with Field prefix
+## Field prefix
+
+This following code will generate a field for the checkbox with prefix.
 
 ```php
 declare(strict_types=1);
@@ -233,7 +249,9 @@ use Yii\Forms\Input\Checkbox;
 </div>
 ```
 
-## Example with Field suffix
+## Field suffix
+
+This following code will generate a field for the checkbox with suffix.
 
 ```php
 declare(strict_types=1);

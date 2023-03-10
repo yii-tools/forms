@@ -12,7 +12,7 @@ trait HasFieldInputTemplate
     private string $inputTemplate = "{label}\n{input}" ;
 
     /**
-     * Return new instance with input template.
+     * Return a new instance with input template.
      *
      * @param string $value The input template.
      */

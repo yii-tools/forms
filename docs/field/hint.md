@@ -2,7 +2,9 @@
 
 For default the hint it's the attribute hint of the form model, which can be changed by the `\Yii\Forms\Field::hintContent()` method.
 
-For example, the following code for change the hint content.
+## Content
+
+The following code shows how to set the hint content.
 
 ```php
 <?php
@@ -29,7 +31,9 @@ That would generate the following code:
 </div>
 ```
 
-For example, the following code for closure hint content.
+## Closure
+
+The following code shows how to set the hint content with a `Closure`.
 
 ```php
 <?php
@@ -61,7 +65,9 @@ That would generate the following code:
 </div>
 ```
 
-for example, the following code for add attribute `HTML class` to the hint.
+## Class
+
+The following code show hint with attribute `HTML class`.
 
 ```php
 <?php
@@ -88,7 +94,9 @@ That would generate the following code:
 </div>
 ```
 
-Or the following code for added attribute to the hint.
+## Attributes
+
+The following code show hint with attribute `HTML attributes`.
 
 ```php
 <?php
@@ -115,9 +123,9 @@ That would generate the following code:
 </div>
 ```
 
-To finish you can also change tag of the hint by the `\Yii\Forms\Field::hintTag()` method.
+## Tag
 
-For example, the following code for change the tag of the hint.
+The following code shows hint with container tag.
 
 ```php
 <?php

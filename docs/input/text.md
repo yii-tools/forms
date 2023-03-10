@@ -5,8 +5,6 @@ It's an input element with a type attribute whose value is `text` representing [
 It can be used for any text, including e-mail addresses and URLs. The text is displayed in a fixed-width font (usually
 the user's default monospace font).
 
-## Example
-
 ```php
 <?php
 
@@ -25,7 +23,9 @@ That would generate the following code:
 <input id="contactform-name" name="ContactForm[name]" type="text">
 ```
 
-## Example with prefix
+## Prefix
+
+This following code will generate a prefix for the text.
 
 ```php
 <?php
@@ -46,7 +46,9 @@ That would generate the following code:
 <input id="contactform-name" name="ContactForm[name]" type="text">
 ```
 
-## Example with suffix
+## Suffix
+
+This following code will generate a suffix for the text.
 
 ```php
 <?php
@@ -67,7 +69,9 @@ That would generate the following code:
 <span><i class="bi bi-person-fill"></i></span>
 ```
 
-## Example with Field
+## Field
+
+This following code will generate a field for the text.
 
 ```php
 declare(strict_types=1);
@@ -89,7 +93,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field prefix
+## Field with prefix
+
+This following code will generate a field for the text with prefix.
 
 ```php
 declare(strict_types=1);
@@ -110,7 +116,9 @@ use Yii\Forms\Input\Text;
 </div>
 ```
 
-## Example with Field suffix
+## Field with suffix
+
+This following code will generate a field for the text with suffix.
 
 ```php
 declare(strict_types=1);

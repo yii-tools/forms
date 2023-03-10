@@ -2,8 +2,6 @@
 
 It's an input element with a type attribute whose value is `button`, `submit` or `reset`, representing a [Button](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.button.html#input.button), labeled by its contents.
 
-## Example
-
 ```php
 <?php
 
@@ -22,7 +20,9 @@ That would generate the following code:
 <input type="button">
 ```
 
-## Example type submit
+## Type submit
+
+The following example will generate a submit button.
 
 ```php
 <?php
@@ -42,7 +42,9 @@ That would generate the following code:
 <input type="submit">
 ```
 
-## Example type reset
+## Type reset
+
+The following example will generate a reset button.
 
 ```php
 <?php
@@ -62,7 +64,9 @@ That would generate the following code:
 <input type="reset">
 ```
 
-## Example with value
+## Value
+
+The following example will generate a button with a value.
 
 ```php
 <?php
@@ -82,7 +86,9 @@ That would generate the following code:
 <input type="button" value="Click me">
 ```
 
-## Example with Field
+## Field
+
+This following code will generate a field for the button.
 
 ```php
 <?php

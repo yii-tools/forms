@@ -26,7 +26,7 @@ final class HiddenDocTest extends TestCase
         );
     }
 
-    public function testFieldHidden(): void
+    public function testField(): void
     {
         // default.
         Assert::equalsWithoutLE(
