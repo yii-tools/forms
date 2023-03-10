@@ -124,7 +124,6 @@ final class CheckboxDocTest extends TestCase
         );
     }
 
-
     public function testPrefix(): void
     {
         Assert::equalsWithoutLE(
