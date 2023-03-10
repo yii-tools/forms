@@ -287,7 +287,13 @@ use Yii\Forms\Field;
 use Yii\Forms\Select;
 ?>
 
-<?= Field::widget([Select::widget([new ContactForm(), 'reason'])->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])]) ?>
+<?= 
+    Field::widget(
+        [
+            Select::widget([new ContactForm(), 'reason'])->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent']),
+        ],
+    )
+?>
 ```
 
 That would generate the following code:
@@ -319,9 +325,13 @@ use Yii\Forms\Select;
 ?>
 
 <?= 
-    Field::widget([Select::widget([new ContactForm(), 'reason'])
-        ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])
-        ->prefix('<span>Prefix</span>')])
+    Field::widget(
+        [
+            Select::widget([new ContactForm(), 'reason'])
+                ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])
+                ->prefix('<span>Prefix</span>'),
+        ],
+    )
 ?>
 ```
 
@@ -355,9 +365,13 @@ use Yii\Forms\Select;
 ?>
 
 <?= 
-    Field::widget([Select::widget([new ContactForm(), 'reason'])
-        ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])
-        ->suffix('<span>Suffix</span>')])
+    Field::widget(
+        [
+            Select::widget([new ContactForm(), 'reason'])
+                ->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])
+                ->suffix('<span>Suffix</span>'),
+        ],
+    )
 ?>
 ```
 
