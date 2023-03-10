@@ -17,9 +17,143 @@ final class CheckboxListDocTest extends TestCase
 {
     private array $items = ['1' => 'Technical', '2' => 'Sales', '3' => 'Other'];
 
-    public function testCheckbox(): void
+    public function testBoolean(): void
     {
-        // default.
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label for="contactform-termsandservice">Do you like this post?</label>
+            <div id="contactform-termsandservice">
+            <label><input name="ContactForm[termsAndService][]" type="checkbox" value="0">No</label>
+            <label><input name="ContactForm[termsAndService][]" type="checkbox" value="1">Yes</label>
+            </div>
+            HTML,
+            CheckboxList::widget([new ContactForm(), 'termsAndService'])
+                ->boolean()
+                ->label('Do you like this post?')
+                ->render(),
+        );
+    }
+
+    public function testContainerTag(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <article id="contactform-reason">
+            <label><input name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+            <label><input name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+            <label><input name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+            </article>
+            HTML,
+            CheckboxList::widget([new ContactForm(), 'reason'])
+                ->containerTag('article')
+                ->items($this->items)
+                ->render(),
+        );
+    }
+
+    public function testField(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-reason">Reason</label>
+            <div id="contactform-reason">
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+            </div>
+            </div>
+            HTML,
+            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
+                ->class('button is-block is-info is-fullwidth')
+                ->render(),
+        );
+    }
+
+    public function testFieldWithChangeLabelPosition(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <div id="contactform-reason">
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+            </div>
+            <label for="contactform-reason">I agree</label>
+            </div>
+            HTML,
+            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
+                ->class('button is-block is-info is-fullwidth')
+                ->labelContent('I agree')
+                ->inputTemplate('{input}' . PHP_EOL . '{label}')
+                ->render(),
+        );
+    }
+
+    public function testFieldWithPrefix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <span><i class="bi bi-check"></i></span>
+            <label for="contactform-reason">Reason</label>
+            <div id="contactform-reason">
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+            </div>
+            </div>
+            HTML,
+            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
+                ->class('button is-block is-info is-fullwidth')
+                ->prefix('<span><i class="bi bi-check"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testFieldWithSuffix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-reason">Reason</label>
+            <div id="contactform-reason">
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+            </div>
+            <span><i class="bi bi-check"></i></span>
+            </div>
+            HTML,
+            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
+                ->class('button is-block is-info is-fullwidth')
+                ->suffix('<span><i class="bi bi-check"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testFieldWithoutAnyLabel(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <div id="contactform-reason">
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+            </div>
+            </div>
+            HTML,
+            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
+                ->class('button is-block is-info is-fullwidth')
+                ->notLabel()
+                ->render(),
+        );
+    }
+
+    public function testItems(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div id="contactform-reason">
@@ -30,8 +164,10 @@ final class CheckboxListDocTest extends TestCase
             HTML,
             CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)->render(),
         );
+    }
 
-        // prefix.
+    public function testPrefix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div id="contactform-reason">
@@ -51,8 +187,10 @@ final class CheckboxListDocTest extends TestCase
                 )
                 ->render(),
         );
+    }
 
-        // suffix.
+    public function testSuffix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div id="contactform-reason">
@@ -70,115 +208,6 @@ final class CheckboxListDocTest extends TestCase
                         '3' => '<span><i class="bi bi-app"></i></i></span>',
                     ],
                 )
-                ->render(),
-        );
-
-        // container tag
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <article id="contactform-reason">
-            <label><input name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-            <label><input name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-            <label><input name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-            </article>
-            HTML,
-            CheckboxList::widget([new ContactForm(), 'reason'])
-                ->containerTag('article')
-                ->items($this->items)
-                ->render(),
-        );
-    }
-
-    public function testFieldCheckbox(): void
-    {
-        // default.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-reason">Reason</label>
-            <div id="contactform-reason">
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-            </div>
-            </div>
-            HTML,
-            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
-                ->class('button is-block is-info is-fullwidth')
-                ->render(),
-        );
-
-        // change label position.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <div id="contactform-reason">
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-            </div>
-            <label for="contactform-reason">I agree</label>
-            </div>
-            HTML,
-            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
-                ->class('button is-block is-info is-fullwidth')
-                ->labelContent('I agree')
-                ->inputTemplate('{input}' . PHP_EOL . '{label}')
-                ->render(),
-        );
-
-        // any label.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <div id="contactform-reason">
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-            </div>
-            </div>
-            HTML,
-            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
-                ->class('button is-block is-info is-fullwidth')
-                ->notLabel()
-                ->render(),
-        );
-
-        // prefix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <span><i class="bi bi-check"></i></span>
-            <label for="contactform-reason">Reason</label>
-            <div id="contactform-reason">
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-            </div>
-            </div>
-            HTML,
-            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
-                ->class('button is-block is-info is-fullwidth')
-                ->prefix('<span><i class="bi bi-check"></i></span>')
-                ->render(),
-        );
-
-        // suffix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-reason">Reason</label>
-            <div id="contactform-reason">
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-            <label><input class="button is-block is-info is-fullwidth" name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-            </div>
-            <span><i class="bi bi-check"></i></span>
-            </div>
-            HTML,
-            Field::widget([CheckboxList::widget([new ContactForm(), 'reason'])->items($this->items)])
-                ->class('button is-block is-info is-fullwidth')
-                ->suffix('<span><i class="bi bi-check"></i></span>')
                 ->render(),
         );
     }

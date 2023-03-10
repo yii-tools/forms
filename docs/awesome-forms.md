@@ -28,6 +28,19 @@ final class ContactForm extends AbstractFormModel
 
 - [Button group](/docs/component/button-group.md)
 - [CheckboxList](/docs/component/checkboxlist.md)
+
+## Input widget
+
+- [Button](/docs/input/button.md)
+- [Checkbox](/docs/input/checkbox.md)
+- [Date](/docs/input/date.md)
+- [File](/docs/input/file.md)
+- [Hidden](/docs/input/hidden.md)
+- [Text](/docs/input/text.md)
+
+## Forms
+
+- [Form](/docs/component/form.md)
 - [Field](/docs/component/field.md)
     - [Elements](/docs/component/field.md#elements)
     - [Container](/docs/component/field.md#container)
@@ -40,13 +53,3 @@ final class ContactForm extends AbstractFormModel
     - [Valid class](/docs/component/field.md#valid-class)
     - [Template](/docs/component/field.md#template)
     - [Input template](/docs/component/field.md#input-template)
-- [Form](/docs/component/form.md)
-
-## Input widget
-
-- [Button](/docs/input/button.md)
-- [Checkbox](/docs/input/checkbox.md)
-- [Date](/docs/input/date.md)
-- [File](/docs/input/file.md)
-- [Hidden](/docs/input/hidden.md)
-- [Text](/docs/input/text.md)

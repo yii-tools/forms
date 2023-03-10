@@ -15,17 +15,53 @@ use Yii\Support\Assert;
  */
 final class TextDocTest extends TestCase
 {
-    public function testText(): void
+    public function testField(): void
     {
-        // default.
         Assert::equalsWithoutLE(
             <<<HTML
+            <div>
+            <label for="contactform-name">Name</label>
             <input id="contactform-name" name="ContactForm[name]" type="text">
+            </div>
             HTML,
-            Text::widget([new ContactForm(), 'name'])->render(),
+            Field::widget([Text::widget([new ContactForm(), 'name'])])->render(),
         );
+    }
 
-        // prefix.
+    public function testFieldWithPrefix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-name">Name</label>
+            <span><i class="bi bi-person-fill"></i></span>
+            <input id="contactform-name" name="ContactForm[name]" type="text">
+            </div>
+            HTML,
+            Field::widget([Text::widget([new ContactForm(), 'name'])
+                ->prefix('<span><i class="bi bi-person-fill"></i></span>'), ])
+                ->render(),
+        );
+    }
+
+    public function testFieldWithSuffix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-name">Name</label>
+            <input id="contactform-name" name="ContactForm[name]" type="text">
+            <span><i class="bi bi-person-fill"></i></span>
+            </div>
+            HTML,
+            Field::widget([Text::widget([new ContactForm(), 'name'])
+                ->suffix('<span><i class="bi bi-person-fill"></i></span>'), ])
+                ->render(),
+        );
+    }
+
+    public function testPrefix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <span><i class="bi bi-person-fill"></i></span>
@@ -34,6 +70,16 @@ final class TextDocTest extends TestCase
             Text::widget([new ContactForm(), 'name'])
                 ->prefix('<span><i class="bi bi-person-fill"></i></span>')
                 ->render(),
+        );
+    }
+
+    public function testRender(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input id="contactform-name" name="ContactForm[name]" type="text">
+            HTML,
+            Text::widget([new ContactForm(), 'name'])->render(),
         );
 
         // suffix.
@@ -48,44 +94,15 @@ final class TextDocTest extends TestCase
         );
     }
 
-    public function testFieldText(): void
+    public function testSuffix(): void
     {
-        // default.
         Assert::equalsWithoutLE(
             <<<HTML
-            <div>
-            <label for="contactform-name">Name</label>
-            <input id="contactform-name" name="ContactForm[name]" type="text">
-            </div>
-            HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])])->render(),
-        );
-
-        // prefix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-name">Name</label>
-            <span><i class="bi bi-person-fill"></i></span>
-            <input id="contactform-name" name="ContactForm[name]" type="text">
-            </div>
-            HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])
-                ->prefix('<span><i class="bi bi-person-fill"></i></span>'), ])
-                ->render(),
-        );
-
-        // suffix
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-name">Name</label>
             <input id="contactform-name" name="ContactForm[name]" type="text">
             <span><i class="bi bi-person-fill"></i></span>
-            </div>
             HTML,
-            Field::widget([Text::widget([new ContactForm(), 'name'])
-                ->suffix('<span><i class="bi bi-person-fill"></i></span>'), ])
+            Text::widget([new ContactForm(), 'name'])
+                ->suffix('<span><i class="bi bi-person-fill"></i></span>')
                 ->render(),
         );
     }

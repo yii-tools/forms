@@ -2,7 +2,9 @@
 
 For default the label it's the attribute label of the form model, which can be changed by the `\Yii\Forms\Field::labelContent()` method.
 
-For example, the following code for change the label content.
+## Content
+
+The following code shows how to set the label content.
 
 ```php
 <?php
@@ -28,7 +30,10 @@ That would generate the following code:
 
 **Note:** The label content is for default encoded, which can be disabled by the `\Yii\Forms\Field::labelEncode()` method, which we don't recommend for security reasons.
 
-For example, the following code for closure label content.
+
+## Closure
+
+The following code shows how to set the label content with a `Closure`.
 
 ```php
 <?php
@@ -57,7 +62,9 @@ That would generate the following code:
 </div>
 ```
 
-for example, the following code for add attribute `HTML class` to the label.
+## Class
+
+The following code show label with attribute `HTML class`.
 
 ```php
 <?php
@@ -81,7 +88,9 @@ That would generate the following code:
 </div>
 ```
 
-Or the following code for added attribute to the label.
+## Attributes
+
+The following code show label with attribute `HTML attributes`.
 
 ```php
 <?php
@@ -105,9 +114,9 @@ That would generate the following code:
 </div>
 ```
 
-To finish you can also disable the label by the `\Yii\Forms\Field::notLabel()` method.
+## Not Label
 
-For example, the following code for disabling the label.
+This following code shows how to disable the label.
 
 ```php
 <?php

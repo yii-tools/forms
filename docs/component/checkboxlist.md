@@ -2,7 +2,9 @@
 
 It's an input element that displays a list of [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox).
 
-## Example
+## Items
+
+The following code shows how to create a checkbox list with three items.
 
 ```php
 <?php
@@ -26,7 +28,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with boolean
+## Boolean
+
+The following code shows how to create a checkbox list with two items.
 
 ```php
 <?php
@@ -37,20 +41,26 @@ use App\Form\ContactForm;
 use Yii\Forms\CheckboxList;
 ?>
 
-<?= CheckboxList::widget([new TestForm(), 'agree'])->boolean()->label('Do you like this post?') ?>
+<?=             
+    CheckboxList::widget([new ContactForm(), 'termsAndService'])
+        ->boolean()
+        ->label('Do you like this post?')
+?>
 ```
 
 That would generate the following code:
 
 ```html
-<label for="testform-agree">Do you like this post?</label>
-<div id="testform-agree">
-    <label><input name="TestForm[agree][]" type="checkbox" value="0">No</label>
-    <label><input name="TestForm[agree][]" type="checkbox" value="1">Yes</label>
+<label for="contactform-termsandservice">Do you like this post?</label>
+<div id="contactform-termsandservice">
+    <label><input name="ContactForm[termsAndService][]" type="checkbox" value="0">No</label>
+    <label><input name="ContactForm[termsAndService][]" type="checkbox" value="1">Yes</label>
 </div>
 ```
 
-## Example with prefix
+## Prefix
+
+The following code shows how to create a checkbox list with three items and prefix.
 
 ```php
 <?php
@@ -84,7 +94,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with suffix
+## Suffix
+
+The following code shows how to create a checkbox list with three items and suffix.
 
 ```php
 <?php
@@ -118,7 +130,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with container tag
+## Container tag
+
+The following code shows how to create a checkbox list with three items and a container tag.
 
 ```php
 <?php
@@ -142,7 +156,9 @@ That would generate the following code:
 </article>
 ```
 
-## Example with Field
+## Field
+
+The following code shows how to create a checkbox list with three items and field.
 
 ```php
 <?php
@@ -173,7 +189,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field change label position
+## Field with change label position
+
+The following code shows how to create a checkbox list with three items and field with change label position.
 
 ```php
 <?php
@@ -206,7 +224,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field without label
+## Field without any label
+
+The following code shows how to create a checkbox list with three items and field without any label.
 
 ```php
 <?php
@@ -237,7 +257,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field prefix
+## Field with prefix
+
+The following code shows how to create a checkbox list with three items and field with prefix.
 
 ```php
 <?php
@@ -270,7 +292,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field suffix
+## Field with suffix
+
+The following code shows how to create a checkbox list with three items and field with suffix.
 
 ```php
 <?php

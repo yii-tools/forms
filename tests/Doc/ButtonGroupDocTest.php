@@ -15,9 +15,8 @@ use Yii\Support\Assert;
  */
 final class ButtonGroupDocTest extends TestCase
 {
-    public function testButtonGroup(): void
+    public function testButtons(): void
     {
-        // default.
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -29,8 +28,10 @@ final class ButtonGroupDocTest extends TestCase
                 ->buttons([['type' => 'Submit', 'value' => 'Submit'], ['type' => 'Reset', 'value' => 'Reset']])
                 ->render(),
         );
+    }
 
-        // using button widget.
+    public function testButtonsWithButtonWidget(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -44,9 +45,29 @@ final class ButtonGroupDocTest extends TestCase
         );
     }
 
-    public function testFieldButtonGroup(): void
+    public function testIndividualAttributes(): void
     {
-        // default.
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <input class="btn btn-lg" type="Submit" value="Submit" disabled>
+            <input class="btn btn-md" type="Reset" value="Reset" disabled>
+            </div>
+            HTML,
+            ButtonGroup::widget()
+                ->buttons(
+                    [
+                        ['attributes' => ['disabled' => true], 'type' => 'Submit', 'value' => 'Submit'],
+                        ['attributes' => ['disabled' => true], 'type' => 'Reset', 'value' => 'Reset'],
+                    ]
+                )
+                ->individualButtonAttributes(['0' => ['class' => 'btn btn-lg'], '1' => ['class' => 'btn btn-md']])
+                ->render(),
+        );
+    }
+
+    public function testField(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -63,8 +84,10 @@ final class ButtonGroupDocTest extends TestCase
                 ]
             )->render()
         );
+    }
 
-        // using button widget.
+    public function testFieldWithButtonWidget(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>

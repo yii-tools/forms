@@ -15,52 +15,8 @@ use Yii\Support\Assert;
  */
 final class DateDocTest extends TestCase
 {
-    public function testCheckbox(): void
+    public function testField(): void
     {
-        // default.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-            HTML,
-            Date::widget([new ContactForm(), 'dateofMessage'])->render(),
-        );
-
-        // prefix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <span><i class="fa fa-calendar"></i></span>
-            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-            HTML,
-            Date::widget([new ContactForm(), 'dateofMessage'])
-                ->prefix('<span><i class="fa fa-calendar"></i></span>')
-                ->render(),
-        );
-
-        // suffix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-            <span><i class="fa fa-calendar"></i></span>
-            HTML,
-            Date::widget([new ContactForm(), 'dateofMessage'])
-                ->suffix('<span><i class="fa fa-calendar"></i></span>')
-                ->render(),
-        );
-    }
-
-    public function testFieldDate(): void
-    {
-        // default.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-dateofmessage">Dateof Message</label>
-            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
-            </div>
-            HTML,
-            Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])])->render(),
-        );
-
         // prefix.
         Assert::equalsWithoutLE(
             <<<HTML
@@ -86,6 +42,74 @@ final class DateDocTest extends TestCase
             HTML,
             Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
                 ->suffix('<span><i class="fa fa-calendar"></i></span>'), ])
+                ->render(),
+        );
+    }
+
+    public function testFieldWithPrefix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-dateofmessage">Dateof Message</label>
+            <span><i class="fa fa-calendar"></i></span>
+            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+            </div>
+            HTML,
+            Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
+                ->prefix('<span><i class="fa fa-calendar"></i></span>'), ])
+                ->render(),
+        );
+    }
+
+    public function testFieldWithSuffix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-dateofmessage">Dateof Message</label>
+            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+            <span><i class="fa fa-calendar"></i></span>
+            </div>
+            HTML,
+            Field::widget([Date::widget([new ContactForm(), 'dateofMessage'])
+                ->suffix('<span><i class="fa fa-calendar"></i></span>'), ])
+                ->render(),
+        );
+    }
+
+    public function testPrefix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <span><i class="fa fa-calendar"></i></span>
+            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+            HTML,
+            Date::widget([new ContactForm(), 'dateofMessage'])
+                ->prefix('<span><i class="fa fa-calendar"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testRender(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+            HTML,
+            Date::widget([new ContactForm(), 'dateofMessage'])->render(),
+        );
+    }
+
+    public function testSuffix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
+            <span><i class="fa fa-calendar"></i></span>
+            HTML,
+            Date::widget([new ContactForm(), 'dateofMessage'])
+                ->suffix('<span><i class="fa fa-calendar"></i></span>')
                 ->render(),
         );
     }

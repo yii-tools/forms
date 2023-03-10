@@ -2,8 +2,6 @@
 
 It's an input element with a type attribute whose value is `hidden` representing a [Hidden](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.hidden.html#input.hidden.attrs.value) control.
 
-## Example
-
 ```php
 <?php
 
@@ -22,7 +20,9 @@ That would generate the following code:
 <input id="testform-stringhidden" name="TestForm[stringHidden]" type="hidden">
 ```
 
-## Example with Field
+## Field
+
+This following code will generate a field for the hidden.
 
 ```php
 declare(strict_types=1);

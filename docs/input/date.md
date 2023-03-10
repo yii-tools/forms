@@ -6,8 +6,6 @@ It's displayed with a calendar widget in supporting browsers, which allows easy 
 
 The format of the date is controlled by the `pattern` attribute, using the syntax described in the [HTML specification](https://www.w3.org/TR/2012/WD-html-markup-20120329/datatypes.html#common.data.date). If the `pattern` attribute isn't specified, the user personal digital assistant will give a default value.
 
-## Example
-
 ```php
 <?php
 
@@ -26,7 +24,9 @@ That would generate the following code:
 <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
 ```
 
-## Example with prefix
+## Prefix
+
+This following code will generate a prefix for the date.
 
 ```php
 <?php
@@ -47,7 +47,9 @@ That would generate the following code:
 <input id="contactform-dateofmessage" name="ContactForm[dateofMessage]" type="date">
 ```
 
-## Example with suffix
+## Suffix
+
+This following code will generate a suffix for the date.
 
 ```php
 <?php
@@ -68,7 +70,9 @@ That would generate the following code:
 <span><i class="fa fa-calendar"></i></span>
 ```
 
-## Example with Field
+## Field
+
+This following code will generate a field for the date.
 
 ```php
 declare(strict_types=1);
@@ -90,7 +94,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field prefix
+## Field prefix
+
+This following code will generate a field for the date with prefix.
 
 ```php
 declare(strict_types=1);
@@ -111,7 +117,9 @@ use Yii\Forms\Input\Date;
 </div>
 ```
 
-## Example with Field suffix
+## Field suffix
+
+This following code will generate a field for the date with suffix.
 
 ```php
 declare(strict_types=1);

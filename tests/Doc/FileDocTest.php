@@ -15,51 +15,8 @@ use Yii\Support\Assert;
  */
 final class FileDocTest extends TestCase
 {
-    public function testCheckbox(): void
+    public function testField(): void
     {
-        // default.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
-            HTML,
-            File::widget([new ContactForm(), 'attachment'])->render(),
-        );
-
-        // unchecked.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input id="contactform-agree" name="ContactForm[agree]" type="hidden" value="0">
-            <input id="contactform-agree" name="ContactForm[agree][]" type="file">
-            HTML,
-            File::widget([new ContactForm(), 'agree'])->unchecked('0')->render(),
-        );
-
-        // prefix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <span><i class="fa fa-file"></i></span>
-            <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
-            HTML,
-            File::widget([new ContactForm(), 'attachment'])
-                ->prefix('<span><i class="fa fa-file"></i></span>')
-                ->render(),
-        );
-
-        // suffix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
-            <span><i class="fa fa-file"></i></span>
-            HTML,
-            File::widget([new ContactForm(), 'attachment'])
-                ->suffix('<span><i class="fa fa-file"></i></span>')
-                ->render(),
-        );
-    }
-
-    public function testFieldDate(): void
-    {
-        // default.
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -69,8 +26,10 @@ final class FileDocTest extends TestCase
             HTML,
             Field::widget([File::widget([new ContactForm(), 'attachment'])])->render(),
         );
+    }
 
-        // prefix.
+    public function testFieldWithPrefix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -83,8 +42,10 @@ final class FileDocTest extends TestCase
                 ->prefix('<span><i class="fa fa-file"></i></span>'), ])
                 ->render(),
         );
+    }
 
-        // suffix
+    public function testFieldWithSuffix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -96,6 +57,53 @@ final class FileDocTest extends TestCase
             Field::widget([File::widget([new ContactForm(), 'attachment'])
                 ->suffix('<span><i class="fa fa-file"></i></span>'), ])
                 ->render(),
+        );
+    }
+
+    public function testPrefix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <span><i class="fa fa-file"></i></span>
+            <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
+            HTML,
+            File::widget([new ContactForm(), 'attachment'])
+                ->prefix('<span><i class="fa fa-file"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testRender(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
+            HTML,
+            File::widget([new ContactForm(), 'attachment'])->render(),
+        );
+    }
+
+    public function testSuffix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
+            <span><i class="fa fa-file"></i></span>
+            HTML,
+            File::widget([new ContactForm(), 'attachment'])
+                ->suffix('<span><i class="fa fa-file"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testUnchecked(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input id="contactform-agree" name="ContactForm[agree]" type="hidden" value="0">
+            <input id="contactform-agree" name="ContactForm[agree][]" type="file">
+            HTML,
+            File::widget([new ContactForm(), 'agree'])->unchecked('0')->render(),
         );
     }
 }

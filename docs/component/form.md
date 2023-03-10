@@ -5,6 +5,8 @@
 
 ## Accept charset
 
+The following code shows how to set the `accept-charset` attribute.
+
 ```php
 <?php
 
@@ -28,6 +30,8 @@ That would generate the following code:
 
 ## Action
 
+The following code shows how to set the `action` attribute.
+
 ```php
 <?php
 
@@ -50,6 +54,8 @@ That would generate the following code:
 ```
 
 ## Csrf with method `POST`
+
+The following code shows how to set the `csrf` attribute and the `method` attribute to `POST`.
 
 ```php
 <?php
@@ -75,6 +81,8 @@ That would generate the following code:
 
 ## Enctype
 
+The following code shows how to set the `enctype` attribute.
+
 ```php
 <?php
 
@@ -97,6 +105,8 @@ That would generate the following code:
 ```
 
 ## Method
+
+The following code shows how to set the `method` attribute.
 
 ```php
 <?php
@@ -121,6 +131,8 @@ That would generate the following code:
 
 ## No validate
 
+The following code shows how to set the `novalidate` attribute.
+
 ```php
 <?php
 
@@ -143,6 +155,8 @@ That would generate the following code:
 ```
 
 ## Target
+
+The following code shows how to set the `target` attribute.
 
 ```php
 <?php

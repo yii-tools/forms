@@ -4,8 +4,6 @@ It's an input element with a type attribute whose value is `file` representing [
 
 The file(s) selected by the user can then be uploaded to a server with [PSR-7](https://github.com/php-fig/http-message), or manipulated by JavaScript via the [File API](https://www.w3.org/TR/FileAPI/). 
 
-## Example
-
 ```php
 <?php
 
@@ -24,7 +22,9 @@ That would generate the following code:
 <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 ```
 
-## Example with input hidden for unchecked
+## Input hidden for unchecked
+
+This following code will generate a hidden input for unchecked.
 
 ```php
 <?php
@@ -45,7 +45,9 @@ That would generate the following code:
 <input id="contactform-agree" name="ContactForm[agree][]" type="file">
 ```
 
-## Example with prefix
+## Prefix
+
+This following code will generate a prefix for the file.
 
 ```php
 <?php
@@ -66,7 +68,9 @@ That would generate the following code:
 <input id="contactform-attachment" name="ContactForm[attachment][]" type="file">
 ```
 
-## Example with suffix
+## Suffix
+
+This following code will generate a suffix for the file.
 
 ```php
 <?php
@@ -87,7 +91,9 @@ That would generate the following code:
 <span><i class="fa fa-file"></i></span>
 ```
 
-## Example with Field
+## Field
+
+This following code will generate a field for the file.
 
 ```php
 declare(strict_types=1);
@@ -109,7 +115,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field prefix
+## Field with prefix
+
+This following code will generate a field for the file with prefix.
 
 ```php
 declare(strict_types=1);
@@ -130,7 +138,9 @@ use Yii\Forms\Input\File;
 </div>
 ```
 
-## Example with Field suffix
+## Field with suffix
+
+This following code will generate a field for the file with suffix.
 
 ```php
 declare(strict_types=1);

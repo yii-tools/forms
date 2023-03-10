@@ -4,7 +4,9 @@ It's a part which can be used to create a set of buttons that are related to eac
 
 This is a wrapper for the [Button](/docs/input/button.md) widget.
 
-## Example
+## Buttons
+
+The following code shows how to create a button group with two buttons.
 
 ```php
 <?php
@@ -26,7 +28,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with button widget
+## Buttons with button widget
+
+The following code shows how to create a button group with two buttons using the [Button](/docs/input/button.md) widget.
 
 ```php
 <?php
@@ -49,7 +53,42 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field
+## Individual button attributes
+
+The following code shows how to create a button group with two buttons and set individual attributes for each button.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use Yii\Forms\ButtonGroup;
+?>
+
+<?=             
+    ButtonGroup::widget()
+        ->buttons(
+            [
+                ['attributes' => ['disabled' => true], 'type' => 'Submit', 'value' => 'Submit'],
+                ['attributes' => ['disabled' => true], 'type' => 'Reset', 'value' => 'Reset'],
+            ]
+        )
+        ->individualButtonAttributes(['0' => ['class' => 'btn btn-lg'], '1' => ['class' => 'btn btn-md']])
+?>
+```
+
+That would generate the following code:
+
+```html
+<div>
+    <input class="btn btn-lg" type="Submit" value="Submit" disabled>
+    <input class="btn btn-md" type="Reset" value="Reset" disabled>
+</div>
+```
+
+## Field
+
+The following code shows how to create a field with a button group.
 
 ```php
 <?php
@@ -74,7 +113,9 @@ That would generate the following code:
 </div>
 ```
 
-## Example with Field and button widget
+## Field with button group and button widget
+
+The following code shows how to create a field with a button group using the [Button](/docs/input/button.md) widget.
 
 ```php
 <?php

@@ -15,46 +15,8 @@ use Yii\Support\Assert;
  */
 final class CheckboxDocTest extends TestCase
 {
-    public function testCheckbox(): void
+    public function testContainer(): void
     {
-        // default.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
-            HTML,
-            Checkbox::widget([new ContactForm(), 'agree'])->render(),
-        );
-
-        // unchecked.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <input name="ContactForm[agree]" type="hidden" value="0">
-            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
-            HTML,
-            Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0')->render(),
-        );
-
-        // prefix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
-            HTML,
-            Checkbox::widget([new ContactForm(), 'agree'])
-                ->prefix('<span><i class="bi bi-check"></i></span>')
-                ->render(),
-        );
-
-        // suffix.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
-            HTML,
-            Checkbox::widget([new ContactForm(), 'agree'])
-                ->suffix('<span><i class="bi bi-check"></i></span>')
-                ->render(),
-        );
-
-        // container.
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -66,9 +28,8 @@ final class CheckboxDocTest extends TestCase
         );
     }
 
-    public function testFieldCheckbox(): void
+    public function testField(): void
     {
-        // default.
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -80,8 +41,10 @@ final class CheckboxDocTest extends TestCase
                 ->class('button is-block is-info is-fullwidth')
                 ->render(),
         );
+    }
 
-        // change label position.
+    public function testFieldWithChangeLabelPosition(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -95,34 +58,10 @@ final class CheckboxDocTest extends TestCase
                 ->inputTemplate('{input}' . PHP_EOL . '{label}')
                 ->render(),
         );
+    }
 
-        // enclosed by label for the widget.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <label for="contactform-agree"><input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
-            </div>
-            HTML,
-            Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
-                ->class('button is-block is-info is-fullwidth')
-                ->inputTemplate('{input}')
-                ->render(),
-        );
-
-        // any label.
-        Assert::equalsWithoutLE(
-            <<<HTML
-            <div>
-            <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
-            </div>
-            HTML,
-            Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
-                ->class('button is-block is-info is-fullwidth')
-                ->notLabel()
-                ->render(),
-        );
-
-        // prefix.
+    public function testFieldWithPrefix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -136,8 +75,10 @@ final class CheckboxDocTest extends TestCase
                 ->prefix('<span><i class="bi bi-check"></i></span>')
                 ->render(),
         );
+    }
 
-        // suffix.
+    public function testFieldWithSuffix(): void
+    {
         Assert::equalsWithoutLE(
             <<<HTML
             <div>
@@ -150,6 +91,82 @@ final class CheckboxDocTest extends TestCase
                 ->class('button is-block is-info is-fullwidth')
                 ->suffix('<span><i class="bi bi-check"></i></span>')
                 ->render(),
+        );
+    }
+
+    public function testFieldWithEnclosedByLabel(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <label for="contactform-agree"><input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+            </div>
+            HTML,
+            Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+                ->class('button is-block is-info is-fullwidth')
+                ->inputTemplate('{input}')
+                ->render(),
+        );
+    }
+
+    public function testFieldWithoutAnyLabel(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <div>
+            <input class="button is-block is-info is-fullwidth" id="contactform-agree" name="ContactForm[agree]" type="checkbox">
+            </div>
+            HTML,
+            Field::widget([Checkbox::widget([new ContactForm(), 'agree'])])
+                ->class('button is-block is-info is-fullwidth')
+                ->notLabel()
+                ->render(),
+        );
+    }
+
+
+    public function testPrefix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label for="contactform-agree"><span><i class="bi bi-check"></i></span><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+            HTML,
+            Checkbox::widget([new ContactForm(), 'agree'])
+                ->prefix('<span><i class="bi bi-check"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testRender(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+            HTML,
+            Checkbox::widget([new ContactForm(), 'agree'])->render(),
+        );
+    }
+
+    public function testSuffix(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox"><span><i class="bi bi-check"></i></span>Agree</label>
+            HTML,
+            Checkbox::widget([new ContactForm(), 'agree'])
+                ->suffix('<span><i class="bi bi-check"></i></span>')
+                ->render(),
+        );
+    }
+
+    public function testUnchecked(): void
+    {
+        Assert::equalsWithoutLE(
+            <<<HTML
+            <input name="ContactForm[agree]" type="hidden" value="0">
+            <label for="contactform-agree"><input id="contactform-agree" name="ContactForm[agree]" type="checkbox">Agree</label>
+            HTML,
+            Checkbox::widget([new ContactForm(), 'agree'])->unchecked('0')->render(),
         );
     }
 }
