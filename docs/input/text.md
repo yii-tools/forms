@@ -5,6 +5,8 @@ It's an input element with a type attribute whose value is `text` representing [
 It can be used for any text, including e-mail addresses and URLs. The text is displayed in a fixed-width font (usually
 the user's default monospace font).
 
+## Usage
+
 ```php
 <?php
 

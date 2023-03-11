@@ -4,7 +4,7 @@ It's a part which can be used to create a set of buttons that are related to eac
 
 This is a wrapper for the [Button](/docs/input/button.md) widget.
 
-## Buttons
+## Usage
 
 The following code shows how to create a button group with two buttons.
 

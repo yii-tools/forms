@@ -9,7 +9,7 @@ For default, the error, it's checked by:
 
 ## Attributes
 
-The following code show error with attribute `HTML attributes`.
+The following code shows how to create a field with error attributes. 
 
 ```php
 <?php
@@ -42,7 +42,7 @@ That would generate the following code:
 
 ## Class
 
-The following code show error with attribute `HTML class`.
+The following code shows how to create a field with error class.
 
 ```php
 <?php
@@ -75,7 +75,7 @@ That would generate the following code:
 
 ## Closure
 
-The following code shows how to set the error content with a `Closure`.
+The following code shows how to create a field with error closure.
 
 ```php
 <?php
@@ -109,7 +109,7 @@ That would generate the following code:
 
 ## Content
 
-The following code shows how to set the error content.
+The following code shows how to create a field with error content.
 
 ```php
 <?php
@@ -138,7 +138,7 @@ That would generate the following code:
 
 ## Tag
 
-The following code shows hint with container tag.
+The following code shows how to create a field with error tag.
 
 ```php
 <?php

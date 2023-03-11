@@ -2,6 +2,8 @@
 
 It's an input element with a type attribute whose value is `hidden` representing a [Hidden](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.hidden.html#input.hidden.attrs.value) control.
 
+## Usage
+
 ```php
 <?php
 

@@ -2,6 +2,10 @@
 
 Represents a control for selecting among a list of options [Select](https://www.w3.org/TR/2012/WD-html-markup-20120329/select.html).
 
+## Items
+
+The following code shows how to create a select with items.
+
 ```php
 <?php
 
@@ -190,33 +194,6 @@ That would generate the following code:
 </select>
 ```
 
-## Size
-
-The following code shows how to create a select with a size.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\Select;
-?>
-
-<?= Select::widget([new ContactForm(), 'reason'])->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])->size(5) ?>
-```
-
-That would generate the following code:
-
-```html
-<select id="contactform-reason" name="ContactForm[reason]" size="5">
-    <option>Select an option</option>
-    <option value="1">Sell</option>
-    <option value="2">Buy</option>
-    <option value="3">Rent</option>
-</select>
-```
-
 ## Prefix
 
 The following code shows how to create a select with a prefix.
@@ -238,6 +215,33 @@ That would generate the following code:
 ```html
 <span>Reason</span>
 <select id="contactform-reason" name="ContactForm[reason]">
+    <option>Select an option</option>
+    <option value="1">Sell</option>
+    <option value="2">Buy</option>
+    <option value="3">Rent</option>
+</select>
+```
+
+## Size
+
+The following code shows how to create a select with a size.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Select;
+?>
+
+<?= Select::widget([new ContactForm(), 'reason'])->items([1 => 'Sell', 2 => 'Buy', 3 => 'Rent'])->size(5) ?>
+```
+
+That would generate the following code:
+
+```html
+<select id="contactform-reason" name="ContactForm[reason]" size="5">
     <option>Select an option</option>
     <option value="1">Sell</option>
     <option value="2">Buy</option>

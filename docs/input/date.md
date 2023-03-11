@@ -6,6 +6,8 @@ It's displayed with a calendar widget in supporting browsers, which allows easy 
 
 The format of the date is controlled by the `pattern` attribute, using the syntax described in the [HTML specification](https://www.w3.org/TR/2012/WD-html-markup-20120329/datatypes.html#common.data.date). If the `pattern` attribute isn't specified, the user personal digital assistant will give a default value.
 
+## Usage
+
 ```php
 <?php
 
