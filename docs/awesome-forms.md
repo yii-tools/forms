@@ -52,6 +52,7 @@ final class ContactForm extends AbstractFormModel
     - [Invalid class](/docs/component/field.md#invalid-class)
     - [Label](/docs/field/label.md)    
     - [Prefix](/docs/component/field.md#prefix)
+    - [Show all errors](/docs/component/field.md#show-all-errors)
     - [Suffix](/docs/component/field.md#prefix)
     - [Template](/docs/component/field.md#template)
     - [Valid class](/docs/component/field.md#valid-class)
