@@ -4,7 +4,7 @@ For default the hint it's the attribute hint of the form model, which can be cha
 
 ## Attributes
 
-The following code show hint with attribute `HTML attributes`.
+The following code shows how to create a field with hint attributes.
 
 ```php
 <?php
@@ -33,7 +33,7 @@ That would generate the following code:
 
 ## Class
 
-The following code show hint with attribute `HTML class`.
+The following code shows how to create a field with hint class.
 
 ```php
 <?php
@@ -62,7 +62,7 @@ That would generate the following code:
 
 ## Closure
 
-The following code shows how to set the hint content with a `Closure`.
+The following code shows how to create a field with hint closure.
 
 ```php
 <?php
@@ -96,7 +96,7 @@ That would generate the following code:
 
 ## Content
 
-The following code shows how to set the hint content.
+The following code shows how to create a field with hint content.
 
 ```php
 <?php
@@ -125,7 +125,7 @@ That would generate the following code:
 
 ## Tag
 
-The following code shows hint with container tag.
+The following code shows how to create a field with hint tag.
 
 ```php
 <?php

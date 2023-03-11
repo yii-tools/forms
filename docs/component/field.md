@@ -4,7 +4,9 @@ It's a widget to create a field with an input or part-widget, which can be used 
 
 For create a field, you can use the `\Yii\Forms\Field::widget()` method, which accepts an array of `\Yii\Widget\AbstractInputWidget` objects and `\Yii\Widget\AbstractWidget` objects in the constructor method.
 
-For example, the following code for create a field with a `input text` widget.
+## Usage
+
+The following code shows how to create a field with a text input.
 
 ```php	
 <?php
@@ -225,6 +227,42 @@ That would generate the following code:
     <span><i class="fas fa-user"></i></span>
     <label for="contactform-name">Name</label>
     <input id="contactform-name" name="ContactForm[name]" type="text">
+</div>
+```
+
+## Show all errors
+
+It Allows you to show all errors for the field.
+
+The following code shows how to create a field with all errors.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\Field;
+use Yii\Forms\Input\Text;
+
+$formModel = new ContactForm();
+$formModel->load(['ContactForm' => ['name' => '1']]);
+$formModel->error()->add('name', 'This value must contain at least 3 characters.');
+$formModel->error()->add('name', 'Value is invalid.');
+?>
+
+<?= Field::widget([Text::widget([$formModel, 'name'])])->showAllErrors() ?>
+```
+
+That would generate the following code:
+
+```html
+<div>
+    <label for="contactform-name">Name</label>
+    <input id="contactform-name" name="ContactForm[name]" type="text" value="1">
+    <div>
+        This value must contain at least 3 characters.<br>Value is invalid.
+    </div>
 </div>
 ```
 

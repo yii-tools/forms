@@ -2,7 +2,7 @@
 
 It's an input element that displays a list of [Checkbox](https://www.w3.org/TR/2012/WD-html-markup-20120329/input.checkbox.html#input.checkbox).
 
-## Items
+## Usage
 
 The following code shows how to create a checkbox list with three items.
 
@@ -56,6 +56,32 @@ That would generate the following code:
     <label><input name="ContactForm[termsAndService][]" type="checkbox" value="0">No</label>
     <label><input name="ContactForm[termsAndService][]" type="checkbox" value="1">Yes</label>
 </div>
+```
+
+## Container tag
+
+The following code shows how to create a checkbox list with three items and a container tag.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Form\ContactForm;
+use Yii\Forms\CheckboxList;
+?>
+
+<?= CheckboxList::widget([new ContactForm(), 'reason'])->containerTag('article')->items(['1' => 'Technical', '2' => 'Sales', '3' => 'Other']) ?>
+```
+
+That would generate the following code:
+
+```html
+<article id="contactform-reason">
+    <label><input name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
+    <label><input name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
+    <label><input name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
+</article>
 ```
 
 ## Prefix
@@ -128,32 +154,6 @@ That would generate the following code:
     <label><input name="ContactForm[reason][]" type="checkbox" value="2">Sales<span><i class="bi bi-check"></i></span></label>
     <label><input name="ContactForm[reason][]" type="checkbox" value="3">Other<span><i class="bi bi-app"></i></i></span></label>
 </div>
-```
-
-## Container tag
-
-The following code shows how to create a checkbox list with three items and a container tag.
-
-```php
-<?php
-
-declare(strict_types=1);
-
-use App\Form\ContactForm;
-use Yii\Forms\CheckboxList;
-?>
-
-<?= CheckboxList::widget([new ContactForm(), 'reason'])->containerTag('article')->items(['1' => 'Technical', '2' => 'Sales', '3' => 'Other']) ?>
-```
-
-That would generate the following code:
-
-```html
-<article id="contactform-reason">
-    <label><input name="ContactForm[reason][]" type="checkbox" value="1">Technical</label>
-    <label><input name="ContactForm[reason][]" type="checkbox" value="2">Sales</label>
-    <label><input name="ContactForm[reason][]" type="checkbox" value="3">Other</label>
-</article>
 ```
 
 ## Field

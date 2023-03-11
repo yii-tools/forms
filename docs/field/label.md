@@ -4,7 +4,7 @@ For default the label it's the attribute label of the form model, which can be c
 
 ## Attributes
 
-The following code show label with attribute `HTML attributes`.
+The following code shows how to create a field with label attributes.
 
 ```php
 <?php
@@ -30,7 +30,7 @@ That would generate the following code:
 
 ## Class
 
-The following code show label with attribute `HTML class`.
+The following code shows how to create a field with label class.
 
 ```php
 <?php
@@ -56,7 +56,7 @@ That would generate the following code:
 
 ## Closure
 
-The following code shows how to set the label content with a `Closure`.
+The following code shows how to create a field with label closure.
 
 ```php
 <?php
@@ -87,7 +87,7 @@ That would generate the following code:
 
 ## Content
 
-The following code shows how to set the label content.
+The following code shows how to create a field with label content.
 
 ```php
 <?php
@@ -115,7 +115,7 @@ That would generate the following code:
 
 ## Not Label
 
-This following code shows how to disable the label.
+The following code shows how to create a field without label.
 
 ```php
 <?php

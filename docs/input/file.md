@@ -4,6 +4,8 @@ It's an input element with a type attribute whose value is `file` representing [
 
 The file(s) selected by the user can then be uploaded to a server with [PSR-7](https://github.com/php-fig/http-message), or manipulated by JavaScript via the [File API](https://www.w3.org/TR/FileAPI/). 
 
+## Usage
+
 ```php
 <?php
 

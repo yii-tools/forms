@@ -6,6 +6,8 @@ The `Checkbox` widget is designed to return the status of the checkbox.
 
 It returns two values, by default, it's `0` for unchecked, and `1` for checked.
 
+## Usage
+
 ```php
 <?php
 

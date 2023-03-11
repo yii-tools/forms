@@ -2,6 +2,8 @@
 
 Represents a multi-line plain-text edit control for the element’s raw value editing [textarea](https://www.w3.org/TR/2012/WD-html-markup-20120329/textarea.html).
 
+## Usage
+
 ```php
 <?php
 
